@@ -1,0 +1,679 @@
+.navbar-bg{
+    background-color:#001A2C !important;
+    padding: 5px 5px 0;
+}
+.navbar-light .navbar-toggler-icon {
+    /* background-image: none; */
+    /* color: #000; */
+    background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba%280, 0, 0, 0.55%29%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e');
+    background-color: rgba(255, 255, 255, 0.721);
+    float: left;
+}
+.navbar-dark .navbar-toggler, .navbar-light .navbar-toggler {
+    position: absolute;
+    top: 12px;
+    left: 0px;
+}
+.offcanvas{
+    
+    background-color: #1268f19a !important;
+
+}
+@media (min-width: 992px){
+.navbar-expand-lg .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: flex-end;
+}
+}
+.navbar-expand-lg {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+.nav-top{
+    height: 30px;
+}
+.nav-bottom .row{
+    height: 30px;
+}
+.nav-top-to-right{
+    float: right;
+    margin: 0 40px;
+    flex-direction: row
+}
+.hd-container {
+    max-width: 1920px;
+    padding: 0 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.nav-top .navbar-nav {
+    width: auto;
+    float: left;    flex-direction: row
+}
+.nav-top .navbar-nav > li{
+    float: left;
+    position: relative;
+    display: block;
+}
+.nav-top .hd-top-head-menu .nav-item-top a {
+    color: #fff;
+    font-size: 12px;
+    line-height: 35px !important;
+    text-decoration: none;
+    padding: 0 7px !important;
+}
+.nav-top .hd-top-head-menu .nav-item-top button {
+    color: #fff;
+    font-size: 12px;
+    padding: 0 10px !important;
+    line-height: 30px !important;
+    height: 30px;
+    background-color: transparent;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+}
+.nav-top .hd-top-head-menu .nav-item-top .flag{
+    display: inline-block
+}
+.nav-top .hd-top-head-menu .country-switch{
+    display: inline-flex;
+    width: 100px;
+    color: #fff;
+}
+.nav-top .hd-top-head-menu .country-switch {
+    color: #000;
+}
+.nav-pills .show>.nav-link{
+    color: #fff;
+    background-color: #fec42500 !important;
+    padding: 0 10px;
+}
+.dropdown-menu{
+    z-index: 2000;
+    position: absolute;
+}
+.dropdown-menu.show{
+    left: -100px;
+    position: absolute;
+    top: 30px;
+    z-index: 200;
+    color: #fff;
+}
+.dropdown-item{
+    width: 60px !important
+}
+.dropdown .nav-sub-item{
+    color:#000 !important
+}
+.nav-item-top a{
+    height: 30px !important;
+}
+#basic-nav-dropdown{
+    margin: 0;
+    color: #fff;
+    background-color: transparent;
+}
+/* Navbar middle */
+.nav-middle{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    margin: 10px 20px;
+}
+.nav-middle .logo-img{
+    text-align: center;
+    justify-content: center;
+}
+.nav-middle .row{
+    width: 100%;
+    margin: 0 0 0 15px;
+}
+.nav-middle .icons .hd-cart{
+    position: sticky;
+}
+.search{
+    padding: 0 35px;
+    height: 40px !important;
+    border: 1px solid #ddd !important
+}
+.nav-pills{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 100%;
+}
+.nav-pills .nav-item{
+    z-index: 10;
+    text-align: center;
+    display: table-cell;
+    flex: 1;
+    height: 40px;
+    font-size: 20px;
+    width: 200px;
+}
+.nav-pills .nav-item .login{
+    width: 105px;
+}
+.nav-pills .nav-item .hd-lang-select{
+    font-size: 20px;
+    line-height: 40px;
+    height: 40px;
+    color: #fff;
+    text-decoration: none;
+    padding: 0 40px 0;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+.nav-pills .nav-item a {
+    font-size: 20px;
+    line-height: 40px;
+    height: 40px;
+    color: #fff;
+    text-decoration: none;
+    padding: 0 4px 0;
+    display: block;
+    text-align: center;
+}
+.nav-pills .nav-item a span,p{
+    font-size: 15px;
+}
+.nav-pills .nav-item a i {
+    margin-right: 10px;
+}
+.nav-pills .nav-item a .fa-chevron-down{
+    margin-left: 10px;
+    font-size: 12px;
+    float: none;
+    line-height: 40px;
+    height: 40px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+}
+.d-none{
+    display: none !important;
+}
+.d-md-none{
+    display: none !important;
+}
+.nav-pills .nav-item a .fa-cart-shopping{
+    font-size: 23px;
+    position: relative;
+
+}
+.nav-pills .nav-item a .hd-minicart-badge{
+    font-family: 'Roboto', sans-serif;
+    background-color: #fec525;
+    border-radius: 50px;
+    color: #001a2c;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 23px;
+    height: 23px;
+    position: absolute;
+    right: -8px;
+    top: -12px;
+    font-weight: 600;
+    border: 2px #001a2c solid;
+}
+.nav-pills .nav-item .hd-dropdown-content{
+    margin-top: 00px;
+    display: none;
+    background-color: #fff;
+    padding: 14px;
+    width: 200px;
+    border-radius: 5px;
+}
+.nav-pills .nav-item .hd-dropdown-content :first-child{
+    background-color: #ef7900;
+    color: #fff;
+}
+.nav-pills .nav-item .hd-dropdown-content a{
+    color: #000;
+}
+.nav-pills .account-drop:hover > .hd-dropdown-content{
+    display: block 
+}
+/* Navbar Bottom */
+.nav-bottom {
+    margin-top: 0px;
+    display: block;
+    order: 3;
+    width: 100%;
+    height: 50px;
+}
+.nav-bottom .meganav-btn {
+    background-color: #fec525;
+    text-align: center;
+    padding: 0 0px;
+    margin-top: 0px;
+    border-radius: 6px 6px 0 0;
+    width: 100%;
+    line-height: 40px;
+    display: inline-block;
+}
+.nav-bottom .meganav-btn span{
+    font-size: 1em;
+    font-weight: 700;
+    white-space: nowrap;
+    color: #001a2c;
+    cursor: pointer;
+}
+.nav-bottom .meganav-btn span .nav-link{
+    padding: 5px;
+    color: #000;
+}
+.nav-bottom .meganav-btn .dropdown-menu.show {
+    left: 0;
+    top: 48px;
+    padding: 10px;
+}
+.nav-bottom .meganav-btn .dropdown-menu {
+    left: -25px !important;
+    min-width: 1100px;
+    background-color: #fff;
+    border: 1px solid #fff;
+    width: 100%;
+    float: left;
+}
+.dropdown-menu-dark .dropdown-item {
+    color: #000;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;    
+    background-color: none;
+}
+.dropdown-menu-dark .fa-caret-right {
+    right: 25px;
+    float: right;
+    line-height: 30px;
+    color: #000;
+    position: relative;
+    font-size: 10px;
+}
+.dropdown-menu-dark .dropdown-item:hover {
+    color: #000;
+    background-color: #fff;
+}
+.dropdown-menu-dark .dropdown-item a{
+    color: #000;
+}
+.dropdown-menu-dark .dropdown-item a:hover {
+    color: #000;
+    background-color: #fff;
+}
+.nav-bottom .meganav-btn .hd-all-dept-bars {
+    font-size: 1.1em;
+    color: #333;
+}
+.nav-bottom .meganav-btn .items .categories{
+    float: left;
+    position: fixed;
+    background-color: #fff !important;
+}
+.nav-bottom .meganav-btn .items .categories .category{
+    height: 30px;
+    margin: 0px 0 6px 0;
+    /* position: absolute; */
+    /* float: left; */
+}
+.nav-bottom .meganav-btn .items {
+    /* width: 100%; */
+    display: inline-block;
+}
+.nav-bottom .meganav-btn .items .computers-items,
+.nav-bottom .meganav-btn .items .iphones-items,
+.nav-bottom .meganav-btn .items .itunes-items,
+.nav-bottom .meganav-btn .items .home-items,
+.nav-bottom .meganav-btn .items .gaming-items,
+.nav-bottom .meganav-btn .items .camera-items,
+.nav-bottom .meganav-btn .items .small-home-items,
+.nav-bottom .meganav-btn .items .large-home-items,
+.nav-bottom .meganav-btn .items .health-items,
+.nav-bottom .meganav-btn .items .outdoor-items,
+.nav-bottom .meganav-btn .items .air-conditioners-items,
+.nav-bottom .meganav-btn .items .home-furniture-items,
+.nav-bottom .meganav-btn .items .toys-items,
+.nav-bottom .meganav-btn .items .stationary-items
+.nav-bottom .meganav-btn .items .fashion-items
+{
+    float: right;
+    display: none;
+    position: fixed;
+    top: 150px;
+    left: 385px !important;
+    padding: 10px;
+    box-shadow: -1px 3px 12px 1px #0000001a;
+    background-color: #fff;
+    
+} 
+
+.nav-bottom .meganav-btn .items .category-computers:hover + .computers-items{
+    display: block;
+}
+.nav-bottom .meganav-btn .items .category-iphones:hover + .iphones-items{
+    display: block;
+}
+.nav-bottom .meganav-btn .items .category-itunes:hover + .itunes-items{
+    display: block;
+}
+.nav-bottom .meganav-btn .items .category-home:hover + .home-items{
+    display: block;
+}
+.nav-bottom .meganav-btn .items .category-gaming:hover + .gaming-items{
+    display: block;
+}
+.nav-bottom .meganav-btn .items .category-camera:hover + .camera-items{
+    display: block;
+}
+.nav-bottom .meganav-btn .items .category-small-home:hover + .small-home-items{
+    display: block;
+}
+.nav-bottom .meganav-btn .items .category-large-home:hover + .large-home-items{
+    display: block;
+}
+.nav-bottom .meganav-btn .items .category-health:hover + .health-items{
+    display: block;
+}
+.nav-bottom .meganav-btn .items .category-outdoor:hover + .outdoor-items{
+    display: block;
+}
+.nav-bottom .meganav-btn .items .category-air-conditioners:hover + .air-conditioners-items{
+    display: block;
+}
+.nav-bottom .meganav-btn .items .category-home-furniture:hover + .home-furniture-items{
+    display: block;
+}
+.nav-bottom .meganav-btn .items .category-toys:hover + .toys-items{
+    display: block;
+}
+.nav-bottom .meganav-btn .items .category-stationary:hover + .stationary-items{
+    display: block;
+}
+/* ////////////////////////////////////////////////////////////////////////////////// */
+.nav-bottom .meganav-btn .items .computers-items:hover,
+.nav-bottom .meganav-btn .items .iphones-items:hover,
+.nav-bottom .meganav-btn .items .itunes-items:hover,
+.nav-bottom .meganav-btn .items .home-items:hover,
+.nav-bottom .meganav-btn .items .gaming-items:hover,
+.nav-bottom .meganav-btn .items .camera-items:hover,
+.nav-bottom .meganav-btn .items .small-home-items:hover,
+.nav-bottom .meganav-btn .items .large-home-items:hover,
+.nav-bottom .meganav-btn .items .health-items:hover,
+.nav-bottom .meganav-btn .items .outdoor-items:hover,
+.nav-bottom .meganav-btn .items .air-conditioners-items:hover,
+.nav-bottom .meganav-btn .items .home-furniture-items:hover,
+.nav-bottom .meganav-btn .items .toys-items:hover,
+.nav-bottom .meganav-btn .items .stationary-items:hover{
+    display: block;
+}
+/* ///////////////////////////////////////////////////////////////////////////////// */
+.nav-bottom .meganav-btn .items .computers-items ul,
+.nav-bottom .meganav-btn .items .iphones-items ul,
+.nav-bottom .meganav-btn .items .itunes-items ul,
+.nav-bottom .meganav-btn .items .home-items ul,
+.nav-bottom .meganav-btn .items .gaming-items ul,
+.nav-bottom .meganav-btn .items .camera-items ul,
+.nav-bottom .meganav-btn .items .small-home-items ul,
+.nav-bottom .meganav-btn .items .large-home-items ul,
+.nav-bottom .meganav-btn .items .health-items ul,
+.nav-bottom .meganav-btn .items .outdoor-items ul,
+.nav-bottom .meganav-btn .items .air-conditioners-items ul,
+.nav-bottom .meganav-btn .items .home-furniture-items ul,
+.nav-bottom .meganav-btn .items .toys-items ul,
+.nav-bottom .meganav-btn .items .stationary-items ul
+{
+    padding: 0;
+}
+.nav-bottom .meganav-btn .items .computers-items ul li,
+.nav-bottom .meganav-btn .items .iphones-items ul li,
+.nav-bottom .meganav-btn .items .itunes-items ul li,
+.nav-bottom .meganav-btn .items .home-items ul li,
+.nav-bottom .meganav-btn .items .gaming-items ul li,
+.nav-bottom .meganav-btn .items .camera-items ul li,
+.nav-bottom .meganav-btn .items .small-home-items ul li,
+.nav-bottom .meganav-btn .items .large-home-items ul li,
+.nav-bottom .meganav-btn .items .health-items ul li,
+.nav-bottom .meganav-btn .items .outdoor-items ul li,
+.nav-bottom .meganav-btn .items .air-conditioners-items ul li,
+.nav-bottom .meganav-btn .items .home-furniture-items ul li,
+.nav-bottom .meganav-btn .items .toys-items ul li,
+.nav-bottom .meganav-btn .items .stationary-items ul li
+{
+    color: #000;
+    list-style: none;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 15px;
+    overflow: hidden !important;
+}
+.nav-bottom .meganav-btn .items .computers-items .main,
+.nav-bottom .meganav-btn .items .iphones-items .main,
+.nav-bottom .meganav-btn .items .itunes-items .main,
+.nav-bottom .meganav-btn .items .home-items .main,
+.nav-bottom .meganav-btn .items .gaming-items .main,
+.nav-bottom .meganav-btn .items .camera-items .main,
+.nav-bottom .meganav-btn .items .small-home-items .main,
+.nav-bottom .meganav-btn .items .large-home-items .main,
+.nav-bottom .meganav-btn .items .health-items .main,
+.nav-bottom .meganav-btn .items .outdoor-items .main,
+.nav-bottom .meganav-btn .items .air-conditioners-items .main,
+.nav-bottom .meganav-btn .items .home-furniture-items .main,
+.nav-bottom .meganav-btn .items .toys-items .main,
+.nav-bottom .meganav-btn .items .stationary-items .main
+{
+    color: #2688da;
+}
+.nav-bottom .meganav-btn .items .computers-items .subcategories,
+.nav-bottom .meganav-btn .items .iphones-items .subcategories,
+.nav-bottom .meganav-btn .items .itunes-items .subcategories,
+.nav-bottom .meganav-btn .items .home-items .subcategories,
+.nav-bottom .meganav-btn .items .gaming-items .subcategories,
+.nav-bottom .meganav-btn .items .camera-items .subcategories,
+.nav-bottom .meganav-btn .items .small-home-items .subcategories,
+.nav-bottom .meganav-btn .items .large-home-items .subcategories,
+.nav-bottom .meganav-btn .items .health-items .subcategories,
+.nav-bottom .meganav-btn .items .outdoor-items .subcategories,
+.nav-bottom .meganav-btn .items .air-conditioners-items .subcategories,
+.nav-bottom .meganav-btn .items .home-furniture-items .subcategories,
+.nav-bottom .meganav-btn .items .toys-items .subcategories,
+.nav-bottom .meganav-btn .items .stationary-items .subcategories
+{
+    width: 20%;
+    overflow: hidden;
+}
+.nav-bottom .meganav-btn .items .computers-items .subcategories li:hover,
+.nav-bottom .meganav-btn .items .iphones-items .subcategories li:hover,
+.nav-bottom .meganav-btn .items .itunes-items .subcategories li:hover,
+.nav-bottom .meganav-btn .items .home-items .subcategories li:hover,
+.nav-bottom .meganav-btn .items .gaming-items .subcategories li:hover,
+.nav-bottom .meganav-btn .items .camera-items .subcategories li:hover,
+.nav-bottom .meganav-btn .items .small-home-items .subcategories li:hover,
+.nav-bottom .meganav-btn .items .large-home-items .subcategories li:hover,
+.nav-bottom .meganav-btn .items .health-items .subcategories li:hover,
+.nav-bottom .meganav-btn .items .outdoor-items .subcategories li:hover,
+.nav-bottom .meganav-btn .items .air-conditioners-items .subcategories li:hover,
+.nav-bottom .meganav-btn .items .home-furniture-items .subcategories li:hover,
+.nav-bottom .meganav-btn .items .toys-items .subcategories li:hover,
+.nav-bottom .meganav-btn .items .stationary-items .subcategories li:hover
+{
+    color: #2688da;
+}
+.nav-bottom .header-highlights{
+    float: left;
+    margin-bottom: 0;
+    padding:10px;
+    list-style: none;  display: table;
+    height: 30px;
+    padding: 10px 15px 0;
+    margin-right: auto;    
+    margin-bottom: 0;
+    margin-left: auto;
+}
+.nav-bottom .header-highlights ul{
+    list-style-type: none;
+    list-style: none;
+    text-decoration: none;
+    padding:10px;
+    padding: 0;
+    overflow: hidden;
+}
+.nav-bottom .header-highlights ul li{
+    float: left;    
+    display: inline-block;
+    margin: 0 15px;
+    font-weight: 600;
+}
+.nav-bottom .header-highlights ul li a{
+    list-style: none;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.nav-bottom .header-highlights ul li .giftCards,.brandStore {
+    color: #fec525;
+}
+.nav-bottom .header-highlights ul li .brands{
+    color: #6cc1e5;
+}
+.nav-bottom .header-highlights ul li .AppleProducts{
+    color: #fff;
+}
+.nav-bottom .down-app{
+    padding: 5px;
+}
+.nav-bottom .down-app a i{
+    margin-right: 10px;
+}
+.nav-bottom .down-app a{
+    text-decoration: none;
+    color: #6cc1e5;
+    font-size: 10px;
+    font-weight: bold;
+}
+@media (min-width:1200px){
+    .nav-bottom .meganav-btn .items .computers-items, .nav-bottom .meganav-btn .items .iphones-items, .nav-bottom .meganav-btn .items .itunes-items, .nav-bottom .meganav-btn .items .home-items, .nav-bottom .meganav-btn .items .gaming-items, .nav-bottom .meganav-btn .items .camera-items, .nav-bottom .meganav-btn .items .small-home-items, .nav-bottom .meganav-btn .items .large-home-items, .nav-bottom .meganav-btn .items .health-items, .nav-bottom .meganav-btn .items .outdoor-items, .nav-bottom .meganav-btn .items .air-conditioners-items, .nav-bottom .meganav-btn .items .home-furniture-items, .nav-bottom .meganav-btn .items .toys-items, .nav-bottom .meganav-btn .items .stationary-items .nav-bottom .meganav-btn .items .fashion-items {
+        left: 365px !important;
+    }
+
+}
+
+@media (min-width:992px){
+    .nav-pills .nav-item .login .d-lg-block {
+        display: inline-block !important;
+    }
+    .d-lg-block {
+        display: block!important;
+    }    
+    .logo-img img{
+        width: 100% !important
+    }
+    .nav-bottom .meganav-btn .items .computers-items, .nav-bottom .meganav-btn .items .iphones-items, .nav-bottom .meganav-btn .items .itunes-items, .nav-bottom .meganav-btn .items .home-items, .nav-bottom .meganav-btn .items .gaming-items, .nav-bottom .meganav-btn .items .camera-items, .nav-bottom .meganav-btn .items .small-home-items, .nav-bottom .meganav-btn .items .large-home-items, .nav-bottom .meganav-btn .items .health-items, .nav-bottom .meganav-btn .items .outdoor-items, .nav-bottom .meganav-btn .items .air-conditioners-items, .nav-bottom .meganav-btn .items .home-furniture-items, .nav-bottom .meganav-btn .items .toys-items, .nav-bottom .meganav-btn .items .stationary-items .nav-bottom .meganav-btn .items .fashion-items {
+        float: right;
+        display: none;
+        position: fixed;
+        top: 175px;
+        left: 270px;
+    }
+
+}
+@media  (min-width: 768px){
+    .logo-img{
+        padding: 0;
+    }
+    .logo-img img{
+        width: 100px;
+    }
+    .nav-middle {
+        padding: 10px;
+        
+    order: 2;
+    }
+    .icons{
+        padding: 0;
+    }
+    .nav-pills .nav-item .hd-dropdown-content {
+        width: 130px;
+    }
+    .nav-pills .nav-item .hd-lang-select {
+        padding: 0;
+    }
+    .d-md-block{
+        display: block !important
+    }
+    .nav-pills .nav-item .hd-dropdown-content{
+        width: 100px;
+        padding: 10px;
+    }
+    .nav-pills .nav-item .hd-dropdown-conten:first-child{
+        font-size: 18px;
+        padding: 8px;
+    }
+    .nav-pills .nav-item .hd-dropdown-content a{
+        font-size: 18px;
+    }
+}
+@media  (max-width: 768px){
+    .navbar-brand img{
+        width: 120px !important;
+    }
+    .logo-img , .icons{
+        order: 1;
+        margin-bottom: 20px;
+    }
+    .search-input{
+        order: 2;
+    }
+    .nav-middle{
+    }
+}
+@media  (max-width: 600px){
+    .navbar-brand img{
+        width: 10px;
+    }
+    .logo-img , .icons{
+        order: 1;
+    }
+    .logo-img{
+        width: 20%;
+    }
+    .icons{
+        width: 70%;
+        margin-left: 20px;
+        position: absolute;
+        right: 0;
+    }
+    .nav-pills .nav-item .hd-dropdown-content{
+        width: 75%;
+        margin-left: 20px;
+        padding: 10px;
+    }
+    .nav-pills .nav-item .hd-dropdown-conten:first-child{
+        font-size: 15px;
+        padding: 5px;
+    }
+    .nav-pills .nav-item .hd-dropdown-content a{
+        font-size: 15px;
+    }
+    .nav-pills .nav-item .hd-lang-select {
+        padding: 0 16px 0;
+    }
+    .search-input{
+        order: 2;
+    }
+}
+
+.float-left{
+    float: left;
+}

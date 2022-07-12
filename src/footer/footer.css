@@ -1,0 +1,73 @@
+/* Footer */
+.email-input{
+    background-color: #001a2c;
+    padding: 20px;
+}
+.email-input .sign-up{
+    font-size: 25px;
+}
+.email-input .input{
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #000;
+}
+.email-input form input{
+    color: #000;
+}
+.email-input .div-of-input{
+    padding: 0;
+}
+.email-input .subscribe{
+    padding: 0;
+}
+.email-input .subscribe button{
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 50px;    
+    color: #001a2c!important;
+    background-color: #fec525;
+    border: 1px solid #fec525;
+}
+.email-input .online-shopping{
+    margin-top: 20px;
+}
+.footer-bottom{
+    background-color:#01365D ;
+    
+    padding: 60px 165px;
+}
+.footer-bottom .x-cite-details{
+    margin: auto;
+    overflow: auto;
+}
+.footer-bottom .x-cite-details .first-para{
+    font-size: 20px;
+    text-align: left;
+}
+.footer-bottom .x-cite-details .second-para{
+    font-size: 13px;
+    text-align: left;
+}
+.footer-bottom h5{
+    font-size: 13px;
+}
+.footer-bottom .all-element{
+    text-align: left;
+}
+.footer-bottom .footer-link-list li{
+    line-height: 2;
+}
+.footer-bottom .footer-link-list  a{
+    color: #fff !important;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    
+}
+.footer-bottom .footer-link-list .icons i{
+    margin-top: 10px;
+    margin-right: 10px;
+    font-size:25px;
+}
+/* End Footer */
+
