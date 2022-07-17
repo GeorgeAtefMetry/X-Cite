@@ -21,6 +21,7 @@ import {
 import Header from './header/header';
 import Footer from './footer/footer'
 import Home from './home/home';
+import DigitalCardDetails from './digitalCardDetails/digitalCardDetails';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Routes>
             <Route path="/" exact  element={<Home/>} ></Route>
             <Route path="/home" exact  element={<Home/>} ></Route>
+            <Route path="/digitalcarddetails/:id" exact  element={<DigitalCardDetails/>} ></Route>
           </Routes>
           <Footer></Footer>
         </Router>

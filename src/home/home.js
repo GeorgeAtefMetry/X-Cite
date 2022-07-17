@@ -10,6 +10,7 @@ const Home = () =>{
 
     const[product, setProduct] = useState([])
     const[digitalCards, setDigitalCards] = useState([])
+    
     useEffect(()=>
         onSnapshot(collection(db,'category'),(snapshot)=>{
             setProduct(snapshot.docs.map((doc)=>({...doc.data(), id:doc.id})))
@@ -18,7 +19,6 @@ const Home = () =>{
     
     useEffect(()=>
         onSnapshot(collection(db,'products/XWFqnqc6ij0vYjsfF0iQ/digital-cards'),(snapshot)=>{
-            console.log(snapshot)
             setDigitalCards(snapshot.docs.map((doc)=>({...doc.data(), id:doc.id})))
         })
     ,[]);
@@ -248,13 +248,13 @@ const Home = () =>{
                 <div class="carousel-item active">
                 <div className='row'>
                 {digitalCards.map(pro => (
-                    <div className='digital-card float-left' key={pro.id}>
+                    <div className='digital-card float-left active' key={pro.id}>
                         <div>
                             <span className='best-seller float-left'>Best Seller</span>
                             <span className='icon float-right'><i class="far fa-heart"></i></span>
                         </div>
                         
-                        <Link to={`/dailydeals/${pro.id}`}>
+                        <Link to={`/digitalcarddetails/${pro.id}`}>
                             <img class="card-img-top" src={pro.img} key={pro.id}  alt="Card image cap"/>
                         </Link>
                         <div class="card-body">
