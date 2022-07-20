@@ -11,7 +11,7 @@ const DigitalCardDetails = () => {
     const[digitalCards, setDigitalCards] = useState([])
 
     useEffect(()=>
-    onSnapshot(doc(db, 'products/XWFqnqc6ij0vYjsfF0iQ/digital-cards', `${params.id}`),(snapshot)=>{
+    onSnapshot(doc(db, 'products/r0IPHZLeSwWjyANaykLp/digital-cards', `${params.id}`),(snapshot)=>{
         setDigitalCards(snapshot.data())
     })
     ,[]);

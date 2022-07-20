@@ -71,7 +71,7 @@ body{
 }
 @media(max-width:1300px){
     .main-categories{
-        height:550px !important;
+        height:100% !important;
     }
     .main-categories .card .card-body .first{
         font-size: 15px;
@@ -84,173 +84,172 @@ body{
         font-size: 20px;
     }
 }
-@media(min-width:600px) {
-    .main-categories{
-        height:4590px ;
-        margin-bottom: 3582px;
-    }
-}
-@media(max-width:600px) {
-    .main-categories{
-        height:4150px ;
-        margin-bottom: 2100px;
-    }
-}
 @media(max-width:768px) {
     .main-categories{
-        height:5050px !important;
+        height:100% !important;
     }
 }
 @media(min-width:768px) {
     .main-categories{
-        height:1580px !important;
+        height:100% !important;
     }    
     .main-categories{
         margin-bottom:0px !important;
     }
 }
-@media(max-width:992px) {
-    .main-categories{
-        height:1550px !important;
-    }
-}
 @media(min-width:992px) {
     .main-categories{
-        height:460px !important;
+        height:100% !important;
+    }
+}
+@media(max-width:992px) {
+    .main-categories{
+        height:100% !important;
     }
 }
 @media(min-width:1200px) {
     .main-categories{
-        height:700px !important;
+        height:100% !important;
+    }
+}
+@media(min-width:600px) {
+    .main-categories{
+        height:100%;
+    }
+}
+@media(max-width:600px) {
+    .main-categories{
+        height:100% ;
     }
 }
 /* End Main Categories */
 /* Start Digital Cards */
-.digital-cards .carousel .carousel-control-prev ,
+/* .digital-cards .carousel .carousel-control-prev ,
 .phones-personal-audio.carousel .carousel-control-prev,
 .laptops .carousel-control-prev {
     left: 0;
-}
-.digital-cards .carousel .carousel-control-prev,
+} */
+/* .digital-cards .carousel .carousel-control-prev,
 .phones-personal-audio .carousel .carousel-control-prev ,
 .laptops .carousel .carousel-control-prev {
     justify-content: left !important;
-}
-.digital-cards .carousel .carousel-control-next,
+} */
+/* .digital-cards .carousel .carousel-control-next,
 .laptops .carousel .carousel-control-next,
 .phones-personal-audio .carousel .carousel-control-next{
     justify-content: right;
-}
-.digital-cards .carousel .carousel-control-prev-icon ,
+} */
+/* .digital-cards .carousel .carousel-control-prev-icon ,
 .phones-personal-audio .carousel .carousel-control-prev-icon ,
 .laptops .carousel .carousel-control-prev-icon {
     background-color: rgb(146, 146, 146);
-    padding: 40px 20px;
-}
-.digital-cards .carousel .carousel-control-next-icon,
+    padding: 40px 10px;
+    line-height: 10px;
+} */
+/* .digital-cards .carousel .carousel-control-next-icon,
 .phones-personal-audio .carousel .carousel-control-next-icon ,
 .laptops .carousel .carousel-control-next-icon {
     background-color: rgb(146, 146, 146);
-    padding: 40px 20px;
-}
+    padding: 40px 10px;
+    line-height: 10px;
+} */
 .view-all {
     color: #fff!important;
     background-color: #2688da;
     border: 1px solid #2688da;
     border-radius: 3px;
     padding: 7px 13px;
+    top: 0;
+    right: 10px;
+    position: absolute;
+    margin-top: 10px;
 }
 .digital-cards .digital-cards-heading,
 .phones-personal-audio .phones-personal-heading,
 .laptops .laptops-heading{
-    font-size: 18px;
+    font-size: 22px;
+    top: 0;
     font-weight: bold;
+    position: absolute;
+    margin-top: 10px;
 }
-.digital-cards .carousel .carousel-inner .row,
+/* .digital-cards .row,
 .phones-personal-audio .carousel .carousel-inner .row,
 .laptops .carousel .carousel-inner .row{
     flex-wrap: nowrap;
-}
-.digital-cards .carousel,
-.phones-personal-audio .carousel,
-.laptops .carousel{
+} */
+.digital-cards ,
+.phones-personal-audio,
+.laptops{
     background-color: #fff;
 }
 .digital-cards{
-    margin-top: 150px;
     padding: 10px;
 }
 .phones-personal-audio,.laptops{
     padding: 10px;
 }
-.digital-cards .carousel,
-.phones-personal-audio .carousel,
-.laptops .carousel{
+.digital-cards .swiper,
+.phones-personal-audio .swiper,
+.laptops .swiper{
     box-shadow: 0px 0px 7px 2px #ccc;
     border-radius: 10px;
 }
-.digital-cards .carousel-inner,
-.phones-personal-audio .carousel-inner,
-.laptops .carousel-inner{
-    /* height: 500px; */
+.digital-cards .swiper,
+.phones-personal-audio .swiper,
+.laptops .swiper{
     padding: 20px;
 }
-.digital-cards .carousel-inner .digital-card,
-.phones-personal-audio .carousel-inner .phones-personal-audio,
-.laptops .carousel-inner .laptop{
-    width: 22%;
+.digital-cards .digital-card,
+.phones-personal-audio .phones-personal-audio,
+.laptops .laptop{
     padding: 20px;
-    /* height: 529px; */
+    margin-top: 45px;
     border-top: 1px solid rgb(240, 239, 239);
     border-right: 1px solid rgb(240, 239, 239);
     text-align: center;
 }
-.digital-cards .carousel-inner .card-body,
-.phones-personal-audio .carousel-inner .card-body,
-.laptops .carousel-inner .card-body{
+.digital-cards .card-body,
+.phones-personal-audio .card-body,
+.laptops .card-body{
     text-align: left;
 }
-.digital-cards .carousel-inner .best-seller,
-.phones-personal-audio .carousel-inner .best-seller,
-.laptops .carousel-inner .best-seller{
+.digital-cards .best-seller,
+.phones-personal-audio .best-seller,
+.laptops .best-seller{
     background-color: black;
     color: #fff;
     font-size: 12px;
     padding: 5px;
 }
-.digital-cards .carousel-inner .icon i,
-.phones-personal-audio .carousel-inner .icon i,
-.laptops .carousel-inner .icon i{
+.digital-cards .icon i,
+.phones-personal-audio .icon i,
+.laptops .icon i{
     font-size: 20px;
     cursor: pointer;
 }
-.digital-cards .carousel-inner img ,
-.phones-personal-audio .carousel-inner img,
-.laptops .carousel-inner img {
-    height: 280px;
-}
-.digital-cards .carousel-inner .name,
-.phones-personal-audio .carousel-inner .name,
-.laptops .carousel-inner .name{
+.digital-cards .name,
+.phones-personal-audio .name,
+.laptops .name{
     font-weight: 500;
     font-size: 15px;
 }
-.digital-cards .carousel-inner .price,
-.phones-personal-audio .carousel-inner .price,
-.laptops .carousel-inner .price{
+.digital-cards .price,
+.phones-personal-audio .price,
+.laptops .price{
     font-weight: 600;
     font-size: 15px;
 }
-.digital-cards .carousel-inner .oldprice,
-.phones-personal-audio .carousel-inner .oldprice,
-.laptops .carousel-inner .oldprice{
+.digital-cards .oldprice,
+.phones-personal-audio .oldprice,
+.laptops .oldprice{
     font-weight: 400;
     font-size: 14px;
     text-decoration: line-through;
 }
-.digital-cards .carousel-inner .discount,
-.phones-personal-audio .carousel-inner .discount,
-.laptops .carousel-inner .discount{
+.digital-cards .discount,
+.phones-personal-audio .discount,
+.laptops .discount{
     font-weight: 400;
     color: #fff;
     font-size: 12px;
@@ -259,27 +258,83 @@ body{
     text-align: center;
     border-radius: 5px;
 }
+.swipe{
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    padding: 0px 5px;
+    background-color: rgb(209, 3, 3);
+    font-size: 12px;
+    color: #fff;
+}
+@media(max-width:600px){
+    .swiper-slide{
+        width: 300px !important;
+    }
+}
+@media(min-width:600px){
+    .swiper-slide{
+        width: 300px !important;
+    }
+}
+
 @media(max-width:600px){
     .digital-cards{
         margin-top: 10px !important;
     }
 }
 @media(max-width:600px){
-    .digital-cards .carousel-inner .digital-card,
-    .phones-personal-audio .carousel-inner .phones-personal-audio,
-    .laptops .carousel-inner .phones-personal-audio{
+    .digital-cards .digital-card,
+    .phones-personal-audio .phones-personal-audio,
+    .laptops .phones-personal-audio{
         width: 50%;
     }
 }
 @media(max-width:768px){
-    .digital-cards .carousel-inner .digital-card,
-    .phones-personal-audio .carousel-inner .phones-personal-audio,
+    .digital-cards .digital-card,
+    .phones-personal-audio .phones-personal-audio,
     .laptops .phones-personal-audio{
-        width: 55%;
+        width: 100%;
     }
 }
 /* End Digital Cards */
-
+/* Start Laptops assistant */
+.laptop-assistant{
+    height: 100%;
+    background-image: url(https://m.xcite.com/media/wysiwyg/banners-kw-xvii/laptop-assistant-Laptop-EN.jpg);
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-position: 100%;
+    background-size: 50% 100%;
+    padding: 20px;
+    margin: 10px;
+    background-color: #000;
+    height: 250px;
+}
+.laptop-assistant .content{
+    padding: 10px ;
+}
+.laptop-assistant .content h2{
+    color: #fff;
+    margin-bottom: 10px;
+}
+.laptop-assistant .content p{
+    color: #fff;
+    font-size: 23px;
+    margin-bottom: 30px;
+}
+.laptop-assistant .content button{
+    background-color: #01a4ef;
+    color: #fff;
+    border-radius: 0;
+    margin-right: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+}
+.laptop-assistant .content button:hover{
+    background-color: #0eacf5;
+}
+/*End Laptops assistant */
 
 
 

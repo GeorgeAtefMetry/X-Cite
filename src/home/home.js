@@ -5,21 +5,33 @@ import db from '../firebase'
 import { collection, doc, onSnapshot } from "firebase/firestore"            
 import React from 'react';
 import { Link } from 'react-router-dom'
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 const Home = () =>{
 
     const[product, setProduct] = useState([])
     const[digitalCards, setDigitalCards] = useState([])
+    const[phonesAndPersonalAudio, setphonesAndPersonalAudio] = useState([])
+    const[laptops, setLaptops] = useState([])
     
     useEffect(()=>
         onSnapshot(collection(db,'category'),(snapshot)=>{
             setProduct(snapshot.docs.map((doc)=>({...doc.data(), id:doc.id})))
         })
     ,[]);
-    
     useEffect(()=>
-        onSnapshot(collection(db,'products/XWFqnqc6ij0vYjsfF0iQ/digital-cards'),(snapshot)=>{
+        onSnapshot(collection(db,'products/r0IPHZLeSwWjyANaykLp/digital-cards'),(snapshot)=>{
             setDigitalCards(snapshot.docs.map((doc)=>({...doc.data(), id:doc.id})))
+        })
+    ,[]);
+    useEffect(()=>
+        onSnapshot(collection(db,'products/phones-personal-audio/phones-personal-audio'),(snapshot)=>{
+            setphonesAndPersonalAudio(snapshot.docs.map((doc)=>({...doc.data(), id:doc.id})))
+        })
+    ,[]);
+    useEffect(()=>
+        onSnapshot(collection(db,'products/laptops/laptops'),(snapshot)=>{
+            setLaptops(snapshot.docs.map((doc)=>({...doc.data(), id:doc.id})))
         })
     ,[]);
 
@@ -240,119 +252,141 @@ const Home = () =>{
             </div>
         </div>
 
-        <div className='digital-cards'>
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+
+        <div className='digital-cards'>        
+        <Swiper
+            spaceBetween={20}
+            slidesPerView={4}
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
+            >
             <div className='float-left digital-cards-heading'>Digital Cards</div>
             <div className='view-all float-right'>View All</div>
-            <div class="carousel-inner">
+
                 <div class="carousel-item active">
-                <div className='row'>
-                {digitalCards.map(pro => (
-                    <div className='digital-card float-left active' key={pro.id}>
-                        <div>
-                            <span className='best-seller float-left'>Best Seller</span>
-                            <span className='icon float-right'><i class="far fa-heart"></i></span>
-                        </div>
-                        
-                        <Link to={`/digitalcarddetails/${pro.id}`}>
-                            <img class="card-img-top" src={pro.img} key={pro.id}  alt="Card image cap"/>
-                        </Link>
-                        <div class="card-body">
-                            <span class="card-text name float-left col-lg-10">{pro.name}</span>
-                            <span class="card-text price float-left col-lg-10">{pro.price}</span>
-                            <div className='float-left col-lg-12'>
-                                <span class="card-text oldprice float-left col-lg-4">{pro.oldPrice}</span>
-                                <span className='discount float-left col-lg-4'>{pro.discount}</span>
+                    <div className='row'>
+                    {digitalCards.map(pro => (
+                        <SwiperSlide>
+                        <div className='digital-card float-left' key={pro.id}>
+                            <div>
+                                <span className='best-seller float-left'>Best Seller</span>
+                                <span className='icon float-right'><i class="far fa-heart"></i></span>
+                            </div>
+                            <Link to={`/digitalcarddetails/${pro.id}`}>
+                                <img class="card-img-top" src={pro.img} key={pro.id}  alt="Card image cap"/>
+                            </Link>
+                            <div class="card-body">
+                                <span class="card-text name float-left col-lg-10">{pro.name}</span>
+                                <span class="card-text price float-left col-lg-10">{pro.price}</span>
+                                <div className='float-left col-lg-12'>
+                                    <span class="card-text oldprice float-left col-lg-4">{pro.oldPrice}</span>
+                                    <span className='discount float-left col-lg-4'>{pro.discount}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    ))}
-                </div>  
+                        </SwiperSlide>
+                        ))}
+                    </div>  
                 </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
+                <span className='swipe'>Swipe For More</span>
+        </Swiper>
         </div>
 
-        <div className='phones-personal-audio'>
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+
+        <div className='phones-personal-audio'>        
+        <Swiper
+            spaceBetween={20}
+            slidesPerView={4}
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
+            >
             <div className='float-left phones-personal-heading'>Phones & Personal Audio</div>
             <div className='view-all float-right'>View All</div>
-            <div class="carousel-inner">
+
                 <div class="carousel-item active">
-                <div className='row'>
-                    <div className='phones-personal-audio float-left'>
-                        <div>
-                            <span className='best-seller float-left'>Best Seller</span>
-                            <span className='icon float-right'><i class="far fa-heart"></i></span>
-                        </div>
-                        <img class="card-img-top" src='https://m.xcite.com/media/catalog/product/cache/1/small_image/255x300/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone_13_pro_max_sierra_blue_pdp_image_position-1a_en_8.jpg ' alt="Card image cap"/>
-                        <div class="card-body">
-                            <span class="card-text name float-left col-lg-10">Apple iPhone 13 Pro Max 256GB - Blue</span>
-                            <span class="card-text price float-left col-lg-10">377.900 KD</span>
-                            <div className='float-left col-lg-12'>
-                                <span class="card-text oldprice float-left col-lg-4">439.900 KD</span>
-                                <span className='discount float-left col-lg-4'>Save 14%  </span>
+                    <div className='row'>
+                    {phonesAndPersonalAudio.map(pro => (
+                        <SwiperSlide>
+                        <div className='phones-personal-audio float-left' key={pro.id}>
+                            <div>
+                                <span className='best-seller float-left'>Best Seller</span>
+                                <span className='icon float-right'><i class="far fa-heart"></i></span>
+                            </div>
+                            {/* <Link to={`/digitalcarddetails/${pro.id}`}> */}
+                                <img class="card-img-top" src={pro.img} key={pro.id}  alt="Card image cap"/>
+                            {/* </Link> */}
+                            <div class="card-body">
+                                <span class="card-text name float-left col-lg-10">{pro.name}</span>
+                                <span class="card-text price float-left col-lg-10">{pro.price}</span>
+                                <div className='float-left col-lg-12'>
+                                    <span class="card-text oldprice float-left col-lg-4">{pro.oldPrice}</span>
+                                    <span className='discount float-left col-lg-4'>{pro.discount}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>  
+                        </SwiperSlide>
+                        ))}
+                    </div>  
                 </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
+                <span className='swipe'>Swipe For More</span>
+        </Swiper>
         </div>
 
-        <div className='laptops'>
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+
+        <div className='laptops'>        
+        <Swiper
+            spaceBetween={20}
+            slidesPerView={4}
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
+            >
             <div className='float-left laptops-heading'>Laptops</div>
             <div className='view-all float-right'>View All</div>
-            <div class="carousel-inner">
+
                 <div class="carousel-item active">
-                <div className='row'>
-                    <div className='laptop float-left'>
-                        <div>
-                            <span className='best-seller float-left'>Best Seller</span>
-                            <span className='icon float-right'><i class="far fa-heart"></i></span>
-                        </div>
-                        <img class="card-img-top" src='https://m.xcite.com/media/catalog/product/cache/1/small_image/255x300/9df78eab33525d08d6e5fb8d27136e95/a/c/acer_aspire_5_silver_laptop_keyboard_1_.jpg ' alt="Card image cap"/>
-                        <div class="card-body">
-                            <span class="card-text name float-left col-lg-10">Acer Aspire 5 Intel Core i5 11th Gen, 8GB RAM, 256GB SSD + 1TB HDD, 15.6-inch Laptop - Silver</span>
-                            <span class="card-text price float-left col-lg-10">189.900 KD</span>
-                            <div className='float-left col-lg-12'>
-                                <span class="card-text oldprice float-left col-lg-4">229.900 KD</span>
-                                <span className='discount float-left col-lg-4'>Save 17%</span>
+                    <div className='row'>
+                    {laptops.map(pro => (
+                        <SwiperSlide>
+                        <div className='laptop float-left' key={pro.id}>
+                            <div>
+                                <span className='best-seller float-left'>Best Seller</span>
+                                <span className='icon float-right'><i class="far fa-heart"></i></span>
+                            </div>
+                            {/* <Link to={`/digitalcarddetails/${pro.id}`}> */}
+                                <img class="card-img-top" src={pro.img} key={pro.id}  alt="Card image cap"/>
+                            {/* </Link> */}
+                            <div class="card-body">
+                                <span class="card-text name float-left col-lg-10">{pro.name}</span>
+                                <span class="card-text price float-left col-lg-10">{pro.price}</span>
+                                <div className='float-left col-lg-12'>
+                                    <span class="card-text oldprice float-left col-lg-4">{pro.oldPrice}</span>
+                                    <span className='discount float-left col-lg-4'>{pro.discount}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>  
+                        </SwiperSlide>
+                        ))}
+                    </div>  
                 </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
+                <span className='swipe'>Swipe For More</span>
+        </Swiper>
         </div>
 
+        <div className='laptop-assistant'>
+            <div className='row'>
+                <div className='col-md-12'>
+                    <div className='content'>
+                        <h2>LAPTOP ASSISTANT</h2>
+                        <p>Let us help you find the perfect laptop for...</p>
+                        <div className='btns'>
+                            <button type="button" class="btn">personal Use</button>
+                            <button type="button" class="btn btn-primary">Education</button>
+                            <button type="button" class="btn btn-primary">Work</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         
         </>
