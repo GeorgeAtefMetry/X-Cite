@@ -30,6 +30,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/Barjas/372022-Super-Eid-Sale-Generic-DP-EN.jpg"
                 alt="First slide"
                 />
@@ -37,6 +38,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/Barjas/16062022-Apple-MacBookPro-13inKW-DP-EN.jpg"
                 alt="Second slide"
                 />
@@ -44,6 +46,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/1nasima/572022-Spend20-EidAdha-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -51,6 +54,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/1Alaa/772022-SONY-10off-Generic-EID-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -58,6 +62,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/1nasima/572022-EidAdha-Purifier-Philips-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -65,6 +70,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/Barjas/672022-EidAdha-Samsung-S22-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -72,6 +78,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/1nasima/672022-EidAdha-Iron-Philips-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -79,6 +86,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/1nasima/04072022-EidAdhaKW-Remington-Haird-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -86,6 +94,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/1Alaa/572022-EidAdha-TVs-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -93,6 +102,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/Barjas/572022-EidAdha-Lenovo-TabP11-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -100,6 +110,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/1nasima/07072022-EidAdhaKW-Philips-lumea-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -107,6 +118,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/1nasima/572022-EidAdha-Oculus-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -114,6 +126,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/1Alaa/572022-EidAdha-ACs-DP-EN_1.jpg"
                 alt="Third slide"
                 />
@@ -121,6 +134,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/Barjas/572022-EidAdha-Acer-Aspire5-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -128,6 +142,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/1nasima/572022-Free-Gifts-Generic-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -135,6 +150,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/Barjas/672022-EID-SONY-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -142,6 +158,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/1Alaa/04072022-EidAdha-BekoWasher-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -149,6 +166,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/1Alaa/572022-EidAdha-Wansa-TMR-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -156,6 +174,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/Barjas/772022-HP-Laptop-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -163,6 +182,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/Barjas/3062022-Echelon-Generic-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -170,6 +190,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/Barjas/3062022-Echelon-Generic-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -177,6 +198,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/1nasima/372022-Hidratespark-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -184,6 +206,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/Barjas/2962022-HP-Classic-Pro-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -191,6 +214,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/1nasima/472022-BlueAir-Purifier-Generic-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -198,6 +222,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/1nasima/2862022-Acer-Gaming-Predator-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -205,6 +230,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/Barjas/16062022-Apple-MacBookAir-M2chipKW-DP-EN.jpg"
                 alt="Third slide"
                 />
@@ -212,6 +238,7 @@ const Home = () =>{
             <Carousel.Item>
                 <img
                 className="d-block w-100"
+                style={{borderRadius:'20px'}}
                 src="https://m.xcite.com/media/wysiwyg/Barjas/16062022-Apple-MacBookPro-13inKW-DP-EN.jpg"
                 alt="Third slide"
                 />
