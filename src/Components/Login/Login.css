@@ -1,0 +1,31 @@
+div h3{
+    font-size: 20px;
+    color: #555555;
+    margin-bottom: 12px;
+}
+.log-inf {
+    background-color: white;
+    padding: 20px;
+    position: relative;
+}
+.log-inf p {
+    color:  #888888;
+}
+.log-inf .ico {
+    position: absolute;
+    right: 40px;
+    top: 15px;
+    font-size: 65px;
+    color: #4f4f4f3a;
+}
+.form-inp {
+    background-color: #efefef;
+    padding: 15px;
+}
+.list-sign{
+    font-size: 14px;
+    color: #888;
+}
+.list-sign li {
+    margin-bottom: 8px;
+}

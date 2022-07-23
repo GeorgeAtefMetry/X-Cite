@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react"
-import db from '../firebase'
+import db from '../../firebase'
 import { useParams } from "react-router-dom";
 import { collection, doc, onSnapshot } from "firebase/firestore"    
 const DigitalCardDetails = () => {
@@ -19,7 +19,7 @@ const DigitalCardDetails = () => {
         <>
         <div className="container">
             <h1>asdihfioash</h1>
-            <img src={digitalCards.img}></img>
+            <img src={digitalCards.img} alt={digitalCards.name}></img>
             <h2>ewqe{digitalCards.name}</h2>
         </div>
         </>

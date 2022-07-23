@@ -1,0 +1,138 @@
+.container-fluid {
+  background-color: #fff;
+}
+.Carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 770px;
+}
+.slider {
+  width: 750px;
+  
+}
+.imgshow {
+  min-height: 400px;
+}
+.imgcol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.imgs-box img {
+  width: 20px;
+  height: 60px;
+  cursor: pointer;
+}
+.ico i {
+    color: gold;
+}
+.stock {
+    color: #B0D071;
+    font-size: 16px;
+    font-weight: bold;
+}
+.price {
+    font-size: 20px;
+    color: #0D2637;
+    font-weight: bold;
+}
+.save {
+    font-size: 14px;
+    text-decoration: line-through;
+}
+.ul{
+  background-color: #E8F4FF;
+  padding: 10px ;
+  color: black;
+  
+}
+.continfo .first ul li {
+  padding: 4px;
+  font-size: 14px;
+}
+.continfo .first ul li:first-child i{
+  color: #B0D071;
+}
+.continfo .first ul li:nth-child(2) i{
+  color: #B0D071;
+}
+.continfo .first ul li i {
+  color: red;
+}
+.continfo .second ul li{
+  padding: 4px;
+  font-size: 14px;
+}
+.continfo .second ul li i {
+  color: red;
+}
+.deleveryinfo .howget{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #e0eefc;
+  padding: 4px;
+}
+.deleveryinfo .infodelevry {
+  background-color: #F1F4F6;
+  padding: 4px;
+}
+.deleveryinfo .infodelevry ul li {
+  padding-bottom: 5px;
+}
+.btn-select {
+  background-color: #0D2637;
+  color: white;
+}
+.btn-select:hover{
+  background-color: white;
+  color: #0D2637;
+}
+.mainflex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  width: 350px;
+  padding-bottom: 10px;
+  border: solid 1px rgba(0, 0, 0, 0.108);
+  border-radius: 12px;
+}
+.mainflex .soldby {
+  align-self: flex-start;
+  color: #a5a5a5;
+}
+.soldby .sp {
+  color: #2d8cdb;
+}
+.btnw button {
+  width: 100%;
+}
+.ptn {
+  margin-top: -11px;
+}
+.addwish {
+  display: flex;
+  column-gap: 12px;
+}
+.wish {
+  font-size: 10px;
+}
+.add {
+  font-size: 9px;
+  margin-top: -14px;
+}
+.pos {
+  position: relative;
+}
+.pos span {
+  position: absolute;
+  top: 50px;
+  left: 25px;
+  padding-bottom: 10px;
+  color: #2d8cdb;
+}

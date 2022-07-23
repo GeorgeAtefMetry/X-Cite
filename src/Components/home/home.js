@@ -1,8 +1,8 @@
 import './home.css'
 import { Carousel } from "react-bootstrap"
 import { useEffect, useState } from "react"
-import db from '../firebase'
-import { collection, doc, onSnapshot } from "firebase/firestore"            
+import db from '../../firebase'
+import { collection, onSnapshot } from "firebase/firestore"            
 import React from 'react';
 import { Link } from 'react-router-dom'
 
@@ -18,7 +18,7 @@ const Home = () =>{
     
     useEffect(()=>
         onSnapshot(collection(db,'products/XWFqnqc6ij0vYjsfF0iQ/digital-cards'),(snapshot)=>{
-            console.log(snapshot)
+            // console.log(snapshot)
             setDigitalCards(snapshot.docs.map((doc)=>({...doc.data(), id:doc.id})))
         })
     ,[]);
@@ -224,7 +224,7 @@ const Home = () =>{
                 {product.map(pro => (
                 <div className='col-lg-3 col-md-6' key={pro.id}>
                     <div className="card">
-                        <img className="card-img-top" src={pro.img} alt="Card image cap"/>
+                        <img className="card-img-top" src={pro.img} alt="Card  cap"/>
                         <div className="card-body">
                             <span className="card-text first float-left col-lg-10" >{pro.Name}</span>
                             <span className="card-text second float-right col-lg-2">
@@ -244,8 +244,8 @@ const Home = () =>{
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div className='float-left digital-cards-heading'>Digital Cards</div>
             <div className='view-all float-right'>View All</div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
+            <div className="carousel-inner">
+                <div className="carousel-item active">
                 <div className='row'>
                 {digitalCards.map(pro => (
                     <div className='digital-card float-left' key={pro.id}>
@@ -255,11 +255,11 @@ const Home = () =>{
                         </div>
                         
                         <Link to={`/dailydeals/${pro.id}`}>
-                            <img class="card-img-top" src={pro.img} key={pro.id}  alt="Card image cap"/>
+                            <img className="card-img-top" src={pro.img} key={pro.id}  alt="Card  cap"/>
                         </Link>
                         <div class="card-body">
-                            <span class="card-text name float-left col-lg-10">{pro.name}</span>
-                            <span class="card-text price float-left col-lg-10">{pro.price}</span>
+                            <span className="card-text name float-left col-lg-10">{pro.name}</span>
+                            <span className="card-text price float-left col-lg-10">{pro.price}</span>
                             <div className='float-left col-lg-12'>
                                 <span class="card-text oldprice float-left col-lg-4">{pro.oldPrice}</span>
                                 <span className='discount float-left col-lg-4'>{pro.discount}</span>
@@ -270,13 +270,13 @@ const Home = () =>{
                 </div>  
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
+            <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span className="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
+            <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                <span className="sr-only">Next</span>
             </a>
         </div>
         </div>
@@ -293,12 +293,12 @@ const Home = () =>{
                             <span className='best-seller float-left'>Best Seller</span>
                             <span className='icon float-right'><i class="far fa-heart"></i></span>
                         </div>
-                        <img class="card-img-top" src='https://m.xcite.com/media/catalog/product/cache/1/small_image/255x300/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone_13_pro_max_sierra_blue_pdp_image_position-1a_en_8.jpg ' alt="Card image cap"/>
-                        <div class="card-body">
-                            <span class="card-text name float-left col-lg-10">Apple iPhone 13 Pro Max 256GB - Blue</span>
-                            <span class="card-text price float-left col-lg-10">377.900 KD</span>
+                        <img className="card-img-top" src='https://m.xcite.com/media/catalog/product/cache/1/small_image/255x300/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone_13_pro_max_sierra_blue_pdp_image_position-1a_en_8.jpg ' alt="Card  cap"/>
+                        <div className="card-body">
+                            <span className="card-text name float-left col-lg-10">Apple iPhone 13 Pro Max 256GB - Blue</span>
+                            <span className="card-text price float-left col-lg-10">377.900 KD</span>
                             <div className='float-left col-lg-12'>
-                                <span class="card-text oldprice float-left col-lg-4">439.900 KD</span>
+                                <span className="card-text oldprice float-left col-lg-4">439.900 KD</span>
                                 <span className='discount float-left col-lg-4'>Save 14%  </span>
                             </div>
                         </div>
@@ -306,13 +306,13 @@ const Home = () =>{
                 </div>  
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
+            <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span className="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
+            <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                <span className="sr-only">Next</span>
             </a>
         </div>
         </div>
@@ -322,19 +322,19 @@ const Home = () =>{
             <div className='float-left laptops-heading'>Laptops</div>
             <div className='view-all float-right'>View All</div>
             <div class="carousel-inner">
-                <div class="carousel-item active">
+                <div className="carousel-item active">
                 <div className='row'>
                     <div className='laptop float-left'>
                         <div>
                             <span className='best-seller float-left'>Best Seller</span>
                             <span className='icon float-right'><i class="far fa-heart"></i></span>
                         </div>
-                        <img class="card-img-top" src='https://m.xcite.com/media/catalog/product/cache/1/small_image/255x300/9df78eab33525d08d6e5fb8d27136e95/a/c/acer_aspire_5_silver_laptop_keyboard_1_.jpg ' alt="Card image cap"/>
-                        <div class="card-body">
-                            <span class="card-text name float-left col-lg-10">Acer Aspire 5 Intel Core i5 11th Gen, 8GB RAM, 256GB SSD + 1TB HDD, 15.6-inch Laptop - Silver</span>
-                            <span class="card-text price float-left col-lg-10">189.900 KD</span>
+                        Name
+                        <div className="card-body">
+                            <span className="card-text name float-left col-lg-10">Acer Aspire 5 Intel Core i5 11th Gen, 8GB RAM, 256GB SSD + 1TB HDD, 15.6-inch Laptop - Silver</span>
+                            <span className="card-text price float-left col-lg-10">189.900 KD</span>
                             <div className='float-left col-lg-12'>
-                                <span class="card-text oldprice float-left col-lg-4">229.900 KD</span>
+                                <span className="card-text oldprice float-left col-lg-4">229.900 KD</span>
                                 <span className='discount float-left col-lg-4'>Save 17%</span>
                             </div>
                         </div>
@@ -342,13 +342,13 @@ const Home = () =>{
                 </div>  
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
+            <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span className="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
+            <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                <span className="sr-only">Next</span>
             </a>
         </div>
         </div>
