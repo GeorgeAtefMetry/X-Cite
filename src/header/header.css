@@ -542,7 +542,14 @@
     overflow: hidden;
 }
 
-.nav-bottom .header-highlights ul li .giftCards,.brandStore {
+.nav-bottom .header-highlights ul li .giftCards {
+    color: #fec525;
+}
+.brandStore{
+    cursor: pointer;
+    color: #fec525;
+}
+.brandStore:hover{
     color: #fec525;
 }
 .nav-bottom .header-highlights ul li .brands{

@@ -17,26 +17,26 @@ import { Link } from 'react-router-dom';
             <Navbar className='navbar-bg' expand="lg" key="lg">
             <Navbar.Toggle aria-controls="offcanvasNavbar-expand-lg" />
 
-            <div className='nav-top d-none d-md-block '>
+            <div className='nav-top d-none d-md-block'>
                 <div className='hd-container'>
                 <div className='nav-top-to-right'>
-                    <ul class="nav navbar-nav nav-pills hd-top-head-menu ">
-                    <li class="nav-item-top"><a rel="nofollow" data-tracking-title="Top Header Menu Accessed - Trade-In KW EN" data-tracking-type="Navigation" href="https://www.xcite.com/tradein/">Trade-In</a></li>
-                    <li class="nav-item-top"><a rel="nofollow" >Pay Installment</a></li>
-                    <li class="nav-item-top"><a rel="nofollow" >Help &amp; Services</a></li>
-                    <li class="nav-item-top"><a rel="nofollow" >X-cite Stores</a></li>
-                    <li class="nav-item-top"><a rel="nofollow" >Weekly Flyer</a></li>
-                    <li class="nav-item-top"><a rel="nofollow" data-toggle="modal" data-target="#ordertrack" href="#">Order Status</a></li>
+                    <ul className="nav navbar-nav nav-pills hd-top-head-menu ">
+                    <li className="nav-item-top"><a rel="nofollow" data-tracking-title="Top Header Menu Accessed - Trade-In KW EN" data-tracking-type="Navigation" href="https://www.xcite.com/tradein/">Trade-In</a></li>
+                    <li className="nav-item-top"><a rel="nofollow" >Pay Installment</a></li>
+                    <li className="nav-item-top"><a rel="nofollow" >Help &amp; Services</a></li>
+                    <li className="nav-item-top"><a rel="nofollow" >X-cite Stores</a></li>
+                    <li className="nav-item-top"><a rel="nofollow" >Weekly Flyer</a></li>
+                    <li className="nav-item-top"><a rel="nofollow" data-toggle="modal" data-target="#ordertrack" href="#">Order Status</a></li>
                     </ul>
-                    <ul class="nav navbar-nav nav-pills hd-top-head-menu ">  
+                    <ul className="nav navbar-nav nav-pills hd-top-head-menu ">  
     
-                    <li class="nav-item-top">
+                    <li className="nav-item-top">
                         <a rel="nofollow" >Contact Us</a>
                     </li>
     
-                    <li class="nav-item-top dropdown country-switch"> 
+                    <li className="nav-item-top dropdown country-switch"> 
                         <span alt="Xcite Kuwait"><img src={flag1}/></span>
-                        <NavDropdown class="xc-white-font" title="Xcite Kuwait" id="basic-nav-dropdown">
+                        <NavDropdown className="xc-white-font" title="Xcite Kuwait" id="basic-nav-dropdown">
                         <NavDropdown.Item href="#action/3.1">                    
                             <a className="nav-sub-item" href="https://m.xcite.com//skin/frontend/xvii/default/images/flags.png">
                             <img src={flag1} class="flag flag-kw"/>&nbsp;
@@ -45,7 +45,7 @@ import { Link } from 'react-router-dom';
                         </NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.2">                    
                             <a className="nav-sub-item" href="https://m.xcite.com//skin/frontend/xvii/default/images/flags.png">
-                            <img src={flag2} class="flag flag-sa" />&nbsp;
+                            <img src={flag2} className="flag flag-sa" />&nbsp;
                                 Xcite KSA            
                             </a>
                         </NavDropdown.Item>
@@ -60,7 +60,7 @@ import { Link } from 'react-router-dom';
             <div className='nav-middle'>
                 <div className='row'>
                 <div className='col-md-2 col-sm-2 logo-img'>
-                <Navbar.Brand><Link to="/home"><img class="hd-xcite-logo img-responsive" width="161" height="40" src="https://m.xcite.com/skin/frontend/xvii/default/images/xcite-logo-en.png" alt="Xcite.com"/></Link>
+                <Navbar.Brand><Link to="/home"><img className="hd-xcite-logo img-responsive" width="161" height="40" src="https://m.xcite.com/skin/frontend/xvii/default/images/xcite-logo-en.png" alt="Xcite.com"/></Link>
                 </Navbar.Brand>
                 </div>
                 <div className='col-md-6 col-sm-12 search-input'>
@@ -77,17 +77,17 @@ import { Link } from 'react-router-dom';
                     <div className='hd-cart'>
                         <ul className='nav nav-pills hd-mid-head-nav'>
                         <li className="nav-item language-id0 xc-white-font lang-switch">
-                            <a href="https://www.xcite.com/ar/" class="hd-lang-select">
-                                <span class="lang-ar">العربية</span>
+                            <a href="https://www.xcite.com/ar/" className="hd-lang-select">
+                                <span className="lang-ar">العربية</span>
                             </a>
                         </li>
                         <li className='nav-item hd-dropdown account-drop' id="ajax-nav">
     
                             <div className='login'>
-                            <a type="button" class="header-link trackable" data-tracking-title="Header Login Accessed - LoggedOut" data-tracking-type="Navigation" rel="nofollow" href="" title="Sign Up / Login"> 
-                            <i class="fa-solid fa-user"></i>
-                            <p class="d-none d-md-none d-lg-block ">Login</p>
-                            <i class="fa fa-chevron-down hd-cart-chevron hidden-xs hidden-sm hidden-md" aria-hidden="false"></i>
+                            <a type="button" className="header-link trackable" data-tracking-title="Header Login Accessed - LoggedOut" data-tracking-type="Navigation" rel="nofollow" href="" title="Sign Up / Login"> 
+                            <i className="fa-solid fa-user"></i>
+                            <p className="d-none d-md-none d-lg-block ">Login</p>
+                            <i className="fa fa-chevron-down hd-cart-chevron hidden-xs hidden-sm hidden-md" aria-hidden="false"></i>
                             </a>
                             </div>
                             
@@ -102,18 +102,18 @@ import { Link } from 'react-router-dom';
                                         Wishlist
                                     </Link>      										
                                 </a> 
-                                <a rel="nofollow" class="hd-dropdown-item xc-cursor-pointer" >
+                                <a rel="nofollow" className="hd-dropdown-item xc-cursor-pointer" >
                                     Compare                                        
                                 </a>                                       
                             </div>
     
                         </li>
-                        <li class="nav-item hd-cart-menu">
-                            <a rel="nofollow"  class="trackable login" data-tracking-title="Header Cart Accessed" data-tracking-type="Navigation">
-                            <i class="fa-solid fa-cart-shopping">
-                                <span class="hd-minicart-badge" id="header-count">0</span>
+                        <li className="nav-item hd-cart-menu">
+                            <a rel="nofollow"  className="trackable login" data-tracking-title="Header Cart Accessed" data-tracking-type="Navigation">
+                            <i className="fa-solid fa-cart-shopping">
+                                <span className="hd-minicart-badge" id="header-count">0</span>
                             </i>
-                            <p class="d-none d-md-none d-lg-block ">
+                            <p className="d-none d-md-none d-lg-block ">
                                 My Cart                                
                             </p>
     
@@ -133,11 +133,11 @@ import { Link } from 'react-router-dom';
                 aria-labelledby="offcanvasNavbarLabel-expand-lg"
                 placement="start"
             >  */}
-            <div className='nav-bottom d-none d-lg-block'>
+            <div className='nav-bottom d-none d-lg-block container-fluid'>
                 <div className='row'>
                     <div className='col-md-2'>
                     <div className='meganav-btn m-auto'>
-                    <span class="hd-all-dept hidden-xs hidden-sm">
+                    <span className="hd-all-dept hidden-xs hidden-sm">
                         <NavDropdown
                             id="nav-dropdown-dark-example"
                             title="All Categories"
@@ -1625,13 +1625,13 @@ import { Link } from 'react-router-dom';
                     </span>
                     </div>
                     </div>
-                    <div className='col-md-6 meganav-sub-menu cal-xs-12 col-md-9 col-lg-7 col-xl-7 pad10-l pad10-r'>
-                    <div class="header-highlights">
+                    <div className='col-md-6 meganav-sub-menu cal-xs-12 col-md-8 col-lg-7 col-xl-7 pad10-l pad10-r'>
+                    <div className="header-highlights">
                         <ul>
                         <li><Link  className='brands' to='/dailydeals'>Daily Deals</Link></li>
                         <li><a className='giftCards'>Gift Cards</a></li>
                         <li><a className='AppleProducts'  >Apple Products</a></li>
-                        <li><a className='brandStore' >Brand Stores</a></li>
+                        <li><Link className='brandStore' to='/Brands' >Brand Stores</Link></li>
                         </ul>
                     </div>
                     </div>
@@ -1639,7 +1639,7 @@ import { Link } from 'react-router-dom';
                     <div className='down-app'>
                         <a href="https://www.xcite.com/mob-apps/">
                         <span>
-                            <i class="fa fa-mobile" aria-hidden="true">‍
+                            <i className="fa fa-mobile" aria-hidden="true">‍
                             </i>
                             <span> 
                             Download Our App
@@ -1648,7 +1648,7 @@ import { Link } from 'react-router-dom';
                         </a>
                     </div>
                     </div>
-                    </div>
+                </div>
             </div>
                 
             {/* </Navbar.Offcanvas> */}
