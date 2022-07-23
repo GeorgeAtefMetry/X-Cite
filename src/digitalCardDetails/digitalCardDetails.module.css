@@ -1,0 +1,416 @@
+body{
+    background-color: #fff !important;
+}
+
+.image img{
+    width: 100%;
+}
+.centerDetails{
+    margin-top: 20px;
+}
+.centerDetails h4{
+    font-weight: 400;
+}
+.centerDetails .rating {
+    color: orange;
+}
+.centerDetails .inStock i{
+    margin-right: 5px;
+}
+.centerDetails .inStock{
+    color:#82b520 ;
+}
+.centerDetails .pricing .price{
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.centerDetails .pricing .oldPrice{
+    text-decoration: line-through;
+    line-height: 50px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+.centerDetails .pricing .discount{
+    background-color: #d32f2f;
+    color: #fff;
+    font-size: 14px;
+    padding: 3px 6px;
+    border-radius: 5px;
+}
+.centerDetails .overview ul li{
+    list-style: none;
+    text-decoration: none;
+}
+.centerDetails .overview ul{
+    padding-left: 0;
+}
+.centerDetails .overview .howDoIGet{
+    background-color:#e0eefc;
+    padding: 4px 8px;
+    font-weight: 600;
+}
+.rightAddToCart{
+    margin-top: 20px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+.rightAddToCart .btns{
+    border-radius: 10px;
+    width: 130px;
+    margin: auto;
+    height: 50px;
+    margin-bottom: 20px;
+}
+.rightAddToCart .btns .decrement{
+    float: left;
+    border: none;
+    height: 50px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width: 40px;
+    font-size: 25px;
+}
+.rightAddToCart .btns .increment{
+    float: right;
+    border: none;
+    height: 50px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 40px;
+    font-size: 25px;
+}
+.rightAddToCart .btns .count{
+    line-height: 50px;
+    font-size: 20px;
+}
+.rightAddToCart .addToCardBtn i{
+    margin-right: 10px;
+}
+.rightAddToCart .addToCardBtn{
+    color: #fff!important;
+    background-color: #ff8100;
+    border: 1px solid #ff8100;
+    width: 100%;
+    border-radius: 10px;
+    padding: 6px 0;
+    
+}
+.rightAddToCart .addToCardBtn:hover{
+    background-color: #ef7900;
+    border: 1px solid #ef7900;
+}
+.rightAddToCart .clickBuyBtn i{
+    margin-right: 10px;
+}
+.rightAddToCart .clickBuyBtn{
+    margin-top: 20px;
+    color: #fff!important;
+    background-color: #d92e1b;
+    border: 1px solid #d92e1b;
+    width: 100%;
+    border-radius: 10px;
+    padding: 6px 0;
+}
+.rightAddToCart .clickBuyBtn:hover{
+    background-color: #c32c1b;
+    border: 1px solid #c32c1b;
+}
+.rightAddToCart .soldFulfilled{
+    margin-top: 20px;
+}
+.rightAddToCart .soldFulfilled p{
+    text-align: left;
+}
+.rightAddToCart .soldFulfilled p span{
+    color: #337ab7;
+}
+.rightAddToCart .wishlistCompare{
+    display: flex;
+    padding: 5px;
+}
+.rightAddToCart .wishlistCompare p{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 4px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+.rightAddToCart .wishlistCompare p:hover{
+    background: #2d8cdb;
+    color: #FFF;
+}
+.rightAddToCart .wishlistCompare p i{
+    margin-right: 5px;
+}
+.rightAddToCart .wishlistCompare span{
+    font-size: 14px;
+    margin-top: 2px;
+    color:#2d8cdb ;
+}
+/* ******************************************** */
+.aboutProduct{
+}
+.aboutProduct .informationBtns button{
+    padding: 10px 70px;
+    border: none;
+    background-color: #dddddd40;
+}
+.aboutProduct .informationBtns button:first-child{
+    margin-left: 10px;
+}
+/* .aboutProduct .informationBtns button:focus{
+    background-color:#fff ;
+    border-top:1px solid #2d8cdb;
+    color: #2d8cdb;
+} */
+.act{
+    background-color:#fff !important;
+    border-top:1px solid #2d8cdb !important;
+    color: #2d8cdb;
+}
+.aboutProduct .productDescription h4{
+    width: 100%;
+}
+.aboutProduct .productDescription,.productSpecification{
+    padding: 30px;
+}
+.aboutProduct .afterPurchase{
+    padding: 20px;
+}
+.aboutProduct .afterPurchase p{
+    font-size: 18px;
+}
+.aboutProduct .purchaseDetails{
+    height: 100%;
+    padding: 10px 0;
+}
+.aboutProduct .purchaseDetails h4{
+    font-size: 18px;
+    font-weight: 600;
+}
+.productSpecification{
+    margin-bottom: 100px;
+}
+.productSpecification p{
+    margin-top: 20px;
+}
+.productSpecification table tbody tr th{
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 20%;
+}
+.productSpecification table tbody tr td{
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 40%;
+}
+.reviews{
+    padding: 20px;
+}
+.reviews .rating{
+    text-align: center;
+}
+.reviews .rating p:first-child{
+    font-size: 40px;
+    margin: auto;
+    padding: 4px 20px;
+}
+.reviews .rating p:last-child{
+    font-size: 15px;
+    margin-top: 10px;
+}
+.reviews .rating span{
+    color: orange;
+}
+.reviews .ratingCol{
+    display: flex;
+    flex-direction: column;
+}
+.reviews .ratingCol span:first-child{
+    margin-top: 10px;
+}
+.reviews .ratingCol{
+    font-size: 10px;
+}
+.reviews .ratingCol span{
+    font-size: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.reviews .ratingCol span i{
+    margin-left: 3px;
+}
+.reviews .ratingCol .ratingProgressFiveStars,
+.reviews .ratingCol .ratingProgressFourStars,
+.reviews .ratingCol .ratingProgressThreeStars,
+.reviews .ratingCol .ratingProgressTwoStars,
+.reviews .ratingCol .ratingProgressOneStars{
+    border-radius: 10px;
+    height: 10px;
+    margin-right: 5px;
+}
+.reviews .ratingCol .ratingProgressFiveStars{
+    width: 100px;
+}
+.reviews .ratingCol .ratingProgressFourStars{
+    width: 20px;
+}
+.reviews .ratingCol .ratingProgressThreeStars{
+    width: 0;
+}
+.reviews .ratingCol .ratingProgressTwoStars{
+    width: 0;
+}
+.reviews .ratingCol .ratingProgressOneStars{
+    width: 40px;
+}
+.reviews .customersReviews .reviewBtns{
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 40px;
+    margin-top: 30px;
+}
+.reviews .customersReviews button{
+    background-color: transparent;
+    border: none;
+}
+.reviewBtnNone{
+    border-bottom:none !important;
+    font-weight: normal;
+}
+.reviewBtn{
+    border-bottom:4px solid #2d8cdb !important;
+    font-weight: bold;
+}
+.reviews .customersReviews .verified{
+    background-color: #2d8cdb;
+    border-radius: 50%;
+    padding: 3px 4px;
+    color: #fff;
+    margin: 0 0.6em !important;
+}
+.reviews .customersReviews .logo{
+    background-color: rgb(152, 194, 132) !important;
+    text-align: center !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    color: white !important;
+    line-height: 40px !important;
+    height: 40px !important;
+    width: 40px !important;
+    float: left !important;
+    border-radius: 5px !important;
+}
+.reviews .customersReviews .userReviews .user {
+    line-height: 35px;
+}
+.reviews .customersReviews .userReviews .user h5{
+    float: left;
+    line-height: 35px;
+    margin-left: 10px;
+}
+.reviews .customersReviews .ratingCustomer{
+    color: orange;
+    margin-left: 50px;
+}
+.reviews .customersReviews .reviewWord{
+    margin-left: 50px;
+}
+.reviews .writeReview .writeReviewRating span i{ 
+    text-shadow: 0px 0px 10px #000;
+    color: #fff;
+    font-size: 20px;
+    margin-right: 10px;
+}
+.reviews .writeReview .writeReviewRating .publicNameInput,
+.QandA .writeReview .askQuestion .publicNameInput{
+    margin-top: 20px;
+    width: 35%;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    font-size: 15px;
+    padding: 5px;
+}
+.reviews .writeReview .writeReviewRating .productReviewInput,
+.QandA .writeReview .askQuestion .productReviewInput{
+    height: 200px;
+    margin-top: 20px;
+    width: 35%;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    font-size: 15px;
+    padding: 10px;
+}
+.reviews .writeReview .writeReviewRating .pointAboutProduct,
+.QandA .writeReview .askQuestion .pointAboutProduct{
+    margin-top: 0px;
+    width: 30%;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    font-size: 15px;
+    padding: 5px;
+}
+.reviews .writeReview .writeReviewRating button,
+.QandA .writeReview .askQuestion button{
+    width: 4%;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    font-size: 13px;
+    padding: 5px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+.reviews .writeReview .writeReviewRating p,
+.QandA .writeReview .askQuestion p{
+    text-align: left;
+    width: 35%;
+    margin: auto;
+    margin-top: 10px;
+}
+.reviews .writeReview .writeReviewRating .agreeTermsInput,
+.QandA .writeReview .askQuestion .agreeTermsInput{
+    text-align: left;
+}
+.reviews .writeReview .writeReviewRating .submitFormInput,
+.QandA .writeReview .askQuestion .submitFormInput{
+    background-color: #2d8cdb;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+}
+.QandA {
+    padding: 20px;
+}
+.QandA .QandABtns {
+    margin-top: 20px;
+}
+.QandA .QandABtns button{
+    background-color: transparent;
+    border: none;
+}
+.QandA .divFirstOneToAsk{
+    text-align: center;
+    padding: 40px;
+}
+.QandA .firstOneToAsk{
+    width: 30%;
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px
+}
+.borderBgcColor{
+    background-color: #fff !important;
+    border-top: 1px solid #2d8cdb !important;
+    color: #2d8cdb;
+}
+.dis{
+    display: none !important;
+}
+.bold{
+    font-weight: bold;
+}
