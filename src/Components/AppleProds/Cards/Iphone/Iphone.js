@@ -10,7 +10,7 @@ const Iphone = () => {
             <aside className=' col-md-2'>
                 <Aside ></Aside>
             </aside>
-            <div className=' col-md-10'>
+            <div className=' col-md-10 bg-white'>
              <ShowMobile ></ShowMobile>
             </div>
         </div>
