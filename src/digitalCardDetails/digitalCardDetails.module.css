@@ -162,11 +162,11 @@ body{
 .aboutProduct .informationBtns button:first-child{
     margin-left: 10px;
 }
-.aboutProduct .informationBtns button:focus{
+/* .aboutProduct .informationBtns button:focus{
     background-color:#fff ;
     border-top:1px solid #2d8cdb;
     color: #2d8cdb;
-}
+} */
 .act{
     background-color:#fff !important;
     border-top:1px solid #2d8cdb !important;
@@ -277,8 +277,12 @@ body{
     background-color: transparent;
     border: none;
 }
-.reviews .customersReviews button:focus{
-    border-bottom:4px solid #2d8cdb;
+.reviewBtnNone{
+    border-bottom:none !important;
+    font-weight: normal;
+}
+.reviewBtn{
+    border-bottom:4px solid #2d8cdb !important;
     font-weight: bold;
 }
 .reviews .customersReviews .verified{
@@ -314,6 +318,95 @@ body{
 }
 .reviews .customersReviews .reviewWord{
     margin-left: 50px;
+}
+.reviews .writeReview .writeReviewRating span i{ 
+    text-shadow: 0px 0px 10px #000;
+    color: #fff;
+    font-size: 20px;
+    margin-right: 10px;
+}
+.reviews .writeReview .writeReviewRating .publicNameInput,
+.QandA .writeReview .askQuestion .publicNameInput{
+    margin-top: 20px;
+    width: 35%;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    font-size: 15px;
+    padding: 5px;
+}
+.reviews .writeReview .writeReviewRating .productReviewInput,
+.QandA .writeReview .askQuestion .productReviewInput{
+    height: 200px;
+    margin-top: 20px;
+    width: 35%;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    font-size: 15px;
+    padding: 10px;
+}
+.reviews .writeReview .writeReviewRating .pointAboutProduct,
+.QandA .writeReview .askQuestion .pointAboutProduct{
+    margin-top: 0px;
+    width: 30%;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    font-size: 15px;
+    padding: 5px;
+}
+.reviews .writeReview .writeReviewRating button,
+.QandA .writeReview .askQuestion button{
+    width: 4%;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    font-size: 13px;
+    padding: 5px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+.reviews .writeReview .writeReviewRating p,
+.QandA .writeReview .askQuestion p{
+    text-align: left;
+    width: 35%;
+    margin: auto;
+    margin-top: 10px;
+}
+.reviews .writeReview .writeReviewRating .agreeTermsInput,
+.QandA .writeReview .askQuestion .agreeTermsInput{
+    text-align: left;
+}
+.reviews .writeReview .writeReviewRating .submitFormInput,
+.QandA .writeReview .askQuestion .submitFormInput{
+    background-color: #2d8cdb;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+}
+.QandA {
+    padding: 20px;
+}
+.QandA .QandABtns {
+    margin-top: 20px;
+}
+.QandA .QandABtns button{
+    background-color: transparent;
+    border: none;
+}
+.QandA .divFirstOneToAsk{
+    text-align: center;
+    padding: 40px;
+}
+.QandA .firstOneToAsk{
+    width: 30%;
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px
+}
+.borderBgcColor{
+    background-color: #fff !important;
+    border-top: 1px solid #2d8cdb !important;
+    color: #2d8cdb;
 }
 .dis{
     display: none !important;

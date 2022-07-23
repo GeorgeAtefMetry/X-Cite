@@ -1,18 +1,26 @@
 import './home.css'
 import { Carousel } from "react-bootstrap"
-import { useEffect, useState } from "react"
+import { useEffect, useState,useSelector } from "react"
 import db from '../firebase'
 import { collection, doc, onSnapshot } from "firebase/firestore"            
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import Favorites from '../services/services'
 const Home = () =>{
 
     const[product, setProduct] = useState([])
     const[digitalCards, setDigitalCards] = useState([])
     const[phonesAndPersonalAudio, setphonesAndPersonalAudio] = useState([])
     const[laptops, setLaptops] = useState([])
+    const[tablets, settablets] = useState([])
+    const[televisions, setTelevisions] = useState([])
+    const[favorites, setFavorites] = useState([])
     
     useEffect(()=>
         onSnapshot(collection(db,'category'),(snapshot)=>{
@@ -20,10 +28,11 @@ const Home = () =>{
         })
     ,[]);
     useEffect(()=>
-        onSnapshot(collection(db,'products/r0IPHZLeSwWjyANaykLp/digital-cards'),(snapshot)=>{
+        onSnapshot(collection(db,'products/XWFqnqc6ij0vYjsfF0iQ/digital-cards'),(snapshot)=>{
             setDigitalCards(snapshot.docs.map((doc)=>({...doc.data(), id:doc.id})))
         })
     ,[]);
+    const [isActive, setIsActive] = useState(false);
     useEffect(()=>
         onSnapshot(collection(db,'products/phones-personal-audio/phones-personal-audio'),(snapshot)=>{
             setphonesAndPersonalAudio(snapshot.docs.map((doc)=>({...doc.data(), id:doc.id})))
@@ -34,7 +43,43 @@ const Home = () =>{
             setLaptops(snapshot.docs.map((doc)=>({...doc.data(), id:doc.id})))
         })
     ,[]);
+    useEffect(()=>
+        onSnapshot(collection(db,'products/tablets/tablets'),(snapshot)=>{
+            settablets(snapshot.docs.map((doc)=>({...doc.data(), id:doc.id})))
+        })
+    ,[]);
+    useEffect(()=>
+        onSnapshot(collection(db,'products/televisions/televisions'),(snapshot)=>{
+            setTelevisions(snapshot.docs.map((doc)=>({...doc.data(), id:doc.id})))
+        })
+    ,[]);
+    useEffect(()=>
+        onSnapshot(collection(db,'favorites'),(snapshot)=>{
+            setFavorites(snapshot.docs.map((doc)=>({...doc.data(), id:doc.id})))
+        })
+    ,[]);
 
+    const favButton = (e,id,name,img,price,oldPrice,discount) =>{
+        setIsActive(current => !current);
+        const newFav = {
+            name:name,
+            img:img,
+            price:price,
+            oldPrice:oldPrice,
+            discount:discount
+        }
+        if(e.target.className === 'fa-regular fa-heart' ){
+            e.target.className = 'fa-solid fa-heart'
+            Favorites.addFav(newFav)
+        }else{
+            e.target.className = 'fa-regular fa-heart'
+            favorites.filter((item)=>{
+                if(name === item.name){
+                    Favorites.deleteFav(item.id)
+                }
+            })
+        }
+    }
     return(
         <>
         <div className='slider'>
@@ -270,7 +315,12 @@ const Home = () =>{
                         <div className='digital-card float-left' key={pro.id}>
                             <div>
                                 <span className='best-seller float-left'>Best Seller</span>
-                                <span className='icon float-right'><i class="far fa-heart"></i></span>
+                                <span className='icon float-right'>
+                                    <i class="fa-regular fa-heart" 
+                                        onClick={(e)=>{favButton(e,pro.id,pro.name,pro.img,pro.price,pro.oldPrice,pro.discount)}}> 
+                                    </i>
+
+                                </span>
                             </div>
                             <Link to={`/digitalcarddetails/${pro.id}`}>
                                 <img class="card-img-top" src={pro.img} key={pro.id}  alt="Card image cap"/>
@@ -380,13 +430,91 @@ const Home = () =>{
                         <p>Let us help you find the perfect laptop for...</p>
                         <div className='btns'>
                             <button type="button" class="btn">personal Use</button>
-                            <button type="button" class="btn btn-primary">Education</button>
-                            <button type="button" class="btn btn-primary">Work</button>
+                            <button type="button" class="btn">Education</button>
+                            <button type="button" class="btn ">Work</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div className='tablets'>        
+        <Swiper
+            spaceBetween={20}
+            slidesPerView={4}
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
+            >
+            <div className='float-left tablets-heading'>Tablets</div>
+            <div className='view-all float-right'>View All</div>
+
+                <div class="carousel-item active">
+                    <div className='row'>
+                    {tablets.map(pro => (
+                        <SwiperSlide>
+                        <div className='tablet float-left' key={pro.id}>
+                            <div>
+                                <span className='best-seller float-left'>Best Seller</span>
+                                <span className='icon float-right'><i class="far fa-heart"></i></span>
+                            </div>
+                            {/* <Link to={`/digitalcarddetails/${pro.id}`}> */}
+                                <img class="card-img-top" src={pro.img} key={pro.id}  alt="Card image cap"/>
+                            {/* </Link> */}
+                            <div class="card-body">
+                                <span class="card-text name float-left col-lg-10">{pro.name}</span>
+                                <span class="card-text price float-left col-lg-10">{pro.price}</span>
+                                <div className='float-left col-lg-12'>
+                                    <span class="card-text oldprice float-left col-lg-4">{pro.oldPrice}</span>
+                                    <span className='discount float-left col-lg-4'>{pro.discount}</span>
+                                </div>
+                            </div>
+                        </div>
+                        </SwiperSlide>
+                        ))}
+                    </div>  
+                </div>
+                <span className='swipe'>Swipe For More</span>
+        </Swiper>
+        </div>
+
+        <div className='televisions'>        
+        <Swiper
+            spaceBetween={20}
+            slidesPerView={4}
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
+            >
+            <div className='float-left televisions-heading'>Tablets</div>
+            <div className='view-all float-right'>View All</div>
+                <div class="carousel-item active">
+                    <div className='row'>
+                    {televisions.map(pro => (
+                        <SwiperSlide>
+                        <div className='television float-left' key={pro.id}>
+                            <div>
+                                <span className='best-seller float-left'>Best Seller</span>
+                                <span className='icon float-right'><i class="far fa-heart"></i></span>
+                            </div>
+                            {/* <Link to={`/digitalcarddetails/${pro.id}`}> */}
+                                <img class="card-img-top" src={pro.img} key={pro.id}  alt="Card image cap"/>
+                            {/* </Link> */}
+                            <div class="card-body">
+                                <span class="card-text name float-left col-lg-10">{pro.name}</span>
+                                <span class="card-text price float-left col-lg-10">{pro.price}</span>
+                                <div className='float-left col-lg-12'>
+                                    <span class="card-text oldprice float-left col-lg-4">{pro.oldPrice}</span>
+                                    <span className='discount float-left col-lg-4'>{pro.discount}</span>
+                                </div>
+                            </div>
+                        </div>
+                        </SwiperSlide>
+                        ))}
+                    </div>  
+                </div>
+                <span className='swipe'>Swipe For More</span>
+        </Swiper>
+        </div>
+        
 
         
         </>
