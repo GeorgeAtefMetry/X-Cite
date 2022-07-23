@@ -1,0 +1,81 @@
+<div className="price">
+        <div>
+          <p>price</p>
+        </div>
+        <div>
+          <div className="d-flex gap-5">
+            <div className="text-center">
+              <label htmlFor="minNumber">Min</label>
+              <input
+                className="form-control "
+                type="number"
+                min="0"
+                name="minNumber"
+                value="0"
+              />
+            </div>
+            <div className="text-center">
+              <label htmlFor="maxNumber">Max</label>
+              <input
+                className="form-control "
+                type="number"
+                max="999"
+                name="maxNumber"
+                placeholder="999"
+                onChange={(e) => {
+                  setRange(e.target.value);
+                }}
+                value={range}
+              />
+            </div>
+          </div>
+          <div>
+            <input
+              class="range"
+              type="range"
+              value={range}
+              min="0"
+              max="1000"
+              onChange={(e) => {
+                rangeSlide(e);
+              }}
+
+              // onMouseMove={()=>{rangeSlide()}}
+            />
+          </div>
+        </div>
+      </div>
+ const [range, setRange] = useState("1000");
+  const rangeSlide = (e) => {
+    setRange(e.target.value);
+    
+  };
+  csssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+ #rangeValue {
+  
+  display: block;
+  text-align: center;
+  font-size: 6em;
+  color: #999;
+  font-weight: 400;
+}
+.range {
+  width: 100%;
+  -webkit-appearance: none;
+  background: #ddd;
+  outline: none;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 1);
+  margin-top: 20px;
+}
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #ddd;
+  cursor: pointer;
+  border: 4px solid #333;
+  box-shadow: -407px 0 0 400px #ddd;
+}

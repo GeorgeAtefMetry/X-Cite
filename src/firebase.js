@@ -12,6 +12,19 @@ import { getFirestore} from 'firebase/firestore'
 //     appId: "1:937114559438:web:ee837782bbee5db30c419f",
 //     measurementId: "G-WTTREF0R4P"
 // };
+
+  
+const firebaseConfig = {
+  apiKey: "AIzaSyBBiJJcUrM2VnUhakNkpW4fE4rvjiXXqXs",
+  authDomain: "asom-test.firebaseapp.com",
+  projectId: "asom-test",
+  storageBucket: "asom-test.appspot.com",
+  messagingSenderId: "325030155628",
+  appId: "1:325030155628:web:1395b41579eb634b368f49"
+};
+
+  
+
 const firebaseConfig = {
     // apiKey: "AIzaSyDzKdGN1Lx8nmG-jSGZXmaGo8z6X0jsKys",
     // authDomain: "x-cite-2.firebaseapp.com",
@@ -28,6 +41,7 @@ const firebaseConfig = {
         appId: "1:937114559438:web:ed3c31a1e44686db0c419f",
         measurementId: "G-HLB6B0YNJC"
 };
+
 
 
 const app = initializeApp(firebaseConfig);

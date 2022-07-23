@@ -20,6 +20,11 @@ import {
 import Header from './header/header';
 import Footer from './footer/footer';
 import Home from './home/home';
+
+import GiftCard from './Components/GiftCards/GiftCard';
+import ITunesCard from './Components/ITuensCards/ITunesCard';
+import GooglePlayCards from './Components/GooglePlayCards/GooglePlayCards';
+
 import BrandStore from './Components/BrandStore/BrandStore';
 import BrandDetailes from './Components/BrandStore/BrandDetailes';
 import Samsung from './Components/BrandStore/Samsung';
@@ -27,6 +32,7 @@ import Acer from './Components/BrandStore/acer';
 import favicon from './assests/xCitefavicon.PNG';
 import DigitalCardDetails from './digitalCardDetails/digitalCardDetails';
 import Wishlist from './wishlist/wishlist';
+
 
 
 function getFavIconElement()
@@ -42,6 +48,12 @@ function App() {
           <Header></Header>
           <Routes>
             <Route path="/" exact  element={<Home/>} ></Route>
+
+            <Route path="/home" exact  element={<Home/>} ></Route>
+            <Route path="/GiftCard" exact  element={<GiftCard/>} ></Route>
+            <Route path="/ITunesCard" exact  element={<ITunesCard/>} ></Route>
+            <Route path="/GooglePlayCards" exact  element={<GooglePlayCards/>} ></Route>
+
             <Route path="home" exact  element={<Home/>} ></Route>
             <Route path="Brands" exact  element={<BrandStore/>} ></Route>
             <Route path="Brand/:id" exact  element={<BrandDetailes/>} ></Route>
@@ -49,6 +61,7 @@ function App() {
             <Route path="Brand/Acer" exact  element={<Acer/>} ></Route>
             <Route path="/digitalcarddetails/:id" exact  element={<DigitalCardDetails/>} ></Route>
             <Route path="/wishlist/" exact  element={<Wishlist/>} ></Route>
+
           </Routes>
           <Footer></Footer>
         </Router>
