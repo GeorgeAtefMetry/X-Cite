@@ -1627,7 +1627,7 @@ import { Link } from 'react-router-dom';
                     <div class="header-highlights">
                         <ul>
                         <li><Link  className='brands' to='/dailydeals'>Daily Deals</Link></li>
-                        <li><a className='giftCards'>Gift Cards</a></li>
+                        <li><Link className='giftCards' to='/GiftCard'>Gift Cards</Link></li>
                         <li><a className='AppleProducts'  >Apple Products</a></li>
                         <li><a className='brandStore' >Brand Stores</a></li>
                         </ul>

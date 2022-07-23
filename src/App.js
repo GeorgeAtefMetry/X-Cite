@@ -21,6 +21,10 @@ import {
 import Header from './header/header';
 import Footer from './footer/footer'
 import Home from './home/home';
+import GiftCard from './Components/GiftCards/GiftCard';
+import ITunesCard from './Components/ITuensCards/ITunesCard';
+import GooglePlayCards from './Components/GooglePlayCards/GooglePlayCards';
+
 
 function App() {
   return (
@@ -30,6 +34,9 @@ function App() {
           <Routes>
             <Route path="/" exact  element={<Home/>} ></Route>
             <Route path="/home" exact  element={<Home/>} ></Route>
+            <Route path="/GiftCard" exact  element={<GiftCard/>} ></Route>
+            <Route path="/ITunesCard" exact  element={<ITunesCard/>} ></Route>
+            <Route path="/GooglePlayCards" exact  element={<GooglePlayCards/>} ></Route>
           </Routes>
           <Footer></Footer>
         </Router>
