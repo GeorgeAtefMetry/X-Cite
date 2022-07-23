@@ -1,0 +1,24 @@
+body {
+  background-color: #dfe3ee;
+}
+.acces {
+  background-color: #212121;
+  border-radius: 9px;
+}
+
+.sticy {
+  position: fixed;
+  width: 100%;
+  right: 20px;
+  bottom: 40px;
+  border-radius: 50% 50% 50% 50%;
+
+  font-size: 2.1666em;
+  font-weight: 700;
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  width: 50px;
+  background: #dfdfdf;
+  cursor: pointer;
+}
