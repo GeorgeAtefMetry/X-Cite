@@ -166,7 +166,9 @@ body{
 }
 .digital-cards .digital-cards-heading,
 .phones-personal-audio .phones-personal-heading,
-.laptops .laptops-heading{
+.laptops .laptops-heading,
+.tablets .tablets-heading,
+.televisions .televisions-heading{
     font-size: 22px;
     top: 0;
     font-weight: bold;
@@ -180,29 +182,37 @@ body{
 } */
 .digital-cards ,
 .phones-personal-audio,
-.laptops{
+.laptops,
+.tablets,
+.televisions{
     background-color: #fff;
 }
 .digital-cards{
     padding: 10px;
 }
-.phones-personal-audio,.laptops{
+.phones-personal-audio,.laptops,.tablets,.televisions{
     padding: 10px;
 }
 .digital-cards .swiper,
 .phones-personal-audio .swiper,
-.laptops .swiper{
+.laptops .swiper,
+.tablets .swiper,
+.televisions .swiper{
     box-shadow: 0px 0px 7px 2px #ccc;
     border-radius: 10px;
 }
 .digital-cards .swiper,
 .phones-personal-audio .swiper,
-.laptops .swiper{
+.laptops .swiper,
+.tablets .swiper,
+.televisions .swiper{
     padding: 20px;
 }
 .digital-cards .digital-card,
 .phones-personal-audio .phones-personal-audio,
-.laptops .laptop{
+.laptops .laptop,
+.tablets .tablet,
+.televisions .television{
     padding: 20px;
     margin-top: 45px;
     border-top: 1px solid rgb(240, 239, 239);
@@ -211,12 +221,12 @@ body{
 }
 .digital-cards .card-body,
 .phones-personal-audio .card-body,
-.laptops .card-body{
+.laptops .card-body,
+.tablets .card-body,
+.televisions .card-body{
     text-align: left;
 }
-.digital-cards .best-seller,
-.phones-personal-audio .best-seller,
-.laptops .best-seller{
+.best-seller{
     background-color: black;
     color: #fff;
     font-size: 12px;
@@ -224,32 +234,43 @@ body{
 }
 .digital-cards .icon i,
 .phones-personal-audio .icon i,
-.laptops .icon i{
+.laptops .icon i,
+.tablets .icon i,
+.televisions .icon i{
     font-size: 20px;
     cursor: pointer;
 }
 .digital-cards .name,
 .phones-personal-audio .name,
-.laptops .name{
+.laptops .name,
+.tablets .name,
+.televisions .name{
     font-weight: 500;
     font-size: 15px;
 }
 .digital-cards .price,
 .phones-personal-audio .price,
-.laptops .price{
+.laptops .price,
+.tablets .price,
+.televisions .price{
     font-weight: 600;
     font-size: 15px;
 }
 .digital-cards .oldprice,
 .phones-personal-audio .oldprice,
-.laptops .oldprice{
+.laptops .oldprice,
+.tablets .oldprice,
+.televisions .oldprice{
     font-weight: 400;
-    font-size: 14px;
+    font-size: 13px;
+    margin-right: 10px;
     text-decoration: line-through;
 }
 .digital-cards .discount,
 .phones-personal-audio .discount,
-.laptops .discount{
+.laptops .discount,
+.tablets .discount,
+.televisions .discount{
     font-weight: 400;
     color: #fff;
     font-size: 12px;
@@ -268,33 +289,49 @@ body{
     color: #fff;
 }
 @media(max-width:600px){
+    .digital-cards .digital-card, .phones-personal-audio .phones-personal-audio, .laptops .laptop, .tablets .tablet, .televisions .television {
+        padding: 10px 0;
+        margin-bottom: 30px;
+    }
+    .best-seller{
+        font-size: 10px;
+    }
     .swiper-slide{
-        width: 300px !important;
+        margin-right: 10px;
+        padding: 0;
+        width: 100px !important
+    }
+    .swiper-slide .card-body{
+        padding: 10px 0;
+        margin-bottom: 20px;
+    }
+    .swiper-slide img{
+        width: 105px !important;
+        margin: 0;
+    }
+    .swiper-slide .name,
+    .swiper-slide .price{
+        font-size: 13px;
+    }
+    .swiper-slide .discount{
+        font-size: 10px;
+    }
+    .digital-cards{
+        padding: 0px;
+    }
+    .phones-personal-audio,.laptops,.tablets,.televisions{
+        padding: 0px;
     }
 }
 @media(min-width:600px){
     .swiper-slide{
-        width: 300px !important;
+        /* width: 300px !important; */
     }
 }
 
 @media(max-width:600px){
     .digital-cards{
         margin-top: 10px !important;
-    }
-}
-@media(max-width:600px){
-    .digital-cards .digital-card,
-    .phones-personal-audio .phones-personal-audio,
-    .laptops .phones-personal-audio{
-        width: 50%;
-    }
-}
-@media(max-width:768px){
-    .digital-cards .digital-card,
-    .phones-personal-audio .phones-personal-audio,
-    .laptops .phones-personal-audio{
-        width: 100%;
     }
 }
 /* End Digital Cards */

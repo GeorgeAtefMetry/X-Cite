@@ -22,6 +22,7 @@ import Header from './header/header';
 import Footer from './footer/footer'
 import Home from './home/home';
 import DigitalCardDetails from './digitalCardDetails/digitalCardDetails';
+import Wishlist from './wishlist/wishlist';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="/" exact  element={<Home/>} ></Route>
             <Route path="/home" exact  element={<Home/>} ></Route>
             <Route path="/digitalcarddetails/:id" exact  element={<DigitalCardDetails/>} ></Route>
+            <Route path="/wishlist/" exact  element={<Wishlist/>} ></Route>
           </Routes>
           <Footer></Footer>
         </Router>
