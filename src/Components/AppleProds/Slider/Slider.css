@@ -1,0 +1,21 @@
+body {
+    overflow-x: hidden;
+  }
+  .slider {
+    position: relative;
+    margin-bottom: 5px;
+  }
+  .prev {
+    position: absolute;
+    top: 10;
+    left: -100px;
+    color: #6cc1e5;
+    z-index: 10;
+  }
+  .next {
+    position: absolute;
+    top: 10;
+    right: -100px;
+    color: #6cc1e5;
+    z-index: 20;
+  }
