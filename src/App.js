@@ -13,20 +13,22 @@ import FormControl from 'react-bootstrap/FormControl';
 import flag1 from './assests/flag-1.png';
 import flag2 from './assests/flag-2.png';
 
-
 import {
   BrowserRouter as Router,
   Routes,
   Route,
 } from "react-router-dom";
 import Header from './header/header';
-import Footer from './footer/footer'
+import Footer from './footer/footer';
 import Home from './home/home';
 import BrandStore from './Components/BrandStore/BrandStore';
 import BrandDetailes from './Components/BrandStore/BrandDetailes';
 import Samsung from './Components/BrandStore/Samsung';
 import Acer from './Components/BrandStore/acer';
 import favicon from './assests/xCitefavicon.PNG';
+import DigitalCardDetails from './digitalCardDetails/digitalCardDetails';
+import Wishlist from './wishlist/wishlist';
+
 
 function getFavIconElement()
 {
@@ -46,6 +48,8 @@ function App() {
             <Route path="Brand/:id" exact  element={<BrandDetailes/>} ></Route>
             <Route path="Brand/Samsung" exact  element={<Samsung/>} ></Route>
             <Route path="Brand/Acer" exact  element={<Acer/>} ></Route>
+            <Route path="/digitalcarddetails/:id" exact  element={<DigitalCardDetails/>} ></Route>
+            <Route path="/wishlist/" exact  element={<Wishlist/>} ></Route>
           </Routes>
           <Footer></Footer>
         </Router>

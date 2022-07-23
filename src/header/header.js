@@ -91,14 +91,16 @@ import { Link } from 'react-router-dom';
                             </a>
                             </div>
                             
-                            <div className="hd-dropdown-content pad15">
-                                <a className="hd-dropdown-item" rel="nofollow" href="" title="Log In"> 
-                                    <span rel="no-follow" className="xc-btn xc-btn-orange brd-rad3 mar5-b px16 show">
+                            <div class="hd-dropdown-content pad15">
+                                <a class="hd-dropdown-item" rel="nofollow" href="" title="Log In"> 
+                                    <span rel="no-follow" class="login xc-btn xc-btn-orange brd-rad3 mar5-b px16 show">
                                     Log In
                                     </span> 
                                 </a>
-                                <a rel="nofollow" className="hd-dropdown-item" >
-                                    Wishlist                                        										
+                                <a rel="nofollow" class="hd-dropdown-item" >
+                                    <Link to={`/wishlist`}>
+                                        Wishlist
+                                    </Link>      										
                                 </a> 
                                 <a rel="nofollow" className="hd-dropdown-item xc-cursor-pointer" >
                                     Compare                                        
