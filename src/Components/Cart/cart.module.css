@@ -1,0 +1,70 @@
+.bigContainer{
+    background-color: #f1f1f1;
+}
+.chkbtn{
+    background-color: #ff8100;
+    color: white;
+    font-size:0.9rem;
+}
+.chkbtn:hover{
+    background-color: #e47401;
+}
+.removebtn{
+    color: gray;
+    font-size: 0.8rem;
+}
+.removebtn:hover{
+    cursor: pointer;
+    color: #00365c;
+}
+
+.qtyInput{
+    width: 39%;
+    height: 40px;
+    border-radius: 9px;
+    text-align: center;
+    border: 1px solid lightgray;
+}
+.qtyInput:focus{
+    outline: none;
+}
+.qtyInput::placeholder{
+    text-align: center;
+}
+.smtxt{
+    font-size:0.75rem;
+}
+.xsmtxt{
+    font-size:0.85rem;
+}
+.btns,
+.upbtn:hover{
+    color: #00365c;
+    background-color: white;
+    border: 1px solid lightgray;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+.btns:hover,
+.upbtn{
+    background-color: #2688da;
+    color: white;
+    border: 1px solid lightgray;
+    font-size: 0.9rem;
+}
+.upbtn:disabled{
+    cursor: not-allowed;
+    background-color: #e4e4e4;
+    color: white;
+    border: none;
+}
+.discounInp{
+    border: 1px solid lightgray;
+    width:100%;
+    height: 40px;
+}
+.discounInp:focus{
+    outline: none;
+    border: 1px solid #2097cf;
+    box-shadow: 0px 0px 5px -1px #2097cf;
+}
