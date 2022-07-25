@@ -16,11 +16,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./header/header";
 import Footer from "./footer/footer";
 import Home from "./home/home";
-
-import GiftCard from "./Components/GiftCards/GiftCard";
-import ITunesCard from "./Components/ITuensCards/ITunesCard";
-import GooglePlayCards from "./Components/GooglePlayCards/GooglePlayCards";
-
+import GiftCard from './Components/GiftCards/GiftCard';
+import ITunesCard from './Components/ITuensCards/ITunesCard';
+import GooglePlayCards from './Components/GooglePlayCards/GooglePlayCards';
+import NotFoundPage from './Components/NotFoundPage/NotFoundPage';
 import BrandStore from "./Components/BrandStore/BrandStore";
 import BrandDetailes from "./Components/BrandStore/BrandDetailes";
 import Samsung from "./Components/BrandStore/Samsung";
@@ -34,6 +33,7 @@ import { AuthContextProvider } from "./context/AuthContext";
 import AppleProds from "./Components/AppleProds/AppleProds";
 import PrivateRoure from "./Components/PrivateRoure/PrivateRoure";
 import Cart from "./Components/Cart/Cart";
+
 
 import IphoneDetiles from './Components/AppleProds/Cards/iphone/iphoneDetiles/IphoneDetiles'
 import Iphone from './Components/AppleProds/Cards/iphone/Iphone'
@@ -50,20 +50,22 @@ function App() {
       <Router>
         <AuthContextProvider>
           <Header></Header>
+         
           <Routes>
-            <Route path="/" exact element={<Home />}></Route>
-            <Route path="/home" exact element={<Home />}></Route>
-            <Route path="/GiftCard" exact element={<GiftCard />}></Route>
-            <Route path="/ITunesCard" exact element={<ITunesCard />}></Route>
-            <Route path="/GooglePlayCards" exact element={<GooglePlayCards />} ></Route>
-            <Route path="/Login" exact element={<Login />}></Route>
-            <Route path="home" exact element={<Home />}></Route>
-            <Route path="Brands" exact element={<BrandStore />}></Route>
-            <Route path="Brand/:id" exact element={<BrandDetailes />}></Route>
-            <Route path="Brand/Samsung" exact element={<Samsung />}></Route>
-            <Route path="Brand/Acer" exact element={<Acer />}></Route>
-            <Route path="/digitalcarddetails/:id" exact element={<DigitalCardDetails />} ></Route>
-            <Route path="/wishlist/" exact element={<Wishlist />}></Route>
+
+            <Route path="/" exact  element={<Home/>} ></Route>
+            <Route path="/home" exact  element={<Home/>} ></Route>
+            <Route path="/GiftCard" exact  element={<GiftCard/>} ></Route>
+            <Route path="/ITunesCard" exact  element={<ITunesCard/>} ></Route>
+            <Route path="/GooglePlayCards" exact  element={<GooglePlayCards/>} ></Route>
+            <Route path="*" exact  element={<NotFoundPage/>} ></Route>
+            <Route path="Brands" exact  element={<BrandStore/>} ></Route>
+            <Route path="Brand/:id" exact  element={<BrandDetailes/>} ></Route>
+            <Route path="Brand/Samsung" exact  element={<Samsung/>} ></Route>
+            <Route path="Brand/Acer" exact  element={<Acer/>} ></Route>
+            <Route path="/digitalcarddetails/:id" exact  element={<DigitalCardDetails/>} ></Route>
+            <Route path="/wishlist/" exact  element={<Wishlist/>} ></Route>
+            <Route path="/Login" exact element={<Login />}></Route>       
             <Route path="/SingUp" exact element={<SingUp />}></Route>
             <Route path="/AppleProds" exact element={<AppleProds />}></Route>
             <Route path="/iphone" exact element={<Iphone />} />
@@ -72,9 +74,11 @@ function App() {
             <Route path="/ipad" exact element={<Ipad />}></Route>
             <Route path="/Cart" exact element={ <PrivateRoure> <Cart /></PrivateRoure>}></Route>
           </Routes>
-        </AuthContextProvider>
+      
         <Footer></Footer>
+          </AuthContextProvider>
       </Router>
+
     </>
   );
 }
