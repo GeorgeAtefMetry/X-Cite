@@ -24,6 +24,7 @@ import Home from './home/home';
 import GiftCard from './Components/GiftCards/GiftCard';
 import ITunesCard from './Components/ITuensCards/ITunesCard';
 import GooglePlayCards from './Components/GooglePlayCards/GooglePlayCards';
+import NotFoundPage from './Components/NotFoundPage/NotFoundPage';
 
 
 function App() {
@@ -31,13 +32,18 @@ function App() {
     <>
         <Router>
           <Header></Header>
+         
           <Routes>
+          {/* <Switch> */}
             <Route path="/" exact  element={<Home/>} ></Route>
             <Route path="/home" exact  element={<Home/>} ></Route>
             <Route path="/GiftCard" exact  element={<GiftCard/>} ></Route>
             <Route path="/ITunesCard" exact  element={<ITunesCard/>} ></Route>
             <Route path="/GooglePlayCards" exact  element={<GooglePlayCards/>} ></Route>
+            <Route path="*" exact  element={<NotFoundPage/>} ></Route>
+            {/* </Switch> */}
           </Routes>
+         
           <Footer></Footer>
         </Router>
 
