@@ -173,8 +173,7 @@
 }
 .nav-pills .nav-item a {
     font-size: 20px;
-    line-height: 40px;
-    height: 40px;
+    height: 30px;
     color: #fff;
     text-decoration: none;
     padding: 0 4px 0;
@@ -235,9 +234,11 @@
     width: 200px;
     border-radius: 5px;
 }
-.nav-pills .nav-item .hd-dropdown-content :first-child{
+.nav-pills .nav-item .hd-dropdown-content .login{
     background-color: #ef7900;
     color: #fff;
+    padding: 3px 10px;
+    font-size: 17px;
 }
 .nav-pills .nav-item .hd-dropdown-content a{
     color: #000;
@@ -541,7 +542,14 @@
     overflow: hidden;
 }
 
-.nav-bottom .header-highlights ul li .giftCards,.brandStore {
+.nav-bottom .header-highlights ul li .giftCards {
+    color: #fec525;
+}
+.brandStore{
+    cursor: pointer;
+    color: #fec525;
+}
+.brandStore:hover{
     color: #fec525;
 }
 .nav-bottom .header-highlights ul li .brands{
@@ -621,7 +629,7 @@
         padding: 8px;
     }
     .nav-pills .nav-item .hd-dropdown-content a{
-        font-size: 18px;
+        font-size: 15px;
     }
 }
 @media  (max-width: 768px){
