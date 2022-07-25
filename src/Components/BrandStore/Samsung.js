@@ -37,7 +37,7 @@ const Samsung=()=>{
     const location = useLocation();
 
     useEffect(()=>{
-        const samsungDoc = doc(fs,`Brand/${location.state}`)
+        const samsungDoc = doc(fs,`Brands/${location.state}`)
         onSnapshot(samsungDoc,(res)=>{
             setSamsung({
                 id: res.id,

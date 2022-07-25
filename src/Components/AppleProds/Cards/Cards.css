@@ -1,0 +1,19 @@
+.card{
+    border-radius: 8px;
+ }
+ 
+ .shop-btn{
+     background-color: #191919;
+     color: white;
+     border-radius: 12px;
+     padding: 8px 26px;
+     font-size: 16px;
+ }
+ .shop-btn:hover{
+     color: white;
+     background-color: black;
+ }
+ 
+ li {
+     list-style: none;
+ }

@@ -7,7 +7,7 @@ const BrandStore =()=>{
 
     const [Brands, setBrands] = useState([]);
     useEffect(()=>{
-        const collec =  collection(fs, 'Brand');
+        const collec =  collection(fs, 'Brands');
         onSnapshot(collec, (res)=>{
                 setBrands(res.docs.map((doc)=>({
                         ...doc.data(),
