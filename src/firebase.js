@@ -1,7 +1,8 @@
 import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore";
+import { getAnalytics } from "firebase/analytics";
+import { getFirestore} from 'firebase/firestore'
 import { getAuth } from "firebase/auth";
+
 // const firebaseConfig = {
 //     apiKey: "AIzaSyD4fCELzsCcBV6YGgc4dVDZphckfm3rWDU",
 //     authDomain: "x-cite-5d269.firebaseapp.com",
@@ -14,6 +15,7 @@ import { getAuth } from "firebase/auth";
 // };
 
 const firebaseConfig = {
+
   apiKey: "AIzaSyDzKdGN1Lx8nmG-jSGZXmaGo8z6X0jsKys",
   authDomain: "x-cite-2.firebaseapp.com",
   projectId: "x-cite-2",
@@ -21,6 +23,10 @@ const firebaseConfig = {
   messagingSenderId: "827024114042",
   appId: "1:827024114042:web:aea2f3e81e3039c4dd96c3"
 };
+
+
+
+
 
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);

@@ -207,10 +207,8 @@ const Header = () => {
                   </li>
                   <li className="nav-item hd-cart-menu">
                   <Link
-                      
                       className="trackable login"
-                      
-                      to="/Shopping"
+                      to="/Cart"
                     >
                       <i className="fa-solid fa-cart-shopping">
                         <span className="hd-minicart-badge" id="header-count">

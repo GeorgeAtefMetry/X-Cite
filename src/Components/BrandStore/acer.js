@@ -18,16 +18,18 @@ import AeroBlade from './../../assests/Aeroblade-min.jpg';
 import Liquid from './../../assests/LiquidLoop-min.jpg';
 
 const Acer=()=>{
-    const [acerBrand, setAcer] = useState({id:'', Name:'', Logo:'', Categories:[], Offers:[]});
+    const [acerBrand, setAcer] = useState({id:'', Name:'', Logo:'', Categories:[], offers:[]});
     const location = useLocation();
 
     useEffect(()=>{
-        const acerDoc = doc(fs,`Brand/${location.state}`)
+        console.log(location);
+        const acerDoc = doc(fs,`Brands/${location.state}`)
         onSnapshot(acerDoc,(res)=>{
             setAcer({
                 id: res.id,
                 ...res.data()
             });
+            console.log(res.data());
         })
     },[])
 
@@ -37,7 +39,7 @@ const Acer=()=>{
             <div className={classes.slider}>
             <Carousel interval='2000' className={'col-lg-12 mx-auto p-0 '+classes.carouselinner} variant="dark">
                 {
-                    (acerBrand.Offers).map((offer, index)=>{
+                    (acerBrand.offers).map((offer, index)=>{
                     return <Carousel.Item key={index}>
                             <img
                             className="d-block w-100 mb-3"

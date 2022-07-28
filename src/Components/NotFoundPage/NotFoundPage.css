@@ -1,0 +1,38 @@
+body{
+    background-color: white;
+
+
+}
+
+.img{
+    width: 100%;
+    padding-left: 180px;
+}
+
+.text{
+    position: absolute;
+    left: 51%;
+    top:24%;
+}
+.err{
+    font-size: 150px;
+    color: #cecccc;
+    font-weight: 700;
+    margin-bottom: -45px;
+}
+
+.woops{
+    font-size: 35px;
+    color: #999797;
+}
+
+.woopspan{
+    color: #ff3f2d;
+    font-weight: bold;
+}
+
+.notxt{
+    color: #999797;
+    font-size: 18px;
+    width: 60%;
+}
