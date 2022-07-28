@@ -15,7 +15,7 @@ const DigitalCardDetails = () => {
     const onSubmit = data => console.log(data);
 
     useEffect(()=>
-    onSnapshot(doc(db, 'products/XWFqnqc6ij0vYjsfF0iQ/digital-cards', `${params.id}`),(snapshot)=>{
+    onSnapshot(doc(db, 'products/r0IPHZLeSwWjyANaykLp/digital-cards', `${params.id}`),(snapshot)=>{
         setDigitalCards(snapshot.data())
     })
     ,[]);
@@ -27,35 +27,35 @@ const DigitalCardDetails = () => {
     const [active4, setActive4] = useState(false)
     const [reviewActive, setReviewActive] = useState(true)
     const [reviewActive2, setReviewActive2] = useState(false)
-    const handleClick = event => {
+    const handleClick = () => {
         setActive(active => !active);
         setActive1(active1 => false);
         setActive2(active2 => false);
         setActive3(active4 => false);
         setActive4(active4 => false);
     };
-    const handleClick1 = event => {
+    const handleClick1 = ()  => {
         setActive(active => false);
         setActive1(active1 => !active1);
         setActive2(active2 => false);
         setActive3(active2 => false);
         setActive4(active2 => false);
     };
-    const handleClick2 = event => {
+    const handleClick2 = () => {
         setActive(active => false);
         setActive1(active1 => false);
         setActive2(active2 => !active2);
         setActive3(active2 => false);
         setActive4(active2 => false);
     };
-    const handleClick3 = event => {
+    const handleClick3 = () => {
         setActive(active => false);
         setActive1(active1 => false);
         setActive2(active2 => false);
         setActive3(active2 => !active3);
         setActive4(active2 => false);
-    };
-    const handleClick4 = event => {
+    }
+    const handleClick4 = () => {
         setActive(active => false);
         setActive1(active1 => false);
         setActive2(active2 => false);
@@ -236,7 +236,6 @@ const DigitalCardDetails = () => {
 
                         </div>
 
-
                         <div  className={!active1 ? `${classes.productSpecification}  ${classes.dis}` : `${classes.productSpecification}` }>
                             <p>Information on {digitalCards.name}</p>
                             <table className="data-table col-md-10" id="product-attribute-specs-table1">
@@ -351,14 +350,19 @@ const DigitalCardDetails = () => {
                                 </div>
                                 <div className={reviewActive ? `${classes.dis}` : `${classes.writeReview}`}>
                                     <div className={`text-center ${classes.writeReviewRating}`}>
-                                        <span><i class="fa fa-star checked"></i></span>
-                                        <span><i class="fa fa-star checked"></i></span>
-                                        <span><i class="fa fa-star checked"></i></span>
-                                        <span><i class="fa fa-star checked"></i></span>
-                                        <span><i class="fa fa-star checked"></i></span>
-                                        <span className={classes.userRatingStar}>Click the stars to rate this product</span>
-                                        <p>Unacceptable</p>
-
+                                        <div className={classes.stars}>
+                                            <span><i class="fa fa-star "></i></span>
+                                            <span><i class="fa fa-star "></i></span>
+                                            <span><i class="fa fa-star "></i></span>
+                                            <span><i class="fa fa-star "></i></span>
+                                            <span><i class="fa fa-star "></i></span>
+                                            <span className={classes.userRatingStar}>Click the stars to rate this product</span>
+                                            <p className={classes.oneStar}>Unacceptable</p>
+                                            <p className={classes.twoStars}>Poor</p>
+                                            <p className={classes.threeStars}>Average</p>
+                                            <p className={classes.fourStars}>Good</p>
+                                            <p className={classes.fiveStars}>Excellent</p>
+                                        </div>
                                         <form onSubmit={handleSubmit(onSubmit)}>
                                             <input className={classes.publicNameInput} placeholder="Your public name or alias (required)" {...register("example", { required: true })} />
                                             <br/>
@@ -571,12 +575,9 @@ const DigitalCardDetails = () => {
                             </div>
                         </div>
 
-
                     </div>
                 </div>      
             </div>
-
-            
         </>
     )
 }
