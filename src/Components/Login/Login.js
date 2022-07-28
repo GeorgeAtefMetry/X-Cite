@@ -8,7 +8,7 @@ const Login = () => {
   const [errMess, setErrMess] = useState("");
   const navToHome = useNavigate();
   const { user, signin } = UserAuth();
-  console.log(user);
+  // console.log(user);
   const handelSubmit = async (e) => {
     e.preventDefault();
     try {

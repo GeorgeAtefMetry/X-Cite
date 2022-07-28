@@ -1,5 +1,9 @@
+
 body{
-    background-color: #EFEFEF;
+ background-color: #EFEFEF;
+ padding: 0 !important;
+ margin: 0 !important;
+ box-sizing: border-box;
 }
 .slider{
     margin-bottom: 80px;
@@ -15,10 +19,12 @@ body{
 }
 .carousel-indicators {
     bottom: -60px !important;
+    margin-bottom: 37px;
 }
 .carousel-indicators [data-bs-target] {
     border-radius: 50% !important;
     background-color: #000;
+    
 }
 @media(min-width:600px){
     .carousel-indicators [data-bs-target] {
