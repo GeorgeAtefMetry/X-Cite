@@ -28,7 +28,7 @@ const Home = () =>{
         })
     ,[]);
     useEffect(()=>
-        onSnapshot(collection(db,'products/XWFqnqc6ij0vYjsfF0iQ/digital-cards'),(snapshot)=>{
+        onSnapshot(collection(db,'products/r0IPHZLeSwWjyANaykLp/digital-cards'),(snapshot)=>{
             setDigitalCards(snapshot.docs.map((doc)=>({...doc.data(), id:doc.id})))
         })
     ,[]);
