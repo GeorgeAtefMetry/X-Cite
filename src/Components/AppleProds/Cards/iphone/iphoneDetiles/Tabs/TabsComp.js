@@ -2,7 +2,8 @@ import React from "react";
 import { Tab, Tabs, Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import styles from "./../IphoneDetiles.module.css";
-const TabsComp = () => {
+const TabsComp = (props) => {
+  
   function TabPanel(props) {
     const { children, value, index, ...other } = props;
 

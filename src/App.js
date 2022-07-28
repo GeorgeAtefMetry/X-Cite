@@ -5,12 +5,12 @@ import "./fontawesome-free-6.1.1-web/css/all.css";
 import "./fontawesome-free-6.1.1-web/css/fontawesome.css";
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 
-import { Navbar } from "react-bootstrap";
-import NavDropdown from "react-bootstrap/esm/NavDropdown";
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
-import flag1 from "./assests/flag-1.png";
-import flag2 from "./assests/flag-2.png";
+// import { Navbar } from "react-bootstrap";
+// import NavDropdown from "react-bootstrap/esm/NavDropdown";
+// import Form from "react-bootstrap/Form";
+// import FormControl from "react-bootstrap/FormControl";
+// import flag1 from "./assests/flag-1.png";
+// import flag2 from "./assests/flag-2.png";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./header/header";
@@ -39,6 +39,12 @@ import IphoneDetiles from './Components/AppleProds/Cards/iphone/iphoneDetiles/Ip
 import Iphone from './Components/AppleProds/Cards/iphone/Iphone'
 import Mac from "./Components/AppleProds/Cards/mac/Mac";
 import Ipad from "./Components/AppleProds/Cards/ipad/Ipad";
+import AppleWatch from "./Components/AppleProds/Cards/AppleWatch/AppleWatch";
+import AirPods from "./Components/AppleProds/Cards/AirPods/AirPods";
+import AppleTv from "./Components/AppleProds/Cards/AppleTv/AppleTv";
+import AirTag from "./Components/AppleProds/Cards/AirTag/AirTag";
+import Beats from "./Components/AppleProds/Cards/Beats/Beats";
+import MacDetiles from "./Components/AppleProds/Cards/mac/MacDetiles/MacDetiles";
 function getFavIconElement() {
   return document.getElementById("favicon");
 }
@@ -75,10 +81,18 @@ function App() {
             <Route path="/wishlist/" exact element={<Wishlist />}></Route>
             <Route path="/SingUp" exact element={<SingUp />}></Route>
             <Route path="/AppleProds" exact element={<AppleProds />}></Route>
-            <Route path="/iphone" exact element={<Iphone />} />
-            <Route path="/iphone/:iphoneId" exact element={<IphoneDetiles />} />
+            <Route path="/iphone" exact  element={<Iphone />} />
             <Route path="/mac" exact element={<Mac />}></Route>
             <Route path="/ipad" exact element={<Ipad />}></Route>
+            <Route path="/AppleWatch" exact element={<AppleWatch />} />
+            <Route path="/AirPods" exact element={<AirPods />} />
+            <Route path="/AppleTv" exact element={<AppleTv />} />
+            <Route path="/AirTag" exact element={<AirTag />} />
+            <Route path="/Beats" exact element={<Beats />} />
+            <Route path="/iphone/:iphoneId" exact element={<IphoneDetiles />} />
+           
+            <Route path="/mac/:macId" exact element={<MacDetiles />} />
+            
 
             <Route
               path="/Shopping"

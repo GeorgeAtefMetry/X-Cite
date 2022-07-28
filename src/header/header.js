@@ -16,7 +16,7 @@ import { UserAuth } from "../context/AuthContext";
 
 const Header = () => {
   const { user, logout } = UserAuth();
-  console.log(user);
+  // console.log(user);
   const navTologin = useNavigate();
   const handleLogIn = async () => {
     try {
