@@ -33,7 +33,7 @@ import { AuthContextProvider } from "./context/AuthContext";
 import AppleProds from "./Components/AppleProds/AppleProds";
 import PrivateRoure from "./Components/PrivateRoure/PrivateRoure";
 import Cart from "./Components/Cart/Cart";
-
+// George
 
 import IphoneDetiles from './Components/AppleProds/Cards/iphone/iphoneDetiles/IphoneDetiles'
 import Iphone from './Components/AppleProds/Cards/iphone/Iphone'
