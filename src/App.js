@@ -39,6 +39,7 @@ import IphoneDetiles from './Components/AppleProds/Cards/iphone/iphoneDetiles/Ip
 import Iphone from './Components/AppleProds/Cards/iphone/Iphone'
 import Mac from "./Components/AppleProds/Cards/mac/Mac";
 import Ipad from "./Components/AppleProds/Cards/ipad/Ipad";
+import Test from './test';
 import AppleWatch from "./Components/AppleProds/Cards/AppleWatch/AppleWatch";
 import AirPods from "./Components/AppleProds/Cards/AirPods/AirPods";
 import AppleTv from "./Components/AppleProds/Cards/AppleTv/AppleTv";
@@ -92,6 +93,8 @@ function App() {
             
 
             <Route path="/Cart" exact element={ <PrivateRoure> <Cart /></PrivateRoure>}></Route>
+
+            <Route path="/test" exact element={<Test />}></Route>
 
           </Routes>
       
