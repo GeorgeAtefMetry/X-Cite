@@ -1,0 +1,18 @@
+.contSlider {
+  position: relative;
+}
+.onSlider {
+    padding-left: 8px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+.slick-next,
+.slick-prev {
+  width: 35px !important;
+  height: 35px !important;
+  border-radius: 50%;
+  position: absolute;
+  top: 40% !important;
+  background-color: #001a2c !important;
+  padding: 8px !important;
+  z-index: 3424;
+}

@@ -1,0 +1,198 @@
+/* ========= All Brands =================================================================*/
+.slider{
+    margin-bottom: 80px;
+}
+
+/* ========= Acer Brand =================================================================*/
+.acerCard,
+.smCards{
+    border-radius: 9px;
+    color: white;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    background: rgb(23,117,85);
+    background: linear-gradient(0deg, rgba(23,117,85,1) 8%, rgba(127,195,65,1) 100%);
+}
+.acerCard:hover,
+.smCards:hover{
+    filter: sepia(0.1);
+    background: rgb(17,78,54);
+    background: linear-gradient(0deg, rgba(17,78,54,1) 5%, rgba(127,195,65,1) 100%);
+}
+.acerImgCard{
+    width: 70%;
+}
+.smCards{
+    min-height: 12rem;
+}
+@media(max-width:754px){
+    .smCards{
+        width: 100% !important;
+    }
+    .marginCard{
+        margin-inline-end: 0 !important;
+    }
+    .acerBigCard{
+        width: 100% !important;
+    }
+}
+@media(min-width:755px){
+    .smCards{
+        width: 29% !important;
+    }
+    .marginCard{
+        margin-inline-end: 1% !important;
+    }
+    .acerBigCard{
+        width: 32.3% !important;
+    }
+}
+@media(min-width:990px){
+    .smCards{
+        width: 18.8% !important;
+    }
+    .marginCard{
+        margin-inline-end: 1.44% !important;
+    }
+}
+.acerBigCard{
+    height: 330px;
+    border-radius: 9px;
+    background-size: cover;
+    display: flex;
+    flex-direction:column;
+    justify-content: flex-end;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+/* ========= Samsung Brand =================================================================*/
+.bgMain{
+    background-color: #f5f5f5;
+    color: black;
+}
+.samCatg{
+    height: 5.5rem;
+    margin-bottom: 5%;
+}
+.samCatg:hover{
+    color: darkblue;
+    cursor: pointer;
+}
+.samsungSmCards{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+}
+.smallSamCard,
+.smCardinBig{
+    height: 17rem;
+}
+.samsungSmCards>img{
+    max-width: 100%;
+}
+.samsungSmCards>h6{
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 12%;
+    text-decoration-color: black;
+    transition: text-decoration-color 0.6s;
+}
+.samsungSmCards>h6:hover{
+    text-decoration-color: rgba(0,0,0,0);
+    cursor: pointer;
+}
+.samsungSmCards>h5{
+    color:white;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+.samsungSmCards>h5:hover{
+    color: black;
+    background-color: white;
+    cursor: pointer;
+}
+.smCardinBig{
+    width: 49.8% !important;
+}
+.samBanner{
+    background-size: cover;
+}
+.samBanner>div>div>div>h6:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 13%;
+}
+.tvBanner{
+    color: white;
+}
+.Ads{
+    background-image: url('./../../assests/card-tvs-offer.jpg');
+    background-size: cover;
+    color: white;
+    text-align: start;
+}
+.Ads>h6{
+    color:black;
+    background-color: white;
+    border-radius: 20px;
+    width:fit-content;
+}
+.Ads>h6:hover{
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
+@media(max-width:754px){
+    .smallSamCard{
+        width: 49.8% !important;
+    }
+    .samBanner{
+        height: 800px; 
+    }
+    .samBanner>div{
+        height: 50%;
+    }
+    .mobBanner{
+        background-image: url('./../../assests/banner-mobile1-mbl.jpeg');
+    }
+    .tvBanner{
+        background-image: url('./../../assests/banner-tv-mbl.jpg');
+    }
+    .homeBanner{
+        background-image: url('./../../assests/banner-ha-mbl.jpg');
+    }
+    .halfToAllWid{
+        width: 100%;
+    }
+}
+@media(min-width:755px){
+    .smallSamCard{
+        width: 24.8% !important;
+    }
+    .samBanner{
+        height: 500px; 
+    }
+    .samBanner>div{
+        height: 100%;
+    }
+    .mobBanner{
+        background-image: url('./../../assests/banner-mobile1-dkp.jpeg');
+    }
+    .tvBanner{
+        background-image: url('./../../assests/banner-tv-dkp.jpg');
+    }
+    .homeBanner{
+        background-image: url('./../../assests/banner-ha-dkp.jpg');
+    }
+    .halfToAllWid{
+        width: 49.8%;
+    }
+}

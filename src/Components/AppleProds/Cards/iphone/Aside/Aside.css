@@ -1,0 +1,47 @@
+.aside {
+  background-color: white;
+}
+.aside .shop-by {
+  background-color: #00365c;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+.aside .price {
+  background-color: white;
+  padding: 10px;
+  color: black;
+  font-weight: 700;
+}
+
+/* .range {
+  position: absolute;
+} */
+#rangeValue {
+  
+  display: block;
+  text-align: center;
+  font-size: 6em;
+  color: #999;
+  font-weight: 400;
+}
+.range {
+  width: 100%;
+  -webkit-appearance: none;
+  background: #ddd;
+  outline: none;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 1);
+  margin-top: 20px;
+}
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #ddd;
+  cursor: pointer;
+  border: 4px solid #333;
+  box-shadow: -407px 0 0 400px #ddd;
+}
