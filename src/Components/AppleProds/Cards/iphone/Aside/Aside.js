@@ -8,12 +8,14 @@ import PhoneDisplaySize from "./PhoneDisplaySize/PhoneDisplaySize";
 import PhoneRearCamera from "./PhoneRearCamera/PhoneRearCamera";
 import Colour from "./Colour/Colour";
 import "./Aside.css";
-const Aside = () => {
+const Aside = ({ setPriceRinge }) => {
   const [range, setRange] = useState("1000");
+  // const [inf, setInf] = useState([])
   const rangeSlide = (e) => {
     setRange(e.target.value);
-    
+    setPriceRinge(e.target.value);
   };
+
   return (
     <aside className="aside my-3">
       {/* shop by */}
@@ -72,25 +74,25 @@ const Aside = () => {
       </div>
       <hr />
       {/* device type */}
-      <DeviceType></DeviceType>
+      <DeviceType />
       <hr />
       {/* OS */}
-      <OperatingSystem></OperatingSystem>
+      <OperatingSystem />
       <hr />
       {/* rem */}
-      <PhoneMemory></PhoneMemory>
+      <PhoneMemory />
       <hr />
       {/* storage */}
-      <StorageCapacity></StorageCapacity>
+      <StorageCapacity />
       <hr />
       {/* screen */}
-      <PhoneDisplaySize></PhoneDisplaySize>
+      <PhoneDisplaySize />
       <hr />
       {/* cam */}
-      <PhoneRearCamera></PhoneRearCamera>
+      <PhoneRearCamera />
       <hr />
       {/* color */}
-      <Colour></Colour>
+      <Colour />
     </aside>
   );
 };

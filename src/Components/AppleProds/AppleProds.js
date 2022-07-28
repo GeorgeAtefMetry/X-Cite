@@ -46,13 +46,13 @@ const AppleProds = () => {
       name: "Air Tag",
       imgUrl:
         "https://m.xcite.com/media/wysiwyg/Apple_Shop/Apple-Prd-AirTag.jpg",
-        comp :"/iphone"
+        comp :"/AirTag"
     },
     {
       name: "Beats",
       imgUrl:
         "https://m.xcite.com/media/wysiwyg/Apple_Shop/Apple-Prd-Beats.jpg",
-        comp :"/iphone"
+        comp :"/Beats"
     },
   ];
   /****************** 
@@ -103,7 +103,7 @@ const AppleProds = () => {
   ///////////////////////////////
   /***************************/
   return (
-    <>
+    <div style={{backgroundColor: "#dfe3ee"}}>
       <Slider></Slider>
       <Cards card={cardInfo}></Cards>
       <div className="container-fluid  mb-3 ">
@@ -117,7 +117,7 @@ const AppleProds = () => {
       >
         <i class="fa fa-angle-up"></i>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -36,8 +36,8 @@ Buy your Apple iTunes Cards in Kuwait today at the best price! Buy iTunes Cards 
         <option selected='selected'>Desc</option>
         <option>Asce</option>
       </select>
-      <div class="carousel-inner">
-        <div className="carousel-item active">
+      <div class="">
+        <div className="">
           <div className="row">
             {itunesCard.map((itune) => (
               <div className="car  col-md-3 my-2 py-2" key={itune.id}>

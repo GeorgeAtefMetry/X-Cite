@@ -4,9 +4,11 @@ import "./singup.css";
 
 
 import { UserAuth } from "../../context/AuthContext";
+import { addDoc, collection } from "firebase/firestore";
+import db from "../../firebase";
 
 const SingUp = () => {
-
+const user = collection(db, "users")
  const navigate = useNavigate()
 
   const {createUser} = UserAuth()
@@ -38,6 +40,7 @@ const SingUp = () => {
       ...inpValue,
       [e.target.name]: e.target.value,
     });
+    console.log(inpValue);
     //validation
     //full name
     if (e.target.name === "fullName") {
@@ -113,9 +116,10 @@ const SingUp = () => {
   // handel submit
   const handelsubmit = async (e) => {
     e.preventDefault()
-    
+    console.log(inpValue);
     try {
-      await createUser(inpValue.email , inpValue.password)
+      await createUser(inpValue.email , inpValue.password);
+      await addDoc(user, inpValue)
         navigate('/Login')
     } catch (e) {
       console.log(e.message);
