@@ -39,6 +39,8 @@ import IphoneDetiles from './Components/AppleProds/Cards/iphone/iphoneDetiles/Ip
 import Iphone from './Components/AppleProds/Cards/iphone/Iphone'
 import Mac from "./Components/AppleProds/Cards/mac/Mac";
 import Ipad from "./Components/AppleProds/Cards/ipad/Ipad";
+import Test from './test';
+
 function getFavIconElement() {
   return document.getElementById("favicon");
 }
@@ -71,6 +73,7 @@ function App() {
             <Route path="/mac" exact element={<Mac />}></Route>
             <Route path="/ipad" exact element={<Ipad />}></Route>
             <Route path="/Cart" exact element={ <PrivateRoure> <Cart /></PrivateRoure>}></Route>
+            <Route path="/test" exact element={<Test />}></Route>
           </Routes>
         </AuthContextProvider>
         <Footer></Footer>

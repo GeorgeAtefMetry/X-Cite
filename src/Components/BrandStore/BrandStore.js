@@ -16,10 +16,6 @@ const BrandStore =()=>{
         })
     },[]);
 
-    const gotoDetailes = (id)=>{
-        console.log(id)
-    }
-
     return(
         <>
         <div className="container-fluid text-center px-0 py-5 my-3">
@@ -29,7 +25,7 @@ const BrandStore =()=>{
                     Brands.map((brand, index)=>(
                         <div className="card text-muted my-3 mx-2 shadow-sm px-5 pt-3 pb-0" style={{width:'20rem', height:'9.5rem'}} key={index}>
                                 <Link to={`/Brand/${brand.Name}`} state={`${brand.id}`}>
-                                    <img className="card-img-top cursor" src={brand.Logo} alt="Title" onClick={()=>{gotoDetailes(brand.id)}}/>
+                                    <img className="card-img-top cursor" src={brand.Logo} alt="Title"/>
                                 </Link> 
                                 <div className="card-body">
                                    <Link to={`/Brand/${brand.Name}`} state={`${brand.id}`}>
@@ -43,7 +39,7 @@ const BrandStore =()=>{
                     Brands.map((brand, index)=>(
                         <div className="card text-muted my-3 mx-2 shadow-sm px-5 pt-3 pb-0" style={{width:'20rem', height:'9.5rem'}} key={index}>
                         <Link to={`/Brand/${brand.Name}`} state={`${brand.id}`}>
-                            <img className="card-img-top cursor" src={brand.Logo} alt="Title" onClick={()=>{gotoDetailes(brand.id)}}/>
+                            <img className="card-img-top cursor" src={brand.Logo} alt="Title"/>
                         </Link> 
                         <div className="card-body">
                            <Link to={`/Brand/${brand.Name}`} state={`${brand.id}`}>

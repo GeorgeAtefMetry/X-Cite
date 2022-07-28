@@ -16,7 +16,6 @@ import { UserAuth } from "../context/AuthContext";
 
 const Header = () => {
   const { user, logout } = UserAuth();
-  // console.log(user);
   const navTologin = useNavigate();
   const handleLogIn = async () => {
     try {
@@ -28,57 +27,47 @@ const Header = () => {
   };
   return (
     <>
-      <Navbar className="navbar-bg" expand="lg" key="lg">
+      <Navbar className="bgMainCol px-0 pt-0 pb-1" expand="lg" key="lg">
         <Navbar.Toggle aria-controls="offcanvasNavbar-expand-lg" />
 
-        <div className="nav-top d-none d-md-block">
-          <div className="hd-container">
-            <div className="nav-top-to-right">
-              <ul className="nav navbar-nav nav-pills hd-top-head-menu ">
+        <div className="top-nav d-none d-md-block p-0 d-flex">
+              <ul className="nav-pills hd-top-head-menu">
                 <li className="nav-item-top">
-                  <a
-                    rel="nofollow"
-                    data-tracking-title="Top Header Menu Accessed - Trade-In KW EN"
-                    data-tracking-type="Navigation"
-                    href="https://www.xcite.com/tradein/"
-                  >
+                  <a href="https://www.xcite.com/tradein/">
                     Trade-In
                   </a>
                 </li>
                 <li className="nav-item-top">
-                  <a rel="nofollow">Pay Installment</a>
+                  {/* <a href="#"> */}
+                  <Link to={'/test'}>
+                    Pay Installment
+                  </Link>
+                    {/* </a> */}
                 </li>
                 <li className="nav-item-top">
-                  <a rel="nofollow">Help &amp; Services</a>
+                  <a href="#">Help &amp; Services</a>
                 </li>
                 <li className="nav-item-top">
-                  <a rel="nofollow">X-cite Stores</a>
+                  <a href="#">X-cite Stores</a>
                 </li>
                 <li className="nav-item-top">
-                  <a rel="nofollow">Weekly Flyer</a>
+                  <a href="#">Weekly Flyer</a>
                 </li>
                 <li className="nav-item-top">
-                  <a
-                    rel="nofollow"
-                    data-toggle="modal"
-                    data-target="#ordertrack"
-                    href="#"
-                  >
+                  <a href="#">
                     Order Status
                   </a>
                 </li>
-              </ul>
-              <ul className="nav navbar-nav nav-pills hd-top-head-menu ">
+
                 <li className="nav-item-top">
-                  <a rel="nofollow">Contact Us</a>
+                  <a href="#">Contact Us</a>
+                </li>
+                <li className="nav-item-top text-end ps-1 pe-0">
+                  <img src={flag1} alt="KSa" width="70%" className="p-0"/>
                 </li>
 
-                <li className="nav-item-top dropdown country-switch">
-                  <span alt="Xcite Kuwait">
-                    <img src={flag1} />
-                  </span>
+                <li className="nav-item-top country-switch bgMainCol pe-lg-5">
                   <NavDropdown
-                    className="xc-white-font"
                     title="Xcite Kuwait"
                     id="basic-nav-dropdown"
                   >
@@ -87,8 +76,8 @@ const Header = () => {
                         className="nav-sub-item"
                         href="https://m.xcite.com//skin/frontend/xvii/default/images/flags.png"
                       >
-                        <img src={flag1} class="flag flag-kw" />
-                        &nbsp; Xcite Kuwait
+                        <img src={flag1} className="flag pe-0" />
+                         Xcite Kuwait
                       </a>
                     </NavDropdown.Item>
                     <NavDropdown.Item href="#action/3.2">
@@ -96,79 +85,77 @@ const Header = () => {
                         className="nav-sub-item"
                         href="https://m.xcite.com//skin/frontend/xvii/default/images/flags.png"
                       >
-                        <img src={flag2} alt="flag" className="flag flag-sa" />
-                        &nbsp; Xcite KSA
+                        <img src={flag2} alt="flag" className="flag pe-1" />
+                         Xcite KSA
                       </a>
                     </NavDropdown.Item>
-                  </NavDropdown>
+                  </NavDropdown> 
                 </li>
               </ul>
-            </div>
-          </div>
         </div>
+        </Navbar>
+
+
         {/* NavBar in the Middle */}
-        <div className="nav-middle">
-          <div className="row">
-            <div className="col-md-2 col-sm-2 logo-img">
+        <Navbar  sticky="top" key='md' className="nav-middle d-flex flex-wrap p-0 align-items-center justify-content-around py-1 my-0 mx-0" style={{minHeight:'50px', boxShadow:'none'}}>
+            <div className="col-md-2 col-5 order-md-1 order-1 text-center ps-2">
               <Navbar.Brand>
                 <Link to="/home">
                   <img
-                    className="hd-xcite-logo img-responsive"
-                    width="161"
-                    height="40"
+                    width="80%"
+                    // height="10%"
                     src="https://m.xcite.com/skin/frontend/xvii/default/images/xcite-logo-en.png"
                     alt="Xcite.com"
+                    title="Xcite.com"
                   />
                 </Link>
               </Navbar.Brand>
             </div>
-            <div className="col-md-6 col-sm-12 search-input">
-              <Form className="d-flex">
+            <div className="col-md-6 col-12 order-md-2 order-3">
+              <Form>
                 <FormControl
                   type="search"
-                  placeholder="Search"
-                  className="me-2 search"
+                  placeholder="Search for products, categories, ..."
+                  className="search px-3"
                   aria-label="Search"
                 />
               </Form>
             </div>
-            <div className="col-md-4 col-sm-9 icons">
-              <div className="hd-cart">
-                <ul className="nav nav-pills hd-mid-head-nav">
-                  <li className="nav-item language-id0 xc-white-font lang-switch">
+            <div className="col-md-4 col-5 order-md-3 order-2 d-flex align-items-center py-1 ps-sm-3 pe-3 ps-2"  style={{height:'50px'}}>
+                
+                <div className="col-4 text-center minHead h-100">
                     <a
                       href="https://www.xcite.com/ar/"
-                      className="hd-lang-select"
+                      className="text-light w-100"
                     >
-                      <span className="lang-ar">العربية</span>
+                      العربية
                     </a>
-                  </li>
-                  <li
-                    className="nav-item hd-dropdown account-drop"
-                    id="ajax-nav"
-                  >
-                    <div className="login">
-                      <a
+                  </div>
+
+                <div className="col-4 text-center minHead h-100 nav-pills ">
+                  <div className="nav-item account-drop w-100" id="ajax-nav">
+                    <div className="login nav-item account-drop w-100 d-flex align-items-center justify-content-center">
+                      <Link
                         type="button"
-                        className="header-link trackable"
+                        className="d-flex align-items-center justify-content-center"
                         data-tracking-title="Header Login Accessed - LoggedOut"
                         data-tracking-type="Navigation"
                         rel="nofollow"
-                        href=""
+                        to=""
                         title="Sign Up / Login"
                       >
-                        <i className="fa-solid fa-user"></i>
-                        <p className="d-none d-md-none d-lg-block ">
-                          {user ? user?.email?.slice(0, 6) : "Login"}
-                        </p>
-                        <i
-                          className="fa fa-chevron-down hd-cart-chevron hidden-xs hidden-sm hidden-md"
-                          aria-hidden="false"
-                        ></i>
-                      </a>
+                        <i className="fa-solid fa-user m-0 p-0" style={{fontSize:'1.1rem'}}></i>
+                        <span className="d-none d-lg-block py-0 ps-1 pe-0 m-0"  style={{fontSize:'0.8rem'}}>
+                          {user ?
+                          (user?.email?.slice(0, 6)):
+                           "Login"} 
+                        </span>
+                        <i className="fa-solid fa-angle-down py-0 ps-1 pe-0 m-0" style={{fontSize:'0.8rem'}}></i>
+                        
+                      </Link>
                     </div>
 
-                    <div class="hd-dropdown-content pad15">
+                    <div className="hd-dropdown-content px-sm-3 pb-2 shadow">
                       {user ? (
                         <button
                           type="submit"
@@ -182,78 +169,80 @@ const Header = () => {
                       ) : (
                         <Link
                           to="/Login"
-                          className="hd-dropdown-item"
-                          rel="nofollow"
-                          title="Log In"
+                          className=" h-auto"
                         >
-                          <span
-                            rel="no-follow"
-                            className="xc-btn xc-btn-orange brd-rad3 mar5-b px16 show"
-                          >
-                            login
-                          </span>
+                          <button
+                          type="submit"
+                          className="btn btn-warning my-1 w-100"
+                        >
+                          login
+                        </button>
                         </Link>
                       )}
-                      <a rel="nofollow" class="hd-dropdown-item">
+                      <a rel="nofollow" className='my-1'>
                         <Link to={`/wishlist`}>Wishlist</Link>
                       </a>
                       <a
                         rel="nofollow"
-                        className="hd-dropdown-item xc-cursor-pointer"
+                        className="xc-cursor-pointer my-1"
                       >
                         Compare
                       </a>
                     </div>
-                  </li>
-                  <li className="nav-item hd-cart-menu">
-                  <Link
-                      className="trackable login"
-                      to="/Cart"
-                    >
-                      <i className="fa-solid fa-cart-shopping">
-                        <span className="hd-minicart-badge" id="header-count">
-                          0
-                        </span>
-                      </i>
-                      <p className="d-none d-md-none d-lg-block ">My Cart</p>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Navbar in the Bottom */}
+                    </div>
+                </div>
 
+                  <div  className="col-4 text-center minHead h-100">
+                    <Link
+                        className=" login d-flex text-light minHead text-center mx-auto"
+                        to="/Cart"
+                      >
+                        <i className="fa-solid fa-cart-shopping fs-4" style={{position:'relative'}}>
+                          <span className="text-light cartCounter" id="header-count">
+                            0
+                          </span>
+                        </i>
+                        <span className="d-none d-md-none d-lg-block ps-1" style={{fontSize:'0.73rem'}}>My Cart</span>
+                      </Link>
+                  </div>
+            </div>
+        </Navbar>
+
+
+        {/* Navbar in the Bottom */}
         {/* <Navbar.Offcanvas
                 id="offcanvasNavbar-expand-lg"
                 aria-labelledby="offcanvasNavbarLabel-expand-lg"
                 placement="start"
             >  */}
-        <div className="nav-bottom d-none d-lg-block container-fluid">
+      <Navbar className="bgMainCol px-0 pb-0 pt-1" expand="lg" key="sm">
+        <div className="nav-bottom d-none d-lg-block container-fluid py-0 m-0">
           <div className="row">
+
             <div className="col-md-2">
               <div className="meganav-btn m-auto">
                 <span className="hd-all-dept hidden-xs hidden-sm">
                   <NavDropdown
                     id="nav-dropdown-dark-example"
+                    style={{fontSize:'0.8rem'}}
                     title="All Categories"
                     menuVariant="dark"
                   >
                     <div className="items row">
-                      <div className="categories col-md-12">
-                        <div className="col-md-3 category category-computers">
+                      <div className="categories shadow-lg px-0 pt-0 pb-2 m-0" style={{width:"21%"}}>
+
+                        <div className="col-md-12 category category-computers d-flex py-1 px-3 m-0">
                           <NavDropdown.Item
-                            className="computers"
+                            className="computers p-0 m-0"
                             href="#action/3.1"
                           >
                             Computer & Tablets{" "}
                           </NavDropdown.Item>
-                          <i className="fa fa-fw fa-caret-right cat-subs"></i>
+                            <i class="fa-solid fa-caret-right"></i>
                         </div>
 
-                        <div className="computers-items col-md-7">
-                          <div className="float-left subcategories">
+                        <div className="computers-items col-md-8 ps-4 py-3">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Laptops</li>
                               <li>Apple</li>
@@ -273,7 +262,7 @@ const Header = () => {
                               <li>Wifi Routers</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Tablets</li>
                               <li>Apple iPad</li>
@@ -294,7 +283,7 @@ const Header = () => {
                               <li>Electrical extensions</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Monitors & Dektops</li>
                               <li>iMacs</li>
@@ -315,7 +304,7 @@ const Header = () => {
                               <li>Cases & Pens</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">
                                 Mice, Keyboards and Pointing Devices
@@ -339,7 +328,7 @@ const Header = () => {
                               <li>Stationary</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories px-0">
                             <ul>
                               <li className="main">Printers, Inks & Papers</li>
                               <li>Printers</li>
@@ -361,18 +350,19 @@ const Header = () => {
                           </div>
                         </div>
 
-                        <div className="col-md-3 category category-iphones">
+
+                        <div className="col-md-12 category category-iphones d-flex py-1 px-3 m-0">
                           <NavDropdown.Item
-                            className="iphones"
+                            className="iphones p-0 m-0"
                             href="#action/3.1"
                           >
                             iTunes & Game Cards{" "}
                           </NavDropdown.Item>
-                          <i className="fa fa-fw fa-caret-right cat-subs"></i>
+                          <i class="fa-solid fa-caret-right"></i>
                         </div>
 
-                        <div className="iphones-items col-md-7">
-                          <div className="float-left subcategories">
+                        <div className="iphones-items col-md-8 ps-4 py-3">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">sadasdasd</li>
                               <li>Apple</li>
@@ -392,7 +382,7 @@ const Header = () => {
                               <li>Wifi Routers</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Tablets</li>
                               <li>Apple iPad</li>
@@ -413,7 +403,7 @@ const Header = () => {
                               <li>Electrical extensions</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Monitors & Dektops</li>
                               <li>iMacs</li>
@@ -434,7 +424,7 @@ const Header = () => {
                               <li>Cases & Pens</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">
                                 Mice, Keyboards and Pointing Devices
@@ -458,7 +448,7 @@ const Header = () => {
                               <li>Stationary</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories px-0">
                             <ul>
                               <li className="main">Printers, Inks & Papers</li>
                               <li>Printers</li>
@@ -480,18 +470,18 @@ const Header = () => {
                           </div>
                         </div>
 
-                        <div className="col-md-3 category category-itunes">
+                        <div className="col-md-12 category category-itunes d-flex py-1 px-3 m-0">
                           <NavDropdown.Item
-                            className="itunes"
+                            className="itunes p-0 m-0"
                             href="#action/3.1"
                           >
                             iTunes & Game Cards{" "}
                           </NavDropdown.Item>
-                          <i className="fa fa-fw fa-caret-right cat-subs"></i>
+                          <i class="fa-solid fa-caret-right"></i>
                         </div>
 
-                        <div className="itunes-items col-md-7">
-                          <div className="float-left subcategories">
+                        <div className="itunes-items col-md-8 ps-4 py-3">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Laptops</li>
                               <li>Apple</li>
@@ -511,7 +501,7 @@ const Header = () => {
                               <li>Wifi Routers</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Tablets</li>
                               <li>Apple iPad</li>
@@ -532,7 +522,7 @@ const Header = () => {
                               <li>Electrical extensions</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Monitors & Dektops</li>
                               <li>iMacs</li>
@@ -553,7 +543,7 @@ const Header = () => {
                               <li>Cases & Pens</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">
                                 Mice, Keyboards and Pointing Devices
@@ -577,7 +567,7 @@ const Header = () => {
                               <li>Stationary</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories px-0">
                             <ul>
                               <li className="main">Printers, Inks & Papers</li>
                               <li>Printers</li>
@@ -599,15 +589,17 @@ const Header = () => {
                           </div>
                         </div>
 
-                        <div className="col-md-3 category category-home">
-                          <NavDropdown.Item className="home" href="#action/3.1">
+                        <div className="col-md-12 category category-home d-flex py-1 px-3 m-0">
+                          <NavDropdown.Item 
+                          className="home p-0 m-0" 
+                          href="#action/3.1">
                             Home Entertainment
                           </NavDropdown.Item>
-                          <i className="fa fa-fw fa-caret-right cat-subs"></i>
+                          <i class="fa-solid fa-caret-right"></i>
                         </div>
 
-                        <div className="home-items col-md-7">
-                          <div className="float-left subcategories">
+                        <div className="home-items col-md-8 ps-4 py-3">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">sadasdasd</li>
                               <li>Apple</li>
@@ -627,7 +619,7 @@ const Header = () => {
                               <li>Wifi Routers</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Tablets</li>
                               <li>Apple iPad</li>
@@ -648,7 +640,7 @@ const Header = () => {
                               <li>Electrical extensions</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Monitors & Dektops</li>
                               <li>iMacs</li>
@@ -669,7 +661,7 @@ const Header = () => {
                               <li>Cases & Pens</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">
                                 Mice, Keyboards and Pointing Devices
@@ -693,7 +685,7 @@ const Header = () => {
                               <li>Stationary</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories px-0">
                             <ul>
                               <li className="main">Printers, Inks & Papers</li>
                               <li>Printers</li>
@@ -715,18 +707,18 @@ const Header = () => {
                           </div>
                         </div>
 
-                        <div className="col-md-3 category category-gaming">
+                        <div className="col-md-12 category category-gaming d-flex py-1 px-3 m-0">
                           <NavDropdown.Item
-                            className="gaming"
+                            className="gaming p-0 m-0"
                             href="#action/3.1"
                           >
                             Gaming
                           </NavDropdown.Item>
-                          <i className="fa fa-fw fa-caret-right cat-subs"></i>
+                          <i class="fa-solid fa-caret-right"></i>
                         </div>
 
-                        <div className="gaming-items col-md-7">
-                          <div className="float-left subcategories">
+                        <div className="gaming-items col-md-8 ps-4 py-3">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Laptops</li>
                               <li>Apple</li>
@@ -746,7 +738,7 @@ const Header = () => {
                               <li>Wifi Routers</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Tablets</li>
                               <li>Apple iPad</li>
@@ -767,7 +759,7 @@ const Header = () => {
                               <li>Electrical extensions</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Monitors & Dektops</li>
                               <li>iMacs</li>
@@ -788,7 +780,7 @@ const Header = () => {
                               <li>Cases & Pens</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">
                                 Mice, Keyboards and Pointing Devices
@@ -812,7 +804,7 @@ const Header = () => {
                               <li>Stationary</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories px-0">
                             <ul>
                               <li className="main">Printers, Inks & Papers</li>
                               <li>Printers</li>
@@ -834,18 +826,18 @@ const Header = () => {
                           </div>
                         </div>
 
-                        <div className="col-md-3 category category-camera">
+                        <div className="col-md-12 category category-camera d-flex py-1 px-3 m-0">
                           <NavDropdown.Item
-                            className="camera"
+                            className="camera p-0 m-0"
                             href="#action/3.1"
                           >
                             Cameras & Drones
                           </NavDropdown.Item>
-                          <i className="fa fa-fw fa-caret-right cat-subs"></i>
+                          <i class="fa-solid fa-caret-right"></i>
                         </div>
 
-                        <div className="camera-items col-md-7">
-                          <div className="float-left subcategories">
+                        <div className="camera-items col-md-8 ps-4 py-3">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">sadasdasd</li>
                               <li>Apple</li>
@@ -865,7 +857,7 @@ const Header = () => {
                               <li>Wifi Routers</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Tablets</li>
                               <li>Apple iPad</li>
@@ -886,7 +878,7 @@ const Header = () => {
                               <li>Electrical extensions</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Monitors & Dektops</li>
                               <li>iMacs</li>
@@ -907,7 +899,7 @@ const Header = () => {
                               <li>Cases & Pens</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">
                                 Mice, Keyboards and Pointing Devices
@@ -931,7 +923,7 @@ const Header = () => {
                               <li>Stationary</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories px-0">
                             <ul>
                               <li className="main">Printers, Inks & Papers</li>
                               <li>Printers</li>
@@ -953,18 +945,18 @@ const Header = () => {
                           </div>
                         </div>
 
-                        <div className="col-md-3 category category-small-home">
+                        <div className="col-md-12 category category-small-home d-flex py-1 px-3 m-0">
                           <NavDropdown.Item
-                            className="small-home"
+                            className="small-home p-0 m-0"
                             href="#action/3.1"
                           >
                             Small Home Appliances
                           </NavDropdown.Item>
-                          <i className="fa fa-fw fa-caret-right cat-subs"></i>
+                          <i class="fa-solid fa-caret-right"></i>
                         </div>
 
-                        <div className="small-home-items col-md-7">
-                          <div className="float-left subcategories">
+                        <div className="small-home-items col-md-8 ps-4 py-3">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Laptops</li>
                               <li>Apple</li>
@@ -984,7 +976,7 @@ const Header = () => {
                               <li>Wifi Routers</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Tablets</li>
                               <li>Apple iPad</li>
@@ -1005,7 +997,7 @@ const Header = () => {
                               <li>Electrical extensions</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Monitors & Dektops</li>
                               <li>iMacs</li>
@@ -1026,7 +1018,7 @@ const Header = () => {
                               <li>Cases & Pens</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">
                                 Mice, Keyboards and Pointing Devices
@@ -1050,7 +1042,7 @@ const Header = () => {
                               <li>Stationary</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories px-0">
                             <ul>
                               <li className="main">Printers, Inks & Papers</li>
                               <li>Printers</li>
@@ -1072,18 +1064,18 @@ const Header = () => {
                           </div>
                         </div>
 
-                        <div className="col-md-3 category category-large-home">
+                        <div className="col-md-12 category category-large-home d-flex py-1 px-3 m-0">
                           <NavDropdown.Item
-                            className="large-home"
+                            className="large-home p-0 m-0"
                             href="#action/3.1"
                           >
                             Large Home Appliances{" "}
                           </NavDropdown.Item>
-                          <i className="fa fa-fw fa-caret-right cat-subs"></i>
+                          <i class="fa-solid fa-caret-right"></i>
                         </div>
 
-                        <div className="large-home-items col-md-7">
-                          <div className="float-left subcategories">
+                        <div className="large-home-items col-md-8 ps-4 py-3">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">sadasdasd</li>
                               <li>Apple</li>
@@ -1103,7 +1095,7 @@ const Header = () => {
                               <li>Wifi Routers</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Tablets</li>
                               <li>Apple iPad</li>
@@ -1124,7 +1116,7 @@ const Header = () => {
                               <li>Electrical extensions</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Monitors & Dektops</li>
                               <li>iMacs</li>
@@ -1145,7 +1137,7 @@ const Header = () => {
                               <li>Cases & Pens</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">
                                 Mice, Keyboards and Pointing Devices
@@ -1169,7 +1161,7 @@ const Header = () => {
                               <li>Stationary</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories px-0">
                             <ul>
                               <li className="main">Printers, Inks & Papers</li>
                               <li>Printers</li>
@@ -1191,18 +1183,18 @@ const Header = () => {
                           </div>
                         </div>
 
-                        <div className="col-md-3 category category-health">
+                        <div className="col-md-12 category category-health d-flex py-1 px-3 m-0">
                           <NavDropdown.Item
-                            className="health"
+                            className="health p-0 m-0"
                             href="#action/3.1"
                           >
                             Health, Gym & Personal Care{" "}
                           </NavDropdown.Item>
-                          <i className="fa fa-fw fa-caret-right cat-subs"></i>
+                          <i class="fa-solid fa-caret-right"></i>
                         </div>
 
-                        <div className="health-items col-md-7">
-                          <div className="float-left subcategories">
+                        <div className="health-items col-md-8 ps-4 py-3">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Laptops</li>
                               <li>Apple</li>
@@ -1222,7 +1214,7 @@ const Header = () => {
                               <li>Wifi Routers</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Tablets</li>
                               <li>Apple iPad</li>
@@ -1243,7 +1235,7 @@ const Header = () => {
                               <li>Electrical extensions</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Monitors & Dektops</li>
                               <li>iMacs</li>
@@ -1264,7 +1256,7 @@ const Header = () => {
                               <li>Cases & Pens</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">
                                 Mice, Keyboards and Pointing Devices
@@ -1288,7 +1280,7 @@ const Header = () => {
                               <li>Stationary</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories px-0">
                             <ul>
                               <li className="main">Printers, Inks & Papers</li>
                               <li>Printers</li>
@@ -1310,18 +1302,18 @@ const Header = () => {
                           </div>
                         </div>
 
-                        <div className="col-md-3 category category-outdoor">
+                        <div className="col-md-12 category category-outdoor d-flex py-1 px-3 m-0">
                           <NavDropdown.Item
-                            className="outdoor"
+                            className="outdoor p-0 m-0"
                             href="#action/3.1"
                           >
                             Outdoor & Travel
                           </NavDropdown.Item>
-                          <i className="fa fa-fw fa-caret-right cat-subs"></i>
+                          <i class="fa-solid fa-caret-right"></i>
                         </div>
 
-                        <div className="outdoor-items col-md-7">
-                          <div className="float-left subcategories">
+                        <div className="outdoor-items col-md-8 ps-4 py-3">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">sadasdasd</li>
                               <li>Apple</li>
@@ -1341,7 +1333,7 @@ const Header = () => {
                               <li>Wifi Routers</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Tablets</li>
                               <li>Apple iPad</li>
@@ -1362,7 +1354,7 @@ const Header = () => {
                               <li>Electrical extensions</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Monitors & Dektops</li>
                               <li>iMacs</li>
@@ -1383,7 +1375,7 @@ const Header = () => {
                               <li>Cases & Pens</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">
                                 Mice, Keyboards and Pointing Devices
@@ -1407,7 +1399,7 @@ const Header = () => {
                               <li>Stationary</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories px-0">
                             <ul>
                               <li className="main">Printers, Inks & Papers</li>
                               <li>Printers</li>
@@ -1429,18 +1421,18 @@ const Header = () => {
                           </div>
                         </div>
 
-                        <div className="col-md-3 category category-air-conditioners">
+                        <div className="col-md-12 category category-air-conditioners d-flex py-1 px-3 m-0">
                           <NavDropdown.Item
-                            className="air-conditioners"
+                            className="air-conditioners p-0 m-0"
                             href="#action/3.1"
                           >
                             Air Conditioners{" "}
                           </NavDropdown.Item>
-                          <i className="fa fa-fw fa-caret-right cat-subs"></i>
+                          <i class="fa-solid fa-caret-right"></i>
                         </div>
 
-                        <div className="air-conditioners-items col-md-7">
-                          <div className="float-left subcategories">
+                        <div className="air-conditioners-items col-md-8 ps-4 py-3">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Laptops</li>
                               <li>Apple</li>
@@ -1460,7 +1452,7 @@ const Header = () => {
                               <li>Wifi Routers</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Tablets</li>
                               <li>Apple iPad</li>
@@ -1481,7 +1473,7 @@ const Header = () => {
                               <li>Electrical extensions</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Monitors & Dektops</li>
                               <li>iMacs</li>
@@ -1502,7 +1494,7 @@ const Header = () => {
                               <li>Cases & Pens</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">
                                 Mice, Keyboards and Pointing Devices
@@ -1526,7 +1518,7 @@ const Header = () => {
                               <li>Stationary</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories px-0">
                             <ul>
                               <li className="main">Printers, Inks & Papers</li>
                               <li>Printers</li>
@@ -1548,18 +1540,18 @@ const Header = () => {
                           </div>
                         </div>
 
-                        <div className="col-md-3 category category-home-furniture">
+                        <div className="col-md-12 category category-home-furniture d-flex py-1 px-3 m-0">
                           <NavDropdown.Item
-                            className="home-furniture"
+                            className="home-furniture p-0 m-0"
                             href="#action/3.1"
                           >
                             Home Furniture
                           </NavDropdown.Item>
-                          <i className="fa fa-fw fa-caret-right cat-subs"></i>
+                          <i class="fa-solid fa-caret-right"></i>
                         </div>
 
-                        <div className="home-furniture-items col-md-7">
-                          <div className="float-left subcategories">
+                        <div className="home-furniture-items col-md-8 ps-4 py-3">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">sadasdasd</li>
                               <li>Apple</li>
@@ -1579,7 +1571,7 @@ const Header = () => {
                               <li>Wifi Routers</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Tablets</li>
                               <li>Apple iPad</li>
@@ -1600,7 +1592,7 @@ const Header = () => {
                               <li>Electrical extensions</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Monitors & Dektops</li>
                               <li>iMacs</li>
@@ -1621,7 +1613,7 @@ const Header = () => {
                               <li>Cases & Pens</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">
                                 Mice, Keyboards and Pointing Devices
@@ -1645,7 +1637,7 @@ const Header = () => {
                               <li>Stationary</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories px-0">
                             <ul>
                               <li className="main">Printers, Inks & Papers</li>
                               <li>Printers</li>
@@ -1667,15 +1659,17 @@ const Header = () => {
                           </div>
                         </div>
 
-                        <div className="col-md-3 category category-toys">
-                          <NavDropdown.Item className="toys" href="#action/3.1">
+                        <div className="col-md-12 category category-toys d-flex py-1 px-3 m-0">
+                          <NavDropdown.Item 
+                          className="toys p-0 m-0" 
+                          href="#action/3.1">
                             Toys & Baby
                           </NavDropdown.Item>
-                          <i className="fa fa-fw fa-caret-right cat-subs"></i>
+                          <i class="fa-solid fa-caret-right"></i>
                         </div>
 
-                        <div className="toys-items col-md-7">
-                          <div className="float-left subcategories">
+                        <div className="toys-items col-md-8 ps-4 py-3">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Laptops</li>
                               <li>Apple</li>
@@ -1695,7 +1689,7 @@ const Header = () => {
                               <li>Wifi Routers</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Tablets</li>
                               <li>Apple iPad</li>
@@ -1716,7 +1710,7 @@ const Header = () => {
                               <li>Electrical extensions</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">Monitors & Dektops</li>
                               <li>iMacs</li>
@@ -1737,7 +1731,7 @@ const Header = () => {
                               <li>Cases & Pens</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories ps-0 pe-2">
                             <ul>
                               <li className="main">
                                 Mice, Keyboards and Pointing Devices
@@ -1761,7 +1755,7 @@ const Header = () => {
                               <li>Stationary</li>
                             </ul>
                           </div>
-                          <div className="float-left subcategories">
+                          <div className="float-left subcategories px-0">
                             <ul>
                               <li className="main">Printers, Inks & Papers</li>
                               <li>Printers</li>
@@ -1788,32 +1782,34 @@ const Header = () => {
                 </span>
               </div>
             </div>
-            <div className="col-md-6 meganav-sub-menu cal-xs-12 col-md-8 col-lg-7 col-xl-7 pad10-l pad10-r">
+
+            <div className="col-md-6 cal-xs-12 col-lg-7 col-xl-7 pad10-l pad10-r">
               <div className="header-highlights">
                 <ul>
                   <li>
-                    <Link className="brands" to="/dailydeals">
+                    <Link className="brands me-3 ps-2" to="/dailydeals">
                       Daily Deals
                     </Link>
                   </li>
                   <li>
-                    <Link className="giftCards" to="/GiftCard">
+                    <Link className="giftCards mx-3" to="/GiftCard">
                       Gift Cards
                     </Link>
                   </li>
                   <li>
-                    <Link to="/AppleProds" className="AppleProducts">
+                    <Link to="/AppleProds" className="AppleProducts mx-3">
                       Apple Products
                     </Link>
                   </li>
                   <li>
-                    <Link className="brandStore" to="/Brands">
+                    <Link className="brandStore ms-3" to="/Brands">
                       Brand Stores
                     </Link>
                   </li>
                 </ul>
               </div>
             </div>
+
             <div className="col-md-2">
               <div className="down-app">
                 <a href="https://www.xcite.com/mob-apps/">
@@ -1828,9 +1824,8 @@ const Header = () => {
             </div>
           </div>
         </div>
-
-        {/* </Navbar.Offcanvas> */}
       </Navbar>
+        {/* </Navbar.Offcanvas> */}
     </>
   );
 };
