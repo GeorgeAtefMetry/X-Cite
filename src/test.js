@@ -5,7 +5,6 @@ import fs from './firebase';
 import { collection, onSnapshot, orderBy, query, where, collectionGroup } from 'firebase/firestore';
 
 const Test = ()=>{
-    
     const [Brands, setBrands] = useState([]);
     useEffect(()=>{
         // const collecCat = collection(fs, 'Categories');
@@ -40,6 +39,7 @@ const Test = ()=>{
     return (
         <>
         <h2>test</h2>
+        <h3>HI</h3>
         </>
     )
 }
