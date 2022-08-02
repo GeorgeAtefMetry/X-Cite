@@ -11,7 +11,7 @@ const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
-const [inpfil, setFilter] = useState([]);
+  const [inpfil, setFilter] = useState([]);
   // create acccount
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -38,7 +38,7 @@ const [inpfil, setFilter] = useState([]);
 
   return (
     <UserContext.Provider
-      value={{ createUser, signin, user, logout , setFilter , inpfil }}
+      value={{ createUser, signin, user, logout, setFilter, inpfil }}
     >
       {children}
     </UserContext.Provider>

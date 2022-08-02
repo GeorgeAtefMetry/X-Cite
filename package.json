@@ -2,7 +2,7 @@
   "name": "x-cite",
   "version": "0.1.0",
   "private": true,
-  "homepage": "`https://georgeatefmetry.github.io/X-Cite-User`",
+  "homepage": "`https://georgeatefmetry.github.io/home`",
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
@@ -33,7 +33,11 @@
     "save-dev": "^0.0.1-security",
     "slick-carousel": "^1.8.1",
     "swiper": "^8.3.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "i18next": "^21.8.14",
+    "i18next-browser-languagedetector": "^6.1.4",
+    "i18next-http-backend": "^1.4.1",
+    "react-i18next": "^11.18.3"
   },
   "scripts": {
     "start": "react-scripts start",

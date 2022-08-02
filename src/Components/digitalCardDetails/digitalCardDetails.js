@@ -1,22 +1,23 @@
 import React from "react";
 import { useEffect, useState } from "react"
-import db from '../firebase'
+import db from '../../firebase'
 import { useParams } from "react-router-dom";
 import { collection, doc, onSnapshot,getDocs,getDoc, increment } from "firebase/firestore"   
-import classes from './digitalCardDetails.module.css'
+import classes from './digitalCardDetails.module.css';
 import { useForm } from "react-hook-form";
 
 const DigitalCardDetails = () => {
     const params = useParams()
     const [count, setCount] = useState(1)
-    const[digitalCards, setDigitalCards] = useState([])
-    const[favorites, setfavorites] = useState([])
+    const [digitalCard, setDigitalCard] = useState({images:[]})
+    const [favorites, setfavorites] = useState([])
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
 
     useEffect(()=>
-    onSnapshot(doc(db, 'products/r0IPHZLeSwWjyANaykLp/digital-cards', `${params.id}`),(snapshot)=>{
-        setDigitalCards(snapshot.data())
+    onSnapshot(doc(db, 'Products/', `${params.id}`),(snapshot)=>{
+        console.log(snapshot.data());
+        setDigitalCard(snapshot.data())
     })
     ,[]);
 
@@ -82,164 +83,174 @@ const DigitalCardDetails = () => {
         setReviewActive (reviewActive => false)
     }
     return (
-        <> 
-        <hr></hr>
-            <div className="row">
-                <div className={`col-lg-4`} style={{padding:'20px'}}>
+        <>
+        <div className={classes.bigContainer+' w-100 h-auto px-0 pb-0 pt-0 m-0'}>
+           <p className={"px-3 py-2 m-0 "+classes.proPath}> X-Cite {'>'} {digitalCard.categoryName} {'>'} {digitalCard.name} </p>
+        <hr className="mt-0"/>
+        {/* ====== Product General Detailes ================================================= */}
+            <div className="row p-0 m-0">
+                <div className={`col-lg-4 col-sm-7 order-1 px-sm-4 px-2 py-2`}>
                     <div className={classes.image}>
-                        <img src={digitalCards.img}></img>
+                        <img src={digitalCard.images[0]} height="400px"/>
                     </div>
                 </div>
-                <div className="col-lg-5" style={{padding:'30px'}}>
+                <div className="col-lg-5 col-sm-12 order-lg-2 order-sm-3 order-2 px-sm-4 px-3 py-2">
                     <div className={classes.centerDetails}>
-                        <h4>{digitalCards.name}</h4>
+                        <h5>{digitalCard.name}</h5>
                         <div>
-                            <p>Brand: <span>BrandName</span></p>
+                            <p style={{fontSize:'0.8rem', color:'gray'}}>
+                                <b>Brand: </b><span>{digitalCard.brandName}</span>
+                                <b className="ms-3">sku: </b><span>{digitalCard.sku}</span>
+                            </p>
                             <div className={classes.rating}>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
+                                <span className="fa fa-star checked"></span>
+                                <span className="fa fa-star checked"></span>
+                                <span className="fa fa-star checked"></span>
+                                <span className="fa fa-star"></span>
+                                <span className="fa fa-star"></span>
                             </div>
                             <div className={classes.inStock}>
-                                <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                    In Stock
+                                <i className="fa fa-check-circle" aria-hidden="true"></i>
+                                  {
+                                    digitalCard.quantity>5?
+                                    'In Stock'
+                                    :(
+                                        digitalCard.quantity==0?
+                                        "Sorry!,This Product is Not Available Now!"
+                                        :`Hurry up, It's available only ${digitalCard.quantity} items.`
+                                    )
+                                  }  
                             </div>
                         </div>
                         <hr></hr>
                         <div className={classes.pricing}>
-                            <span className={classes.price}>{digitalCards.price}</span>
-                            <span className={classes.oldPrice}>{digitalCards.oldPrice}</span>
-                            <span className={classes.discount}>{digitalCards.discount}</span>
+                            {
+                                digitalCard.discount?
+                                    <>
+                                    <span className={classes.price+" me-1"}>{(digitalCard.price*digitalCard.discount)/100} KD</span>
+                                    <span className={classes.oldPrice+" me-1"}>{digitalCard.price} KD</span>
+                                    <span className={classes.discount}>save {digitalCard.discount}%</span>
+                                    </>
+                                    :<span className={classes.price}>{digitalCard.price} KD</span>
+                            }
                         </div>
-                        <hr></hr>
+                        <hr className="mt-1"/>
                         <div className={classes.overview}>
-                            <h4>Quick Overview</h4>
-                            <ul>
+                            <h6>Quick Overview</h6>
+                            <p className="pe-5 w-75">
+                                {digitalCard.description}
+                            </p>
+                            {/* <ul>
                                 <li>Receive Code digitally</li>
                                 <li>View code via "My Orders" "My Vitual Cards"</li>
                                 <li>Fast & Reliable</li>
                                 <li>For US Accounts Only</li>
-                            </ul>
-                            <div className={classes.howDoIGet}>
+                            </ul> */}
+                            <div className={classes.howDoIGet+" ps-2 py-1"}>
                                 How do I get it?
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="col-lg-3" style={{padding:'20px'}}>
-                    <div className={classes.rightAddToCart}>
-                        <div className={classes.btns}>
+                <div className="col-lg-3 col-sm-5 order-lg-3 order-sm-2 order-3 p-3">
+                    <div className={classes.rightAddToCart+ " w-100"}>
+                        <div className={classes.btns+" mt-2 mb-3"}>
                             <button onClick={decrementCount} className={classes.decrement}>-</button>
                             <span className={classes.count}>{count}</span>
                             <button onClick={incrementCount} className={classes.increment}>+</button>
+                      </div>
+                      <div className="w-100 h-auto px-3 mb-3">
+                          <button className={classes.addToCardBtn+" py-1"}><i className="fa fa-shopping-cart fa-fw me-2"></i>Add to Card</button>
+                      </div>
+                      <div className="w-100 h-auto px-3 mb-3">
+                          <button className={classes.clickBuyBtn+" py-1"}><i className="fa fa-tachometer fa-fw me-2"></i>1-Click Buy</button>
+                      </div>
+                        <div className={classes.soldFulfilled+" w-100 mx-0 mb-3 px-3"}>
+                            <p className="my-0">Sold By: <b className="text-primary">{digitalCard.seller}</b></p>
+                            <p className="my-0">Fulfilled By: <b className="text-dark">X-cite</b></p>
                         </div>
-                        <div>
-                            <button className={classes.addToCardBtn}><i class="fa fa-shopping-cart fa-fw carticon111679" aria-hidden="true"></i>Add to Card</button>
-                        </div>
-                        <div>
-                            <button className={classes.clickBuyBtn}><i class="fa fa-tachometer fa-fw">&nbsp;</i>1-Click Buy</button>
-                        </div>
-                        <div className={classes.soldFulfilled}>
-                            <p>Sold By: <span>X-cite</span></p>
-                            <p>Fulfilled By: <span>X-cite</span></p>
-                        </div>
-                        <div className={`col-lg-12  ${classes.wishlistCompare}`}>
-                            <div className="col-lg-6 me-2">
-                                <p><i class="far fa-heart" aria-hidden="true"></i>Add to Wishlist</p>
-                                <span>See Wishlist</span>
+                        <div className={`col-12 px-3  ${classes.wishlistCompare}`}>
+                            <div style={{width:'47%'}}>
+                                <p className="px-2 py-2 m-0"><i class="far fa-heart me-1"></i>Add to Wishlist</p>
+                                <span className="my-0">See Wishlist</span>
                             </div>
-                            <div className="col-lg-6">
-                                <p><i class="far fa-file"></i>Add to Compare</p>
-                                <span>See Compare List</span>
+                            <div style={{width:'47%'}}>
+                                <p className="px-2 py-2 m-0"><i className="far fa-file me-1"></i>Add to Compare</p>
+                                <span className="my-0">See Compare List</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+        {/* ====== Product More Special Detailes ============================================= */}
             <div className={classes.aboutProduct}>
-                <div className="row">
-                    <div className="col-lg-10">
-                        <div className={classes.informationBtns}>
-                            <button onClick={handleClick}   className={!active ?  ``:`${classes.borderBgcColor}`}>Product Description</button>
-                            <button onClick={handleClick1}  className={!active1 ? ``:`${classes.borderBgcColor}`}>Product Specifications</button>
-                            <button onClick={handleClick2}  className={!active2 ? ``:`${classes.borderBgcColor}`}>Reviews</button>
-                            <button onClick={handleClick3}  className={!active3 ? ``:`${classes.borderBgcColor}`}>Q & A</button>
-                            <button onClick={handleClick4}  className={!active4 ? ``:`${classes.borderBgcColor}`}>Our Services</button>
+                <div className="row p-0 m-0">
+                    <div className="col-lg-10 col-12 p-0">
+                        <div className={classes.informationBtns+" p-0 m-0"}>
+                            <button onClick={handleClick}   className={!active ?  `col-lg-3 col-6 px-sm-3 px-1 py-2 `:`${classes.borderBgcColor} px-sm-3 px-1 py-2 col-lg-3 col-6`}>Product Description</button>
+                            <button onClick={handleClick1}  className={!active1 ? `col-lg-3 col-6 px-sm-3 px-1 py-2 `:`${classes.borderBgcColor} px-sm-3 px-1 py-2 col-lg-3 col-6`}>Product Specifications</button>
+                            <button onClick={handleClick2}  className={!active2 ? `col-lg-2 col-4 px-sm-3 px-1 py-2 `:`${classes.borderBgcColor} px-sm-3 px-1 py-2 col-lg-2 col-4`}>Reviews</button>
+                            <button onClick={handleClick3}  className={!active3 ? `col-lg-2 col-4 px-sm-3 px-1 py-2 `:`${classes.borderBgcColor} px-sm-3 px-1 py-2 col-lg-2 col-4`}>Q & A</button>
+                            <button onClick={handleClick4}  className={!active4 ? `col-lg-2 col-4 px-sm-3 px-1 py-2 `:`${classes.borderBgcColor} px-sm-3 px-1 py-2 col-lg-2 col-4`}>Our Services</button>
                         </div>      
                         
-                        <div className={!active ? `${classes.productDescription} ${classes.dis}` : `${classes.productDescription} `}>
-                            <div>
-                                <h4>Why to buy {digitalCards.name}</h4>
+                        <div className={!active ? `${classes.productDescription} d-none` : `${classes.productDescription} p-3`}>
+                            <div className={`row p-3 ${classes.purchaseDetails} `}>
+                                <h4>Why to buy {digitalCard.name}</h4>
+                                <div>
                                 <div className="col-lg-9 float-start">
-                                    <div className={classes.sign}>
-                                        <div>
                                             <p>Make sure You Are Signed In</p>
                                             <p>You need to be signed in to receive the code on your account. Make one now if you do not have any, it will only take a few minutes!</p>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div className="col-lg-3 float-start">
-                                    <div className={classes.signImage}>
-                                        <img src="	https://m.xcite.com/media/richcontent/login-514523.jpg" ></img>
-                                    </div>
+                                        <img src="	https://m.xcite.com/media/richcontent/login-514523.jpg"  height="200px"/>
+                                </div>
                                 </div>
                             </div> 
 
-                            <div className={`row ${classes.purchaseDetails} `}>
+                            <div className={`row p-3 ${classes.purchaseDetails} `}>
                                 <div className="col-lg-3 float-start">
-                                    <div className={classes.signImage}>
-                                        <img src="https://m.xcite.com/media/richcontent/Untitled-1-324545.jpg" ></img>
-                                    </div>
+                                        <img src="https://m.xcite.com/media/richcontent/Untitled-1-324545.jpg" height="200px" />
                                 </div>
-                                <div className="col-lg-9 float-start">
-                                    <div className={classes.afterPurchase}>
-                                        <div>
-                                            <p>After you complete your purchase, you will be redirected to a conformation page which confirms your purchase and shows your code as well. You will also be able to find it saved in your account. Go to “My Account” {'>'} “My Virtual Cards”.</p>
-                                        </div>
-                                    </div>
+                                <div className={"col-lg-9 float-start "+classes.afterPurchase}>
+                                            <p>After you complete your purchase, you will be redirected to a conformation
+                                                 page which confirms your purchase and shows your code as well. You will 
+                                                 also be able to find it saved in your account. Go to “My Account” {'>'} 
+                                                 “My Virtual Cards”.</p>
                                 </div>
                             </div>  
 
-                            <div className={`row ${classes.purchaseDetails} `}>
+                            <div className={`row p-3 ${classes.purchaseDetails}`}>
                                 <div className="col-lg-9 float-start">
-                                    <div>
-                                        <div>
                                             <h4>What If I Do Not Receive My Code? Is There A Refund?</h4>
                                             <p>If somehow you did not receive your code in your virtual cards, you can report this issue by going to “My Account” then clicking the “Ask For Refund” button.</p>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div className="col-lg-3 float-start">
-                                    <div>
-                                        <img src="	https://m.xcite.com/media/richcontent/Thankyou-324545.jpg" ></img>
-                                    </div>
+                                        <img src="	https://m.xcite.com/media/richcontent/Thankyou-324545.jpg" height="200px"/>
                                 </div>
                             </div> 
 
-                            <div className={`row ${classes.purchaseDetails} `}>
+                            <div className={`row p-3 ${classes.purchaseDetails} `}>
                                 <div className="col-lg-3 float-start">
-                                    <div>
-                                        <img src="https://m.xcite.com/media/richcontent/report-issue-onecard-514523.jpg" ></img>
-                                    </div>
+                                        <img src="https://m.xcite.com/media/richcontent/report-issue-onecard-514523.jpg" height="200px" />
                                 </div>
                                 <div className="col-lg-9 float-start">
-                                    <div>
-                                        <div>
-                                            <p>If there is any issue with your card, you can simply go to “My Account” then “My Virtual Cards” where you will find the “Report Issue” button. Once clicked, you should receive a pop up page where you can fill in your complaint details including a screenshot and submit it to be reviewed as soon as possible.</p>
-                                        </div>
-                                    </div>
+                                            <p>If there is any issue with your card, you can simply go to “My Account”
+                                                  then “My Virtual Cards” where you will find the “Report Issue” button.
+                                                  Once clicked, you should receive a pop up page where you can fill in 
+                                                  your complaint details including a screenshot and submit it to be reviewed
+                                                  as soon as possible.</p>
                                 </div>
                             </div>
 
                         </div>
 
-                        <div  className={!active1 ? `${classes.productSpecification}  ${classes.dis}` : `${classes.productSpecification}` }>
-                            <p>Information on {digitalCards.name}</p>
+                        <div  className={!active1 ? `${classes.productSpecification} d-none` : `${classes.productSpecification} p-3` }>
+                            <p>Information on {digitalCard.name}</p>
                             <table className="data-table col-md-10" id="product-attribute-specs-table1">
-                                <tbody className="">                                                      
+                                <tbody>                                                      
                                     <tr>
                                         <th >
                                             Article Number                                    
@@ -250,7 +261,7 @@ const DigitalCardDetails = () => {
                                     </tr>
                                 </tbody>
                             </table>
-                            <p className={classes.bold}>General</p>
+                            <p className={classes.bold+" fs-5 mt-3 mb-1 ps-2"}>General</p>
                             <table className="data-table col-md-10" id="product-attribute-specs-table1">
                                 <tbody className="">                                                      
                                     <tr>
@@ -258,7 +269,7 @@ const DigitalCardDetails = () => {
                                             Card Value                                    
                                         </th>
                                         <td >
-                                            100 USD                                    
+                                            {digitalCard.value}                                    
                                         </td>
                                     </tr>
                                 </tbody>
@@ -372,11 +383,10 @@ const DigitalCardDetails = () => {
                                             Describe for example:
                                             - Why you chose this rating
                                             - What you like or disliked
-                                            Please don't write about the retailer, shopping experience or delivery
-                                            "
+                                            Please don't write about the retailer, shopping experience or delivery"
                                             {...register("exampleRequired", { required: true })} 
                                             />
-                                            <br/>
+                                            <br />
                                             <div style={{border:'2px solid #ccc',width:'35%',margin:'auto',padding:'8px',borderTop:'none',borderRadius:'5px',marginTop:'-10px'}}>
                                                 <label htmlFor="filePicker" style={{ background:"#fff", padding:"5px 10px",border:'1px solid #ccc',borderRadius:'10px',fontWeight:'bold',fontSize:'12px'}}>
                                                         Add Photo
@@ -578,8 +588,9 @@ const DigitalCardDetails = () => {
                     </div>
                 </div>      
             </div>
+        </div>
         </>
     )
 }
 
-export default DigitalCardDetails
+export default DigitalCardDetails;

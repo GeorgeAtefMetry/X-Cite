@@ -10,6 +10,7 @@ const PhoneMemory = () => {
     "4GB": false,
     "3GB": false,
   });
+  
 
   const handleChange = (e) => {
     const { name } = e.target;
