@@ -26,7 +26,7 @@ const ShowMobile = ({priceRinge}) => {
     };
     getIphones();
   }, []);
-
+ 
   const iphoneCard = data.filter((el)=>{
          if (priceRinge === 1000) {
            return el

@@ -178,7 +178,10 @@
     width:fit-content;
     text-transform: none;
 }
-
+.minHead .lang-change {
+    background-color: transparent;
+    border: none;
+}
 
 /* ======================================================================================== */
 /* Navbar middle */
@@ -231,9 +234,7 @@
     /* font-size: 20px; */
     /* width: 200px; */
 }
-.nav-pills .nav-item .login{
-    /* width: 105px; */
-}
+
 .nav-pills .nav-item .hd-lang-select{
     font-size: 20px;
     line-height: 40px;
@@ -351,19 +352,30 @@
     color: #000;
 }
 .nav-bottom .meganav-btn .dropdown-menu.show {
-    left: 0;
-    top: 48px;
-    padding: 10px;
+    /* left: 0;
+    top: 40px;
+    padding: 10px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 12px;
+    
 }
-.nav-bottom .meganav-btn .dropdown-menu {
-    left: -25px !important;
+/* .nav-bottom .meganav-btn .dropdown-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: transparent;
     /* min-width: 1100px; */
-    width: 18rem;
+    /* margin-top: -13px;
+    
     background-color: #fff;
     border: 1px solid #fff;
-    width: 100%;
-    float: left;
-}
+    width: 100%; */
+    
+/* } */ */
 .dropdown-menu-dark .dropdown-item {
     color: #000;
     height: 30px;
@@ -395,15 +407,18 @@
     color: #333;
 }
 .nav-bottom .meganav-btn .items .categories{
-    float: left;
-    position: fixed;
-    background-color: #fff !important;
-    top: 136px;
-    left: 0;
+    width: fit-content !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 5px;
+    margin-top: -5px;
 }
 .nav-bottom .meganav-btn .items .categories .category{
     height: 30px;
-    margin: 0px 0 6px 0;
+    margin: 0px 0 -2px 0;
     /* position: absolute; */
     /* float: left; */
 }
@@ -427,14 +442,13 @@
 .nav-bottom .meganav-btn .items .stationary-items
 .nav-bottom .meganav-btn .items .fashion-items
 {
-    float: right;
-    display: none;
-    position: fixed;
+    
     /* top: 150px; */
     /* left: 385px !important; */
     /* padding: 10px; */
     box-shadow: -1px 3px 12px 1px #0000001a;
     background-color: #fff;
+    margin-left: 5px;
     
 } 
 
@@ -610,7 +624,7 @@
     overflow: hidden;
 }
 .nav-bottom .header-highlights ul li{
-    float: left;    
+       
     display: inline-block;
     /* margin: 0 15px; */
     font-weight: 600;
@@ -694,11 +708,17 @@
     .nav-bottom .meganav-btn .items .home-furniture-items,
     .nav-bottom .meganav-btn .items .toys-items,
     .nav-bottom .meganav-btn .items .stationary-items .nav-bottom .meganav-btn .items .fashion-items {
-        float: right;
+        /* float: right;
         display: none;
         position: fixed;
         left:21%;
-        top: 136px;
+        top: 136px; */
+        
+        display: none;
+        position: fixed;
+        left:11.5%;
+        right: 16%;
+        top: 145px;
     }
 
 }
@@ -726,10 +746,10 @@
     .d-md-block{
         display: block !important
     }
-    .nav-pills .nav-item .hd-dropdown-content{
+    /* .nav-pills .nav-item .hd-dropdown-content{
         /* width: 100px; */
         /* padding: 10px; */
-    }
+    /* } */ */
     .nav-pills .nav-item .hd-dropdown-conten:first-child{
         font-size: 18px;
         padding: 8px;

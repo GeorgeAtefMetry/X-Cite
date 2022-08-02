@@ -8,15 +8,37 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../fontawesome-free-6.1.1-web/css/all.css";
 import "../fontawesome-free-6.1.1-web/css/fontawesome.css";
 import "./header.css";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
+// import Container from "react-bootstrap/Container";
+// import Nav from "react-bootstrap/Nav";
 
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
-
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 const Header = () => {
+  // get status of current language
+  const [lang, setLang] = useState(false);
+
+  // change the diraction of the page based on the value of the lang
+  
+
+  document.body.dir = lang ? "rtl" : "ltr";
+  const { t, i18n } = useTranslation();
+  
+  
+  // add the current lang to localStorage and get when application run another time and sit as defulit
+  localStorage.setItem("language", i18n.language);
+  
+  const changeLanguage = () => {
+    setLang(!lang);
+    i18n.changeLanguage(lang ? "en" : "ar");
+  };
+  
+
+  // get status of their is user or not and handel logout
   const { user, logout } = UserAuth();
   const navTologin = useNavigate();
+  // handel when user logout and navigate him to login component
   const handleLogIn = async () => {
     try {
       await logout();
@@ -31,186 +53,191 @@ const Header = () => {
         <Navbar.Toggle aria-controls="offcanvasNavbar-expand-lg" />
 
         <div className="top-nav d-none d-md-block p-0 d-flex">
-              <ul className="nav-pills hd-top-head-menu">
-                <li className="nav-item-top">
-                  <a href="https://www.xcite.com/tradein/">
-                    Trade-In
-                  </a>
-                </li>
-                <li className="nav-item-top">
-                  {/* <a href="#"> */}
-                  <Link to={'/test'}>
-                    Pay Installment
-                  </Link>
-                    {/* </a> */}
-                </li>
-                <li className="nav-item-top">
-                  <a href="#">Help &amp; Services</a>
-                </li>
-                <li className="nav-item-top">
-                  <a href="#">X-cite Stores</a>
-                </li>
-                <li className="nav-item-top">
-                  <a href="#">Weekly Flyer</a>
-                </li>
-                <li className="nav-item-top">
-                  <a href="#">
-                    Order Status
-                  </a>
-                </li>
+          <ul className="nav-pills hd-top-head-menu">
+            <li className="nav-item-top">
+              <a href="https://www.xcite.com/tradein/">{t("trade")}</a>
+            </li>
+            <li className="nav-item-top">
+              {/* <a href="#"> */}
+              <Link to={"/test"}>{t("Pay Installment")}</Link>
+              {/* </a> */}
+            </li>
+            <li className="nav-item-top">
+              <Link to={"/test"}>{t("Help Services")}</Link>
+            </li>
+            <li className="nav-item-top">
+              <Link to={"/test"}>{t("X-cite Stores")}</Link>
+            </li>
+            <li className="nav-item-top">
+              <Link to={"/test"}>{t("Weekly Flyer")}</Link>
+            </li>
+            <li className="nav-item-top">
+              <Link to={"/test"}>{t("Order Status")}</Link>
+            </li>
 
-                <li className="nav-item-top">
-                  <a href="#">Contact Us</a>
-                </li>
-                <li className="nav-item-top text-end ps-1 pe-0">
-                  <img src={flag1} alt="KSa" width="70%" className="p-0"/>
-                </li>
+            <li className="nav-item-top">
+              <Link to={"/test"}>{t("Contact Us")}</Link>
+            </li>
+            <li className="nav-item-top text-end ps-1 pe-0">
+              <img src={flag1} alt="KSa" width="70%" className="p-0" />
+            </li>
 
-                <li className="nav-item-top country-switch bgMainCol pe-lg-5">
-                  <NavDropdown
-                    title="Xcite Kuwait"
-                    id="basic-nav-dropdown"
+            <li className="nav-item-top country-switch bgMainCol pe-lg-5">
+              <NavDropdown title={t("Xcite Kuwait")} id="basic-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">
+                  <a
+                    className="nav-sub-item"
+                    href="https://m.xcite.com//skin/frontend/xvii/default/images/flags.png"
                   >
-                    <NavDropdown.Item href="#action/3.1">
-                      <a
-                        className="nav-sub-item"
-                        href="https://m.xcite.com//skin/frontend/xvii/default/images/flags.png"
-                      >
-                        <img src={flag1} className="flag pe-0" />
-                         Xcite Kuwait
-                      </a>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">
-                      <a
-                        className="nav-sub-item"
-                        href="https://m.xcite.com//skin/frontend/xvii/default/images/flags.png"
-                      >
-                        <img src={flag2} alt="flag" className="flag pe-1" />
-                         Xcite KSA
-                      </a>
-                    </NavDropdown.Item>
-                  </NavDropdown> 
-                </li>
-              </ul>
+                    <img src={flag1} alt="flag" className="flag pe-0" />
+                    {t("Xcite Kuwait")}
+                  </a>
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">
+                  <a
+                    className="nav-sub-item"
+                    href="https://m.xcite.com//skin/frontend/xvii/default/images/flags.png"
+                  >
+                    <img src={flag2} alt="flag" className="flag pe-1" />
+                    {t("Xcite KSA")}
+                  </a>
+                </NavDropdown.Item>
+              </NavDropdown>
+            </li>
+          </ul>
         </div>
-        </Navbar>
+      </Navbar>
 
+      {/* NavBar in the Middle */}
+      <Navbar
+        sticky="top"
+        key="md"
+        className="nav-middle d-flex flex-wrap p-0 align-items-center justify-content-around py-1 my-0 mx-0"
+        style={{ minHeight: "50px", boxShadow: "none" }}
+      >
+        <div className="col-md-2 col-5 order-md-1 order-1 text-center ps-2">
+          <Navbar.Brand>
+            <Link to="/home">
+              <img
+                width="80%"
+                // height="10%"
+                src="https://m.xcite.com/skin/frontend/xvii/default/images/xcite-logo-en.png"
+                alt="Xcite.com"
+                title="Xcite.com"
+              />
+            </Link>
+          </Navbar.Brand>
+        </div>
+        <div className="col-md-6 col-12 order-md-2 order-3">
+          <Form>
+            <FormControl
+              type="search"
+              placeholder="Search for products, categories, ..."
+              className="search px-3"
+              aria-label="Search"
+            />
+          </Form>
+        </div>
+        <div
+          className="col-md-4 col-5 order-md-3 order-2 d-flex align-items-center py-1 ps-sm-3 pe-3 ps-2"
+          style={{ height: "50px" }}
+        >
+          <div className="col-4 text-center minHead h-100">
+            <button
+              onClick={() => changeLanguage()}
+              href="https://www.xcite.com/ar/"
+              className="text-light w-100 lang-change"
+            >
+              {lang ? "English" : "العربية"}
+            </button>
+          </div>
 
-        {/* NavBar in the Middle */}
-        <Navbar  sticky="top" key='md' className="nav-middle d-flex flex-wrap p-0 align-items-center justify-content-around py-1 my-0 mx-0" style={{minHeight:'50px', boxShadow:'none'}}>
-            <div className="col-md-2 col-5 order-md-1 order-1 text-center ps-2">
-              <Navbar.Brand>
-                <Link to="/home">
-                  <img
-                    width="80%"
-                    // height="10%"
-                    src="https://m.xcite.com/skin/frontend/xvii/default/images/xcite-logo-en.png"
-                    alt="Xcite.com"
-                    title="Xcite.com"
-                  />
+          <div className="col-4 text-center minHead h-100 nav-pills ">
+            <div className="nav-item account-drop w-100" id="ajax-nav">
+              <div className="login nav-item account-drop w-100 d-flex align-items-center justify-content-center">
+                <Link
+                  type="button"
+                  className="d-flex align-items-center justify-content-center"
+                  data-tracking-title="Header Login Accessed - LoggedOut"
+                  data-tracking-type="Navigation"
+                  rel="nofollow"
+                  to=""
+                  title="Sign Up / Login"
+                >
+                  <i
+                    className="fa-solid fa-user m-0 p-0"
+                    style={{ fontSize: "1.1rem" }}
+                  ></i>
+                  <span
+                    className="d-none d-lg-block py-0 ps-1 pe-0 m-0"
+                    style={{ fontSize: "0.8rem" }}
+                  >
+                    {user ? user?.email?.slice(0, 6) : t("login")}
+                  </span>
+                  <i
+                    className="fa-solid fa-angle-down py-0 ps-1 pe-0 m-0"
+                    style={{ fontSize: "0.8rem" }}
+                  ></i>
                 </Link>
-              </Navbar.Brand>
-            </div>
-            <div className="col-md-6 col-12 order-md-2 order-3">
-              <Form>
-                <FormControl
-                  type="search"
-                  placeholder="Search for products, categories, ..."
-                  className="search px-3"
-                  aria-label="Search"
-                />
-              </Form>
-            </div>
-            <div className="col-md-4 col-5 order-md-3 order-2 d-flex align-items-center py-1 ps-sm-3 pe-3 ps-2"  style={{height:'50px'}}>
-                
-                <div className="col-4 text-center minHead h-100">
-                    <a
-                      href="https://www.xcite.com/ar/"
-                      className="text-light w-100"
+              </div>
+
+              <div className="hd-dropdown-content px-sm-3 pb-2 shadow">
+                {user ? (
+                  <button
+                    type="submit"
+                    onClick={() => {
+                      handleLogIn();
+                    }}
+                    className="btn btn-warning my-1 w-100"
+                  >
+                    {t("logout")}
+                  </button>
+                ) : (
+                  <Link to="/Login" className=" h-auto">
+                    <button
+                      type="submit"
+                      className="btn btn-warning my-1 w-100"
                     >
-                      العربية
-                    </a>
-                  </div>
-
-                <div className="col-4 text-center minHead h-100 nav-pills ">
-                  <div className="nav-item account-drop w-100" id="ajax-nav">
-                    <div className="login nav-item account-drop w-100 d-flex align-items-center justify-content-center">
-                      <Link
-                        type="button"
-                        className="d-flex align-items-center justify-content-center"
-                        data-tracking-title="Header Login Accessed - LoggedOut"
-                        data-tracking-type="Navigation"
-                        rel="nofollow"
-                        to=""
-                        title="Sign Up / Login"
-                      >
-                        <i className="fa-solid fa-user m-0 p-0" style={{fontSize:'1.1rem'}}></i>
-                        <span className="d-none d-lg-block py-0 ps-1 pe-0 m-0"  style={{fontSize:'0.8rem'}}>
-                          {user ?
-                          (user?.email?.slice(0, 6)):
-                           "Login"} 
-                        </span>
-                        <i className="fa-solid fa-angle-down py-0 ps-1 pe-0 m-0" style={{fontSize:'0.8rem'}}></i>
-                        
-                      </Link>
-                    </div>
-
-                    <div className="hd-dropdown-content px-sm-3 pb-2 shadow">
-                      {user ? (
-                        <button
-                          type="submit"
-                          onClick={() => {
-                            handleLogIn();
-                          }}
-                          className="btn btn-warning my-1 w-100"
-                        >
-                          Logout
-                        </button>
-                      ) : (
-                        <Link
-                          to="/Login"
-                          className=" h-auto"
-                        >
-                          <button
-                          type="submit"
-                          className="btn btn-warning my-1 w-100"
-                        >
-                          login
-                        </button>
-                        </Link>
-                      )}
-                      <a rel="nofollow" className='my-1'>
-                        <Link to={`/wishlist`}>Wishlist</Link>
-                      </a>
-                      <a
-                        rel="nofollow"
-                        className="xc-cursor-pointer my-1"
-                      >
-                        Compare
-                      </a>
-                    </div>
-                    </div>
-                </div>
-
-                  <div  className="col-4 text-center minHead h-100">
-                    <Link
-                        className=" login d-flex text-light minHead text-center mx-auto"
-                        to="/Cart"
-                      >
-                        <i className="fa-solid fa-cart-shopping fs-4" style={{position:'relative'}}>
-                          <span className="text-light cartCounter" id="header-count">
-                            0
-                          </span>
-                        </i>
-                        <span className="d-none d-md-none d-lg-block ps-1" style={{fontSize:'0.73rem'}}>My Cart</span>
-                      </Link>
-                  </div>
+                      {t("login")}
+                    </button>
+                  </Link>
+                )}
+                <a rel="nofollow" className="my-1">
+                  <Link to={`/wishlist`}>{t("wishlist")}</Link>
+                </a>
+                <a rel="nofollow" className="xc-cursor-pointer my-1">
+                  {t("Compare")}
+                </a>
+              </div>
             </div>
-        </Navbar>
+          </div>
 
+          <div className="col-4 text-center minHead h-100">
+            <Link
+              className=" login d-flex text-light minHead text-center mx-auto"
+              to="/Cart"
+            >
+              <i
+                className="fa-solid fa-cart-shopping fs-4"
+                style={{ position: "relative" }}
+              >
+                <span className="text-light cartCounter" id="header-count">
+                  0
+                </span>
+              </i>
+              <span
+                className="d-none d-md-none d-lg-block ps-1"
+                style={{ fontSize: "0.73rem" }}
+              >
+                {t("My Cart")}
+              </span>
+            </Link>
+          </div>
+        </div>
+      </Navbar>
 
-        {/* Navbar in the Bottom */}
-        {/* <Navbar.Offcanvas
+      {/* Navbar in the Bottom */}
+      {/* <Navbar.Offcanvas
                 id="offcanvasNavbar-expand-lg"
                 aria-labelledby="offcanvasNavbarLabel-expand-lg"
                 placement="start"
@@ -218,36 +245,36 @@ const Header = () => {
       <Navbar className="bgMainCol px-0 pb-0 pt-1" expand="lg" key="sm">
         <div className="nav-bottom d-none d-lg-block container-fluid py-0 m-0">
           <div className="row">
-
             <div className="col-md-2">
               <div className="meganav-btn m-auto">
                 <span className="hd-all-dept hidden-xs hidden-sm">
                   <NavDropdown
                     id="nav-dropdown-dark-example"
-                    style={{fontSize:'0.8rem'}}
-                    title="All Categories"
-                    menuVariant="dark"
+                    style={{ fontSize: "0.8rem" }}
+                    title={t("All Categories")}
                   >
                     <div className="items row">
-                      <div className="categories shadow-lg px-0 pt-0 pb-2 m-0" style={{width:"21%"}}>
-
+                      <div
+                        className="categories shadow-lg px-0 pt-0 pb-2 m-0"
+                        style={{ width: "21%" }}
+                      >
                         <div className="col-md-12 category category-computers d-flex py-1 px-3 m-0">
                           <NavDropdown.Item
                             className="computers p-0 m-0"
                             href="#action/3.1"
                           >
-                            Computer & Tablets{" "}
+                            {t("Computer & Tablets")}
                           </NavDropdown.Item>
-                            <i class="fa-solid fa-caret-right"></i>
+                          <i class="fa-solid fa-caret-right"></i>
                         </div>
 
                         <div className="computers-items col-md-8 ps-4 py-3">
                           <div className="float-left subcategories ps-0 pe-2">
                             <ul>
-                              <li className="main">Laptops</li>
-                              <li>Apple</li>
-                              <li>Windows</li>
-                              <li>Business Computers</li>
+                              <li className="main">{t("Laptops")}</li>
+                              <li>{t("Apple")}</li>
+                              <li>{t("Windows")}</li>
+                              <li>{t("Business Computers")}</li>
                             </ul>
                             <ul>
                               <li className="main">Projectors & Screens</li>
@@ -257,7 +284,7 @@ const Header = () => {
                             </ul>
                             <ul>
                               <li className="main">Networking</li>
-                              <li>Adpaters & Extenders</li>
+                              <li>Adapters & Extenders</li>
                               <li>4G & 5G Routers</li>
                               <li>Wifi Routers</li>
                             </ul>
@@ -350,13 +377,12 @@ const Header = () => {
                           </div>
                         </div>
 
-
                         <div className="col-md-12 category category-iphones d-flex py-1 px-3 m-0">
                           <NavDropdown.Item
                             className="iphones p-0 m-0"
                             href="#action/3.1"
                           >
-                            iTunes & Game Cards{" "}
+                            {t("Phones & Personal Audio")}
                           </NavDropdown.Item>
                           <i class="fa-solid fa-caret-right"></i>
                         </div>
@@ -366,8 +392,8 @@ const Header = () => {
                             <ul>
                               <li className="main">sadasdasd</li>
                               <li>Apple</li>
-                              <li>Windfsdasafasdows</li>
-                              <li>Businfsdafasdess Computers</li>
+                              <li>Windows</li>
+                              <li>Business Computers</li>
                             </ul>
                             <ul>
                               <li className="main">Projectors & Screens</li>
@@ -475,7 +501,7 @@ const Header = () => {
                             className="itunes p-0 m-0"
                             href="#action/3.1"
                           >
-                            iTunes & Game Cards{" "}
+                            {t("iTunes & Game Cards")}
                           </NavDropdown.Item>
                           <i class="fa-solid fa-caret-right"></i>
                         </div>
@@ -590,10 +616,11 @@ const Header = () => {
                         </div>
 
                         <div className="col-md-12 category category-home d-flex py-1 px-3 m-0">
-                          <NavDropdown.Item 
-                          className="home p-0 m-0" 
-                          href="#action/3.1">
-                            Home Entertainment
+                          <NavDropdown.Item
+                            className="home p-0 m-0"
+                            href="#action/3.1"
+                          >
+                            {t("Home Entertainment")}
                           </NavDropdown.Item>
                           <i class="fa-solid fa-caret-right"></i>
                         </div>
@@ -712,7 +739,7 @@ const Header = () => {
                             className="gaming p-0 m-0"
                             href="#action/3.1"
                           >
-                            Gaming
+                            {t("Gaming")}
                           </NavDropdown.Item>
                           <i class="fa-solid fa-caret-right"></i>
                         </div>
@@ -831,7 +858,7 @@ const Header = () => {
                             className="camera p-0 m-0"
                             href="#action/3.1"
                           >
-                            Cameras & Drones
+                            {t("Cameras & Drones")}
                           </NavDropdown.Item>
                           <i class="fa-solid fa-caret-right"></i>
                         </div>
@@ -950,7 +977,7 @@ const Header = () => {
                             className="small-home p-0 m-0"
                             href="#action/3.1"
                           >
-                            Small Home Appliances
+                            {t("Small Home Appliances")}
                           </NavDropdown.Item>
                           <i class="fa-solid fa-caret-right"></i>
                         </div>
@@ -1069,7 +1096,7 @@ const Header = () => {
                             className="large-home p-0 m-0"
                             href="#action/3.1"
                           >
-                            Large Home Appliances{" "}
+                            {t("Large Home Appliances")}
                           </NavDropdown.Item>
                           <i class="fa-solid fa-caret-right"></i>
                         </div>
@@ -1188,7 +1215,7 @@ const Header = () => {
                             className="health p-0 m-0"
                             href="#action/3.1"
                           >
-                            Health, Gym & Personal Care{" "}
+                            {t("Health, Gym & Personal Care")}
                           </NavDropdown.Item>
                           <i class="fa-solid fa-caret-right"></i>
                         </div>
@@ -1307,7 +1334,7 @@ const Header = () => {
                             className="outdoor p-0 m-0"
                             href="#action/3.1"
                           >
-                            Outdoor & Travel
+                            {t("Outdoor & Travel")}
                           </NavDropdown.Item>
                           <i class="fa-solid fa-caret-right"></i>
                         </div>
@@ -1426,7 +1453,7 @@ const Header = () => {
                             className="air-conditioners p-0 m-0"
                             href="#action/3.1"
                           >
-                            Air Conditioners{" "}
+                            {t("Air Conditioners")}
                           </NavDropdown.Item>
                           <i class="fa-solid fa-caret-right"></i>
                         </div>
@@ -1545,7 +1572,7 @@ const Header = () => {
                             className="home-furniture p-0 m-0"
                             href="#action/3.1"
                           >
-                            Home Furniture
+                            {t("Home Furniture")}
                           </NavDropdown.Item>
                           <i class="fa-solid fa-caret-right"></i>
                         </div>
@@ -1660,10 +1687,11 @@ const Header = () => {
                         </div>
 
                         <div className="col-md-12 category category-toys d-flex py-1 px-3 m-0">
-                          <NavDropdown.Item 
-                          className="toys p-0 m-0" 
-                          href="#action/3.1">
-                            Toys & Baby
+                          <NavDropdown.Item
+                            className="toys p-0 m-0"
+                            href="#action/3.1"
+                          >
+                            {t("Toys & Baby")}
                           </NavDropdown.Item>
                           <i class="fa-solid fa-caret-right"></i>
                         </div>
@@ -1788,22 +1816,22 @@ const Header = () => {
                 <ul>
                   <li>
                     <Link className="brands me-3 ps-2" to="/dailydeals">
-                      Daily Deals
+                      {t("Daily Deals")}
                     </Link>
                   </li>
                   <li>
                     <Link className="giftCards mx-3" to="/GiftCard">
-                      Gift Cards
+                      {t("Gift Cards")}
                     </Link>
                   </li>
                   <li>
                     <Link to="/AppleProds" className="AppleProducts mx-3">
-                      Apple Products
+                      {t("Apple Products")}
                     </Link>
                   </li>
                   <li>
                     <Link className="brandStore ms-3" to="/Brands">
-                      Brand Stores
+                      {t("Brand Stores")}
                     </Link>
                   </li>
                 </ul>
@@ -1817,7 +1845,7 @@ const Header = () => {
                     <i className="fa fa-mobile" aria-hidden="true">
                       ‍
                     </i>
-                    <span>Download Our App</span>
+                    <span>{t("Download Our App")}</span>
                   </span>
                 </a>
               </div>
@@ -1825,7 +1853,7 @@ const Header = () => {
           </div>
         </div>
       </Navbar>
-        {/* </Navbar.Offcanvas> */}
+      {/* </Navbar.Offcanvas> */}
     </>
   );
 };
