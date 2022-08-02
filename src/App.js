@@ -57,9 +57,7 @@ function App() {
       <Router>
         <AuthContextProvider>
           <Header></Header>
-         
           <Routes>
-
             <Route path="/" exact  element={<Home/>} ></Route>
             <Route path="/home" exact  element={<Home/>} ></Route>
             <Route path="/GiftCard" exact  element={<GiftCard/>} ></Route>

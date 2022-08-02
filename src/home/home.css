@@ -253,6 +253,7 @@ body{
 .televisions .name{
     font-weight: 500;
     font-size: 15px;
+    height: 100%;
 }
 .digital-cards .price,
 .phones-personal-audio .price,
