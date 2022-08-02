@@ -9,16 +9,17 @@ const GooglePlayCards = () => {
     console.log(itune);
   };
   const [googlePlayCard, setGooglePlayCard] = useState([]);
-  useEffect(
-    () =>
-      onSnapshot(collection(db, "GiftCards/GooglePlayCards/2"), (snapshot) => {
-        console.log(snapshot);
-        setGooglePlayCard(
-          snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-        );
-      }),
-    []
-  );
+  useEffect(() =>{
+    // const itunesCollection = collection(db, "Products");
+    // const qiTunes = query(itunesCollection, where('categoryName','==','digital cards'), where('type','==','GooglePlay'));
+    //   onSnapshot(qiTunes, (snapshot) => {
+    //     console.log(snapshot.docs);
+    //     setITunesCard(
+    //       snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+    //     );
+      // })
+    }
+      ,[]);
 
   return (
     <>

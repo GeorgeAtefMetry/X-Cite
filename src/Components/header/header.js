@@ -2,17 +2,16 @@ import { Navbar } from "react-bootstrap";
 import NavDropdown from "react-bootstrap/esm/NavDropdown";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
-import flag1 from "../assests/flag-1.png";
-import flag2 from "../assests/flag-2.png";
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "../fontawesome-free-6.1.1-web/css/all.css";
-import "../fontawesome-free-6.1.1-web/css/fontawesome.css";
+import flag1 from "../../assests/flag-1.png";
+import flag2 from "../../assests/flag-2.png";
+// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "../fontawesome-free-6.1.1-web/css/all.css";
+// import "../fontawesome-free-6.1.1-web/css/fontawesome.css";
 import "./header.css";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
-
 import { Link, useNavigate } from "react-router-dom";
-import { UserAuth } from "../context/AuthContext";
+import { UserAuth } from "../../context/AuthContext";
 
 const Header = () => {
   const { user, logout } = UserAuth();
@@ -1797,7 +1796,7 @@ const Header = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/AppleProds" className="AppleProducts mx-3">
+                    <Link to="/Brand/Apple" className="AppleProducts mx-3">
                       Apple Products
                     </Link>
                   </li>

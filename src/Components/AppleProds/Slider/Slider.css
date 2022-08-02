@@ -8,14 +8,14 @@ body {
   .prev {
     position: absolute;
     top: 10;
-    left: -100px;
-    color: #6cc1e5;
+    left: -70px;
+    color: #6cc1e5 !important;
     z-index: 10;
   }
   .next {
     position: absolute;
     top: 10;
-    right: -100px;
-    color: #6cc1e5;
+    right: -70px;
+    color: #6cc1e5 !important;
     z-index: 20;
   }

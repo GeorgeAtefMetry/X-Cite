@@ -1,10 +1,9 @@
 body{
-    background-color:aliceblue;
+    /* background-color:aliceblue; */
     color: black;
     padding-left: 10px;
     padding-right: 10px;
     font-family: 'Roboto', sans-serif;
-
 }
 .sele1{
     border-radius: 2px;
