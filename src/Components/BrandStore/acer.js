@@ -18,7 +18,7 @@ import AeroBlade from './../../assests/Aeroblade-min.jpg';
 import Liquid from './../../assests/LiquidLoop-min.jpg';
 
 const Acer=()=>{
-    const [acerBrand, setAcer] = useState({id:'', Name:'', Logo:'', Categories:[], offers:[]});
+    const [acerBrand, setAcer] = useState({id:'', name:'', logo:'', offers:[]});
     const location = useLocation();
 
     useEffect(()=>{
@@ -62,7 +62,7 @@ const Acer=()=>{
             </div>
 
             <div>
-                <h4 className='text-center mt-0' style={{fontWeight:'600'}}>ABOUT {(acerBrand.Name).toUpperCase()}</h4>
+                <h4 className='text-center mt-0' style={{fontWeight:'600'}}>ABOUT {(acerBrand.name).toUpperCase()}</h4>
                 <p className='fs-5' style={{textAlign: 'justify'}}>
                     Acer offers more than 40 years of pioneering innovation aimed to break down barriers 
                     between people and technology and improve the quality of life for everybody, from 

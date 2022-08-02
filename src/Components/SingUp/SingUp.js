@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import {   useNavigate } from "react-router-dom";
 import "./singup.css";
-
-
 import { UserAuth } from "../../context/AuthContext";
 import { addDoc, collection } from "firebase/firestore";
 import db from "../../firebase";
 
 const SingUp = () => {
-const user = collection(db, "users")
- const navigate = useNavigate()
-
+  const user = collection(db, "users")
+  const navigate = useNavigate()
   const {createUser} = UserAuth()
+  
   // values of inps
   const [inpValue, setINpValue] = useState({
     fullName: "",

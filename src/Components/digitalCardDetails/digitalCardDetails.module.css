@@ -1,13 +1,17 @@
-body{
+.bigContainer{
     background-color: #fff !important;
 }
-
+.proPath{
+    font-size:0.8rem;
+    color:gray;
+    cursor:pointer;
+}
 .image img{
     width: 100%;
 }
-.centerDetails{
+/* .centerDetails{
     margin-top: 20px;
-}
+} */
 .centerDetails h4{
     font-weight: 400;
 }
@@ -19,17 +23,23 @@ body{
 }
 .centerDetails .inStock{
     color:#82b520 ;
+    font-size: 0.8rem;
+}
+.pricing{
+    align-items: center;
+    height: fit-content;
 }
 .centerDetails .pricing .price{
-    font-size: 30px;
+    font-size: 1.5rem;
     font-weight: bold;
-    margin-right: 10px;
+    /* margin-right: 10px; */
 }
 .centerDetails .pricing .oldPrice{
     text-decoration: line-through;
     line-height: 50px;
-    margin-right: 10px;
-    font-size: 16px;
+    /* margin-right: 10px; */
+    font-size: 0.73rem;
+    color: gray;
 }
 .centerDetails .pricing .discount{
     background-color: #d32f2f;
@@ -37,6 +47,10 @@ body{
     font-size: 14px;
     padding: 3px 6px;
     border-radius: 5px;
+}
+.overview>p{
+    font-size: 0.8rem;
+    color: gray;
 }
 .centerDetails .overview ul li{
     list-style: none;
@@ -47,94 +61,107 @@ body{
 }
 .centerDetails .overview .howDoIGet{
     background-color:#e0eefc;
-    padding: 4px 8px;
+    color: rgb(58, 58, 58);
+    /* padding: 4px 8px; */
+    font-size: 0.9rem;
     font-weight: 600;
 }
 .rightAddToCart{
-    margin-top: 20px;
+    /* margin-top: 20px; */
     text-align: center;
-    padding: 10px;
+    /* padding: 10px; */
     border: 1px solid #ccc;
     border-radius: 10px;
+    min-height: 300px;
 }
 .rightAddToCart .btns{
     border-radius: 10px;
-    width: 130px;
-    margin: auto;
-    height: 50px;
-    margin-bottom: 20px;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+    /* width: 130px; */
+    width: 40%;
+    margin: 0 auto;
+    /* height: 40px; */
+    /* margin-bottom: 20px; */
 }
 .rightAddToCart .btns .decrement{
     float: left;
     border: none;
-    height: 50px;
+    height: 40px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    width: 40px;
+    /* width: 40px; */
+    width: 32%;
     font-size: 25px;
 }
 .rightAddToCart .btns .increment{
     float: right;
     border: none;
-    height: 50px;
+    height: 40px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    width: 40px;
+    /* width: 40px; */
+    width: 32%;
     font-size: 25px;
 }
 .rightAddToCart .btns .count{
-    line-height: 50px;
+    line-height: 40px;
     font-size: 20px;
 }
-.rightAddToCart .addToCardBtn i{
+/* .rightAddToCart .addToCardBtn i{
     margin-right: 10px;
-}
+} */
 .rightAddToCart .addToCardBtn{
     color: #fff!important;
     background-color: #ff8100;
     border: 1px solid #ff8100;
     width: 100%;
     border-radius: 10px;
-    padding: 6px 0;
+    /* padding: 6px 0; */
     
 }
 .rightAddToCart .addToCardBtn:hover{
     background-color: #ef7900;
     border: 1px solid #ef7900;
 }
-.rightAddToCart .clickBuyBtn i{
+/* .rightAddToCart .clickBuyBtn i{
     margin-right: 10px;
-}
+} */
 .rightAddToCart .clickBuyBtn{
-    margin-top: 20px;
+    /* margin-top: 20px; */
     color: #fff!important;
     background-color: #d92e1b;
     border: 1px solid #d92e1b;
     width: 100%;
     border-radius: 10px;
-    padding: 6px 0;
+    /* padding: 6px 0; */
 }
 .rightAddToCart .clickBuyBtn:hover{
     background-color: #c32c1b;
     border: 1px solid #c32c1b;
 }
-.rightAddToCart .soldFulfilled{
+/* .rightAddToCart .soldFulfilled{
     margin-top: 20px;
-}
+} */
 .rightAddToCart .soldFulfilled p{
     text-align: left;
+    font-size:0.77rem;
+    color:gray;
 }
-.rightAddToCart .soldFulfilled p span{
+/* .rightAddToCart .soldFulfilled p b{
     color: #337ab7;
-}
+} */
 .rightAddToCart .wishlistCompare{
     display: flex;
-    padding: 5px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* padding: 5px; */
 }
 .rightAddToCart .wishlistCompare p{
     border: 1px solid #ccc;
-    padding: 5px;
-    margin: 4px;
+    font-size: 0.7rem;
+    /* padding: 5px; */
+    /* margin: 4px; */
     border-radius: 10px;
     cursor: pointer;
     transition: all .2s ease-in-out;
@@ -143,25 +170,33 @@ body{
     background: #2d8cdb;
     color: #FFF;
 }
-.rightAddToCart .wishlistCompare p i{
+/* .rightAddToCart .wishlistCompare p i{
     margin-right: 5px;
-}
+} */
 .rightAddToCart .wishlistCompare span{
-    font-size: 14px;
-    margin-top: 2px;
+    /* font-size: 14px; */
+    font-size: 0.7rem;
+    cursor: pointer;
+    /* margin-top: 2px; */
     color:#2d8cdb ;
 }
 /* ******************************************** */
-.aboutProduct{
-}
+/* .aboutProduct{
+} */
 .aboutProduct .informationBtns button{
-    padding: 10px 70px;
+    /* padding: 10px 70px; */
+    color: rgb(70, 70, 70);
     border: none;
+    font-size: 0.95rem;
     background-color: #dddddd40;
+    /* width: 12rem; */
 }
-.aboutProduct .informationBtns button:first-child{
+.informationBtns>button:hover{
+    background-color: white;
+}
+/* .aboutProduct .informationBtns button:first-child{
     margin-left: 10px;
-}
+} */
 /* .aboutProduct .informationBtns button:focus{
     background-color:#fff ;
     border-top:1px solid #2d8cdb;
@@ -175,18 +210,19 @@ body{
 .aboutProduct .productDescription h4{
     width: 100%;
 }
-.aboutProduct .productDescription,.productSpecification{
+/* .aboutProduct .productDescription,.productSpecification{
     padding: 30px;
-}
-.aboutProduct .afterPurchase{
+} */
+/* .aboutProduct .afterPurchase{
     padding: 20px;
-}
+} */
 .aboutProduct .afterPurchase p{
     font-size: 18px;
 }
 .aboutProduct .purchaseDetails{
-    height: 100%;
-    padding: 10px 0;
+    min-height: 200px;
+    /* height: 100%; */
+    /* padding: 10px 0; */
 }
 .aboutProduct .purchaseDetails h4{
     font-size: 18px;
@@ -444,8 +480,10 @@ body{
 }
 .borderBgcColor{
     background-color: #fff !important;
-    border-top: 1px solid #2d8cdb !important;
+    border-top: 2px solid #2d8cdb !important;
     color: #2d8cdb;
+    border-right:  1px solid lightgray !important;
+    border-left:  1px solid lightgray !important;
 }
 .dis{
     display: none !important;

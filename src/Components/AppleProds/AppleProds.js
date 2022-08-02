@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/js/bootstrap.bundle";
 import Slider from "./Slider/Slider";
 import Cards from "./Cards/Cards";
 import Accesssories from "./Accsessories/Accesssories";
 import "./AppleProds.css";
+
 const AppleProds = () => {
+
   //main prods
   const cardInfo = [
     {
@@ -55,6 +57,7 @@ const AppleProds = () => {
         comp :"/Beats"
     },
   ];
+
   /****************** 
   //Accessories prods
   ******************/
@@ -80,15 +83,16 @@ const AppleProds = () => {
         "https://m.xcite.com/media/wysiwyg/Apple_Shop/Apple-Prd-WatchAccs.jpg",
     },
   ];
+
   /**************** 
   // scroll to top
   ****************/
   const [visible, setVisible] = useState(false);
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop;
-    if (scrolled > 300) {
+    if (scrolled > 200) {
       setVisible(true);
-    } else if (scrolled <= 300) {
+    } else if (scrolled <= 200) {
       setVisible(false);
     }
   };
@@ -104,9 +108,11 @@ const AppleProds = () => {
   /***************************/
   return (
     <div style={{backgroundColor: "#dfe3ee"}}>
-      <Slider></Slider>
+      <div className="container-fluid py-2 px-3" style={{borderRadius:'9px'}}>
+        <Slider></Slider>
+      </div>
       <Cards card={cardInfo}></Cards>
-      <div className="container-fluid  mb-3 ">
+      <div className="container-fluid mb-2">
         <h4 className="text-center text-white acces py-3">Accessories</h4>
       </div>
       <Accesssories access={accessories}></Accesssories>
@@ -120,5 +126,4 @@ const AppleProds = () => {
     </div>
   );
 };
-
 export default AppleProds;

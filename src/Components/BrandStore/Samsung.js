@@ -33,7 +33,7 @@ import Microwave from './../../assests/cards-ha-microwave-oven.png';
 
 const Samsung=()=>{
 
-    const [samsung, setSamsung] = useState({id:'', Name:'', Logo:'', Categories:[], Offers:[]});
+    const [samsung, setSamsung] = useState({id:'', name:'', logo:'', offers:[]});
     const location = useLocation();
 
     useEffect(()=>{
@@ -53,7 +53,7 @@ const Samsung=()=>{
             <div className={classes.slider}>
             <Carousel interval='1000' className='col-lg-12 mx-auto p-0' style={{borderRadius:0}} variant="dark">
                 {
-                    (samsung.Offers).map((offer, index)=>{
+                    (samsung.offers).map((offer, index)=>{
                     return <Carousel.Item key={index} style={{height: '540px'}}>
                             <img
                             className="d-block w-100 mb-3"
