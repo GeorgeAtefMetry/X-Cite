@@ -52,7 +52,8 @@
     border: 1px solid lightgray;
     font-size: 0.9rem;
 }
-.upbtn:disabled{
+.upbtn:disabled,
+.btns:disabled{
     cursor: not-allowed;
     background-color: #e4e4e4;
     color: white;

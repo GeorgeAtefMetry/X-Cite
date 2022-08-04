@@ -22,18 +22,15 @@ const Test = ()=>{
         // });
 
         const collec =  collection(fs, 'Products');
-        let q = query(collec, where('category', '==', "tablets"));
+        let q = query(collec, where('categoryName', '==', "Mobile Phones"), where('type','==','iPhone 13 Pro'));
         onSnapshot(q, (res)=>{
-                // setBrands(
+            console.log(res)
                     res.docs.map((doc)=>{
-                      console.log(doc.data());
                         return ({
                         ...doc.data(),
                         id: doc.id
                     })
                 })
-                    // console.log(res.docs)
-                // );
         })
     },[]);
 

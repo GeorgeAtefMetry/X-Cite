@@ -18,7 +18,7 @@ const NotFoundPage = () => {
                         The page you requested was not found, but you can get back on track again.
                         </p>
                         <Link to='/Home'>
-                        <button class="btn btn-primary btn-sm " role="button" >Go to Home Page </button>
+                        <button className="btn btn-primary btn-sm " role="button" >Go to Home Page </button>
                         </Link>
                 </div>
             </div>
