@@ -15,10 +15,10 @@ import InfoSlider from "./Slider/InfoSlider";
 import TabsComp from "./Tabs/TabsComp";
 import InfoTabs from "./InfoTabs/InfoTabs";
 const IphoneDetiles = () => {
-  const parmas = useParams();
-  console.log(parmas);
+  const params = useParams();
+  console.log(params);
   const [mob, setMob] = useState({});
-  const oneMob = doc(db, `products/apple/iphone/${parmas.iphoneId}`);
+  const oneMob = doc(db, `Products/${params.iphoneId}`);
 
   useEffect(() => {
     const getMob = async () => {
@@ -33,7 +33,7 @@ const IphoneDetiles = () => {
   return (
     <div className="container-fluid py-2 bg-white">
       <div className="row py-2 d-flex justify-content-between align-items-start">
-        <div className={`col-lg-4 ${styles.imgcol} ${styles.slider}`}>
+        <div className={`col-lg-3 ${styles.imgcol} ${styles.slider}`}>
           <Carousel
             className={`${styles.Carousel}`}
             showThumbs
@@ -44,13 +44,13 @@ const IphoneDetiles = () => {
             {mob?.arrayImgs?.map((el) => {
               return (
                 <div className={`${styles.slider}`}>
-                  <img src={el} alt="iphone" className="img-fliud w-50" />
+                  <img src={el} alt="iphone" className="img-fluid w-50" />
                 </div>
               );
             })}
           </Carousel>
         </div>
-        <div className="col-lg-4 bg-white">
+        <div className="col-lg-3 bg-white">
           <h4>
             Apple {mob.mobileName} {mob.Storage} {mob.mobileColor}
           </h4>
@@ -89,7 +89,7 @@ const IphoneDetiles = () => {
       </div>
       <h2>You May Also Like</h2>
       <InfoSlider />
-      <InfoTabs imge={mob} id={parmas.iphoneId}/>
+      <InfoTabs imge={mob} id={params.iphoneId}/>
     </div>
   );
 };

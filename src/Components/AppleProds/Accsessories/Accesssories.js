@@ -1,6 +1,9 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next';
 
  const Accesssories = (props) => {
+   const {t} = useTranslation()
+
     const access = props.access.map((el, index) => (
         <div key={index} className="col-lg-3 col-md-6 col-12 p-3 gap-2" style={{height:"26rem"}}>
           <div className="bg-white py-4 d-flex flex-column justify-content-between m-0 align-items-center h-100 card">
@@ -9,7 +12,7 @@ import React from 'react'
               <img src={el.imgUrl} alt={el.name} height="100%" style={{maxWidth:"100%"}}/>
             </div>
             <li style={{height:"20%"}} >
-              <button className="btn text-center shop-btn">SHOP NOW</button>
+              <button className="btn text-center shop-btn">{t("SHOP NOW")}</button>
             </li>
           </div>
         </div>

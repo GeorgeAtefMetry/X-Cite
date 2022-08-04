@@ -1,4 +1,11 @@
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  onSnapshot,
+  query,
+  where,
+} from "firebase/firestore";
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { UserAuth } from "../../../../../context/AuthContext";
@@ -9,53 +16,55 @@ import "../../../../../fontawesome-free-6.1.1-web/css/all.min.css";
 import Spinner from "../../../../Spinner/Spinner";
 import "./ShowMobile.css";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
-const ShowMobile = ({priceRinge}) => {
+const ShowMobile = ({ priceRinge }) => {
   const { inpfil } = UserAuth();
-  const { pathname } = useLocation();
+  const {i18n} = useTranslation();
+  console.log(i18n.language);
   console.log(priceRinge);
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  const iphoneRef = collection(db, `products/apple${pathname}`);
+
   // get data iphone from firestore
   useEffect(() => {
-    const getIphones = async () => {
+    const iphoneRef = collection(db, `products/apple/iphone`);
+    // let q = query(
+    //   iphoneRef,
+    //   where("categoryName", "==", "Mobile Phones"),
+    //   where("brandName", "==", "Apple"),
+    //   where("lang", "==", i18n.language),
+    // );
+    const getPhones = async () => {
       const mobiles = await getDocs(iphoneRef);
       setData(mobiles.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       setLoading(false);
     };
-    getIphones();
-  }, []);
- 
-  const iphoneCard = data.filter((el)=>{
-         if (priceRinge === 1000) {
-           return el
-         } else {
-          return el.price <= parseInt(priceRinge)
-         }
-  })
+    getPhones();
+  }, [i18n.language]);
+  console.log(data);
+  const iphoneCard = data
+    ?.filter((el) => {
+      if (priceRinge === 1000) {
+        return el;
+      } else {
+        return el.price <= parseInt(priceRinge);
+      }
+    })
     ?.filter(
-      ({
-        Storage,
-        mobileName,
-        os,
-        mobileRam,
-        mobileColor,
-        screenSize,
-        Camera,
-      }) => {
-        if (inpfil.length >= 1 && mobileName) {
+      (el) => {
+        if (inpfil.length >= 1 && el.mobileName) {
           return (
-            inpfil.includes(Storage) ||
-            inpfil.includes(Camera) ||
-            inpfil.includes(screenSize) ||
-            inpfil.includes(mobileColor) ||
-            inpfil.includes(mobileName) ||
-            inpfil.includes(os) ||
-            inpfil.includes(mobileRam)
+            inpfil.includes(el.Storage) ||
+            inpfil.includes(el.Camera) ||
+            inpfil.includes(el.screenSize) ||
+            inpfil.includes(el.color) ||
+            inpfil.includes(el.mobileName) ||
+            inpfil.includes(el.os) ||
+            inpfil.includes(el.mobileRam)
           );
         } else {
-          return mobileName && os && mobileRam && mobileColor;
+          return el;
         }
       }
     )
@@ -64,20 +73,16 @@ const ShowMobile = ({priceRinge}) => {
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
         exit={{ opacity: 0 }}
-        transition={{duration: 0.5}}
+        transition={{ duration: 0.4 }}
         layout
         className=" bg-white iphone col-md-6 col-lg-4 col-xl-3 "
         key={el?.id}
       >
         <Link to={`/iphone/${el?.id}`}>
-          <img
-            className="img-fliud "
-            src={el?.mobileImg}
-            alt={el?.mobileName}
-          />
+          <img className="img-fluid " src={el?.mobileImg} alt={el?.type} />
         </Link>
         <h5 className="pb-4">
-          Apple {el.mobileName} {el.Storage} {el.mobileColor}
+          {el.brandName} {el.mobileName} {el.Storage} {el.mobileColor}
         </h5>
         <div className="icons pb-2">
           <i class="fa-solid fa-star"></i>
@@ -87,7 +92,7 @@ const ShowMobile = ({priceRinge}) => {
           <i class="fa-solid fa-star"></i>
         </div>
         <h4>{el.price} KD</h4>
-        <p>Sold By {el.sellerName}</p>
+        <p>Sold By {el.seller}</p>
         <p className="X-ctie ">
           <i class="fa-solid fa-check"></i> Fulfilled By X-cite
         </p>
@@ -100,10 +105,10 @@ const ShowMobile = ({priceRinge}) => {
       </motion.div>
     ));
 
-  // console.log(iphoneCard);
+  console.log(iphoneCard);
   return (
     <div className="container-fluid mt-2">
-      <motion.div  className="row ">
+      <motion.div className="row ">
         <AnimatePresence>
           {isLoading ? <Spinner /> : iphoneCard}
         </AnimatePresence>
