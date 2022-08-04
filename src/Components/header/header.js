@@ -9,20 +9,25 @@ import flag2 from "../../assests/flag-2.png";
 // import "../fontawesome-free-6.1.1-web/css/fontawesome.css";
 import "./header.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
+import { useCookies, Cookies } from "react-cookie";
+import { useDispatch, useSelector } from "react-redux";
 
-const Header = () => {
+  const Header = () => {
   // get status of current language
   const [lang, setLang] = useState(false);
+  const [cookies, setCookies]= useCookies("Cart");
+  const cartCounter = useSelector(state=> state.cartCounter);
+
+  useEffect(()=>{
+    console.log(cartCounter);
+    
+  },[])
 
   // change the diraction of the page based on the value of the lang
-  
-
   document.body.dir = lang ? "rtl" : "ltr";
   const { t, i18n } = useTranslation();
   
@@ -59,9 +64,7 @@ const Header = () => {
               <a href="https://www.xcite.com/tradein/">{t("trade")}</a>
             </li>
             <li className="nav-item-top">
-              {/* <a href="#"> */}
               <Link to={"/test"}>{t("Pay Installment")}</Link>
-              {/* </a> */}
             </li>
             <li className="nav-item-top">
               <Link to={"/test"}>{t("Help Services")}</Link>
@@ -75,7 +78,6 @@ const Header = () => {
             <li className="nav-item-top">
               <Link to={"/test"}>{t("Order Status")}</Link>
             </li>
-
             <li className="nav-item-top">
               <Link to={"/test"}>{t("Contact Us")}</Link>
             </li>
@@ -203,9 +205,7 @@ const Header = () => {
                     </button>
                   </Link>
                 )}
-                <a rel="nofollow" className="my-1">
-                  <Link to={`/wishlist`}>{t("wishlist")}</Link>
-                </a>
+                  <Link to={`/wishlist`} className="my-1">{t("wishlist")}</Link>
                 <a rel="nofollow" className="xc-cursor-pointer my-1">
                   {t("Compare")}
                 </a>
@@ -223,7 +223,7 @@ const Header = () => {
                 style={{ position: "relative" }}
               >
                 <span className="text-light cartCounter" id="header-count">
-                  0
+                  {cartCounter}
                 </span>
               </i>
               <span
