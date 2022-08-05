@@ -1,11 +1,12 @@
 .iphone {
   display: flex;
   flex-direction: column;
-  width: 382px;
+  /* width: 382px; */
   padding-left: 8px;
   /* border-radius: 12px; */
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.099);
+  transition: all 0.7s;
 }
 .iphone img {
   width: 250px;
@@ -25,9 +26,10 @@
   width: fit-content;
   align-self: flex-end;
   margin-right: 10px;
+  margin-bottom: 10px;
 }
 .iphone .icon-heart {
-    position: absolute;
-    right: 10px;
-    font-size: 22px;
+  position: absolute;
+  right: 10px;
+  font-size: 22px;
 }

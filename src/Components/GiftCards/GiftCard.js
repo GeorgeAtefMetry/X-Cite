@@ -13,7 +13,7 @@ const GiftCard = () => {
             class="col-6 card text-muted my-4 shadow "
             style={{ width: "20rem" }}
           >
-            <Link to={`/ITunesCard`}>
+            <Link to={`/ITunesCard`} state={"iTunes"}>
               <img
                 className="card-img-top"
                 src="https://firebasestorage.googleapis.com/v0/b/x-cite-5d269.appspot.com/o/Gift%20Cards%2FiTunes.png?alt=media&token=99ef1a60-31c3-449a-8245-7f1206b43167"
@@ -26,7 +26,7 @@ const GiftCard = () => {
             class="col-6 card text-muted my-4 shadow "
             style={{ width: "20rem" }}
           >
-            <Link to={`/GooglePlayCards`}>
+            <Link to={`/ITunesCard`} state={"GooglePlay"}>
               <img
                 className="card-img-top"
                 src="https://firebasestorage.googleapis.com/v0/b/x-cite-5d269.appspot.com/o/Gift%20Cards%2F15052022-GCardsLogos-GooglePlay.png?alt=media&token=2f3f6ee9-7cca-4392-8861-c68be4ac287a"

@@ -1,18 +1,18 @@
-/* .contSlider{
-    height: 380px;
-} */
+.contSlider {
+  position: relative;
+}
 .onSlider {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-direction: column !important;
-    
-    padding: 4px;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.103);
-    
+    padding-left: 8px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
 .slick-next,
-.slick-prev{
-    background-color: #001A2C !important;
-    padding: 2px !important;
+.slick-prev {
+  width: 35px !important;
+  height: 35px !important;
+  border-radius: 50%;
+  position: absolute;
+  top: 40% !important;
+  background-color: #001a2c !important;
+  padding: 8px !important;
+  z-index: 3424;
 }

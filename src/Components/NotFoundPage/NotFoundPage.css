@@ -1,17 +1,11 @@
-body{
-    background-color: white;
-
-
-}
-
 .img{
     width: 100%;
-    padding-left: 180px;
+    padding-left: 150px;
 }
 
 .text{
     position: absolute;
-    left: 51%;
+    left: 53%;
     top:24%;
 }
 .err{

@@ -1,11 +1,14 @@
-import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle";
+import React, { useState, useTransition } from "react";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/js/bootstrap.bundle";
 import Slider from "./Slider/Slider";
 import Cards from "./Cards/Cards";
 import Accesssories from "./Accsessories/Accesssories";
 import "./AppleProds.css";
+import { useTranslation } from "react-i18next";
+
 const AppleProds = () => {
+  const {t} =  useTranslation()
   //main prods
   const cardInfo = [
     {
@@ -46,15 +49,16 @@ const AppleProds = () => {
       name: "Air Tag",
       imgUrl:
         "https://m.xcite.com/media/wysiwyg/Apple_Shop/Apple-Prd-AirTag.jpg",
-        comp :"/iphone"
+        comp :"/AirTag"
     },
     {
       name: "Beats",
       imgUrl:
         "https://m.xcite.com/media/wysiwyg/Apple_Shop/Apple-Prd-Beats.jpg",
-        comp :"/iphone"
+        comp :"/Beats"
     },
   ];
+
   /****************** 
   //Accessories prods
   ******************/
@@ -80,15 +84,16 @@ const AppleProds = () => {
         "https://m.xcite.com/media/wysiwyg/Apple_Shop/Apple-Prd-WatchAccs.jpg",
     },
   ];
+
   /**************** 
   // scroll to top
   ****************/
   const [visible, setVisible] = useState(false);
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop;
-    if (scrolled > 300) {
+    if (scrolled > 200) {
       setVisible(true);
-    } else if (scrolled <= 300) {
+    } else if (scrolled <= 200) {
       setVisible(false);
     }
   };
@@ -103,11 +108,13 @@ const AppleProds = () => {
   ///////////////////////////////
   /***************************/
   return (
-    <>
-      <Slider></Slider>
+    <div style={{backgroundColor: "#dfe3ee"}}>
+      <div className="container-fluid py-2 px-3" style={{borderRadius:'9px'}}>
+        <Slider></Slider>
+      </div>
       <Cards card={cardInfo}></Cards>
-      <div className="container-fluid  mb-3 ">
-        <h4 className="text-center text-white acces py-3">Accessories</h4>
+      <div className="container-fluid mb-2">
+        <h4 className="text-center text-white acces py-3">{t("Accessories")}</h4>
       </div>
       <Accesssories access={accessories}></Accesssories>
       <div
@@ -117,8 +124,7 @@ const AppleProds = () => {
       >
         <i class="fa fa-angle-up"></i>
       </div>
-    </>
+    </div>
   );
 };
-
 export default AppleProds;

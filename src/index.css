@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding:0 !important;
+  background-color: #f1f1f1 !important;
 }
 
 code {
@@ -13,3 +14,8 @@ code {
     monospace;
 }
 
+#zoid-paypal-buttons-uid_fd9cc5379e_mte6ndm6nti{
+  background-color: white !important;
+  position: absolute;
+  top:0;
+}

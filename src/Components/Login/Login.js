@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 import "./Login.css";
+import { useTranslation } from "react-i18next";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMess, setErrMess] = useState("");
   const navToHome = useNavigate();
   const { user, signin } = UserAuth();
-  console.log(user);
+  const {t } = useTranslation()
+  // console.log(user);
   const handelSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -61,7 +63,7 @@ const Login = () => {
               </div>
               <div>{errMess}</div>
               <button type="submit" className="btn btn-warning my-1 w-100">
-                Login
+                {t("login")}
               </button>
             </form>
           </div>

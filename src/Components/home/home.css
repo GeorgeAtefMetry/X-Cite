@@ -1,72 +1,94 @@
+
 body{
-    background-color: #EFEFEF;
+ /* background-color: #EFEFEF; */
+ background-color: #f1f1f1 !important;
+ padding: 0 !important;
+ margin: 0 !important;
+ box-sizing: border-box;
 }
-.slider{
-    margin-bottom: 80px;
+.sliderHome{
+    margin-bottom: 50px;
 }
-.carousel{
+.btns>button{
+    text-transform: none;
+}
+/* .cursorSwipe{
+    cursor: grab;
+} */
+/* .carousel{
     padding: 20px;
-}
+} */
 .carousel-inner{
     border-radius: 0px;
 }
 .carousel-inner .carousel-item img{
-    height: 370px
+    height: 340px
 }
 .carousel-indicators {
-    bottom: -60px !important;
+    bottom: -50px !important;
+    /* margin-bottom: 37px; */
 }
 .carousel-indicators [data-bs-target] {
     border-radius: 50% !important;
     background-color: #000;
 }
-@media(min-width:600px){
+/* @media(min-width:600px){
     .carousel-indicators [data-bs-target] {
         height: 13px !important;
         width: 13px !important;
     }
-}
-@media(max-width:600px){
+} */
+@media(max-width:899px){
     .carousel-indicators [data-bs-target] {
-        height: 13px !important;
-        width: 13px !important;
+        height: 10px !important;
+        width: 10px !important;
     }
 }
 @media(min-width:900px){
     .carousel-indicators [data-bs-target] {
-        height: 16px !important;
-        width: 16px !important;
+        height: 13px !important;
+        width: 13px !important;
     }
 }
 /* End of Slider */
 /* Start Main Categories */
-.main-categories{
+/* .main-categories{
     padding: 20px;
     margin-bottom: 100px;
     height: 100%;
     height: 630px;
-}
+} */
 .main-categories .card{
     box-shadow: 5px 7px 20px 0px rgb(0 0 0 / 8%);
     border-radius: 15px;
     border: none;
-    margin-bottom: 20px;
+    cursor:pointer;
+    /* margin-bottom: 20px; */
 }
 .main-categories .card img{
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
 }
 .main-categories .card .card-body .first{
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: bold;
-    line-height: 50px;
+    display: flex;
+    align-items: center;
+    height:100%;
+    /* line-height: 30px; */
+    float: left;
 }           
 .main-categories .card .card-body .second{
-    font-size: 9px;
+    /* font-size: 9px; */
+    font-size: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .main-categories .card .card-body .second .disc{
     color: #f00;
-    font-size: 25px;
+    /* font-size: 25px; */
+    font-size: 1.2rem;
     font-weight: bold;
 }
 @media(max-width:1300px){
@@ -75,7 +97,7 @@ body{
     }
     .main-categories .card .card-body .first{
         font-size: 15px;
-        line-height: 50px;
+        /* line-height: 50px; */
     }           
     .main-categories .card .card-body .second{
         font-size: 8px;
@@ -124,29 +146,29 @@ body{
 }
 /* End Main Categories */
 /* Start Digital Cards */
-/* .digital-cards .carousel .carousel-control-prev ,
+/* .customSwiperContainer .carousel .carousel-control-prev ,
 .phones-personal-audio.carousel .carousel-control-prev,
 .laptops .carousel-control-prev {
     left: 0;
 } */
-/* .digital-cards .carousel .carousel-control-prev,
+/* .customSwiperContainer .carousel .carousel-control-prev,
 .phones-personal-audio .carousel .carousel-control-prev ,
 .laptops .carousel .carousel-control-prev {
     justify-content: left !important;
 } */
-/* .digital-cards .carousel .carousel-control-next,
+/* .customSwiperContainer .carousel .carousel-control-next,
 .laptops .carousel .carousel-control-next,
 .phones-personal-audio .carousel .carousel-control-next{
     justify-content: right;
 } */
-/* .digital-cards .carousel .carousel-control-prev-icon ,
+/* .customSwiperContainer .carousel .carousel-control-prev-icon ,
 .phones-personal-audio .carousel .carousel-control-prev-icon ,
 .laptops .carousel .carousel-control-prev-icon {
     background-color: rgb(146, 146, 146);
     padding: 40px 10px;
     line-height: 10px;
 } */
-/* .digital-cards .carousel .carousel-control-next-icon,
+/* .customSwiperContainer .carousel .carousel-control-next-icon,
 .phones-personal-audio .carousel .carousel-control-next-icon ,
 .laptops .carousel .carousel-control-next-icon {
     background-color: rgb(146, 146, 146);
@@ -155,16 +177,26 @@ body{
 } */
 .view-all {
     color: #fff!important;
-    background-color: #2688da;
+    background-color: #2688da !important;
     border: 1px solid #2688da;
     border-radius: 3px;
-    padding: 7px 13px;
+    /* padding: 7px 13px;
     top: 0;
     right: 10px;
     position: absolute;
-    margin-top: 10px;
+    margin-top: 10px; */
 }
-.digital-cards .digital-cards-heading,
+.customSwiperContainer .customSwiperContainer-heading{
+    font-size: 20px;
+    /* top: 0; */
+    font-weight: bold;
+    /* position: absolute; */
+    /* margin-top: 10px; */
+}
+/* .slide{ */
+    /* border-top: 1px solid black; */
+    /* border-inline-end:  1px solid black; */
+/* } */
 .phones-personal-audio .phones-personal-heading,
 .laptops .laptops-heading,
 .tablets .tablets-heading,
@@ -175,25 +207,32 @@ body{
     position: absolute;
     margin-top: 10px;
 }
-/* .digital-cards .row,
+/* .customSwiperContainer .row,
 .phones-personal-audio .carousel .carousel-inner .row,
 .laptops .carousel .carousel-inner .row{
     flex-wrap: nowrap;
 } */
-.digital-cards ,
+/* .customSwiperContainer , */
 .phones-personal-audio,
 .laptops,
 .tablets,
 .televisions{
     background-color: #fff;
 }
-.digital-cards{
-    padding: 10px;
+.customSwiperContainer{
+    /* padding: 10px; */
+    height: 500px;
+    box-shadow: 0px 0px 7px 2px #ccc;
+    border-radius: 10px !important;
+    background-color: white;
 }
 .phones-personal-audio,.laptops,.tablets,.televisions{
     padding: 10px;
 }
-.digital-cards .swiper,
+.customSwiperContainer .swiper{
+    /* box-shadow: 0px 0px 7px 2px #ccc; */
+    border-radius: 10px;
+}
 .phones-personal-audio .swiper,
 .laptops .swiper,
 .tablets .swiper,
@@ -201,14 +240,14 @@ body{
     box-shadow: 0px 0px 7px 2px #ccc;
     border-radius: 10px;
 }
-.digital-cards .swiper,
+.customSwiperContainer .swiper,
 .phones-personal-audio .swiper,
 .laptops .swiper,
 .tablets .swiper,
 .televisions .swiper{
     padding: 20px;
 }
-.digital-cards .digital-card,
+/* .customSwiperContainer .digital-card, */
 .phones-personal-audio .phones-personal-audio,
 .laptops .laptop,
 .tablets .tablet,
@@ -219,7 +258,7 @@ body{
     border-right: 1px solid rgb(240, 239, 239);
     text-align: center;
 }
-.digital-cards .card-body,
+.customSwiperContainer .card-body,
 .phones-personal-audio .card-body,
 .laptops .card-body,
 .tablets .card-body,
@@ -232,7 +271,7 @@ body{
     font-size: 12px;
     padding: 5px;
 }
-.digital-cards .icon i,
+.customSwiperContainer .icon i,
 .phones-personal-audio .icon i,
 .laptops .icon i,
 .tablets .icon i,
@@ -240,15 +279,16 @@ body{
     font-size: 20px;
     cursor: pointer;
 }
-.digital-cards .name,
+.customSwiperContainer .name,
 .phones-personal-audio .name,
 .laptops .name,
 .tablets .name,
 .televisions .name{
     font-weight: 500;
     font-size: 15px;
+    height: 100%;
 }
-.digital-cards .price,
+.customSwiperContainer .price,
 .phones-personal-audio .price,
 .laptops .price,
 .tablets .price,
@@ -256,7 +296,7 @@ body{
     font-weight: 600;
     font-size: 15px;
 }
-.digital-cards .oldprice,
+.customSwiperContainer .oldprice,
 .phones-personal-audio .oldprice,
 .laptops .oldprice,
 .tablets .oldprice,
@@ -266,7 +306,7 @@ body{
     margin-right: 10px;
     text-decoration: line-through;
 }
-.digital-cards .discount,
+.customSwiperContainer .discount,
 .phones-personal-audio .discount,
 .laptops .discount,
 .tablets .discount,
@@ -289,7 +329,7 @@ body{
     color: #fff;
 }
 @media(max-width:600px){
-    .digital-cards .digital-card, .phones-personal-audio .phones-personal-audio, .laptops .laptop, .tablets .tablet, .televisions .television {
+    .customSwiperContainer .digital-card, .phones-personal-audio .phones-personal-audio, .laptops .laptop, .tablets .tablet, .televisions .television {
         padding: 10px 0;
         margin-bottom: 30px;
     }
@@ -316,7 +356,7 @@ body{
     .swiper-slide .discount{
         font-size: 10px;
     }
-    .digital-cards{
+    .customSwiperContainer{
         padding: 0px;
     }
     .phones-personal-audio,.laptops,.tablets,.televisions{
@@ -330,21 +370,21 @@ body{
 }
 
 @media(max-width:600px){
-    .digital-cards{
+    .customSwiperContainer{
         margin-top: 10px !important;
     }
 }
 /* End Digital Cards */
 /* Start Laptops assistant */
 .laptop-assistant{
-    height: 100%;
+    /* height: 100%; */
     background-image: url(https://m.xcite.com/media/wysiwyg/banners-kw-xvii/laptop-assistant-Laptop-EN.jpg);
     border-radius: 10px;
     background-repeat: no-repeat;
     background-position: 100%;
     background-size: 50% 100%;
     padding: 20px;
-    margin: 10px;
+    /* margin: 10px; */
     background-color: #000;
     height: 250px;
 }

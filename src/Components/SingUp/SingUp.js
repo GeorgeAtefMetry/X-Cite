@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import {   useNavigate } from "react-router-dom";
 import "./singup.css";
-
-
 import { UserAuth } from "../../context/AuthContext";
+import { addDoc, collection } from "firebase/firestore";
+import db from "../../firebase";
 
-const SingUp = () => {
-
- const navigate = useNavigate()
-
+const SingUp = (props) => {
+  const { title  } = props
+  const user = collection(db, "users")
+  const navigate = useNavigate()
   const {createUser} = UserAuth()
+  
   // values of inps
   const [inpValue, setINpValue] = useState({
     fullName: "",
@@ -19,6 +20,7 @@ const SingUp = () => {
     rePassword: "",
     nation: "",
     gander: "",
+    location : "egypt"
   });
   // inps erros
   const [err, setErr] = useState({
@@ -38,6 +40,7 @@ const SingUp = () => {
       ...inpValue,
       [e.target.name]: e.target.value,
     });
+    console.log(inpValue);
     //validation
     //full name
     if (e.target.name === "fullName") {
@@ -113,19 +116,20 @@ const SingUp = () => {
   // handel submit
   const handelsubmit = async (e) => {
     e.preventDefault()
-    
+    console.log(inpValue);
     try {
-      await createUser(inpValue.email , inpValue.password)
-        navigate('/Login')
+      await createUser(inpValue.email , inpValue.password);
+      await addDoc(user, inpValue)
+        navigate('/home')
     } catch (e) {
       console.log(e.message);
     }
   };
-
+  
   return (
     <div className="container-fluid">
       <div>
-        <h3 className="py-2">Create an Account</h3>
+        <h3 className="py-2">{title || "create new account"} </h3>
       </div>
       <div className="row  mx-2 my-2">
         <div className="col-12">

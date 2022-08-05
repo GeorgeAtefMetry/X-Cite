@@ -43,6 +43,7 @@ return(
                                     <span class="card-text oldprice float-left col-lg-4">{pro.oldPrice}</span>
                                     <span className='discount float-left col-lg-4'>{pro.discount}</span>
                                 </div>
+                                <button className='btn btn-warning' style={{width:'100%',marginTop:'10px',fontSize:'17px'}}>Add To Cart</button>
                             </div>
                         </div>
                     </div>
