@@ -164,7 +164,7 @@ import { useDispatch, useSelector } from "react-redux";
                   data-tracking-title="Header Login Accessed - LoggedOut"
                   data-tracking-type="Navigation"
                   rel="nofollow"
-                  to=""
+                  to="/UserProfile"
                   title="Sign Up / Login"
                 >
                   <i

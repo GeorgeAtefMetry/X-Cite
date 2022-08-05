@@ -16,10 +16,7 @@ const DeviceType = () => {
     iphone12pro: false,
     iphone12promax: false,
   });
-  let x = Object.entries(check)
-  .filter((prod) => prod[1])
-  .map((cat) => cat[0])
-  console.log(x);
+ 
   useEffect(() => {
     setFilter(
       Object.entries(check)

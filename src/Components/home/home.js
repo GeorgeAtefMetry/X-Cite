@@ -288,7 +288,7 @@ const Home = () =>{
                 {categories.map(cat => (
                 <div className='col-lg-3 col-md-6 col-10 p-2 m-0' key={cat.id}>
                     <div className="card p-0 m-0" style={{width: '100%', height:'17rem'}}>
-                        <img className="card-img-top h-75" src={cat.img} alt="Card image cap"/>
+                        <img className="card-img-top h-75" src={cat.img} alt="Card  cap"/>
                         <div className="card-body py-2 px-3 w-100">
                             <span className="card-text first float-left col-lg-9 text-start" >{cat.id}</span>
                             <span className="card-text second float-right col-lg-3 h-100">
