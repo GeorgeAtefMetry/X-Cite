@@ -2,9 +2,14 @@ import React from "react";
 import { useEffect, useState } from "react"
 import db from '../../firebase'
 import { useParams } from "react-router-dom";
-import { collection, doc, onSnapshot,getDocs,getDoc, increment } from "firebase/firestore"   
+import { collection, doc, onSnapshot,getDocs,getDoc, increment } from "firebase/firestore";
 import classes from './digitalCardDetails.module.css';
 import { useForm } from "react-hook-form";
+// cart
+import { useCookies } from 'react-cookie';
+import { AddToCart } from "../../services/CartService";
+import { useDispatch } from "react-redux";
+import cartAction from './../../Redux/action';
 
 const DigitalCardDetails = () => {
     const params = useParams()
@@ -14,10 +19,15 @@ const DigitalCardDetails = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
 
+    const [cookies, setCookies] = useCookies("Cart");
+
+    const dispatch = useDispatch();
     useEffect(()=>
     onSnapshot(doc(db, 'Products/', `${params.id}`),(snapshot)=>{
-        console.log(snapshot.data());
-        setDigitalCard(snapshot.data())
+        setDigitalCard(
+            {id: snapshot.id,
+            ...snapshot.data()
+        })
     })
     ,[]);
 
@@ -63,8 +73,15 @@ const DigitalCardDetails = () => {
         setActive3(active2 => false);
         setActive4(active2 => !active4);
     };
-    const incrementCount = () => {
-        setCount(count+1)
+    const incrementCount = (limit) => {
+        if(count < limit)
+        {
+            setCount(count+1)
+        }
+        else
+        {
+            return
+        }
     }
     const decrementCount = () => {
         if(count >= 2){
@@ -127,7 +144,7 @@ const DigitalCardDetails = () => {
                             {
                                 digitalCard.discount?
                                     <>
-                                    <span className={classes.price+" me-1"}>{(digitalCard.price*digitalCard.discount)/100} KD</span>
+                                    <span className={classes.price+" me-1"}>{parseFloat(digitalCard.price -((digitalCard.price*digitalCard.discount)/100)).toFixed(2)} KD</span>
                                     <span className={classes.oldPrice+" me-1"}>{digitalCard.price} KD</span>
                                     <span className={classes.discount}>save {digitalCard.discount}%</span>
                                     </>
@@ -158,10 +175,14 @@ const DigitalCardDetails = () => {
                         <div className={classes.btns+" mt-2 mb-3"}>
                             <button onClick={decrementCount} className={classes.decrement}>-</button>
                             <span className={classes.count}>{count}</span>
-                            <button onClick={incrementCount} className={classes.increment}>+</button>
+                            <button onClick={()=>{incrementCount(digitalCard.quantity)}} className={classes.increment}>+</button>
                       </div>
                       <div className="w-100 h-auto px-3 mb-3">
-                          <button className={classes.addToCardBtn+" py-1"}><i className="fa fa-shopping-cart fa-fw me-2"></i>Add to Card</button>
+                          <button className={classes.addToCardBtn+" py-1"}
+                                onClick={()=>{AddToCart( digitalCard.id, count, cookies, setCookies, dispatch, cartAction) }}
+                          >
+                            <i className="fa fa-shopping-cart fa-fw me-2"></i>Add to Card
+                           </button>
                       </div>
                       <div className="w-100 h-auto px-3 mb-3">
                           <button className={classes.clickBuyBtn+" py-1"}><i className="fa fa-tachometer fa-fw me-2"></i>1-Click Buy</button>

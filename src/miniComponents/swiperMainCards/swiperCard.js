@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Favorites from '../../services/services';
@@ -66,7 +66,7 @@ const SwiperCard = ({list, path}) => {
                             </Link>
                             <div className="card-body py-1 px-0" style={{height:"33%"}}>
                                 <span className="card-text px-2 name float-left col-lg-10">{item.name}</span>
-                                <span className="card-text px-2 price float-left col-lg-10">{item.discount?(item.price*item.discount)/100:item.price} KD</span>
+                                <span className="card-text px-2 price float-left col-lg-10">{item.discount?parseFloat(item.price-((item.price*item.discount)/100)).toFixed(2):item.price} KD</span>
                                 <div className='float-left col-lg-12 px-2 py-0'>
                                     {item.discount?
                                         <span className="card-text oldprice float-left col-lg-4">{item.price} KD</span>
