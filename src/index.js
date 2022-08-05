@@ -11,17 +11,24 @@ import "./language";
 import Spinner from "./Components/Spinner/Spinner";
 import { Provider } from 'react-redux/es/exports';
 import Store from './Redux/store';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Suspense fallback={<Spinner/>}>
-      <CookiesProvider>
-        <Provider store={Store}>
-          <App />
-        </Provider>
-      </CookiesProvider>
-    </Suspense>
+    <PayPalScriptProvider
+      options={{"client-id":process.env.REACT_APP_PAYPAL_CLIENT_ID}}
+      // options={{"client-id":'AYH7fLcitMuW2_yUrSr-qOhsC87h324PAtKpd2tSAutaAUOoAkAUg4OtDhIE0cBLdB-Zvx4FRByVEBmP'}}
+
+    >
+      <Suspense fallback={<Spinner/>}>
+        <CookiesProvider>
+          <Provider store={Store}>
+            <App />
+          </Provider>
+        </CookiesProvider>
+      </Suspense>
+    </PayPalScriptProvider>
   </React.StrictMode>
 );
 

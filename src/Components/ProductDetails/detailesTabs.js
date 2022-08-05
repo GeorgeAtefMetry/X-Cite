@@ -1,43 +1,23 @@
 import React from "react";
-import { useEffect, useState } from "react"
-import db from '../../firebase'
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { collection, doc, onSnapshot,getDocs,getDoc, increment } from "firebase/firestore";
-import classes from './digitalCardDetails.module.css';
+import classes from './ProductDetailes.module.css';
 import { useForm } from "react-hook-form";
-// cart
-import { useCookies } from 'react-cookie';
-import { AddToCart } from "../../services/CartService";
-import { useDispatch } from "react-redux";
-import cartAction from './../../Redux/action';
+import ProDiscription from "./proDiscription";
+import ProSpecification from "./proSpecification";
 
-const DigitalCardDetails = () => {
-    const params = useParams()
-    const [count, setCount] = useState(1)
-    const [digitalCard, setDigitalCard] = useState({images:[]})
-    const [favorites, setfavorites] = useState([])
+const ProTabs = ({Product, attributes}) => {
+    
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
-
-    const [cookies, setCookies] = useCookies("Cart");
-
-    const dispatch = useDispatch();
-    useEffect(()=>
-    onSnapshot(doc(db, 'Products/', `${params.id}`),(snapshot)=>{
-        setDigitalCard(
-            {id: snapshot.id,
-            ...snapshot.data()
-        })
-    })
-    ,[]);
-
     const [active, setActive] = useState(true)
     const [active1, setActive1] = useState(false)
     const [active2, setActive2] = useState(false)
     const [active3, setActive3] = useState(false)
     const [active4, setActive4] = useState(false)
     const [reviewActive, setReviewActive] = useState(true)
-    const [reviewActive2, setReviewActive2] = useState(false)
+    const [reviewActive2, setReviewActive2] = useState(false);
+
     const handleClick = () => {
         setActive(active => !active);
         setActive1(active1 => false);
@@ -73,24 +53,6 @@ const DigitalCardDetails = () => {
         setActive3(active2 => false);
         setActive4(active2 => !active4);
     };
-    const incrementCount = (limit) => {
-        if(count < limit)
-        {
-            setCount(count+1)
-        }
-        else
-        {
-            return
-        }
-    }
-    const decrementCount = () => {
-        if(count >= 2){
-            setCount(count-1)
-        }
-        else{
-            return
-        }
-    }
     const displaReview = () => {
         setReviewActive (reviewActive => !reviewActive)
         setReviewActive2 (reviewActive2 => false)
@@ -101,110 +63,6 @@ const DigitalCardDetails = () => {
     }
     return (
         <>
-        <div className={classes.bigContainer+' w-100 h-auto px-0 pb-0 pt-0 m-0'}>
-           <p className={"px-3 py-2 m-0 "+classes.proPath}> X-Cite {'>'} {digitalCard.categoryName} {'>'} {digitalCard.name} </p>
-        <hr className="mt-0"/>
-        {/* ====== Product General Detailes ================================================= */}
-            <div className="row p-0 m-0">
-                <div className={`col-lg-4 col-sm-7 order-1 px-sm-4 px-2 py-2`}>
-                    <div className={classes.image}>
-                        <img src={digitalCard.images[0]} height="400px"/>
-                    </div>
-                </div>
-                <div className="col-lg-5 col-sm-12 order-lg-2 order-sm-3 order-2 px-sm-4 px-3 py-2">
-                    <div className={classes.centerDetails}>
-                        <h5>{digitalCard.name}</h5>
-                        <div>
-                            <p style={{fontSize:'0.8rem', color:'gray'}}>
-                                <b>Brand: </b><span>{digitalCard.brandName}</span>
-                                <b className="ms-3">sku: </b><span>{digitalCard.sku}</span>
-                            </p>
-                            <div className={classes.rating}>
-                                <span className="fa fa-star checked"></span>
-                                <span className="fa fa-star checked"></span>
-                                <span className="fa fa-star checked"></span>
-                                <span className="fa fa-star"></span>
-                                <span className="fa fa-star"></span>
-                            </div>
-                            <div className={classes.inStock}>
-                                <i className="fa fa-check-circle" aria-hidden="true"></i>
-                                  {
-                                    digitalCard.quantity>5?
-                                    'In Stock'
-                                    :(
-                                        digitalCard.quantity==0?
-                                        "Sorry!,This Product is Not Available Now!"
-                                        :`Hurry up, It's available only ${digitalCard.quantity} items.`
-                                    )
-                                  }  
-                            </div>
-                        </div>
-                        <hr></hr>
-                        <div className={classes.pricing}>
-                            {
-                                digitalCard.discount?
-                                    <>
-                                    <span className={classes.price+" me-1"}>{parseFloat(digitalCard.price -((digitalCard.price*digitalCard.discount)/100)).toFixed(2)} KD</span>
-                                    <span className={classes.oldPrice+" me-1"}>{digitalCard.price} KD</span>
-                                    <span className={classes.discount}>save {digitalCard.discount}%</span>
-                                    </>
-                                    :<span className={classes.price}>{digitalCard.price} KD</span>
-                            }
-                        </div>
-                        <hr className="mt-1"/>
-                        <div className={classes.overview}>
-                            <h6>Quick Overview</h6>
-                            <p className="pe-5 w-75">
-                                {digitalCard.description}
-                            </p>
-                            {/* <ul>
-                                <li>Receive Code digitally</li>
-                                <li>View code via "My Orders" "My Vitual Cards"</li>
-                                <li>Fast & Reliable</li>
-                                <li>For US Accounts Only</li>
-                            </ul> */}
-                            <div className={classes.howDoIGet+" ps-2 py-1"}>
-                                How do I get it?
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-lg-3 col-sm-5 order-lg-3 order-sm-2 order-3 p-3">
-                    <div className={classes.rightAddToCart+ " w-100"}>
-                        <div className={classes.btns+" mt-2 mb-3"}>
-                            <button onClick={decrementCount} className={classes.decrement}>-</button>
-                            <span className={classes.count}>{count}</span>
-                            <button onClick={()=>{incrementCount(digitalCard.quantity)}} className={classes.increment}>+</button>
-                      </div>
-                      <div className="w-100 h-auto px-3 mb-3">
-                          <button className={classes.addToCardBtn+" py-1"}
-                                onClick={()=>{AddToCart( digitalCard.id, count, cookies, setCookies, dispatch, cartAction) }}
-                          >
-                            <i className="fa fa-shopping-cart fa-fw me-2"></i>Add to Card
-                           </button>
-                      </div>
-                      <div className="w-100 h-auto px-3 mb-3">
-                          <button className={classes.clickBuyBtn+" py-1"}><i className="fa fa-tachometer fa-fw me-2"></i>1-Click Buy</button>
-                      </div>
-                        <div className={classes.soldFulfilled+" w-100 mx-0 mb-3 px-3"}>
-                            <p className="my-0">Sold By: <b className="text-primary">{digitalCard.seller}</b></p>
-                            <p className="my-0">Fulfilled By: <b className="text-dark">X-cite</b></p>
-                        </div>
-                        <div className={`col-12 px-3  ${classes.wishlistCompare}`}>
-                            <div style={{width:'47%'}}>
-                                <p className="px-2 py-2 m-0"><i class="far fa-heart me-1"></i>Add to Wishlist</p>
-                                <span className="my-0">See Wishlist</span>
-                            </div>
-                            <div style={{width:'47%'}}>
-                                <p className="px-2 py-2 m-0"><i className="far fa-file me-1"></i>Add to Compare</p>
-                                <span className="my-0">See Compare List</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         {/* ====== Product More Special Detailes ============================================= */}
             <div className={classes.aboutProduct}>
                 <div className="row p-0 m-0">
@@ -218,93 +76,23 @@ const DigitalCardDetails = () => {
                         </div>      
                         
                         <div className={!active ? `${classes.productDescription} d-none` : `${classes.productDescription} p-3`}>
-                            <div className={`row p-3 ${classes.purchaseDetails} `}>
-                                <h4>Why to buy {digitalCard.name}</h4>
-                                <div>
-                                <div className="col-lg-9 float-start">
-                                            <p>Make sure You Are Signed In</p>
-                                            <p>You need to be signed in to receive the code on your account. Make one now if you do not have any, it will only take a few minutes!</p>
-                                </div>
-                                <div className="col-lg-3 float-start">
-                                        <img src="	https://m.xcite.com/media/richcontent/login-514523.jpg"  height="200px"/>
-                                </div>
-                                </div>
-                            </div> 
-
-                            <div className={`row p-3 ${classes.purchaseDetails} `}>
-                                <div className="col-lg-3 float-start">
-                                        <img src="https://m.xcite.com/media/richcontent/Untitled-1-324545.jpg" height="200px" />
-                                </div>
-                                <div className={"col-lg-9 float-start "+classes.afterPurchase}>
-                                            <p>After you complete your purchase, you will be redirected to a conformation
-                                                 page which confirms your purchase and shows your code as well. You will 
-                                                 also be able to find it saved in your account. Go to “My Account” {'>'} 
-                                                 “My Virtual Cards”.</p>
-                                </div>
-                            </div>  
-
-                            <div className={`row p-3 ${classes.purchaseDetails}`}>
-                                <div className="col-lg-9 float-start">
-                                            <h4>What If I Do Not Receive My Code? Is There A Refund?</h4>
-                                            <p>If somehow you did not receive your code in your virtual cards, you can report this issue by going to “My Account” then clicking the “Ask For Refund” button.</p>
-                                </div>
-                                <div className="col-lg-3 float-start">
-                                        <img src="	https://m.xcite.com/media/richcontent/Thankyou-324545.jpg" height="200px"/>
-                                </div>
-                            </div> 
-
-                            <div className={`row p-3 ${classes.purchaseDetails} `}>
-                                <div className="col-lg-3 float-start">
-                                        <img src="https://m.xcite.com/media/richcontent/report-issue-onecard-514523.jpg" height="200px" />
-                                </div>
-                                <div className="col-lg-9 float-start">
-                                            <p>If there is any issue with your card, you can simply go to “My Account”
-                                                  then “My Virtual Cards” where you will find the “Report Issue” button.
-                                                  Once clicked, you should receive a pop up page where you can fill in 
-                                                  your complaint details including a screenshot and submit it to be reviewed
-                                                  as soon as possible.</p>
-                                </div>
-                            </div>
-
+                            <ProDiscription Product={Product} category={Product.categoryName} />
                         </div>
 
-                        <div  className={!active1 ? `${classes.productSpecification} d-none` : `${classes.productSpecification} p-3` }>
-                            <p>Information on {digitalCard.name}</p>
-                            <table className="data-table col-md-10" id="product-attribute-specs-table1">
-                                <tbody>                                                      
-                                    <tr>
-                                        <th >
-                                            Article Number                                    
-                                        </th>
-                                        <td >
-                                            620925                                    
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div className={!active1 ? `${classes.productSpecification} d-none` : `${classes.productSpecification} p-3` }>
+                            <p>Information on {Product.name}</p>
                             <p className={classes.bold+" fs-5 mt-3 mb-1 ps-2"}>General</p>
-                            <table className="data-table col-md-10" id="product-attribute-specs-table1">
-                                <tbody className="">                                                      
-                                    <tr>
-                                        <th >
-                                            Card Value                                    
-                                        </th>
-                                        <td >
-                                            {digitalCard.value}                                    
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                <ProSpecification Product={Product} attributes={attributes}/>
                         </div>
 
                         <div  className={!active2 ? `${classes.reviews} row ${classes.dis}` : `${classes.reviews} row`}>
                             <div className={`col-md-2 ${classes.rating}`}>
                                 <p className={classes.bold}>4.9</p>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
+                                <span className="fa fa-star checked"></span>
+                                <span className="fa fa-star checked"></span>
+                                <span className="fa fa-star checked"></span>
+                                <span className="fa fa-star"></span>
+                                <span className="fa fa-star"></span>
                                 <p>Based on 79 rating</p>
                             </div>
 
@@ -321,7 +109,7 @@ const DigitalCardDetails = () => {
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="range">4 ☆
+                                                <td className="range">4 ☆
                                                 </td>
                                                 <td title="7/75 (9%)" className="bar">
                                                     <div style={{width:'20px !important', backgroundColor:'#bcee01' }} className={classes.ratingProgressFourStars}>
@@ -336,7 +124,7 @@ const DigitalCardDetails = () => {
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="range">2 ☆
+                                                <td className="range">2 ☆
                                                 </td>
                                                 <td title="0/75 (0%)" className="bar">
                                                     <div style={{width:'0px !important', backgroundColor:'#00de01' }} className={classes.ratingProgressTwoStars}>
@@ -344,7 +132,7 @@ const DigitalCardDetails = () => {
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="range">1 ☆
+                                                <td className="range">1 ☆
                                                 </td>
                                                 <td title="1/75 (1%)" className="bar">
                                                     <div style={{width:'30px !important', backgroundColor:'#e8afb1' }} className={classes.ratingProgressOneStars}>
@@ -368,26 +156,26 @@ const DigitalCardDetails = () => {
                                         <div className={classes.logo} style={{backgroundColor:' rgb(152, 194, 132) !important'}}>SS
                                         </div>
                                         <h5>Sharka Sami </h5>
-                                        <span title="Verified buyer" className={classes.verified}><i class="fa-solid fa-check"></i></span>
-                                        <time datetime="2022-05-24" class="date hcol not-xs">2 months ago</time>
+                                        <span title="Verified buyer" className={classes.verified}><i className="fa-solid fa-check"></i></span>
+                                        <time dateTime="2022-05-24" className="date hcol not-xs">2 months ago</time>
                                     </div>
                                     <div className={classes.ratingCustomer}>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
+                                            <span className="fa fa-star checked"></span>
+                                            <span className="fa fa-star checked"></span>
+                                            <span className="fa fa-star checked"></span>
+                                            <span className="fa fa-star"></span>
+                                            <span className="fa fa-star"></span>
                                     </div>
                                     <span className={classes.reviewWord}>Good</span>
                                 </div>
                                 <div className={reviewActive ? `${classes.dis}` : `${classes.writeReview}`}>
                                     <div className={`text-center ${classes.writeReviewRating}`}>
                                         <div className={classes.stars}>
-                                            <span><i class="fa fa-star "></i></span>
-                                            <span><i class="fa fa-star "></i></span>
-                                            <span><i class="fa fa-star "></i></span>
-                                            <span><i class="fa fa-star "></i></span>
-                                            <span><i class="fa fa-star "></i></span>
+                                            <span><i className="fa fa-star "></i></span>
+                                            <span><i className="fa fa-star "></i></span>
+                                            <span><i className="fa fa-star "></i></span>
+                                            <span><i className="fa fa-star "></i></span>
+                                            <span><i className="fa fa-star "></i></span>
                                             <span className={classes.userRatingStar}>Click the stars to rate this product</span>
                                             <p className={classes.oneStar}>Unacceptable</p>
                                             <p className={classes.twoStars}>Poor</p>
@@ -520,7 +308,7 @@ const DigitalCardDetails = () => {
 
                         <div  className={!active4 ? `${classes.dis}` : ''}>
                             <div style={{padding:'20px'}}>
-                                <div class="row">
+                                <div className="row">
                                     <div className="col-md-4">
                                         <div style={{textAlign:'center'}}>
                                             <img src="//m.xcite.com/media/wysiwyg/our-services-pdp-tab/latest-min.png" style={{width:'25%', marginBottom:'20px', marginTop:'20px'}}/>
@@ -609,9 +397,8 @@ const DigitalCardDetails = () => {
                     </div>
                 </div>      
             </div>
-        </div>
         </>
     )
 }
 
-export default DigitalCardDetails;
+export default ProTabs;

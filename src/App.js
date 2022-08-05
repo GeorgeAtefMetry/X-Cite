@@ -17,7 +17,7 @@ import BrandDetailes from "./Components/BrandStore/BrandDetailes";
 import Samsung from "./Components/BrandStore/Samsung";
 import Acer from "./Components/BrandStore/acer";
 import favicon from "./assests/xCitefavicon.PNG";
-import DigitalCardDetails from "./Components/digitalCardDetails/digitalCardDetails";
+import ProductDetails from "./Components/ProductDetails/ProductDetailes";
 import Wishlist from "./wishlist/wishlist";
 import SingUp from "./Components/SingUp/SingUp";
 import Login from "./Components/Login/Login";
@@ -61,7 +61,7 @@ function App() {
             <Route path="Brand/Samsung" exact  element={<Samsung/>} ></Route>
             <Route path="Brand/Acer" exact  element={<Acer/>} ></Route>
             <Route path="Brand/Apple" exact element={<AppleProds />}></Route>
-            <Route path="/digitalcarddetails/:id" exact  element={<DigitalCardDetails/>} ></Route>
+            <Route path="/ProductDetails/:id" exact  element={<ProductDetails/>} ></Route>
             <Route path="/wishlist/" exact  element={<Wishlist/>} ></Route>
             <Route path="/Login" exact element={<Login />}></Route>       
             <Route path="/SingUp" exact element={<SingUp />}></Route>
@@ -79,7 +79,6 @@ function App() {
             <Route path="/UserProfile" exact element={ <PrivateRoure> <UserProfile /></PrivateRoure>}></Route>
             <Route path="/test" exact element={<Test />}></Route>
           </Routes>
-
           <Footer></Footer>
         </AuthContextProvider>
       </Router>

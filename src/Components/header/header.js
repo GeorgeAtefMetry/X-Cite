@@ -15,16 +15,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 import { useCookies, Cookies } from "react-cookie";
 import { useDispatch, useSelector } from "react-redux";
+import cartAction from './../../Redux/action';
 
-  const Header = () => {
+const Header = () => {
   // get status of current language
   const [lang, setLang] = useState(false);
   const [cookies, setCookies]= useCookies("Cart");
   const cartCounter = useSelector(state=> state.cartCounter);
+  const dispatch = useDispatch()
 
   useEffect(()=>{
-    console.log(cartCounter);
-    
+    dispatch(cartAction(cookies.Cart.length?cookies.Cart.length:0))
   },[])
 
   // change the diraction of the page based on the value of the lang

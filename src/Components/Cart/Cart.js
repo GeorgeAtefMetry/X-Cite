@@ -6,6 +6,7 @@ import { collection, onSnapshot, doc, query, where, documentId } from 'firebase/
 import classes from './cart.module.css';
 import { useDispatch, useSelector } from "react-redux";
 import cartAction from './../../Redux/action';
+import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 
 const Cart = () => {
   const [cookies, setCookies] = useCookies(['Cart']);
@@ -17,6 +18,7 @@ const Cart = () => {
   const [GrandTotal, setGrandTotal]= useState(0);
   const dispatch = useDispatch();
   const cartCounter = useSelector(state=>state.cartCounter);
+  const [goToCheckout, setCheckoutState] = useState(false);
 
   useEffect(()=>{
     console.log(cookies.Cart)
@@ -139,7 +141,7 @@ const Cart = () => {
                     {/* data */}
                     <div className='col-md-7 col-12 order-md-2 order-3 ps-1 pe-0 pt-3' style={{minHeight:'240px'}}>
                         <h6 style={{color:'black'}}><b>{item.name}</b></h6>
-                        <p className='text-danger mt-3 mb-0'><b>Subtotal:</b>{item.discount?(item.price-((item.price*item.discount)/100))*item.amount: item.price*item.amount} KD</p> {/* item price * quantity */}
+                        <p className='text-danger mt-3 mb-0'><b>Subtotal:</b>{item.discount?parseFloat((item.price-((item.price*item.discount)/100))*item.amount).toFixed(2): item.price*item.amount} KD</p> {/* item price * quantity */}
                         <p className={"text-muted my-0 "+classes.smtxt}>Unit Price: <span className={classes.xsmtxt}>{item.discount? parseFloat(item.price-((item.price*item.discount)/100)).toFixed(2):item.price} KD</span></p>
                         {
                           item.discount?
@@ -188,12 +190,54 @@ const Cart = () => {
                 <button className={classes.btns+ " px-2 rounded my-1 py-2 ms-auto"}>Apply Coupon</button>
               </div>
           </div>
-          <div id="payment" className='col-lg-4 col-12 p-4 mb-2 shadow-sm' style={{height:'230px', backgroundColor:'white'}}>
-            <h6 className='mb-3'>Subtotal: <span className='ps-4'>{totalPrice} KD</span></h6>
-            <h6 className='mb-4'>Delivery Charge: <span className='ps-4'>{deliverycharge} KD</span></h6>
-            <h5 className='mb-4 text-danger'><b>Grand Total:</b> <span className='ps-4'>{GrandTotal} KD</span></h5>
 
-          <button className={'btn-lg rounded border-0 py-3 px-2 w-100 fs-6 '+classes.chkbtn}><b>Proceed to Checkout</b></button>
+          <div className={'col-lg-4 col-12 p-4 mb-2 '} style={{height:'max-content', display:goToCheckout?'inline':'none' }}>
+            <div className="shadow-sm rounded p-3 w-100 h-100 d-flex flex-column justify-content-center" style={{backgroundColor:'white'}}>
+                <PayPalScriptProvider
+                >
+                  <PayPalButtons
+                    style={{shape: "pill"}}
+                    // forceReRender={[GrandTotal]}
+                    createOrder={(data, actions)=>{
+                        return actions.order.create({
+                          intent: 'CAPTURE',
+                          // payer:"Asma",
+                          purchase_units:[{
+                            discription:'sddfdf',
+                            items:cart,
+                            amount:{
+                              currency_code: 'USD',
+                              value: 100.00
+                              // value: GrandTotal+1.00
+                              // value: GrandTotal.toFixed(2)
+                            }
+                          },
+                            // {
+                            //   discription:'sdf',
+                            //   amount:{
+                            //     currency_code: 'USD',
+                            //     value: 100.00,
+                            //   }
+                            // }
+                          ]
+                        })
+                    }}
+                  />
+                </PayPalScriptProvider>
+            </div>
+          </div>
+
+          <div className='col-lg-4 col-12 p-4 mb-2 shadow-sm' id="payment" style={{height:'230px', backgroundColor:'white'}}>
+            <h6 className='mb-3'>Subtotal: <span className='ps-4'>{totalPrice.toFixed(2)} KD</span></h6>
+            <h6 className='mb-4'>Delivery Charge: <span className='ps-4'>{deliverycharge} KD</span></h6>
+            <h5 className='mb-4 text-danger'><b>Grand Total:</b> <span className='ps-4'>{GrandTotal.toFixed(2)} KD</span></h5>
+
+            <button className={'btn-lg rounded border-0 py-3 px-2 w-100 fs-6 '+classes.chkbtn}
+              style={{display:goToCheckout?'none':'inline' }}
+              onClick={()=>{setCheckoutState(!goToCheckout)}}
+            >
+              <b>Proceed to Checkout</b>
+            </button>
           </div>
         </div>
 

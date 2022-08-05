@@ -310,7 +310,7 @@ const Home = () =>{
                 <div className='float-left customSwiperContainer-heading h-100'>Digital Cards</div>
                 <div className='view-all float-right px-3 py-1 h-100'>View All</div>
             </div>
-            <SwiperCard list={digitalCards} path={'digitalcarddetails'} ></SwiperCard>
+            <SwiperCard list={digitalCards} path={'ProductDetails'} ></SwiperCard>
         </div>
 
 {/* ============================ Phones & Personal Audio ========================== */}
@@ -319,7 +319,7 @@ const Home = () =>{
                 <div className='float-left customSwiperContainer-heading h-100'>Phones & Personal Audio</div>
                 <div className='view-all float-right px-3 py-1 h-100'>View All</div>
             </div>      
-            <SwiperCard list={phonesAndPersonalAudio} path={'digitalcarddetails'} ></SwiperCard>
+            <SwiperCard list={phonesAndPersonalAudio} path={'ProductDetails'} ></SwiperCard>
         </div>
 
 {/* ============================ Laptops ========================== */}
@@ -328,7 +328,7 @@ const Home = () =>{
                 <div className='float-left customSwiperContainer-heading h-100'>Laptops</div>
                 <div className='view-all float-right px-3 py-1 h-100'>View All</div>
             </div>        
-            <SwiperCard list={laptops} path={'digitalcarddetails'}  ></SwiperCard>
+            <SwiperCard list={laptops} path={'ProductDetails'}  ></SwiperCard>
         </div>
 
         <div className='laptop-assistant w-100'>
@@ -353,7 +353,7 @@ const Home = () =>{
                 <div className='float-left customSwiperContainer-heading h-100'>Tablets</div>
                 <div className='view-all float-right px-3 py-1 h-100'>View All</div>
             </div>       
-            <SwiperCard list={tablets} path={'digitalcarddetails'}  ></SwiperCard>
+            <SwiperCard list={tablets} path={'ProductDetails'}  ></SwiperCard>
         </div>
 
 {/* ============================ Televisions ========================== */}
@@ -362,7 +362,7 @@ const Home = () =>{
                 <div className='float-left customSwiperContainer-heading h-100'>Televisions</div>
                 <div className='view-all float-right px-3 py-1 h-100'>View All</div>
             </div>       
-            <SwiperCard list={televisions} path={'digitalcarddetails'}  ></SwiperCard>
+            <SwiperCard list={televisions} path={'ProductDetails'}  ></SwiperCard>
         </div> 
 
         </div>     
