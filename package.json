@@ -2,7 +2,7 @@
   "name": "x-cite",
   "version": "0.1.0",
   "private": true,
-  "homepage": "`https://georgeatefmetry.github.io/X-Cite-User`",
+  "homepage": "`https://georgeatefmetry.github.io/home`",
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
