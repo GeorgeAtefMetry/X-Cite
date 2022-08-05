@@ -14,23 +14,23 @@ import { getAuth } from "firebase/auth";
 //     measurementId: "G-WTTREF0R4P"
 // };
 
-const firebaseConfig = {
-    apiKey: "AIzaSyDzKdGN1Lx8nmG-jSGZXmaGo8z6X0jsKys",
-    authDomain: "x-cite-2.firebaseapp.com",
-    projectId: "x-cite-2",
-    storageBucket: "x-cite-2.appspot.com",
-    messagingSenderId: "827024114042",
-    appId: "1:827024114042:web:aea2f3e81e3039c4dd96c3"
-  };
-
 // const firebaseConfig = {
-//     apiKey: "AIzaSyBBiJJcUrM2VnUhakNkpW4fE4rvjiXXqXs",
-//     authDomain: "asom-test.firebaseapp.com",
-//     projectId: "asom-test",
-//     storageBucket: "asom-test.appspot.com",
-//     messagingSenderId: "325030155628",
-//     appId: "1:325030155628:web:1395b41579eb634b368f49"
+//     apiKey: "AIzaSyDzKdGN1Lx8nmG-jSGZXmaGo8z6X0jsKys",
+//     authDomain: "x-cite-2.firebaseapp.com",
+//     projectId: "x-cite-2",
+//     storageBucket: "x-cite-2.appspot.com",
+//     messagingSenderId: "827024114042",
+//     appId: "1:827024114042:web:aea2f3e81e3039c4dd96c3"
 //   };
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBBiJJcUrM2VnUhakNkpW4fE4rvjiXXqXs",
+    authDomain: "asom-test.firebaseapp.com",
+    projectId: "asom-test",
+    storageBucket: "asom-test.appspot.com",
+    messagingSenderId: "325030155628",
+    appId: "1:325030155628:web:1395b41579eb634b368f49"
+  };
 
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
