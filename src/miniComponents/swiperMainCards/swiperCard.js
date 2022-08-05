@@ -62,7 +62,7 @@ const SwiperCard = ({list, path}) => {
                                 </span>
                             </div>
                             <Link to={`/${path}/${item.id}`}>
-                                <img className="card-img-top" src={item.images[0]} style={{height:"60%"}} key={item.id}  alt="Card image cap"/>
+                                <img className="card-img-top" src={item.images} style={{height:"60%"}} key={item.id}  alt="Card  cap"/>
                             </Link>
                             <div className="card-body py-1 px-0" style={{height:"33%"}}>
                                 <span className="card-text px-2 name float-left col-lg-10">{item.name}</span>

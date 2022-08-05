@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import "bootstrap/dist/js/bootstrap.bundle";
 import Slider from "./Slider/Slider";
 import Cards from "./Cards/Cards";
 import Accesssories from "./Accsessories/Accesssories";
 import "./AppleProds.css";
+import { useTranslation } from "react-i18next";
 
 const AppleProds = () => {
-
+  const {t} =  useTranslation()
   //main prods
   const cardInfo = [
     {
@@ -113,7 +114,7 @@ const AppleProds = () => {
       </div>
       <Cards card={cardInfo}></Cards>
       <div className="container-fluid mb-2">
-        <h4 className="text-center text-white acces py-3">Accessories</h4>
+        <h4 className="text-center text-white acces py-3">{t("Accessories")}</h4>
       </div>
       <Accesssories access={accessories}></Accesssories>
       <div

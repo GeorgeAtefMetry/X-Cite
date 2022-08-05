@@ -36,6 +36,7 @@ import AppleTv from "./Components/AppleProds/Cards/AppleTv/AppleTv";
 import AirTag from "./Components/AppleProds/Cards/AirTag/AirTag";
 import Beats from "./Components/AppleProds/Cards/Beats/Beats";
 import MacDetiles from "./Components/AppleProds/Cards/mac/MacDetiles/MacDetiles";
+import UserProfile from './Components/UserProfile/UserProfile';
 
 function getFavIconElement() {
   return document.getElementById("favicon");
@@ -75,6 +76,7 @@ function App() {
             <Route path="/iphone/:iphoneId" exact element={<IphoneDetiles />} />
             <Route path="/mac/:macId" exact element={<MacDetiles />} />
             <Route path="/Cart" exact element={ <PrivateRoure> <Cart /></PrivateRoure>}></Route>
+            <Route path="/UserProfile" exact element={ <PrivateRoure> <UserProfile /></PrivateRoure>}></Route>
             <Route path="/test" exact element={<Test />}></Route>
           </Routes>
           <Footer></Footer>

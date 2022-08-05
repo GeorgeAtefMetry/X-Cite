@@ -5,7 +5,8 @@ import { UserAuth } from "../../context/AuthContext";
 import { addDoc, collection } from "firebase/firestore";
 import db from "../../firebase";
 
-const SingUp = () => {
+const SingUp = (props) => {
+  const { title  } = props
   const user = collection(db, "users")
   const navigate = useNavigate()
   const {createUser} = UserAuth()
@@ -19,6 +20,7 @@ const SingUp = () => {
     rePassword: "",
     nation: "",
     gander: "",
+    location : "egypt"
   });
   // inps erros
   const [err, setErr] = useState({
@@ -118,16 +120,16 @@ const SingUp = () => {
     try {
       await createUser(inpValue.email , inpValue.password);
       await addDoc(user, inpValue)
-        navigate('/Login')
+        navigate('/home')
     } catch (e) {
       console.log(e.message);
     }
   };
-
+  
   return (
     <div className="container-fluid">
       <div>
-        <h3 className="py-2">Create an Account</h3>
+        <h3 className="py-2">{title || "create new account"} </h3>
       </div>
       <div className="row  mx-2 my-2">
         <div className="col-12">
