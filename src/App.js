@@ -75,7 +75,7 @@ function App() {
             <Route path="/Beats" exact element={<Beats />} />
             <Route path="/iphone/:iphoneId" exact element={<IphoneDetiles />} />
             <Route path="/mac/:macId" exact element={<MacDetiles />} />
-            <Route path="/Cart" exact element={ <PrivateRoure> <Cart /></PrivateRoure>}></Route>
+            <Route path="/Cart" exact element={<Cart />}></Route>
             <Route path="/UserProfile" exact element={ <PrivateRoure> <UserProfile /></PrivateRoure>}></Route>
             <Route path="/test" exact element={<Test />}></Route>
           </Routes>

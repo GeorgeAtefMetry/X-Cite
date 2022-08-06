@@ -28,15 +28,15 @@ const ShowMobile = ({ priceRinge }) => {
 
   // get data iphone from firestore
   useEffect(() => {
-    const iphoneRef = collection(db, `products/apple/iphone`);
-    // let q = query(
-    //   iphoneRef,
-    //   where("categoryName", "==", "Mobile Phones"),
-    //   where("brandName", "==", "Apple"),
-    //   where("lang", "==", i18n.language),
-    // );
+    const iphoneRef = collection(db, `Products`);
+    let q = query(
+      iphoneRef,
+      where("categoryName", "==", "Mobile Phones"),
+      where("brandName", "==", "Apple"),
+      where("lang", "==", i18n.language),
+    );
     const getPhones = async () => {
-      const mobiles = await getDocs(iphoneRef);
+      const mobiles = await getDocs(q);
       setData(mobiles.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       setLoading(false);
     };
