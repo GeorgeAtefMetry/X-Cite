@@ -19,7 +19,6 @@ root.render(
     <PayPalScriptProvider
       options={{"client-id":process.env.REACT_APP_PAYPAL_CLIENT_ID}}
       // options={{"client-id":'AYH7fLcitMuW2_yUrSr-qOhsC87h324PAtKpd2tSAutaAUOoAkAUg4OtDhIE0cBLdB-Zvx4FRByVEBmP'}}
-
     >
       <Suspense fallback={<Spinner/>}>
         <CookiesProvider>

@@ -1,20 +1,19 @@
 import './home.css';
 import { Carousel } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import db from '../../firebase'
-import { collection, doc, onSnapshot, query, where } from "firebase/firestore"            
+import db from '../../firebase';
+import { collection, doc, onSnapshot, query, where } from "firebase/firestore";           
 import React from 'react';
 import SwiperCard from '../../miniComponents/swiperMainCards/swiperCard';
 
 const Home = () =>{
 
-    const[digitalCards, setDigitalCards] = useState([]); {/*done */} 
-    const[phonesAndPersonalAudio, setphonesAndPersonalAudio] = useState([]); {/*done */} 
-    const[laptops, setLaptops] = useState([]); {/*done */} 
-    const[tablets, setTablets] = useState([]); {/*done */} 
-    const[televisions, setTelevisions] = useState([]); {/*done */} 
+    const[digitalCards, setDigitalCards] = useState([]); {/*done */}
+    const[phonesAndPersonalAudio, setphonesAndPersonalAudio] = useState([]); {/*done */}
+    const[laptops, setLaptops] = useState([]); {/*done */}
+    const[tablets, setTablets] = useState([]); {/*done */}
+    const[televisions, setTelevisions] = useState([]); {/*done */}
     const [categories, setCats] = useState([]);
-
     
     // const[product, setProduct] = useState([]);
     const[favorites, setFavorites] = useState([])

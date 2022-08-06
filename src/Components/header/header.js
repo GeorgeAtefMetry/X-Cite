@@ -16,6 +16,8 @@ import { UserAuth } from "../../context/AuthContext";
 import { useCookies, Cookies } from "react-cookie";
 import { useDispatch, useSelector } from "react-redux";
 import cartAction from './../../Redux/action';
+import db from '../../firebase';
+import { doc, onSnapshot } from "firebase/firestore";
 
 const Header = () => {
   // get status of current language
@@ -23,10 +25,24 @@ const Header = () => {
   const [cookies, setCookies]= useCookies("Cart");
   const cartCounter = useSelector(state=> state.cartCounter);
   const dispatch = useDispatch()
-
+  // get status of their is user or not and handel logout
+  const { user, logout } = UserAuth();
+  const navTologin = useNavigate();
+  
   useEffect(()=>{
-    dispatch(cartAction(cookies.Cart.length?cookies.Cart.length:0))
-  },[])
+    if(user)
+    {
+      const usrDoc = doc(db, 'users/', `${user.uid}`)
+      onSnapshot(usrDoc,(snapshot)=>{
+          const cart = snapshot.data().cart;
+          dispatch(cartAction(cart.length))
+        })
+    }
+    else
+    {
+      dispatch(cartAction(cookies.Cart?(cookies.Cart.length?cookies.Cart.length:0):0))
+    }
+  },[user])
 
   // change the diraction of the page based on the value of the lang
   document.body.dir = lang ? "rtl" : "ltr";
@@ -41,10 +57,6 @@ const Header = () => {
     i18n.changeLanguage(lang ? "en" : "ar");
   };
   
-
-  // get status of their is user or not and handel logout
-  const { user, logout } = UserAuth();
-  const navTologin = useNavigate();
   // handel when user logout and navigate him to login component
   const handleLogIn = async () => {
     try {

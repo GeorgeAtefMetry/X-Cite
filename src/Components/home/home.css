@@ -284,9 +284,8 @@ body{
 .laptops .name,
 .tablets .name,
 .televisions .name{
-    font-weight: 500;
-    font-size: 15px;
-    height: 100%;
+    font-weight: 600;
+    font-size: 13px;
 }
 .customSwiperContainer .price,
 .phones-personal-audio .price,

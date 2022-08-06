@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import {   useNavigate } from "react-router-dom";
 import "./singup.css";
 import { UserAuth } from "../../context/AuthContext";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 import db from "../../firebase";
 
 const SingUp = (props) => {
   const { title  } = props
-  const user = collection(db, "users")
   const navigate = useNavigate()
   const {createUser} = UserAuth()
   
@@ -20,7 +19,8 @@ const SingUp = (props) => {
     rePassword: "",
     nation: "",
     gander: "",
-    location : "egypt"
+    location : "egypt",
+    cart: []
   });
   // inps erros
   const [err, setErr] = useState({
@@ -118,9 +118,13 @@ const SingUp = (props) => {
     e.preventDefault()
     console.log(inpValue);
     try {
-      await createUser(inpValue.email , inpValue.password);
-      await addDoc(user, inpValue)
-        navigate('/home')
+      await createUser(inpValue.email , inpValue.password).then((res)=>{
+          console.log(res.user);
+          const userCollec = doc(db, `users/${res.user.uid}`)
+          setDoc(userCollec, inpValue).then(()=>{
+            navigate('/home')
+          })
+      })
     } catch (e) {
       console.log(e.message);
     }
