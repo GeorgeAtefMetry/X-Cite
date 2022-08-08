@@ -33,7 +33,9 @@ const ShowMobile = ({ priceRinge }) => {
       iphoneRef,
       where("categoryName", "==", "Mobile Phones"),
       where("brandName", "==", "Apple"),
+
       where("lang", "==", i18n.language),
+
     );
     const getPhones = async () => {
       const mobiles = await getDocs(q);
@@ -43,6 +45,7 @@ const ShowMobile = ({ priceRinge }) => {
     getPhones();
   }, [i18n.language]);
   console.log(data);
+  // card mobile
   const iphoneCard = data
     ?.filter((el) => {
       if (priceRinge === 1000) {
@@ -55,7 +58,7 @@ const ShowMobile = ({ priceRinge }) => {
       (el) => {
         if (inpfil.length >= 1 && el.mobileName) {
           return (
-            inpfil.includes(el.Storage) ||
+            inpfil.includes(el.storage) ||
             inpfil.includes(el.Camera) ||
             inpfil.includes(el.screenSize) ||
             inpfil.includes(el.color) ||
@@ -82,9 +85,9 @@ const ShowMobile = ({ priceRinge }) => {
           <img className="img-fluid " src={el?.mobileImg} alt={el?.type} />
         </Link>
         <h5 className="pb-4">
-          {el.brandName} {el.mobileName} {el.Storage} {el.mobileColor}
+          {el.brandName} {el.mobileName} {el.storage} 
         </h5>
-        <div className="icons pb-2">
+        <div className="icons-ahmed pb-2">
           <i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i>
@@ -105,7 +108,7 @@ const ShowMobile = ({ priceRinge }) => {
       </motion.div>
     ));
 
-  console.log(iphoneCard);
+  //console.log(iphoneCard);
   return (
     <div className="container-fluid mt-2">
       <motion.div className="row ">

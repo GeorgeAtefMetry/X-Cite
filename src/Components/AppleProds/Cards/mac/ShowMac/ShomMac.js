@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import db from "../../../../../firebase";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { UserAuth } from "../../../../../context/AuthContext";
 const ShomMac = () => {
-  const { pathname } = useLocation();
-  console.log("show mac" , pathname);
   const { inpfil } = UserAuth();
-  console.log(pathname);
+
   const [mac, setMac] = useState([]);
-  const macRef = collection(db, `products/apple${pathname}`);
+  const macRef = collection(db, `Products`);
   // get data
   useEffect(() => {
+    let q = query(
+      macRef,
+      where("categoryName", "==", "labtops"),
+      where("brandName", "==", "Apple")
+      // where("lang", "==", i18n.language),
+    );
     const getMacs = async () => {
-      const mobiles = await getDocs(macRef);
+      const mobiles = await getDocs(q);
       setMac(mobiles.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getMacs();
@@ -21,28 +25,29 @@ const ShomMac = () => {
 
   // loop over data
   const macCard = mac
-    ?.filter(({ Storage, Processor, os, ram, color, screenSize }) => {
+    ?.filter((el) => {
       if (inpfil.length >= 1) {
         return (
-          inpfil.includes(Storage) ||
-          inpfil.includes(Processor) ||
-          inpfil.includes(screenSize) ||
-          inpfil.includes(os) ||
-          inpfil.includes(ram) || 
-          inpfil.includes(color)
+          inpfil.includes(el.name) ||
+          inpfil.includes(el.storage) ||
+          inpfil.includes(el.processor) ||
+          inpfil.includes(el.displaySize) ||
+          inpfil.includes(el.OS) ||
+          inpfil.includes(el.Ram) ||
+          inpfil.includes(el.color)
         );
       } else {
-        return Storage && os && ram && Processor && screenSize ;
+        return el;
       }
     })
     .map((el, index) => (
       <div className=" bg-white iphone col-md-3 my-2 py-2" key={el.id}>
-        <Link  to={`/mac/${el?.id}`} >
-          <img className="img-fliud " src={el.imgUrl} alt={el.name} />
+        <Link to={`/mac/${el?.id}`}>
+          <img className="img-fluid" src={el.imgUrl} alt={el.name} />
         </Link>
 
         <h5 className="pb-4">
-          Apple {el.name} {el.Storage} ssd - {el.ram} {el.Processor}
+          Apple {el.name} {el.storage} ssd - {el.Ram} {el.processor}
         </h5>
         <div className="icons pb-2">
           <i class="fa-solid fa-star"></i>
@@ -52,7 +57,7 @@ const ShomMac = () => {
           <i class="fa-solid fa-star"></i>
         </div>
         <h4>{el.price} KD</h4>
-        <p>Sold By {el.sellerName}</p>
+        <p>Sold By {el.seller}</p>
         <p className="X-ctie ">
           <i class="fa-solid fa-check"></i> Fulfilled By X-cite
         </p>

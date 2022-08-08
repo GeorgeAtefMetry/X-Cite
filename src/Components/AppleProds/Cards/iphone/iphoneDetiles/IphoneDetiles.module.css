@@ -4,9 +4,9 @@
 .Carousel {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   flex-direction: column;
-  width: 770px;
+  width: 95%;
 }
 .slider {
   width: 750px;

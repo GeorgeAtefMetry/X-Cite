@@ -13,7 +13,7 @@
   align-self: center;
   padding-bottom: 10px;
 }
-.iphone .icons i {
+.iphone .icons-ahmed i {
   color: rgba(255, 217, 0, 0.738);
 }
 .iphone .X-ctie {
@@ -23,7 +23,7 @@
   font-size: 12px;
 }
 .iphone .add-to-cart {
-  width: fit-content;
+  width: 50%;
   align-self: flex-end;
   margin-right: 10px;
   margin-bottom: 10px;

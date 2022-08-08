@@ -14,14 +14,8 @@ import { getAuth } from "firebase/auth";
 //     measurementId: "G-WTTREF0R4P"
 // };
 
-// const firebaseConfig = {
-//     apiKey: "AIzaSyDzKdGN1Lx8nmG-jSGZXmaGo8z6X0jsKys",
-//     authDomain: "x-cite-2.firebaseapp.com",
-//     projectId: "x-cite-2",
-//     storageBucket: "x-cite-2.appspot.com",
-//     messagingSenderId: "827024114042",
-//     appId: "1:827024114042:web:fbc05d8e2873cec1dd96c3"
-// };
+
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyDsOgpLuHfdHQPdXOAcVVxmkn5O3r7mits",
