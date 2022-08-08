@@ -44,16 +44,7 @@ const Home = () => {
       setCats(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     });
 
-    const[digitalCards, setDigitalCards] = useState([]); {/*done */}
-    const[phonesAndPersonalAudio, setphonesAndPersonalAudio] = useState([]); {/*done */}
-    const[laptops, setLaptops] = useState([]); {/*done */}
-    const[tablets, setTablets] = useState([]); {/*done */}
-    const[televisions, setTelevisions] = useState([]); {/*done */}
-    const [categories, setCats] = useState([]);
-    
-    // const[product, setProduct] = useState([]);
-    const[favorites, setFavorites] = useState([])
-    const [isActive, setIsActive] = useState(false);
+  
 
 
     // Products =======================================================
@@ -513,27 +504,5 @@ const Home = () => {
 };
 export default Home;
 
-{/* ============================ Tablets ========================== */}
-        <div className='customSwiperContainer mb-3 mt-3'>    
-            <div className="px-3 py-2 border border-bottom border-1" style={{height:'10%'}}>
-                <div className='float-left customSwiperContainer-heading h-100'>Tablets</div>
-                <div className='view-all float-right px-3 py-1 h-100'>View All</div>
-            </div>       
-            <SwiperCard list={tablets} path={'ProductDetails'}  ></SwiperCard>
-        </div>
 
-{/* ============================ Televisions ========================== */}
-        <div className='customSwiperContainer mb-3 mt-3'>    
-            <div className="px-3 py-2 border border-bottom border-1" style={{height:'10%'}}>
-                <div className='float-left customSwiperContainer-heading h-100'>Televisions</div>
-                <div className='view-all float-right px-3 py-1 h-100'>View All</div>
-            </div>       
-            <SwiperCard list={televisions} path={'ProductDetails'}  ></SwiperCard>
-        </div> 
-
-        </div>     
-        </>
-    )
-}
-export default Home;
 
