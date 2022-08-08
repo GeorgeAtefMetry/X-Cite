@@ -33,7 +33,9 @@ const ShowMobile = ({ priceRinge }) => {
       iphoneRef,
       where("categoryName", "==", "Mobile Phones"),
       where("brandName", "==", "Apple"),
-      // where("lang", "==", i18n.language),
+
+      where("lang", "==", i18n.language),
+
     );
     const getPhones = async () => {
       const mobiles = await getDocs(q);
@@ -106,7 +108,7 @@ const ShowMobile = ({ priceRinge }) => {
       </motion.div>
     ));
 
-  console.log(iphoneCard);
+  //console.log(iphoneCard);
   return (
     <div className="container-fluid mt-2">
       <motion.div className="row ">

@@ -120,9 +120,14 @@
     /* padding: 6px 0; */
     
 }
-.rightAddToCart .addToCardBtn:hover{
+.addToCardBtn:hover{
     background-color: #ef7900;
     border: 1px solid #ef7900;
+}
+.addToCardBtn:disabled{
+    background-color: #804000;
+    border: 1px solid #804000;
+    cursor: not-allowed;
 }
 /* .rightAddToCart .clickBuyBtn i{
     margin-right: 10px;

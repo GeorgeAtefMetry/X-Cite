@@ -11,6 +11,10 @@ import Typography from "@mui/material/Typography";
 // import SingUp from "../SingUp/SingUp";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
+import { Spinner } from "react-bootstrap";
+import OrderDetailes from './orderDetailes';
+
+
 function UserProfile() {
   // state to use
   const [open, setOpen] = useState(false);
@@ -23,13 +27,13 @@ function UserProfile() {
   const [password, setpassword] = useState("");
   const [value, setValue] = useState(0);
   const [curUser, setCurUser] = useState([]);
-
   const { user } = UserAuth();
-
-  const proCollection = collection(db, "users");
+  
   // connect with firebase and get the user info
   useEffect(() => {
+    const proCollection = collection(db, "users");
     onSnapshot(proCollection, (snapshot) => {
+      console.log(snapshot.docs);
       setCurUser(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     });
   }, []);
@@ -91,7 +95,11 @@ function UserProfile() {
   };
   // show info about user
   let userCard = curUser
-    ?.filter(({ email }) => email === user.email)
+    ?.filter(({ email }) =>{ 
+      console.log(email);
+      console.log(user.email)
+      console.log(email == user.email);
+      return email === user.email})
     .map((cur) => (
       <div key={cur.id} className="w-100 d-flex flex-column bg-white">
         {/* mange profile */}
@@ -277,6 +285,7 @@ function UserProfile() {
         </div>
       </div>
     ));
+    
   // make some tabs
   const TabPanel = (props) => {
     const { children, value, index, ...other } = props;
@@ -317,6 +326,7 @@ function UserProfile() {
   // }
 
   const center = { lat: 30.02881979973718, lng: 31.475265800000003 };
+
   // jsx return
   return (
     <div className="container">
@@ -350,10 +360,7 @@ function UserProfile() {
         </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <div>
-          <h2> My Orders </h2>
-          <p>You have placed no orders.</p>
-        </div>
+        <OrderDetailes/>
       </TabPanel>
       <TabPanel value={value} index={3}>
         <div>

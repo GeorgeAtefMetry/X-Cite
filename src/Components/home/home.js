@@ -1,10 +1,12 @@
 import "./home.css";
 import { Carousel } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import db from "../../firebase";
-import { collection, doc, onSnapshot, query, where } from "firebase/firestore";
-import React from "react";
-import SwiperCard from "../../miniComponents/swiperMainCards/swiperCard";
+
+import db from '../../firebase';
+import { collection, doc, onSnapshot, query, where } from "firebase/firestore";           
+import React from 'react';
+import SwiperCard from '../../miniComponents/swiperMainCards/swiperCard';
+
 
 const Home = () => {
   const [digitalCards, setDigitalCards] = useState([]);
@@ -29,6 +31,7 @@ const Home = () => {
   }
   const [categories, setCats] = useState([]);
 
+
   // const[product, setProduct] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [isActive, setIsActive] = useState(false);
@@ -40,6 +43,18 @@ const Home = () => {
       // console.log(snapshot.docs);
       setCats(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     });
+
+    const[digitalCards, setDigitalCards] = useState([]); {/*done */}
+    const[phonesAndPersonalAudio, setphonesAndPersonalAudio] = useState([]); {/*done */}
+    const[laptops, setLaptops] = useState([]); {/*done */}
+    const[tablets, setTablets] = useState([]); {/*done */}
+    const[televisions, setTelevisions] = useState([]); {/*done */}
+    const [categories, setCats] = useState([]);
+    
+    // const[product, setProduct] = useState([]);
+    const[favorites, setFavorites] = useState([])
+    const [isActive, setIsActive] = useState(false);
+
 
     // Products =======================================================
     const proCollection = collection(db, "Products");
@@ -371,6 +386,7 @@ const Home = () => {
             <div className="float-left customSwiperContainer-heading h-100">
               Digital Cards
             </div>
+
             <div className="view-all float-right px-3 py-1 h-100">View All</div>
           </div>
           <SwiperCard
@@ -408,6 +424,27 @@ const Home = () => {
             <div className="view-all float-right px-3 py-1 h-100">View All</div>
           </div>
           <SwiperCard list={laptops} path={"digitalcarddetails"}></SwiperCard>
+
+            <SwiperCard list={digitalCards} path={'ProductDetails'} ></SwiperCard>
+        </div>
+
+{/* ============================ Phones & Personal Audio ========================== */}
+        <div className='customSwiperContainer mb-3 mt-3'>  
+            <div className="px-3 py-2 border border-bottom border-1" style={{height:'10%'}}>
+                <div className='float-left customSwiperContainer-heading h-100'>Phones & Personal Audio</div>
+                <div className='view-all float-right px-3 py-1 h-100'>View All</div>
+            </div>      
+            <SwiperCard list={phonesAndPersonalAudio} path={'ProductDetails'} ></SwiperCard>
+        </div>
+
+{/* ============================ Laptops ========================== */}
+        <div className='customSwiperContainer mb-3 mt-3'>
+            <div className="px-3 py-2 border border-bottom border-1" style={{height:'10%'}}>
+                <div className='float-left customSwiperContainer-heading h-100'>Laptops</div>
+                <div className='view-all float-right px-3 py-1 h-100'>View All</div>
+            </div>        
+            <SwiperCard list={laptops} path={'ProductDetails'}  ></SwiperCard>
+
         </div>
 
         <div className="laptop-assistant w-100">
@@ -431,6 +468,7 @@ const Home = () => {
             </div>
           </div>
         </div>
+
 
         {/* ============================ Tablets ========================== */}
         <div className="customSwiperContainer mb-3 mt-3">
@@ -474,3 +512,28 @@ const Home = () => {
   );
 };
 export default Home;
+
+{/* ============================ Tablets ========================== */}
+        <div className='customSwiperContainer mb-3 mt-3'>    
+            <div className="px-3 py-2 border border-bottom border-1" style={{height:'10%'}}>
+                <div className='float-left customSwiperContainer-heading h-100'>Tablets</div>
+                <div className='view-all float-right px-3 py-1 h-100'>View All</div>
+            </div>       
+            <SwiperCard list={tablets} path={'ProductDetails'}  ></SwiperCard>
+        </div>
+
+{/* ============================ Televisions ========================== */}
+        <div className='customSwiperContainer mb-3 mt-3'>    
+            <div className="px-3 py-2 border border-bottom border-1" style={{height:'10%'}}>
+                <div className='float-left customSwiperContainer-heading h-100'>Televisions</div>
+                <div className='view-all float-right px-3 py-1 h-100'>View All</div>
+            </div>       
+            <SwiperCard list={televisions} path={'ProductDetails'}  ></SwiperCard>
+        </div> 
+
+        </div>     
+        </>
+    )
+}
+export default Home;
+

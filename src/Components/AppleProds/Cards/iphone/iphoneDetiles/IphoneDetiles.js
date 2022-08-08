@@ -14,6 +14,7 @@ import { Carousel } from "react-responsive-carousel";
 import InfoSlider from "./Slider/InfoSlider";
 import TabsComp from "./Tabs/TabsComp";
 import InfoTabs from "./InfoTabs/InfoTabs";
+
 const IphoneDetiles = () => {
   const params = useParams();
   console.log(params);

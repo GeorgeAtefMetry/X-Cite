@@ -16,6 +16,7 @@ import { getAuth } from "firebase/auth";
 
 
 
+
 const firebaseConfig = {
     apiKey: "AIzaSyDsOgpLuHfdHQPdXOAcVVxmkn5O3r7mits",
     authDomain: "x-cite-db.firebaseapp.com",
