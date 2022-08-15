@@ -36,11 +36,11 @@ const ProTabs = ({Product, attributes}) => {
     //reset : delete dta from form after submit, formstate: validate inputs 
     // const onSubmit = data => console.log(data);
     
-    useEffect(()=>
-    onSnapshot(doc(db, 'Products/', `${params.id}`),(snapshot)=>{
-        setDigitalCard(snapshot.data())
-    })
-    ,[]);
+    // useEffect(()=>
+    // onSnapshot(doc(db, 'Products/', `${params.id}`),(snapshot)=>{
+    //     setDigitalCard(snapshot.data())
+    // })
+    // ,[]);
     const onSubmit = ((data) =>
     {
         // console.log(data)
@@ -178,101 +178,7 @@ useEffect(()=>{
             <p className={"px-3 py-2 m-0 "+classes.proPath}> X-Cite {'>'} {digitalCard.categoryName} {'>'} {digitalCard.name} </p>
         <hr className="mt-0"/>
         {/* ====== Product General Detailes ================================================= */}
-            <div className="row p-0 m-0">
-                <div className={`col-lg-4 col-sm-7 order-1 px-sm-4 px-2 py-2`}>
-                    <div className={classes.image}>
-                        <img src={digitalCard.images[0]} height="400px"/>
-                    </div>
-                </div>
-                <div className="col-lg-5 col-sm-12 order-lg-2 order-sm-3 order-2 px-sm-4 px-3 py-2">
-                    <div className={classes.centerDetails}>
-                        <h5>{digitalCard.name}</h5>
-                        <div>
-                            <p style={{fontSize:'0.8rem', color:'gray'}}>
-                                <b>Brand: </b><span>{digitalCard.brandName}</span>
-                                <b className="ms-3">sku: </b><span>{digitalCard.sku}</span>
-                            </p>
-                            <div className={classes.rating}>
-                                <span className="fa fa-star checked"></span>
-                                <span className="fa fa-star checked"></span>
-                                <span className="fa fa-star checked"></span>
-                                <span className="fa fa-star"></span>
-                                <span className="fa fa-star"></span>
-                            </div>
-                            <div className={classes.inStock}>
-                                <i className="fa fa-check-circle" aria-hidden="true"></i>
-                                    {
-                                        digitalCard.quantity>5?
-                                        'In Stock'
-                                        :(
-                                            digitalCard.quantity==0?
-                                            "Sorry!,This Product is Not Available Now!"
-                                            :`Hurry up, It's available only ${digitalCard.quantity} items.`
-                                        )
-                                    }  
-                            </div>
-                        </div>
-                        <hr></hr>
-                        <div className={classes.pricing}>
-                            {
-                                digitalCard.discount?
-                                    <>
-                                    <span className={classes.price+" me-1"}>{(digitalCard.price*digitalCard.discount)/100} KD</span>
-                                    <span className={classes.oldPrice+" me-1"}>{digitalCard.price} KD</span>
-                                    <span className={classes.discount}>save {digitalCard.discount}%</span>
-                                    </>
-                                    :<span className={classes.price}>{digitalCard.price} KD</span>
-                            }
-                        </div>
-                        <hr className="mt-1"/>
-                        <div className={classes.overview}>
-                            <h6>Quick Overview</h6>
-                            <p className="pe-5 w-75">
-                                {digitalCard.description}
-                            </p>
-                            {/* <ul>
-                                <li>Receive Code digitally</li>
-                                <li>View code via "My Orders" "My Vitual Cards"</li>
-                                <li>Fast & Reliable</li>
-                                <li>For US Accounts Only</li>
-                            </ul> */}
-                            <div className={classes.howDoIGet+" ps-2 py-1"}>
-                                How do I get it?
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-lg-3 col-sm-5 order-lg-3 order-sm-2 order-3 p-3">
-                    <div className={classes.rightAddToCart+ " w-100"}>
-                        <div className={classes.btns+" mt-2 mb-3"}>
-                            <button onClick={decrementCount} className={classes.decrement}>-</button>
-                            <span className={classes.count}>{count}</span>
-                            <button onClick={incrementCount} className={classes.increment}>+</button>
-                        </div>
-                        <div className="w-100 h-auto px-3 mb-3">
-                            <button className={classes.addToCardBtn+" py-1"}><i className="fa fa-shopping-cart fa-fw me-2"></i>Add to Card</button>
-                        </div>
-                        <div className="w-100 h-auto px-3 mb-3">
-                            <button className={classes.clickBuyBtn+" py-1"}><i className="fa fa-tachometer fa-fw me-2"></i>1-Click Buy</button>
-                        </div>
-                        <div className={classes.soldFulfilled+" w-100 mx-0 mb-3 px-3"}>
-                            <p className="my-0">Sold By: <b className="text-primary">{digitalCard.seller}</b></p>
-                            <p className="my-0">Fulfilled By: <b className="text-dark">X-cite</b></p>
-                        </div>
-                        <div className={`col-12 px-3  ${classes.wishlistCompare}`}>
-                            <div style={{width:'47%'}}>
-                                <p className="px-2 py-2 m-0"><i class="far fa-heart me-1"></i>Add to Wishlist</p>
-                                <span className="my-0">See Wishlist</span>
-                            </div>
-                            <div style={{width:'47%'}}>
-                                <p className="px-2 py-2 m-0"><i className="far fa-file me-1"></i>Add to Compare</p>
-                                <span className="my-0">See Compare List</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
 
         {/* ====== Product More Special Detailes ============================================= */}
             <div className={classes.aboutProduct}>
@@ -652,3 +558,4 @@ useEffect(()=>{
         </>
     )
 }
+export default ProTabs

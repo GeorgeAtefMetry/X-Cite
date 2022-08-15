@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Favorites from '../../services/services';
-import { UserAuth } from '../../context/AuthContext'
 import {addFav,deleteFav} from '../../services/services';
 import { useState , useEffect} from "react";
 import 'swiper/css';
@@ -35,7 +34,7 @@ localStorage.setItem('id',ID)
     const Products = useSelector((state) => state.products)
     const dispatch = useDispatch()
 
-    const [state, setState] = React.useState({
+    const [state, setState] = useState({
         open: false,
         vertical: 'top',
         horizontal: 'center',

@@ -42,7 +42,6 @@ const ShowMobile = ({ priceRinge }) => {
       setData(mobiles.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       setLoading(false);
     };
-<<<<<<< HEAD
     getPhones();
   }, [i18n.language]);
   console.log(data);
@@ -55,18 +54,6 @@ const ShowMobile = ({ priceRinge }) => {
         return el.price <= parseInt(priceRinge);
       }
     })
-=======
-    getIphones();
-  }, []);
-
-  const iphoneCard = data.filter((el)=>{
-          if (priceRinge === 1000) {
-            return el
-          } else {
-            return el.price <= parseInt(priceRinge)
-          }
-  })
->>>>>>> george
     ?.filter(
       (el) => {
         if (inpfil.length >= 1 && el.mobileName) {

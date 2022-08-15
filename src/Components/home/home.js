@@ -366,7 +366,7 @@ const Home = () =>{
           </div>
           <SwiperCard
             list={digitalCards}
-            path={"digitalcarddetails"}
+            path={"ProductDetails"}
           ></SwiperCard>
         </div>
 
@@ -383,7 +383,7 @@ const Home = () =>{
           </div>
           <SwiperCard
             list={phonesAndPersonalAudio}
-            path={"digitalcarddetails"}
+            path={"ProductDetails"}
           ></SwiperCard>
         </div>
 
@@ -398,51 +398,9 @@ const Home = () =>{
             </div>
             <div className="view-all float-right px-3 py-1 h-100">View All</div>
           </div>
-          <SwiperCard list={laptops} path={"digitalcarddetails"}></SwiperCard>
-
-            <SwiperCard list={digitalCards} path={'ProductDetails'} ></SwiperCard>
+          <SwiperCard list={laptops} path={"ProductDetails"}></SwiperCard>
         </div>
 
-{/* ============================ Phones & Personal Audio ========================== */}
-        <div className='customSwiperContainer mb-3 mt-3'>  
-            <div className="px-3 py-2 border border-bottom border-1" style={{height:'10%'}}>
-                <div className='float-left customSwiperContainer-heading h-100'>Phones & Personal Audio</div>
-                <div className='view-all float-right px-3 py-1 h-100'>View All</div>
-            </div>      
-            <SwiperCard list={phonesAndPersonalAudio} path={'ProductDetails'} ></SwiperCard>
-        </div>
-
-{/* ============================ Laptops ========================== */}
-        <div className='customSwiperContainer mb-3 mt-3'>
-            <div className="px-3 py-2 border border-bottom border-1" style={{height:'10%'}}>
-                <div className='float-left customSwiperContainer-heading h-100'>Laptops</div>
-                <div className='view-all float-right px-3 py-1 h-100'>View All</div>
-            </div>        
-            <SwiperCard list={laptops} path={'ProductDetails'}  ></SwiperCard>
-
-        </div>
-
-        <div className="laptop-assistant w-100">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="content">
-                <h2>LAPTOP ASSISTANT</h2>
-                <p>Let us help you find the perfect laptop for...</p>
-                <div className="btns">
-                  <button type="button" className="btn btn-primary px-3 py-2">
-                    Personal Use
-                  </button>
-                  <button type="button" className="btn btn-primary px-3 py-2">
-                    Education
-                  </button>
-                  <button type="button" className="btn btn-primary px-3 py-2">
-                    Work
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
 
         {/* ============================ Tablets ========================== */}
@@ -456,7 +414,7 @@ const Home = () =>{
             </div>
             <div className="view-all float-right px-3 py-1 h-100">View All</div>
           </div>
-          <SwiperCard list={tablets} path={"digitalcarddetails"}></SwiperCard>
+          <SwiperCard list={tablets} path={"ProductDetails"}></SwiperCard>
         </div>
 
         {/* ============================ Televisions ========================== */}
@@ -472,7 +430,7 @@ const Home = () =>{
           </div>
           <SwiperCard
             list={televisions}
-            path={"digitalcarddetails"}
+            path={"ProductDetails"}
           ></SwiperCard>
         </div>
       </div>
