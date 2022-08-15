@@ -114,14 +114,14 @@ const SingUp = (props) => {
   };
 
   // handel submit
-  const handelsubmit = async (e) => {
+  const handelSubmit = async (e) => {
     e.preventDefault()
     console.log(inpValue);
     try {
       await createUser(inpValue.email , inpValue.password).then((res)=>{
           console.log(res.user);
           const userCollec = doc(db, `users/${res.user.uid}`)
-          setDoc(userCollec, inpValue).then(()=>{
+          setDoc(userCollec, {...inpValue, cart:[], wishlist:[], orders:[]}).then(()=>{
             navigate('/home')
           })
       })
@@ -139,7 +139,7 @@ const SingUp = (props) => {
         <div className="col-12">
           <form
             onSubmit={(e) => {
-              handelsubmit(e);
+              handelSubmit(e);
             }}
           >
             <div className="row mx-2 my-2">

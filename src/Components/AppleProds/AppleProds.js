@@ -8,7 +8,7 @@ import "./AppleProds.css";
 import { useTranslation } from "react-i18next";
 
 const AppleProds = () => {
-  const {t} =  useTranslation()
+  const {t, i18n} =  useTranslation()
   //main prods
   const cardInfo = [
     {
@@ -88,6 +88,7 @@ const AppleProds = () => {
   /**************** 
   // scroll to top
   ****************/
+
   const [visible, setVisible] = useState(false);
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop;
@@ -119,7 +120,7 @@ const AppleProds = () => {
       <Accesssories access={accessories}></Accesssories>
       <div
         className="sticy"
-        style={{ display: visible ? "inline" : "none" }}
+        style={{ display: visible ? "inline" : "none" , right : i18n.language === "en" ? "20px" :undefined , left : i18n.language === "ar" ? "20px" : undefined }}
         onClick={scrollToTop}
       >
         <i class="fa fa-angle-up"></i>

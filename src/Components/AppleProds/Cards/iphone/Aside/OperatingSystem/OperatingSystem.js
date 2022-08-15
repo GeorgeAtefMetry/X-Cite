@@ -1,9 +1,10 @@
 import React, { useState , useEffect} from "react";
+import { useTranslation } from "react-i18next";
 import Checkbox from "../../../../../../Checkbox/Checkbox";
 import { UserAuth } from "../../../../../../context/AuthContext";
 
 const OperatingSystem = () => {
-  
+  const {t}= useTranslation()
   const { setFilter } = UserAuth();
 
   const [check, setCheck] = useState({
@@ -33,13 +34,13 @@ const OperatingSystem = () => {
 
   return (
     <div className="device-type">
-      <h5 className="px-2">Operating System </h5>
+      <h5 className="px-2">{t("Operating System")}</h5>
 
       <div className="form-check mx-4 py-1">
         <Checkbox
           id="ios 15"
           name="ios 15"
-          title="ios 15"
+          title={t("ios 15")}
           checked={check["ios 15"]}
           handleChange={(e) => handleChange(e)}
         />
@@ -48,7 +49,7 @@ const OperatingSystem = () => {
         <Checkbox
           id="ios 14"
           name="ios 14"
-          title="ios 14"
+          title={t("ios 14")}
           checked={check["ios 14"]}
           handleChange={(e) => handleChange(e)}
         />
@@ -57,7 +58,7 @@ const OperatingSystem = () => {
         <Checkbox
           id="ios 13"
           name="ios 13"
-          title="ios 13"
+          title={t("ios 13")}
           checked={check["ios 13"]}
           handleChange={(e) => handleChange(e)}
         />

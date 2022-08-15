@@ -81,7 +81,7 @@ function UserProfile() {
         password,
         rePassword: password,
       }).then(() => {
-        console.log("not me updata doc");
+        console.log("not me update doc");
       });
       updatePassword(user, password)
         .then(() => {

@@ -24,8 +24,8 @@
 }
 .iphone .add-to-cart {
   width: 50%;
-  align-self: flex-end;
-  margin-right: 10px;
+  align-self: center;
+  margin-right: 25px;
   margin-bottom: 10px;
 }
 .iphone .icon-heart {
