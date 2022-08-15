@@ -28,12 +28,12 @@ export const AuthContextProvider = ({ children }) => {
   };
   // get status
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (curUser) => {
+    const unSub = onAuthStateChanged(auth, (curUser) => {
       //    console.log(curUser);
       setUser(curUser);
     });
     return () => {
-      unsub();
+      unSub();
     };
   }, []);
 

@@ -54,8 +54,8 @@ const Footer = ()=>{
                 Xcite by Alghanim Electronics is the biggest and most popular online shopping website for consumer electronics and accessories in Kuwait. Browse, buy and get your electronics delivered with xcite.com.
                 </p>
                 </section>
-                <MDBCol lg='3' md='6' className='mb-4 mb-md-0 all-element'>
-                    <h5 className='text-uppercase'>Our Guide</h5>
+                <MDBCol lg='3' md='5' s="6" className='mb-4 mb-md-0 all-element'>
+                    <h5 className='text-uppercase fs-4 fw-bold'>Our Guide</h5>
 
                     <ul className="list-unstyled footer-link-list">
                         <li><a className="trackable" data-tracking-title="Footer - Help - Accessed" data-tracking-type="Navigation" href="https://www.xcite.com/help-and-services/" data-ur1313m3t="true">Help</a></li>
@@ -70,8 +70,8 @@ const Footer = ()=>{
                     </ul>
                 </MDBCol>
 
-                <MDBCol lg='3' md='6' className='mb-4 mb-md-0 all-element '>
-                <h5 className='text-uppercase'>Our Services</h5>
+                <MDBCol lg='3' md='5' s="6" className='mb-4 mb-md-0 all-element '>
+                <h5 className='text-uppercase fs-4 fw-bold'>Our Services</h5>
 
                 <ul className="list-unstyled footer-link-list">
                     <li><a className="trackable" data-tracking-title="Footer - Trade-In - Accessed" data-tracking-type="Navigation" href="https://www.xcite.com/tradein/" data-ur1313m3t="true">Trade-In</a></li>
@@ -86,8 +86,8 @@ const Footer = ()=>{
                 </ul>
                 </MDBCol>
 
-                <MDBCol lg='3' md='6' className='mb-4 mb-md-0 all-element '>
-                <h5 className='text-uppercase'>Highlights</h5>
+                <MDBCol lg='3' md='5' s="6" className='mb-4 mb-md-0 all-element '>
+                <h5 className='text-uppercase fs-4 fw-bold'>Highlights</h5>
 
                 <ul className="list-unstyled footer-link-list">
                     <li><a className="trackable" data-tracking-title="Footer - Deal of the day - Accessed" data-tracking-type="Navigation" href="https://www.xcite.com/flashdeal/products/list/" data-ur1313m3t="true">Deal of The Day</a></li>
@@ -98,8 +98,8 @@ const Footer = ()=>{
                 </ul>
                 </MDBCol>
 
-                <MDBCol lg='3' md='6' className='mb-4 mb-md-0  all-element'>
-                <h5 className='text-uppercase'>We Accept</h5>
+                <MDBCol lg='3' md='5' s="6" className='mb-4 mb-md-0  all-element'>
+                <h5 className='text-uppercase fs-4 fw-bold'>We Accept</h5>
 
                 <ul className="list-inline footer-link-list">
                     <li><a data-ur1313m3t="true">KNET</a></li>

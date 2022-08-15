@@ -1,15 +1,26 @@
+import React, { useEffect, useState } from "react";
 import "./home.css";
 import { Carousel } from "react-bootstrap";
-import { useEffect, useState } from "react";
+
+
+
+
+
+import { useTranslation } from "react-i18next";
+
+
+  
 
 import db from '../../firebase';
 import { collection, doc, onSnapshot, query, where } from "firebase/firestore";           
-import React from 'react';
+
 import SwiperCard from '../../miniComponents/swiperMainCards/swiperCard';
 import { useSelector, useDispatch } from 'react-redux';
 import {setProducts, deleteProducts} from'../../Components/ReduxWishlist/actions/productsActions'
 
 const Home = () =>{
+
+     const { t , i18n} = useTranslation();
     const[digitalCards, setDigitalCards] = useState([]); {/*done */} 
     const[phonesAndPersonalAudio, setphonesAndPersonalAudio] = useState([]); {/*done */} 
     const[laptops, setLaptops] = useState([]); {/*done */} 
@@ -22,6 +33,7 @@ const Home = () =>{
     const [isActive, setIsActive] = useState(false);
     const Products = useSelector((state) => state.products)
     const dispatch = useDispatch()
+
 
   useEffect(() => {
     // Categories =====================================================
@@ -359,10 +371,12 @@ const Home = () =>{
             style={{ height: "10%" }}
           >
             <div className="float-left customSwiperContainer-heading h-100">
-              Digital Cards
+              {t("Digital Cards")}
             </div>
 
-            <div className="view-all float-right px-3 py-1 h-100">View All</div>
+            <div className="view-all float-right px-3 py-1 h-100">
+              {t("View All")}
+            </div>
           </div>
           <SwiperCard
             list={digitalCards}
@@ -377,9 +391,11 @@ const Home = () =>{
             style={{ height: "10%" }}
           >
             <div className="float-left customSwiperContainer-heading h-100">
-              Phones & Personal Audio
+              {t("Phones & Personal Audio")}
             </div>
-            <div className="view-all float-right px-3 py-1 h-100">View All</div>
+            <div className="view-all float-right px-3 py-1 h-100">
+              {t("View All")}
+            </div>
           </div>
           <SwiperCard
             list={phonesAndPersonalAudio}
@@ -394,32 +410,48 @@ const Home = () =>{
             style={{ height: "10%" }}
           >
             <div className="float-left customSwiperContainer-heading h-100">
-              Laptops
+              {t("Laptops")}
             </div>
-            <div className="view-all float-right px-3 py-1 h-100">View All</div>
+            <div className="view-all float-right px-3 py-1 h-100">
+              {t("View All")}
+            </div>
           </div>
           <SwiperCard list={laptops} path={"digitalcarddetails"}></SwiperCard>
-
-            <SwiperCard list={digitalCards} path={'ProductDetails'} ></SwiperCard>
         </div>
 
-{/* ============================ Phones & Personal Audio ========================== */}
-        <div className='customSwiperContainer mb-3 mt-3'>  
-            <div className="px-3 py-2 border border-bottom border-1" style={{height:'10%'}}>
-                <div className='float-left customSwiperContainer-heading h-100'>Phones & Personal Audio</div>
-                <div className='view-all float-right px-3 py-1 h-100'>View All</div>
-            </div>      
-            <SwiperCard list={phonesAndPersonalAudio} path={'ProductDetails'} ></SwiperCard>
+        {/* ============================ Phones & Personal Audio ========================== */}
+        <div className="customSwiperContainer mb-3 mt-3">
+          <div
+            className="px-3 py-2 border border-bottom border-1"
+            style={{ height: "10%" }}
+          >
+            <div className="float-left customSwiperContainer-heading h-100">
+              {t("Phones & Personal Audio")}
+            </div>
+            <div className="view-all float-right px-3 py-1 h-100">
+              {t("View All")}
+            </div>
+          </div>
+          <SwiperCard
+            list={phonesAndPersonalAudio}
+            path={"ProductDetails"}
+          ></SwiperCard>
         </div>
 
-{/* ============================ Laptops ========================== */}
-        <div className='customSwiperContainer mb-3 mt-3'>
-            <div className="px-3 py-2 border border-bottom border-1" style={{height:'10%'}}>
-                <div className='float-left customSwiperContainer-heading h-100'>Laptops</div>
-                <div className='view-all float-right px-3 py-1 h-100'>View All</div>
-            </div>        
-            <SwiperCard list={laptops} path={'ProductDetails'}  ></SwiperCard>
-
+        {/* ============================ Laptops ========================== */}
+        <div className="customSwiperContainer mb-3 mt-3">
+          <div
+            className="px-3 py-2 border border-bottom border-1"
+            style={{ height: "10%" }}
+          >
+            <div className="float-left customSwiperContainer-heading h-100">
+              {t("Laptops")}
+            </div>
+            <div className="view-all float-right px-3 py-1 h-100">
+              {t("View All")}
+            </div>
+          </div>
+          <SwiperCard list={laptops} path={"ProductDetails"}></SwiperCard>
         </div>
 
         <div className="laptop-assistant w-100">
@@ -444,7 +476,6 @@ const Home = () =>{
           </div>
         </div>
 
-
         {/* ============================ Tablets ========================== */}
         <div className="customSwiperContainer mb-3 mt-3">
           <div
@@ -452,9 +483,11 @@ const Home = () =>{
             style={{ height: "10%" }}
           >
             <div className="float-left customSwiperContainer-heading h-100">
-              Tablets
+              {t("Tablets")}
             </div>
-            <div className="view-all float-right px-3 py-1 h-100">View All</div>
+            <div className="view-all float-right px-3 py-1 h-100">
+              {t("View All")}
+            </div>
           </div>
           <SwiperCard list={tablets} path={"digitalcarddetails"}></SwiperCard>
         </div>
@@ -466,9 +499,11 @@ const Home = () =>{
             style={{ height: "10%" }}
           >
             <div className="float-left customSwiperContainer-heading h-100">
-              Televisions
+              {t("Televisions")}
             </div>
-            <div className="view-all float-right px-3 py-1 h-100">View All</div>
+            <div className="view-all float-right px-3 py-1 h-100">
+              {t("View All")}
+            </div>
           </div>
           <SwiperCard
             list={televisions}
@@ -478,7 +513,11 @@ const Home = () =>{
       </div>
       <div
         className="sticy "
-        style={{ display: visible ? "inline" : "none" }}
+        style={{
+          display: visible ? "inline" : "none",
+          right: i18n.language === "en" ? "20px" : undefined,
+          left: i18n.language === "ar" ? "20px" : undefined,
+        }}
         onClick={scrollToTop}
       >
         <i class="fa fa-angle-up"></i>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { UserAuth } from "../../../../../context/AuthContext";
 const ShomMac = () => {
   const { inpfil } = UserAuth();
-
+  // console.log(inpfil);
   const [mac, setMac] = useState([]);
   const macRef = collection(db, `Products`);
   // get data
@@ -13,7 +13,7 @@ const ShomMac = () => {
     let q = query(
       macRef,
       where("categoryName", "==", "labtops"),
-      where("brandName", "==", "Apple")
+      where("brandName", "==", "apple")
       // where("lang", "==", i18n.language),
     );
     const getMacs = async () => {

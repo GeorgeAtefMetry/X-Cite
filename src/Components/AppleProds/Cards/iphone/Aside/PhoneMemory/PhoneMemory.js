@@ -1,9 +1,12 @@
 import React, { useState, useEffect  } from "react";
 import Checkbox from "../../../../../../Checkbox/Checkbox";
 import { UserAuth } from "../../../../../../context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 const PhoneMemory = () => {
-
+  const {t}= useTranslation()
+  
+  
   const { setFilter } = UserAuth();
   const [check, setCheck] = useState({
     "6GB": false,
@@ -33,13 +36,13 @@ const PhoneMemory = () => {
   
   return (
     <div className="device-type">
-      <h5 className="px-2">Phone Memory </h5>
+      <h5 className="px-2">{t("Phone Memory")} </h5>
 
       <div className="form-check mx-4 py-1">
         <Checkbox
           id="6GB"
           name="6 GB"
-          title="6 GB"
+          title={t("6 GB")}
           checked={check["6 GB"]}
           handleChange={(e) => handleChange(e)}
         />
@@ -48,7 +51,7 @@ const PhoneMemory = () => {
         <Checkbox
           id="4GB"
           name="4 GB"
-          title="4 GB"
+          title={t("4 GB")}
           checked={check["4 GB"]}
           handleChange={(e) => handleChange(e)}
         />
@@ -57,7 +60,7 @@ const PhoneMemory = () => {
         <Checkbox
           id="3GB"
           name="3 GB"
-          title="3 GB"
+          title={t("3 GB")}
           checked={check["3 GB"]}
           handleChange={(e) => handleChange(e)}
         />
