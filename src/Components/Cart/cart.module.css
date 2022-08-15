@@ -9,6 +9,10 @@
 .chkbtn:hover{
     background-color: #e47401;
 }
+.chkbtn:disabled{
+    cursor: not-allowed;
+    background-color: #c76300;
+}
 .removebtn{
     color: gray;
     font-size: 0.8rem;

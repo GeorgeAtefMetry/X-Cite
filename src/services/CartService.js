@@ -29,11 +29,11 @@ export const AddToCart = async (pId, Amount, cookies, setCookies, dispatch, cart
 }
 
 export const AddToUserCart = async (proId, amount, usr, db, doc, getDoc, updateDoc, dispatch, cartAction)=>{
-  
+
     const usrdoc = doc(db, `users/${usr.uid}`);
     getDoc(usrdoc).then((res)=>{
         let data = res.data();
-        data.cart.push({pId:proId, amount: amount})
+        data.cart.push({pId:proId, amount: parseInt(amount)})
 
         updateDoc(usrdoc,data)
         .then((res)=>{
@@ -43,4 +43,19 @@ export const AddToUserCart = async (proId, amount, usr, db, doc, getDoc, updateD
     }).catch((err)=>{
             console.log(err);
         })
+}
+
+export const AddOrder = (newOrder)=>{
+    let item = localStorage.getItem('Orders')
+    if(item)
+    {
+        console.log(item);
+        console.log(JSON.stringify([...JSON.parse(item), newOrder]));
+        localStorage.setItem("Orders", JSON.stringify([...JSON.parse(item), newOrder]));
+    }
+    else
+    {
+        console.log(JSON.stringify([newOrder]));
+        localStorage.setItem("Orders", JSON.stringify([newOrder]));
+    }
 }
