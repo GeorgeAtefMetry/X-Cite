@@ -9,18 +9,138 @@ import flag2 from "../../assests/flag-2.png";
 // import "../fontawesome-free-6.1.1-web/css/fontawesome.css";
 import "./header.css";
 
-import { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
-import { UserAuth } from "../../context/AuthContext";
 import { useCookies, Cookies } from "react-cookie";
 import { useDispatch, useSelector } from "react-redux";
 import cartAction from './../../Redux/action';
-import db from '../../firebase';
-import { doc, onSnapshot } from "firebase/firestore";
+import { useState,useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import {onSnapshot, orderBy, query, where,  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
+  startAt,
+  endAt,
+  getDocs, } from "firebase/firestore"      
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import { Link, useNavigate  } from "react-router-dom";
+import { UserAuth } from "../../context/AuthContext";
+import db from '../../firebase'
+import React from "react";
 
 const Header = () => {
+  // Search products
+  
+  const [value, setValue] = useState('')
+  const [result, setResult] = useState([])
+  const prdIDS = [];
+  const [categories, setCats] = useState([]);
+  const [filteredContacts, setFilteredContacts] = useState([]);
+  const navigate = useNavigate()
+  // his(`/search${value}`, { replace: true })
+
+  // useEffect(() => {
+  //   if(value.length > 0){
+  //     const catCollection = collection(db, "Products");
+  //     onSnapshot(catCollection,(snapshot)=>{
+  //         setCats(snapshot.docs.map((doc)=>({...doc.data(), id:doc.id})))
+  //         // setResult([])
+  //         let searchQuery = value.toLowerCase()
+  //         for(let key in categories){
+  //           let data = categories[key].name.toLowerCase()
+  //           if(data.slice(0, searchQuery.length).indexOf(searchQuery) !== -1){
+  //             setResult(prevResult =>{
+  //               return [...prevResult, categories[key].name]
+  //             })
+  //           }
+  //         }
+  //       })
+  //   }else{
+  //     setResult([])
+  //   }
+  // }, [value]);
+// *****************************************************************************
+
+  // const proCollection = collection(db,'Products');
+  // const q_tvsProds = query(proCollection, where('brandName','==', 'Apple'));
+  // onSnapshot(q_tvsProds,(snapshot)=>{
+  //     setResult(snapshot.docs.map((doc)=>({...doc.data(), id:doc.id})))
+  // })
+
+  useEffect(() => {
+  const catCollection = collection(db, "Products");
+  // let dataValue = value.toLowerCase()
+  // const q_tvsProds = query(catCollection, where('name','==',value));  
+  if(value.length>0){
+    navigate('/search',{state:{name:value}})
+    }else{
+      setResult([])
+      setFilteredContacts([])
+      navigate('/home')
+    }
+  
+}, [value]);
+// //************************************************************************ */
+  // useEffect(() => {
+  // if (value.length > 0) {
+  //   setResult([]);
+  //   const colRef = collection(db, "Products");
+  //   //name
+  //   var searchnamequery = query(
+  //     colRef,
+  //     orderBy("brandName"),
+  //     startAt(value.toLowerCase()),
+  //     endAt(value.toLowerCase() + "\uf8ff")
+  //   );
+  //   console.log(searchnamequery)
+  //   getDocs(searchnamequery).then((q) => {
+  //     console.log(q);
+  //       q.forEach((res) => {
+  //         // console.log(res)
+  //         if (res.exists() && !prdIDS.includes(res.id)) {
+  //           setResult((products) => [
+  //             ...products,
+  //             console.log(products),
+  //             { ...res.data(), productID: res.id },
+  //           ]);
+  //           console.log(result);
+  //           prdIDS.push(res.id);
+  //         }
+  //       });
+  //     })
+  
+  // }
+  // },[value])
+// ************************************************************************************************************
+  // const [contacts, setContacts] = useState([]);
+  // const [search, setSearch] = useState("");
+  // const [filteredContacts, setFilteredContacts] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const data = await collection(db,"Products").orderBy("name").get();
+  //     setContacts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+  // useEffect(() => {
+  //   setFilteredContacts(
+  //     contacts.filter(
+  //       (user) =>
+  //         user.name.toLowerCase().includes(search.toLowerCase())
+  //     )
+  //   );
+  // }, [search, contacts]);
+
+
   // get status of current language
+
+  
   const [lang, setLang] = useState(false);
   const [cookies, setCookies]= useCookies("Cart");
   const cartCounter = useSelector(state=> state.cartCounter);
@@ -49,7 +169,6 @@ const Header = () => {
   document.body.dir = lang ? "rtl" : "ltr";
   const { t, i18n } = useTranslation();
   
-  
   // add the current lang to localStorage and get when application run another time and sit as defulit
   localStorage.setItem("language", i18n.language);
   
@@ -70,7 +189,7 @@ const Header = () => {
   return (
     <>
       <Navbar className="bgMainCol px-0 pt-0 pb-1" expand="lg" key="lg">
-        <Navbar.Toggle aria-controls="offcanvasNavbar-expand-lg" />
+        {/* <Navbar.Toggle aria-controls="offcanvasNavbar-expand-lg" /> */}
 
         <div className="top-nav d-none d-md-block p-0 d-flex">
           <ul className="nav-pills hd-top-head-menu">
@@ -152,6 +271,7 @@ const Header = () => {
               placeholder="Search for products, categories, ..."
               className="search px-3"
               aria-label="Search"
+              onChange={(e)=>setValue(e.target.value)}
             />
           </Form>
         </div>
@@ -1869,6 +1989,24 @@ const Header = () => {
         </div>
       </Navbar>
       {/* </Navbar.Offcanvas> */}
+      {/* <div>
+        {filteredContacts.map(cat => (
+          <div className='col-lg-3 col-md-6 col-10 p-2 m-0' key={cat.id}>
+              <div className="card p-0 m-0" style={{width: '100%', height:'17rem'}}>
+                  <img className="card-img-top h-75" src={cat.images[1]} alt="Card image cap"/>
+                  <div className="card-body py-2 px-3 w-100">
+                      <span className="card-text first float-left col-lg-9 text-start" >{cat.name}</span>
+                      <span className="card-text second float-right col-lg-3 h-100">
+                          Save Up to
+                          <span className='float-right disc'>
+                              {cat.discount}%
+                          </span>
+                      </span>
+                  </div>
+              </div>
+          </div>
+        ))}
+        </div> */}
     </>
   );
 };

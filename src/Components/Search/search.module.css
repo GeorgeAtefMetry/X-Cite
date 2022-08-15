@@ -1,0 +1,88 @@
+.cardBody{
+    padding: 5px !important;
+}
+.bestSeller{
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    padding: 3px 5px;
+}
+.rating{
+    color: #febd00;
+    font-size: 14px;
+}
+.name{
+    font-weight: 500;
+    margin-bottom: 5px;
+    height: 30px;
+    width: 100%;
+    overflow: hidden;
+    color: #001a2c;
+    display: block;
+    font-size: 18px;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+.color-red{
+    color: red;
+}
+.price{
+    font-size: 18px;
+}
+.oldPrice{
+    font-size: 17px;
+    margin-right: 4px;
+}
+.discount{
+    font-size: 14px;
+    text-align: center;
+    padding: 2px 0 !important;
+    float: left;
+    width: 30%;
+}
+.paymentMonthly{
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 10px !important;
+}
+.seller{
+    font-size: 15px;
+    margin-top: 6px !important;
+    font-weight: 500;
+    color: #00365b;
+    float: left;
+}
+.fulfilledByXcite{
+    background: #cef1ff;
+    margin-top: 6px !important;
+    color: #00365b;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-weight: 500;
+    width:60%;
+    float: left;
+    font-size: 15px;
+}
+.addToCart{
+    background-color: #FE8101;
+    color: #FFFEFE;
+    float:right;
+    font-size: 15px;
+    margin-top: 30px;
+    text-align: center;
+    width: 55%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+.addToCart:hover{
+    background-color: #FFFEFE;
+    color: #FE8101;
+    border:1px solid #FE8101;
+    border-radius: 5px;
+    cursor: pointer;
+}
+@media(max-width:575px){
+    .card{
+        width: 100%;
+    }
+}
