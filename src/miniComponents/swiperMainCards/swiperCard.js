@@ -3,12 +3,23 @@ import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Favorites from '../../services/services';
 import { useState } from "react";
+import { UserAuth } from '../../context/AuthContext'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
+
 const SwiperCard = ({list, path}) => {
+    //////////////////get id user from userauth and set in localstorage to use it in review
+const {user} = UserAuth()
+
+const ID = user.uid
+
+localStorage.setItem('id',ID)
+ const id = localStorage.getItem('id')
+// console.log(id);
+/////////////////////
 
     const[favorites, setFavorites] = useState([])
     const [isActive, setIsActive] = useState(false);

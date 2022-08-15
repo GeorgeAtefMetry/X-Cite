@@ -6,6 +6,7 @@ import { collection, doc, onSnapshot, query, where } from "firebase/firestore"
 import React from 'react';
 import SwiperCard from '../../miniComponents/swiperMainCards/swiperCard';
 
+
 const Home = () =>{
 
     const[digitalCards, setDigitalCards] = useState([]); {/*done */} 

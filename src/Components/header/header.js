@@ -25,7 +25,7 @@ const Header = () => {
   const dispatch = useDispatch()
 
   useEffect(()=>{
-    dispatch(cartAction(cookies.Cart.length?cookies.Cart.length:0))
+    // dispatch(cartAction(cookies.Cart?(cookies.Cart.length?cookies.Cart.length:0):0))
   },[])
 
   // change the diraction of the page based on the value of the lang
