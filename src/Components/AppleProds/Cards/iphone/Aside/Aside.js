@@ -8,6 +8,7 @@ import PhoneDisplaySize from "./PhoneDisplaySize/PhoneDisplaySize";
 import PhoneRearCamera from "./PhoneRearCamera/PhoneRearCamera";
 import Colour from "./Colour/Colour";
 import "./Aside.css";
+
 const Aside = ({ setPriceRinge }) => {
   const [range, setRange] = useState("1000");
   // const [inf, setInf] = useState([])

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import db from '../../firebase';
-import { collection, onSnapshot, doc, query, where, documentId } from 'firebase/firestore';
+import { collection, onSnapshot, doc, query, where, documentId, updateDoc, getDoc } from 'firebase/firestore';
 import classes from './cart.module.css';
 import { useDispatch, useSelector } from "react-redux";
 import cartAction from './../../Redux/action';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
+import { UserAuth } from '../../context/AuthContext';
+
 
 const Cart = () => {
   const [cookies, setCookies] = useCookies(['Cart']);
@@ -19,12 +21,34 @@ const Cart = () => {
   const dispatch = useDispatch();
   const cartCounter = useSelector(state=>state.cartCounter);
   const [goToCheckout, setCheckoutState] = useState(false);
+  const { user }= UserAuth();
+  const navigate = useNavigate();
 
   useEffect(()=>{
-    console.log(cookies.Cart)
-    if (cookies.Cart && cookies.Cart.length)
+    const proCollec = collection(db, "Products");
+    if(user)
     {
-      const proCollec = collection(db, "Products");
+      const usrDoc = doc(db, 'users/', `${user.uid}`)
+      onSnapshot(usrDoc,(snapshot)=>{
+          const cartdb = snapshot.data().cart;
+          const q = query(proCollec, where(documentId() ,"in", cartdb.map((item)=> item.pId)));
+
+          onSnapshot(q,(res)=>{
+            setCart(res.docs.map((doc)=>({
+              ...doc.data(),
+              id: doc.id,
+              amount: cartdb.find((item)=> item.pId==doc.id).amount
+            })));
+            setQty(res.docs.map((doc)=>({
+              id: doc.id,
+              amount: cartdb.find((item)=> item.pId==doc.id).amount
+            })));
+          })
+      })
+    }
+    else if (cookies.Cart && cookies.Cart.length)
+    {
+      console.log('cookies', cookies.Cart)
       const q = query(proCollec, where(documentId() ,"in", cookies.Cart.map(p=>p.id)))
       onSnapshot(q,(res,index)=>{
         setCart(res.docs.map((doc)=>({
@@ -39,16 +63,19 @@ const Cart = () => {
       })
     }
     
-  },[])
+  },[user])
   
   useEffect(()=>{
     if(cart.length)
     {
       setDelivery(599);
       setTotalPrice(calcTotalPrice())
-      setGrandTotal(totalPrice+deliverycharge)
     }
-  },[cart,totalPrice])
+  },[cart])
+  
+  useEffect(()=>{
+    setGrandTotal(totalPrice+deliverycharge)
+  },[totalPrice])
 
   const changeItemQty =(evt, id)=>{
     setUpdadeState(true);
@@ -62,6 +89,44 @@ const Cart = () => {
     ))
   }
   const updateProAmount =(pId)=>{
+    if(user)
+    {
+      const usrdoc = doc(db, `users/${user.uid}`);
+      getDoc(usrdoc).then((res)=>{
+          let data = res.data();
+          data.cart = data.cart.map((item)=>
+            item.pId==pId?
+            {
+              ...item,
+              amount: quantities.find((item)=>item.id==pId).amount
+            }
+            :item
+          )
+          updateDoc(usrdoc,data)
+          .then((res)=>{
+              console.log(res)
+          })
+      }).catch((err)=>{
+              console.log(err);
+          })
+    }
+    else
+    {
+      let date = new Date();
+      date.setDate(date.getDate()+3);
+  
+      setCookies('Cart', cookies.Cart.map((coky)=>
+        coky.id==pId?
+        {
+          ...coky,
+          amount: quantities.find((item)=>item.id==pId).amount
+        }
+        :coky
+      ), {
+        path:'/',
+        expires: date,
+      })
+    }
       setCart(cart.map((pro)=>
         pro.id== pId?
         {
@@ -73,6 +138,40 @@ const Cart = () => {
       ))
   }
   const updateAllProdsAmount =()=>{
+    if(user)
+    {
+      const usrdoc = doc(db, `users/${user.uid}`);
+      getDoc(usrdoc).then((res)=>{
+          let data = res.data();
+          data.cart = data.cart.map((pro)=>(
+            {
+              ...pro,
+              amount: quantities.find((item)=>item.id==pro.pId).amount
+            }
+          ))
+          updateDoc(usrdoc,data)
+          .then((res)=>{
+              console.log(res)
+          })
+      }).catch((err)=>{
+              console.log(err);
+          })
+    }
+    else
+    {
+      let date = new Date();
+      date.setDate(date.getDate()+3);
+  
+      setCookies('Cart', cookies.Cart.map((coky)=>(
+        {
+          ...coky,
+          amount: quantities.find((item)=>item.id==coky.id).amount
+        }
+      )), {
+        path:'/',
+        expires: date,
+      })
+    }
     setCart(cart.map((pro)=>(
       {
         ...pro,
@@ -80,7 +179,7 @@ const Cart = () => {
       })
     ))
     setUpdadeState(false);
-}
+  }
 
   const calcTotalPrice =()=>{
     let total=0;
@@ -89,31 +188,65 @@ const Cart = () => {
       total+= (pro.price - ((pro.price*pro.discount)/100))*pro.amount
       :
       total+= pro.price*pro.amount
-      // console.log(pro,total);
     })
     return total;
   }
 
   const removeFromCart=(pId)=>{
-    let date = new Date();
-    date.setDate(date.getDate()+3);
+    if(user)
+    {
+      const usrdoc = doc(db, `users/${user.uid}`);
+      getDoc(usrdoc).then((res)=>{
+          let data = res.data();
+          data.cart = data.cart.filter((pro)=> pro.pId != pId)
+          updateDoc(usrdoc,data)
+          .then((res)=>{
+              console.log(res)
+          })
+      }).catch((err)=>{
+              console.log(err);
+          })
+    }
+    else
+    {
+      let date = new Date();
+      date.setDate(date.getDate()+3);
+  
+      setCookies('Cart', cookies.Cart.filter((coky)=> coky.id != pId), {
+        path:'/',
+        expires: date,
+      })
+    }
 
-    setCookies('Cart', cookies.Cart.filter((coky)=> coky.id != pId), {
-      path:'/',
-      expires: date,
-    })
     setCart(cart.filter((coky)=> coky.id != pId));
     dispatch(cartAction(cartCounter-1));
     console.log("deleted successfully");
   }
   const clearShoppingCart = ()=>{
-    let date = new Date();
-    date.setDate(date.getDate()-3);
-
-    setCookies('Cart', cookies.Cart, {
-      path:'/',
-      expires: date,
-    })
+    if(user)
+    {
+      const usrdoc = doc(db, `users/${user.uid}`);
+      getDoc(usrdoc).then((res)=>{
+          let data = res.data();
+          data.cart = [];
+          updateDoc(usrdoc,data)
+          .then((res)=>{
+              console.log(res)
+          })
+      }).catch((err)=>{
+              console.log(err);
+          })
+    }
+    else
+    {
+      let date = new Date();
+      date.setDate(date.getDate()-3);
+  
+      setCookies('Cart', cookies.Cart, {
+        path:'/',
+        expires: date,
+      })
+    }
     setCart([]);
     dispatch(cartAction(0));
     console.log("cleared successfully");
@@ -128,7 +261,8 @@ const Cart = () => {
           <a href='#payment'><button className={'btn-lg rounded border-0 py-2 px-2 '+classes.chkbtn}><b>Proceed to Checkout</b></button></a>
         </div>
         {
-          !cookies.Cart || !cookies.Cart.length?
+          (user && cart.length==0) ||
+          (!user && (!cookies.Cart || !cookies.Cart.length))?
           <div className="fs-4 text-center text-dark text-shadow mt-3 mb-5">Your Cart is empty!</div>
           : cart.map((item, index)=>{
             return (
@@ -141,12 +275,12 @@ const Cart = () => {
                     {/* data */}
                     <div className='col-md-7 col-12 order-md-2 order-3 ps-1 pe-0 pt-3' style={{minHeight:'240px'}}>
                         <h6 style={{color:'black'}}><b>{item.name}</b></h6>
-                        <p className='text-danger mt-3 mb-0'><b>Subtotal:</b>{item.discount?parseFloat((item.price-((item.price*item.discount)/100))*item.amount).toFixed(2): item.price*item.amount} KD</p> {/* item price * quantity */}
-                        <p className={"text-muted my-0 "+classes.smtxt}>Unit Price: <span className={classes.xsmtxt}>{item.discount? parseFloat(item.price-((item.price*item.discount)/100)).toFixed(2):item.price} KD</span></p>
+                        <p className='text-danger mt-3 mb-0'><b>Subtotal:</b>{item.discount?parseFloat(item.price-((item.price*item.discount)/100)*item.amount).toFixed(2): parseFloat(item.price*item.amount).toFixed(2)} USD</p>
+                        <p className={"text-muted my-0 "+classes.smtxt}>Unit Price: <span className={classes.xsmtxt}>{item.discount? parseFloat(item.price-((item.price*item.discount)/100)).toFixed(2):item.price} USD</span></p>
                         {
                           item.discount?
                           <p className={"text-muted my-0 "+classes.smtxt}>Before discount: 
-                                <span className={classes.xsmtxt} style={{textDecoration:'line-through'}}>{item.price} KD</span></p>
+                                <span className={classes.xsmtxt} style={{textDecoration:'line-through'}}>{item.price} USD</span></p>
                           :''
                         }
                         <p className={"text-muted my-0 "+classes.smtxt}>Sold By: <span className={classes.xsmtxt+' text-primary'}>{item.seller}</span></p>
@@ -194,6 +328,7 @@ const Cart = () => {
           <div className={'col-lg-4 col-12 p-4 mb-2 '} style={{height:'max-content', display:goToCheckout?'inline':'none' }}>
             <div className="shadow-sm rounded p-3 w-100 h-100 d-flex flex-column justify-content-center" style={{backgroundColor:'white'}}>
                 <PayPalScriptProvider
+                  // options={{"client-id":process.env.REACT_APP_PAYPAL_CLIENT_ID}}
                 >
                   <PayPalButtons
                     style={{shape: "pill"}}
@@ -207,7 +342,7 @@ const Cart = () => {
                             items:cart,
                             amount:{
                               currency_code: 'USD',
-                              value: 100.00
+                              value:  totalPrice.toFixed(2)
                               // value: GrandTotal+1.00
                               // value: GrandTotal.toFixed(2)
                             }
@@ -228,13 +363,17 @@ const Cart = () => {
           </div>
 
           <div className='col-lg-4 col-12 p-4 mb-2 shadow-sm' id="payment" style={{height:'230px', backgroundColor:'white'}}>
-            <h6 className='mb-3'>Subtotal: <span className='ps-4'>{totalPrice.toFixed(2)} KD</span></h6>
-            <h6 className='mb-4'>Delivery Charge: <span className='ps-4'>{deliverycharge} KD</span></h6>
-            <h5 className='mb-4 text-danger'><b>Grand Total:</b> <span className='ps-4'>{GrandTotal.toFixed(2)} KD</span></h5>
+            <h6 className='mb-3'>Subtotal: <span className='ps-4'>{totalPrice.toFixed(2)} USD</span></h6>
+            <h6 className='mb-4'>Delivery Charge: <span className='ps-4'>{deliverycharge} USD</span></h6>
+            <h5 className='mb-4 text-danger'><b>Grand Total:</b> <span className='ps-4'>{GrandTotal.toFixed(2)} USD</span></h5>
 
             <button className={'btn-lg rounded border-0 py-3 px-2 w-100 fs-6 '+classes.chkbtn}
               style={{display:goToCheckout?'none':'inline' }}
-              onClick={()=>{setCheckoutState(!goToCheckout)}}
+              onClick={()=>{
+                user?
+                setCheckoutState(!goToCheckout)
+                : navigate('/login')
+              }}
             >
               <b>Proceed to Checkout</b>
             </button>

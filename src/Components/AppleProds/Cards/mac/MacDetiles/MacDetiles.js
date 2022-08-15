@@ -13,11 +13,11 @@ import styles from "../../iphone/iphoneDetiles/IphoneDetiles.module.css";
 import InfoSlider from "../../iphone/iphoneDetiles/Slider/InfoSlider";
 
 const MacDetiles = () => {
-  const parmas = useParams();
+  const params = useParams();
   const {pathname} = useLocation();
-  console.log("pathname slider", pathname);
+  
   const [mac, setMac] = useState({});
-  const oneMob = doc(db, `products/apple/mac/${parmas.macId}`);
+  const oneMob = doc(db, `Products/${params.macId}`);
 
   useEffect(() => {
     const getMob = async () => {
@@ -33,7 +33,7 @@ const MacDetiles = () => {
   return (
     <div className="container-fluid py-2 bg-white">
       <div className="row py-2 d-flex justify-content-between align-items-start">
-        <div className={`col-lg-4 ${styles.imgcol} ${styles.slider}`}>
+        <div className={`col-lg-2 ${styles.imgcol} ${styles.slider}`}>
           <Carousel
             className={`${styles.Carousel}`}
             showThumbs
@@ -41,20 +41,20 @@ const MacDetiles = () => {
             autoPlay
             centerMode
           >
-            {mac?.arrayImgs?.map((el) => {
+            {mac?.images?.map((el) => {
               return (
                 <div className={`${styles.slider}`}>
-                  <img src={el} alt="iphone" className="img-fliud w-50" />
+                  <img src={el} alt="iphone" className="img-fluid w-50" />
                 </div>
               );
             })}
           </Carousel>
         </div>
-        <div className="col-lg-4 bg-white">
+        <div className="col-lg-3 bg-white">
           <h4>
-            Apple {mac.mobileName} {mac.Storage} {mac.mobileColor}
+            Apple {mac.name} {mac.storage} {mac.color}
           </h4>
-          <p>Brand Apple sku:654543</p>
+          <p>Brand Apple {mac.sku}</p>
           <div className={styles.ico}>
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
@@ -69,7 +69,7 @@ const MacDetiles = () => {
           <hr />
           <p className={styles.price}>
             {mac.price}KD <span className={styles.save}>739.900</span>{" "}
-            <span className="text-danger">save 14%</span>
+            <span className="text-danger">save {mac.discount || ''}</span>
           </p>
           <p>Installments starting from 18.000 KD monthly</p>
           <hr />
@@ -79,7 +79,7 @@ const MacDetiles = () => {
           <TabsComp />
           <hr />
           <h6>Quick Overview:</h6>
-          <div>{mac.quickoverView}</div>
+          <div>{mac.description}</div>
           <hr />
           <HowIget />
         </div>
@@ -89,7 +89,7 @@ const MacDetiles = () => {
       </div>
       <h2>You May Also Like</h2>
       <InfoSlider />
-      <InfoTabs imge={mac} id={parmas.macId} />
+      <InfoTabs imge={mac} id={params.macId} />
     </div>
   );
 };

@@ -2,15 +2,16 @@ import React from "react";
 import { useEffect, useState } from "react";
 import db from '../../firebase';
 import { useParams } from "react-router-dom";
-import { doc, onSnapshot, collectionGroup } from "firebase/firestore";
+import { doc, onSnapshot, collectionGroup, updateDoc, getDoc } from "firebase/firestore";
 import classes from './ProductDetailes.module.css';
 import { useForm } from "react-hook-form";
 import Tabs  from './detailesTabs';
 // cart
-import { useCookies } from 'react-cookie';
-import { AddToCart } from "../../services/CartService";
+import { useCookies, getCookies } from 'react-cookie';
+import { AddToCart, AddToUserCart } from "../../services/CartService";
 import { useDispatch } from "react-redux";
 import cartAction from '../../Redux/action';
+import { UserAuth } from "../../context/AuthContext";
 
 const ProductDetails = () => {
     const params = useParams()
@@ -20,8 +21,12 @@ const ProductDetails = () => {
     const [cookies, setCookies] = useCookies("Cart");
     const dispatch = useDispatch();    
     const [attributes, setAttributes] = useState([]);
+    const { user } = UserAuth();
+    const [userCart, setUserCart]= useState([]);
+    const [cokyCart, setCokyCart]= useState([]);
+    const [cokyChange, setCokyChange]= useState();
 
-    useEffect(()=>
+    useEffect(()=>{
         onSnapshot(doc(db, 'Products/', `${params.id}`),(snapshot)=>{
             setProduct(
                 {id: snapshot.id,
@@ -32,7 +37,23 @@ const ProductDetails = () => {
             setAttributes(snapshot.docs[0].data().attributes)
             })
         })
-    ,[]);
+    },[]);
+
+    useEffect(()=>{
+        console.log(cokyChange, cookies.Cart);
+        if(user)
+        {
+            const usrDoc = doc(db, 'users/', `${user.uid}`)
+            onSnapshot(usrDoc,(snapshot)=>{
+                const cart = snapshot.data().cart;
+                setUserCart(cart.map((item)=> item.pId))
+            })
+        }
+        else if(cookies.Cart)
+        {
+            setCokyCart(cookies.Cart.map((item)=> item.id))
+        }
+    },[user, cokyChange])
   
     const incrementCount = (limit) => {
         if(count < limit)
@@ -127,9 +148,31 @@ const ProductDetails = () => {
                       </div>
                       <div className="w-100 h-auto px-3 mb-3">
                           <button className={classes.addToCardBtn+" py-1"}
-                                onClick={()=>{AddToCart( Product.id, count, cookies, setCookies, dispatch, cartAction) }}
+                          disabled={user?userCart.includes(Product.id):cokyCart.includes(Product.id)}
+                                onClick={()=>{
+                                    if(user){
+                                        AddToUserCart(Product.id, count, user, db, doc, getDoc, updateDoc)
+                                    }
+                                    else{
+                                        AddToCart( Product.id, count, cookies, setCookies, dispatch, cartAction, setCokyChange);
+                                        setCokyChange(true);
+                                }}}
                           >
-                            <i className="fa fa-shopping-cart fa-fw me-2"></i>Add to Card
+                            <i className="fa fa-shopping-cart fa-fw me-2"></i>
+                            {
+                                user?
+                                (
+                                    userCart.includes(Product.id)?
+                                    "Added to Cart"
+                                    : "Add to Cart"
+                                
+                                )
+                                :(
+                                    cokyCart.includes(Product.id)?
+                                    "Added to Cart"
+                                    :"Add to Card"
+                                 )
+                            } 
                            </button>
                       </div>
                       <div className="w-100 h-auto px-3 mb-3">

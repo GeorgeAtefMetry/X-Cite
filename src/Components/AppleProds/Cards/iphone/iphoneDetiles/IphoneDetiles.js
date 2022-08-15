@@ -14,6 +14,7 @@ import { Carousel } from "react-responsive-carousel";
 import InfoSlider from "./Slider/InfoSlider";
 import TabsComp from "./Tabs/TabsComp";
 import InfoTabs from "./InfoTabs/InfoTabs";
+
 const IphoneDetiles = () => {
   const params = useParams();
   console.log(params);
@@ -32,8 +33,8 @@ const IphoneDetiles = () => {
 
   return (
     <div className="container-fluid py-2 bg-white">
-      <div className="row py-2 d-flex justify-content-between align-items-start">
-        <div className={`col-lg-3 ${styles.imgcol} ${styles.slider}`}>
+      <div className="row py-2 d-flex justify-content-between align-items-start position-relative">
+        <div className={`col-lg-3 ${styles.imgcol} ${styles.slider} position-fixed`}>
           <Carousel
             className={`${styles.Carousel}`}
             showThumbs
