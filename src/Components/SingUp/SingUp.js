@@ -121,7 +121,7 @@ const SingUp = (props) => {
       await createUser(inpValue.email , inpValue.password).then((res)=>{
           console.log(res.user);
           const userCollec = doc(db, `users/${res.user.uid}`)
-          setDoc(userCollec, inpValue).then(()=>{
+          setDoc(userCollec, {...inpValue, cart:[], wishlist:[], orders:[]}).then(()=>{
             navigate('/home')
           })
       })
