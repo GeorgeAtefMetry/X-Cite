@@ -5,20 +5,23 @@ import db from '../../firebase'
 import { collection, doc, onSnapshot, query, where } from "firebase/firestore"            
 import React from 'react';
 import SwiperCard from '../../miniComponents/swiperMainCards/swiperCard';
-
+import { useSelector, useDispatch } from 'react-redux';
+import {setProducts, deleteProducts} from'../../Components/ReduxWishlist/actions/productsActions'
 const Home = () =>{
-
     const[digitalCards, setDigitalCards] = useState([]); {/*done */} 
     const[phonesAndPersonalAudio, setphonesAndPersonalAudio] = useState([]); {/*done */} 
     const[laptops, setLaptops] = useState([]); {/*done */} 
     const[tablets, setTablets] = useState([]); {/*done */} 
     const[televisions, setTelevisions] = useState([]); {/*done */} 
-    const [categories, setCats] = useState([]);
-
+    const[categories, setCats] = useState([]);
     
     // const[product, setProduct] = useState([]);
     const[favorites, setFavorites] = useState([])
     const [isActive, setIsActive] = useState(false);
+
+    
+        const Products = useSelector((state) => state.products)
+        const dispatch = useDispatch()
 
     useEffect(()=>{
 // Categories =====================================================
@@ -36,6 +39,14 @@ const Home = () =>{
         const q_digitalProds = query(proCollection, where('categoryName','==', 'digital cards'));
         onSnapshot(q_digitalProds,(snapshot)=>{
                 setDigitalCards(snapshot.docs.map((doc)=>({...doc.data(), id:doc.id})))
+                digitalCards.map((pro)=>{
+                    for(let Pro of Products){
+                        if(pro.id === Pro.id){
+                            return pro.id = true
+                        }
+                    }
+                })
+
                 })
         // mobile phones
         const q_phonesProds = query(proCollection, where('categoryName','==', 'Mobile Phones'));
@@ -287,8 +298,8 @@ const Home = () =>{
             <div className='d-flex flex-wrap justify-content-center'>
                 {categories.map(cat => (
                 <div className='col-lg-3 col-md-6 col-10 p-2 m-0' key={cat.id}>
-                    <div className="card p-0 m-0" style={{width: '100%', height:'17rem'}}>
-                        <img className="card-img-top h-75" src={cat.img} alt="Card image cap"/>
+                    <div className="card p-0 m-0" style={{width: '100%', height:'22rem'}}>
+                        <img className="card-img-top " style={{height:'18rem'}} src={cat.img} alt="Card image cap"/>
                         <div className="card-body py-2 px-3 w-100">
                             <span className="card-text first float-left col-lg-9 text-start" >{cat.id}</span>
                             <span className="card-text second float-right col-lg-3 h-100">
@@ -369,4 +380,5 @@ const Home = () =>{
         </>
     )
 }
+
 export default Home;

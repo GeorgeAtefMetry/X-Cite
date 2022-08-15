@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Carousel } from 'react-bootstrap';
 import classes from './Brands.module.css';
 import fs from '../../firebase';
+import React from 'react';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { useLocation } from 'react-router-dom';
 // images =======================

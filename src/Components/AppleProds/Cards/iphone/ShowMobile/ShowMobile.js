@@ -26,13 +26,13 @@ const ShowMobile = ({priceRinge}) => {
     };
     getIphones();
   }, []);
- 
+
   const iphoneCard = data.filter((el)=>{
-         if (priceRinge === 1000) {
-           return el
-         } else {
-          return el.price <= parseInt(priceRinge)
-         }
+          if (priceRinge === 1000) {
+            return el
+          } else {
+            return el.price <= parseInt(priceRinge)
+          }
   })
     ?.filter(
       ({

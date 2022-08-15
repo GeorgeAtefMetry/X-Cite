@@ -5,18 +5,25 @@ import { useParams } from "react-router-dom";
 import { collection, doc, onSnapshot,getDocs,getDoc, increment } from "firebase/firestore"   
 import classes from './digitalCardDetails.module.css';
 import { useForm } from "react-hook-form";
-
+import { Stack} from "@mui/material";
+import Rating from '@mui/material/Rating';
+import Box from '@mui/material/Box';
+import StarIcon from '@mui/icons-material/Star';
+import {addFav,deleteFav,addReview} from '../../services/services';
+import { UserAuth } from '../../context/AuthContext';
 const DigitalCardDetails = () => {
     const params = useParams()
     const [count, setCount] = useState(1)
     const [digitalCard, setDigitalCard] = useState({images:[]})
-    const [favorites, setfavorites] = useState([])
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
 
+
+    
+    
+    // console.log(product)
+    
     useEffect(()=>
     onSnapshot(doc(db, 'Products/', `${params.id}`),(snapshot)=>{
-        console.log(snapshot.data());
         setDigitalCard(snapshot.data())
     })
     ,[]);
@@ -82,10 +89,11 @@ const DigitalCardDetails = () => {
         setReviewActive2 (reviewActive2 => !reviewActive2)
         setReviewActive (reviewActive => false)
     }
+    // console.log(ratingValue)
     return (
         <>
         <div className={classes.bigContainer+' w-100 h-auto px-0 pb-0 pt-0 m-0'}>
-           <p className={"px-3 py-2 m-0 "+classes.proPath}> X-Cite {'>'} {digitalCard.categoryName} {'>'} {digitalCard.name} </p>
+            <p className={"px-3 py-2 m-0 "+classes.proPath}> X-Cite {'>'} {digitalCard.categoryName} {'>'} {digitalCard.name} </p>
         <hr className="mt-0"/>
         {/* ====== Product General Detailes ================================================= */}
             <div className="row p-0 m-0">
@@ -111,15 +119,15 @@ const DigitalCardDetails = () => {
                             </div>
                             <div className={classes.inStock}>
                                 <i className="fa fa-check-circle" aria-hidden="true"></i>
-                                  {
-                                    digitalCard.quantity>5?
-                                    'In Stock'
-                                    :(
-                                        digitalCard.quantity==0?
-                                        "Sorry!,This Product is Not Available Now!"
-                                        :`Hurry up, It's available only ${digitalCard.quantity} items.`
-                                    )
-                                  }  
+                                    {
+                                        digitalCard.quantity>5?
+                                        'In Stock'
+                                        :(
+                                            digitalCard.quantity==0?
+                                            "Sorry!,This Product is Not Available Now!"
+                                            :`Hurry up, It's available only ${digitalCard.quantity} items.`
+                                        )
+                                    }  
                             </div>
                         </div>
                         <hr></hr>
@@ -159,13 +167,13 @@ const DigitalCardDetails = () => {
                             <button onClick={decrementCount} className={classes.decrement}>-</button>
                             <span className={classes.count}>{count}</span>
                             <button onClick={incrementCount} className={classes.increment}>+</button>
-                      </div>
-                      <div className="w-100 h-auto px-3 mb-3">
-                          <button className={classes.addToCardBtn+" py-1"}><i className="fa fa-shopping-cart fa-fw me-2"></i>Add to Card</button>
-                      </div>
-                      <div className="w-100 h-auto px-3 mb-3">
-                          <button className={classes.clickBuyBtn+" py-1"}><i className="fa fa-tachometer fa-fw me-2"></i>1-Click Buy</button>
-                      </div>
+                        </div>
+                        <div className="w-100 h-auto px-3 mb-3">
+                            <button className={classes.addToCardBtn+" py-1"}><i className="fa fa-shopping-cart fa-fw me-2"></i>Add to Card</button>
+                        </div>
+                        <div className="w-100 h-auto px-3 mb-3">
+                            <button className={classes.clickBuyBtn+" py-1"}><i className="fa fa-tachometer fa-fw me-2"></i>1-Click Buy</button>
+                        </div>
                         <div className={classes.soldFulfilled+" w-100 mx-0 mb-3 px-3"}>
                             <p className="my-0">Sold By: <b className="text-primary">{digitalCard.seller}</b></p>
                             <p className="my-0">Fulfilled By: <b className="text-dark">X-cite</b></p>
@@ -216,9 +224,9 @@ const DigitalCardDetails = () => {
                                 </div>
                                 <div className={"col-lg-9 float-start "+classes.afterPurchase}>
                                             <p>After you complete your purchase, you will be redirected to a conformation
-                                                 page which confirms your purchase and shows your code as well. You will 
-                                                 also be able to find it saved in your account. Go to “My Account” {'>'} 
-                                                 “My Virtual Cards”.</p>
+                                                    page which confirms your purchase and shows your code as well. You will 
+                                                    also be able to find it saved in your account. Go to “My Account” {'>'} 
+                                                    “My Virtual Cards”.</p>
                                 </div>
                             </div>  
 
@@ -238,10 +246,10 @@ const DigitalCardDetails = () => {
                                 </div>
                                 <div className="col-lg-9 float-start">
                                             <p>If there is any issue with your card, you can simply go to “My Account”
-                                                  then “My Virtual Cards” where you will find the “Report Issue” button.
-                                                  Once clicked, you should receive a pop up page where you can fill in 
-                                                  your complaint details including a screenshot and submit it to be reviewed
-                                                  as soon as possible.</p>
+                                                    then “My Virtual Cards” where you will find the “Report Issue” button.
+                                                    Once clicked, you should receive a pop up page where you can fill in 
+                                                    your complaint details including a screenshot and submit it to be reviewed
+                                                    as soon as possible.</p>
                                 </div>
                             </div>
 
@@ -287,12 +295,12 @@ const DigitalCardDetails = () => {
                                 <p>Based on 79 rating</p>
                             </div>
 
-                            <div className={`col-md-2 ${classes.ratingCol}`}>
+                            <div className={`col-md-4 ${classes.ratingCol}`}>
                                 <div className="tf-distribution tf-dist-user">
                                     <table>
                                         <tbody>
                                             <tr>
-                                                <td className="range">5 ☆
+                                                <td className={classes.range}>5 ☆
                                                 </td>
                                                 <td title="67/75 (89%)"  className="bar">
                                                     <div style={{width:'200px !important', backgroundColor:'#00de01' }} className={classes.ratingProgressFiveStars}>
@@ -300,7 +308,7 @@ const DigitalCardDetails = () => {
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="range">4 ☆
+                                                <td class={classes.range}>4 ☆
                                                 </td>
                                                 <td title="7/75 (9%)" className="bar">
                                                     <div style={{width:'20px !important', backgroundColor:'#bcee01' }} className={classes.ratingProgressFourStars}>
@@ -308,14 +316,14 @@ const DigitalCardDetails = () => {
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td className="range">3 ☆</td>
+                                                <td className={classes.range}>3 ☆</td>
                                                 <td title="0/75 (0%)" className="bar">
                                                     <div style={{width:'0px !important', backgroundColor:'#00de01' }} className={classes.ratingProgressThreeStars}>
                                                     </div>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="range">2 ☆
+                                                <td class={classes.range}>2 ☆
                                                 </td>
                                                 <td title="0/75 (0%)" className="bar">
                                                     <div style={{width:'0px !important', backgroundColor:'#00de01' }} className={classes.ratingProgressTwoStars}>
@@ -323,7 +331,7 @@ const DigitalCardDetails = () => {
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="range">1 ☆
+                                                <td class={classes.range}>1 ☆
                                                 </td>
                                                 <td title="1/75 (1%)" className="bar">
                                                     <div style={{width:'30px !important', backgroundColor:'#e8afb1' }} className={classes.ratingProgressOneStars}>
@@ -337,95 +345,23 @@ const DigitalCardDetails = () => {
 
                             <div className={`col-md-12  ${classes.customersReviews}`}>
 
-                                <div className={`col-md-3 ${classes.reviewBtns}`}>
+                                <div className={`col-md-12 ${classes.reviewBtns}`}>
                                         <button className={reviewActive ? `${classes.reviewBtn}` : `${classes.reviewBtnNone}`} onClick={displaReview}>User Reviews</button>
                                         <button className={reviewActive2 ? `${classes.reviewBtn}` : `${classes.reviewBtnNone}`} onClick={displaReview2}>Write Reviews</button>
                                 </div>
 
+
                                 <div className={!reviewActive ? `${classes.dis}` : `${classes.userReviews}`}>
-                                    <div style={{display:'inline-block'}} className={classes.user}>
-                                        <div className={classes.logo} style={{backgroundColor:' rgb(152, 194, 132) !important'}}>SS
-                                        </div>
-                                        <h5>Sharka Sami </h5>
-                                        <span title="Verified buyer" className={classes.verified}><i class="fa-solid fa-check"></i></span>
-                                        <time datetime="2022-05-24" class="date hcol not-xs">2 months ago</time>
-                                    </div>
-                                    <div className={classes.ratingCustomer}>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
-                                    </div>
-                                    <span className={classes.reviewWord}>Good</span>
                                 </div>
+
+
+
                                 <div className={reviewActive ? `${classes.dis}` : `${classes.writeReview}`}>
-                                    <div className={`text-center ${classes.writeReviewRating}`}>
-                                        <div className={classes.stars}>
-                                            <span><i class="fa fa-star "></i></span>
-                                            <span><i class="fa fa-star "></i></span>
-                                            <span><i class="fa fa-star "></i></span>
-                                            <span><i class="fa fa-star "></i></span>
-                                            <span><i class="fa fa-star "></i></span>
-                                            <span className={classes.userRatingStar}>Click the stars to rate this product</span>
-                                            <p className={classes.oneStar}>Unacceptable</p>
-                                            <p className={classes.twoStars}>Poor</p>
-                                            <p className={classes.threeStars}>Average</p>
-                                            <p className={classes.fourStars}>Good</p>
-                                            <p className={classes.fiveStars}>Excellent</p>
-                                        </div>
-                                        <form onSubmit={handleSubmit(onSubmit)}>
-                                            <input className={classes.publicNameInput} placeholder="Your public name or alias (required)" {...register("example", { required: true })} />
-                                            <br/>
-                                            <textarea className={classes.productReviewInput} 
-                                            placeholder=
-                                            "Write your product review here
-                                            Describe for example:
-                                            - Why you chose this rating
-                                            - What you like or disliked
-                                            Please don't write about the retailer, shopping experience or delivery"
-                                            {...register("exampleRequired", { required: true })} 
-                                            />
-                                            <br />
-                                            <div style={{border:'2px solid #ccc',width:'35%',margin:'auto',padding:'8px',borderTop:'none',borderRadius:'5px',marginTop:'-10px'}}>
-                                                <label htmlFor="filePicker" style={{ background:"#fff", padding:"5px 10px",border:'1px solid #ccc',borderRadius:'10px',fontWeight:'bold',fontSize:'12px'}}>
-                                                        Add Photo
-                                                </label>
-                                                <input  type="file" id="filePicker" style={{visibility:"hidden"}} name="img" accept="image/*" placeholder="Add Image"/>
-                                            </div>
-                                            {errors.exampleRequired && <span>This field is required</span>}
-                                            <br/>
-                                            <p>Pros & Cons</p>
-                                            <input className={classes.pointAboutProduct} placeholder="a good point about this product" {...register("example1", { required: true })} />
-                                            <button>Add</button>
-                                            <br/>
-                                            <input className={classes.pointAboutProduct} placeholder="a bad point about this product" {...register("example2", { required: true })} />
-                                            <button>Add</button>
-                                            {errors.example1 && <span>This field is required</span>}
-                                            {errors.example2 && <span>This field is required</span>}
-                                            <p>Your e-mail</p>
-                                            <p>A valid e-mail address is required to verify this review. It will not be displayed or shared with a third party.</p>                                            
-                                            <input className={classes.publicNameInput}
-                                            placeholder="Email address (Required)"
-                                            {...register("mail", { required: true,
-                                                pattern: {
-                                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                                    message: "invalid email address"
-                                                } })} />
-                                            <p>{errors.mail?.message}</p>
-                                            <br/>
-                                            <p className={classes.agreeTermsInput} >
-                                                <input 
-                                                {...register("checkbox", { required: true })}
-                                                type="checkbox" id="vehicle1" name="agreeTerms"/> 
-                                                I agree to the 
-                                                <a href="#">terms & conditions</a>
-                                            </p>
-                                            <br/>
-                                            <input className={classes.submitFormInput}  type="submit" />
-                                        </form>
-                                    </div>
                                 </div>
+
+
+
+
                             </div>
                         </div>
 
@@ -444,7 +380,7 @@ const DigitalCardDetails = () => {
                                 
                                 <div className={`text-center ${classes.askQuestion}`}>
 
-                                    <form onSubmit={handleSubmit(onSubmit)}>
+                                    {/* <form onSubmit={handleSubmit(onSubmit)}>
                                         <input className={classes.publicNameInput} placeholder="Your public name or alias (required)" {...register("example", { required: true })} />
                                         <br/>
                                         <textarea className={classes.productReviewInput} 
@@ -458,7 +394,7 @@ const DigitalCardDetails = () => {
                                         {...register("exampleRequired", { required: true })} 
                                         />
                                         <br/>
-                                        <div style={{border:'2px solid #ccc',width:'35%',margin:'auto',padding:'8px',borderTop:'none',borderRadius:'5px',marginTop:'-10px'}}>
+                                        <div style={{border:'2px solid #ccc',width:'50%',margin:'auto',padding:'8px',borderTop:'none',borderRadius:'5px',marginTop:'-10px'}}>
                                             <label htmlFor="filePicker" style={{ background:"#fff", padding:"5px 10px",border:'1px solid #ccc',borderRadius:'10px',fontWeight:'bold',fontSize:'12px'}}>
                                                     Add Photo
                                             </label>
@@ -492,7 +428,7 @@ const DigitalCardDetails = () => {
                                         </p>
                                         <br/>
                                         <input className={classes.submitFormInput}  type="submit" />
-                                    </form>
+                                    </form> */}
                                 </div>
                             </div>
                         </div>
