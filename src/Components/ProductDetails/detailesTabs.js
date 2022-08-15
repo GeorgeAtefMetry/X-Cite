@@ -1,22 +1,108 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import classes from './ProductDetailes.module.css';
 import { useForm } from "react-hook-form";
 import ProDiscription from "./proDiscription";
 import ProSpecification from "./proSpecification";
+import {Stack, Rating} from '@mui/material' ;
+import { useParams } from "react-router-dom";
+import {addReview} from '../../services/ReviewService';
+import db from '../../firebase'
+import { doc,getDoc} from "firebase/firestore" ;
+import Box from '@mui/material/Box';
+
 
 const ProTabs = ({Product, attributes}) => {
-    
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const params = useParams()// params to catch prdid
+
     const [active, setActive] = useState(true)
     const [active1, setActive1] = useState(false)
     const [active2, setActive2] = useState(false)
     const [active3, setActive3] = useState(false)
     const [active4, setActive4] = useState(false)
-    const [reviewActive, setReviewActive] = useState(true)
-    const [reviewActive2, setReviewActive2] = useState(false);
+    const [reviewActive, setReviewActive] = useState(true)//
+    const [reviewActive2, setReviewActive2] = useState(false);//
+    ///
+    const [ratingValue, setRatingValue] = useState(1);
+    const [review, setReview] = useState([])
+    const [hover, setHover] = useState(-1);
+    ///
+    //register : catch input by its name(ely ent katbo), handelsubmit : get data he entered when click submit,
+    //reset : delete dta from form after submit, formstate: validate inputs 
+    const { register , handleSubmit, reset, formState: { errors } } = useForm();
+    // const onSubmit = data => console.log(data);
+
+    const onSubmit = ((data) =>
+
+    {
+
+        // console.log(data)
+
+        const review = {
+
+            idOfProduct:`${params.id}`,
+
+            name: data.name,
+
+            review : data.review,
+
+            good_point : data.good_point,
+
+            bad_point : data.bad_point,
+
+            email : data.email,
+
+            ratingValue : ratingValue
+
+        }
+
+        // console.log(review)
+
+        addReview(review) //send data to firebase in reviewservice
+        reset()
+
+    }
+
+)
+useEffect(()=>{
+
+    const id = localStorage.getItem('id')
+
+    const data = doc(db,'users',`${id}`)
+
+        getDoc(data).then((res)=>{
+
+            let data = res.data();
+
+            const fullDataOfReview = data.review
+       
+
+            fullDataOfReview.filter((n) =>
+                {
+                    if(n.idOfProduct === `${params.id}`){
+                        const reviewData = [{
+                            name : n.name,
+                            good_point : n.good_point,
+                            bad_point : n.bad_point,
+                            ratingValue : n.ratingValue,
+                            review : n.review,
+                            email : n.email,
+                        }]
+                        setReview(reviewData)
+                    }else{
+                        // setProduct([])
+                    }
+                }
+                )
+        })
+
+    // setNames(snapshot.docs.map((doc)=>(doc.data().name))),
+
+    // setImages(snapshot.docs.map((doc)=>(doc.data().img)))
+
+// })
+
+})
 
     const handleClick = () => {
         setActive(active => !active);
@@ -61,9 +147,37 @@ const ProTabs = ({Product, attributes}) => {
         setReviewActive2 (reviewActive2 => !reviewActive2)
         setReviewActive (reviewActive => false)
     }
+
+    /////////////////////////////
+    const labels= {
+
+        1: 'Useless',
+
+        2: 'Poor',
+
+        3: 'Ok',
+
+        4: 'Good',
+
+        5: 'Excellent',
+
+    };
+
+    function getLabelText(ratingValue) {
+
+        return `${ratingValue} Star${ratingValue !== 1 ? 'sss' : ''}, ${labels[ratingValue]}`;
+
+    }
+
+    const handleChangeRating = (newValue) => {
+
+        setRatingValue(newValue)
+
+    }
+    ////////////////////////
     return (
         <>
-        {/* ====== Product More Special Detailes ============================================= */}
+        
             <div className={classes.aboutProduct}>
                 <div className="row p-0 m-0">
                     <div className="col-lg-10 col-12 p-0">
@@ -93,6 +207,9 @@ const ProTabs = ({Product, attributes}) => {
                                 <span className="fa fa-star checked"></span>
                                 <span className="fa fa-star"></span>
                                 <span className="fa fa-star"></span>
+                                {/* <Stack spacing={2}>
+                                <Rating/>
+                                </Stack> */}
                                 <p>Based on 79 rating</p>
                             </div>
 
@@ -151,90 +268,133 @@ const ProTabs = ({Product, attributes}) => {
                                         <button className={reviewActive2 ? `${classes.reviewBtn}` : `${classes.reviewBtnNone}`} onClick={displaReview2}>Write Reviews</button>
                                 </div>
 
-                                <div className={!reviewActive ? `${classes.dis}` : `${classes.userReviews}`}>
-                                    <div style={{display:'inline-block'}} className={classes.user}>
-                                        <div className={classes.logo} style={{backgroundColor:' rgb(152, 194, 132) !important'}}>SS
-                                        </div>
-                                        <h5>Sharka Sami </h5>
-                                        <span title="Verified buyer" className={classes.verified}><i className="fa-solid fa-check"></i></span>
-                                        <time dateTime="2022-05-24" className="date hcol not-xs">2 months ago</time>
-                                    </div>
-                                    <div className={classes.ratingCustomer}>
-                                            <span className="fa fa-star checked"></span>
-                                            <span className="fa fa-star checked"></span>
-                                            <span className="fa fa-star checked"></span>
-                                            <span className="fa fa-star"></span>
-                                            <span className="fa fa-star"></span>
-                                    </div>
-                                    <span className={classes.reviewWord}>Good</span>
-                                </div>
-                                <div className={reviewActive ? `${classes.dis}` : `${classes.writeReview}`}>
-                                    <div className={`text-center ${classes.writeReviewRating}`}>
-                                        <div className={classes.stars}>
-                                            <span><i className="fa fa-star "></i></span>
-                                            <span><i className="fa fa-star "></i></span>
-                                            <span><i className="fa fa-star "></i></span>
-                                            <span><i className="fa fa-star "></i></span>
-                                            <span><i className="fa fa-star "></i></span>
-                                            <span className={classes.userRatingStar}>Click the stars to rate this product</span>
-                                            <p className={classes.oneStar}>Unacceptable</p>
-                                            <p className={classes.twoStars}>Poor</p>
-                                            <p className={classes.threeStars}>Average</p>
-                                            <p className={classes.fourStars}>Good</p>
-                                            <p className={classes.fiveStars}>Excellent</p>
-                                        </div>
-                                        <form onSubmit={handleSubmit(onSubmit)}>
-                                            <input className={classes.publicNameInput} placeholder="Your public name or alias (required)" {...register("example", { required: true })} />
+ {/* //////////////////////////                         */}
+<div className={!reviewActive ? `${classes.dis}` : `${classes.userReviews}`}>
+{review.map((rev) => (
+ <>
+<div style={{display:'inline-block'}} className={classes.user}>
+<div className={classes.logo} style={{backgroundColor:' rgb(152, 194, 132) !important'}}>
+{rev.name ? rev.name.slice(0,1) : ''}
+ </div>
+<h5>{rev.name}</h5>
+
+
+<span className={classes.verified}><i class="fa-solid fa-check"></i></span>
+<time datetime="2022-05-24" class="date hcol not-xs"></time>
+</div>
+ <div className={classes.ratingCustomer}>
+ <Rating 
+value={rev.ratingValue} 
+readOnly 
+/>
+ <p>{rev.review}</p>
+ <p>{rev.good_point}</p>
+<p>{rev.bad_point}</p>
+ </div>
+</>
+))}
+
+</div>
+
+<div className={reviewActive ? `${classes.dis}` : `${classes.writeReview}`}>
+ <div className={`text-center ${classes.writeReviewRating}`}>
+<div className={classes.stars}>
+
+ </div>
+
+ <form onSubmit={handleSubmit(onSubmit)}>
+ <Rating 
+name="hover-feedback"
+ value={ratingValue} 
+onChangeActive={(event, newHover) => {
+setHover(newHover);
+ }}
+onChange={(event, newValue) => handleChangeRating(newValue)}//store value of rating
+getLabelText={getLabelText} //write value of rating below starrs
+ // emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
+ />
+{ratingValue !== null && (
+ <Box sx={{ ml:1 }}>{labels[hover !== -1 ? hover : ratingValue]}</Box>
+)}
+<input className={classes.publicNameInput} placeholder="Your public name or alias (required)" {...register("name", { required: true })} />
+
+<br/>
+
+<input
+
+    className={classes.productReviewInput}
+
+    placeholder =
+
+    "Write your product review here Describe for example: - Why you chose this rating - What you like or disliked Please don't write about the retailer, shopping experience or delivery"
+
+    {...register("review")}
+
+/>
+
+<br />
+
+                                            {errors.review && <span>This field is required</span>}
+
                                             <br/>
-                                            <textarea className={classes.productReviewInput} 
-                                            placeholder=
-                                            "Write your product review here
-                                            Describe for example:
-                                            - Why you chose this rating
-                                            - What you like or disliked
-                                            Please don't write about the retailer, shopping experience or delivery"
-                                            {...register("exampleRequired", { required: true })} 
-                                            />
-                                            <br />
-                                            <div style={{border:'2px solid #ccc',width:'35%',margin:'auto',padding:'8px',borderTop:'none',borderRadius:'5px',marginTop:'-10px'}}>
-                                                <label htmlFor="filePicker" style={{ background:"#fff", padding:"5px 10px",border:'1px solid #ccc',borderRadius:'10px',fontWeight:'bold',fontSize:'12px'}}>
-                                                        Add Photo
-                                                </label>
-                                                <input  type="file" id="filePicker" style={{visibility:"hidden"}} name="img" accept="image/*" placeholder="Add Image"/>
-                                            </div>
-                                            {errors.exampleRequired && <span>This field is required</span>}
-                                            <br/>
+
                                             <p>Pros & Cons</p>
-                                            <input className={classes.pointAboutProduct} placeholder="a good point about this product" {...register("example1", { required: true })} />
-                                            <button>Add</button>
+
+                                            <input className={classes.pointAboutProduct} placeholder="a good point about this product" {...register("good_point")} />
+
                                             <br/>
-                                            <input className={classes.pointAboutProduct} placeholder="a bad point about this product" {...register("example2", { required: true })} />
-                                            <button>Add</button>
-                                            {errors.example1 && <span>This field is required</span>}
-                                            {errors.example2 && <span>This field is required</span>}
-                                            <p>Your e-mail</p>
-                                            <p>A valid e-mail address is required to verify this review. It will not be displayed or shared with a third party.</p>                                            
-                                            <input className={classes.publicNameInput}
-                                            placeholder="Email address (Required)"
-                                            {...register("mail", { required: true,
-                                                pattern: {
-                                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                                    message: "invalid email address"
-                                                } })} />
-                                            <p>{errors.mail?.message}</p>
-                                            <br/>
+                                          
+<input className={classes.pointAboutProduct} placeholder="a bad point about this product" {...register("bad_point")} />
+
+{errors.example1 && <span>This field is required</span>}
+ <p>Your e-mail</p>
+ <p>A valid e-mail address is required to verify this review. It will not be displayed or shared with a third party.</p>                                            
+
+<input className={classes.publicNameInput}
+
+placeholder="Email address"
+
+{...register("email", {
+
+    pattern: {
+
+        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+
+        message: "invalid email address"
+
+    } })} />
+
+<p>{errors.mail?.message}</p>
+<br/>
+
                                             <p className={classes.agreeTermsInput} >
-                                                <input 
-                                                {...register("checkbox", { required: true })}
-                                                type="checkbox" id="vehicle1" name="agreeTerms"/> 
-                                                I agree to the 
+
+                                                <input
+
+                                                // {...register("checkbox")}
+
+                                                type="checkbox" name="agreeTerms"
+
+                                                />
+
+                                                I agree to the
+
                                                 <a href="#">terms & conditions</a>
+
                                             </p>
+
                                             <br/>
                                             <input className={classes.submitFormInput}  type="submit" />
+
                                         </form>
+
                                     </div>
+
                                 </div>
+
+
+
+           {/* /////////////////////////                  */}
                             </div>
                         </div>
 
@@ -253,7 +413,7 @@ const ProTabs = ({Product, attributes}) => {
                                 
                                 <div className={`text-center ${classes.askQuestion}`}>
 
-                                    <form onSubmit={handleSubmit(onSubmit)}>
+                                    {/* <form onSubmit={handleSubmit(onSubmit)}>
                                         <input className={classes.publicNameInput} placeholder="Your public name or alias (required)" {...register("example", { required: true })} />
                                         <br/>
                                         <textarea className={classes.productReviewInput} 
@@ -301,7 +461,7 @@ const ProTabs = ({Product, attributes}) => {
                                         </p>
                                         <br/>
                                         <input className={classes.submitFormInput}  type="submit" />
-                                    </form>
+                                    </form> */}
                                 </div>
                             </div>
                         </div>

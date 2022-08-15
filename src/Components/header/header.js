@@ -44,6 +44,7 @@ const Header = () => {
     }
   },[user])
 
+
   // change the diraction of the page based on the value of the lang
   document.body.dir = lang ? "rtl" : "ltr";
   const { t, i18n } = useTranslation();
