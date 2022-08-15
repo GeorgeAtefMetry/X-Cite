@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./GiftCard.css";
+import React from 'react';
 // import fb from '../firebase'
 
 const GiftCard = () => {

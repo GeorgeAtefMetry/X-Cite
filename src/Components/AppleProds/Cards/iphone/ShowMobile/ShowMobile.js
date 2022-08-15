@@ -40,19 +40,23 @@ const ShowMobile = ({ priceRinge }) => {
       setData(mobiles.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       setLoading(false);
     };
+
     getPhones();
   }, [i18n.language]);
 
-  // card mobile
-  const iphoneCard = data
-    ?.filter((el) => {
-      if (priceRinge === 1000) {
-        return el;
-      } else {
-        return el.price <= parseInt(priceRinge);
-      }
-    })
-    ?.filter((el) => {
+ 
+
+    
+
+
+
+  const iphoneCard = data.filter((el)=>{
+          if (priceRinge === 1000) {
+            return el
+          } else {
+            return el.price <= parseInt(priceRinge)
+          }
+  })?.filter((el) => {
       if (inpfil.length >= 1 && el.type) {
         return (
           inpfil.includes(el.storage) ||
@@ -64,10 +68,7 @@ const ShowMobile = ({ priceRinge }) => {
           inpfil.includes(el.mobileRam)
         );
       } else {
-        return el;
-      }
-    })
-    .map((el) => (
+        return el;}).map((el) => (
       <motion.div
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}

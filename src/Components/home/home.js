@@ -1,40 +1,39 @@
+import React, { useEffect, useState } from "react";
 import "./home.css";
 import { Carousel } from "react-bootstrap";
-import { useEffect, useState } from "react";
 
-import db from "../../firebase";
-import { collection, doc, onSnapshot, query, where } from "firebase/firestore";
-import React from "react";
-import SwiperCard from "../../miniComponents/swiperMainCards/swiperCard";
+
+
+
+
 import { useTranslation } from "react-i18next";
 
-const Home = () => {
-  const { t , i18n} = useTranslation();
-  const [digitalCards, setDigitalCards] = useState([]);
-  {
-    /*done */
-  }
-  const [phonesAndPersonalAudio, setphonesAndPersonalAudio] = useState([]);
-  {
-    /*done */
-  }
-  const [laptops, setLaptops] = useState([]);
-  {
-    /*done */
-  }
-  const [tablets, setTablets] = useState([]);
-  {
-    /*done */
-  }
-  const [televisions, setTelevisions] = useState([]);
-  {
-    /*done */
-  }
-  const [categories, setCats] = useState([]);
 
-  // const[product, setProduct] = useState([]);
-  const [favorites, setFavorites] = useState([]);
-  const [isActive, setIsActive] = useState(false);
+  
+
+import db from '../../firebase';
+import { collection, doc, onSnapshot, query, where } from "firebase/firestore";           
+
+import SwiperCard from '../../miniComponents/swiperMainCards/swiperCard';
+import { useSelector, useDispatch } from 'react-redux';
+import {setProducts, deleteProducts} from'../../Components/ReduxWishlist/actions/productsActions'
+
+const Home = () =>{
+
+     const { t , i18n} = useTranslation();
+    const[digitalCards, setDigitalCards] = useState([]); {/*done */} 
+    const[phonesAndPersonalAudio, setphonesAndPersonalAudio] = useState([]); {/*done */} 
+    const[laptops, setLaptops] = useState([]); {/*done */} 
+    const[tablets, setTablets] = useState([]); {/*done */} 
+    const[televisions, setTelevisions] = useState([]); {/*done */} 
+    const[categories, setCats] = useState([]);
+    
+    // const[product, setProduct] = useState([]);
+    const[favorites, setFavorites] = useState([])
+    const [isActive, setIsActive] = useState(false);
+    const Products = useSelector((state) => state.products)
+    const dispatch = useDispatch()
+
 
   useEffect(() => {
     // Categories =====================================================
@@ -527,3 +526,4 @@ const Home = () => {
   );
 };
 export default Home;
+

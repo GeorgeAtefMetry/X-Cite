@@ -4,6 +4,7 @@ import './App.css';
 import "./fontawesome-free-6.1.1-web/css/all.css";
 import "./fontawesome-free-6.1.1-web/css/fontawesome.css";
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./Components/header/header";
 import Footer from "./Components/footer/footer";
@@ -37,6 +38,8 @@ import AirTag from "./Components/AppleProds/Cards/AirTag/AirTag";
 import Beats from "./Components/AppleProds/Cards/Beats/Beats";
 import MacDetiles from "./Components/AppleProds/Cards/mac/MacDetiles/MacDetiles";
 import UserProfile from './Components/UserProfile/UserProfile';
+import Search from './Components/Search/search';
+import ShareWishlist from './wishlist/share-wishlist';
 
 function getFavIconElement() {
   return document.getElementById("favicon");
@@ -78,6 +81,9 @@ function App() {
             <Route path="/Cart" exact element={<Cart />}></Route>
             <Route path="/UserProfile" exact element={ <PrivateRoure> <UserProfile /></PrivateRoure>}></Route>
             <Route path="/test" exact element={<Test />}></Route>
+            <Route path="/search" exact element={<Search />}></Route>
+            <Route path="/wishlist" exact element={<Wishlist />}></Route>
+            <Route path="/share-wishlist" exact element={<ShareWishlist />}></Route>
           </Routes>
           <Footer></Footer>
         </AuthContextProvider>

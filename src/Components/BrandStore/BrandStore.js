@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import fs from '../../firebase';
 import { collection, onSnapshot } from 'firebase/firestore';
-
+import React from 'react';
 const BrandStore =()=>{
 
     const [Brands, setBrands] = useState([]);

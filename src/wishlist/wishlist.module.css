@@ -1,0 +1,208 @@
+.Account{
+    float: left;
+    width: 100%;
+    padding: 0;
+    background-color: #fff;
+}
+.Account li{
+    padding: 15px 10px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.Account .myAccount{
+    background-color: #00365c;
+    color: #fff;
+    padding: 10px;
+}
+.active{
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #dbdbdb), to(#e2e2e2));
+    color: #555;
+}
+.favorites{
+    padding: 20px;
+}
+.element {
+    background-color: #fff;
+    padding: 20px;
+}
+.element img{
+    width: 140px;
+}
+.eachOne{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.removeItem{
+    float: right;
+    position: absolute;
+    right: 45px;
+    cursor: pointer;
+}
+.removeItem:hover{
+    color: red;
+}
+@media(max-width: 1100px){
+    .removeItem{
+        font-size: 15px;
+    }
+}
+
+.favorites .data{
+    text-align: center;
+    float: left;
+}
+.eachOne .inputComment{
+    height: 50px;
+    width: 100%;
+}
+.item{
+    border: 1px solid rgb(238, 236, 236);
+    border-radius: 10px;
+    background-color: #f3f2f2;
+    box-shadow: 10px 10px 10px #0000003b;
+}
+.favorites .item .top{
+    padding: 10px;
+}
+.favorites .item .name{
+    color: #000;
+    float: right;
+    font-size: 18px;
+    border-bottom: 1px solid #ccc;
+}
+.favorites .price {
+    font-size: 15px;
+    font-weight: bold;
+}
+.favorites .oldPrice {
+    text-decoration: line-through;
+    font-size: 15px;
+}
+.favorites .discount{
+    font-weight: 400;
+    color: #fff;
+    font-size: 15px;
+    background-color: rgb(209, 3, 3);
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+.addToCartEachProduct{
+    margin-top: 20px;
+    background-color: #ff8100;
+}
+.favorites .addToCart{
+    margin-top: 20px;
+    background-color: #ff8100;
+}
+.favorites .paymentMonthly{
+    font-size: 14px;
+    font-weight: 500;
+}
+.shareBtn,.updateWishlistBtn{
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 7px;
+    font-size: 16px;
+}
+.shareBtn:hover{
+    color: #fff!important;
+    background-color: #2688da;
+    border: 1px solid #2688da;
+}
+.updateWishlistBtn:hover{
+    color: #fff!important;
+    background-color: #2688da;
+    border: 1px solid #2688da;
+}
+.none{
+    display: none;
+}
+.block{
+    display: block;
+}
+@media(max-width: 800px){
+    .removeItem{
+        font-size: 14px;
+    }
+    .favorites .price, .favorites .oldPrice, .favorites .discount, .favorites .paymentMonthly{
+        font-size: 13px;
+    }
+    .addToCartEachProduct {
+        font-size: 10px;
+    }
+    .data{
+        width: 30%;
+    }
+    .eachOne .inputComment{
+        height: 50px;
+        width: 100%;
+    }
+}
+@media(max-width: 768px){
+    .eachOne{
+        flex-wrap: wrap;
+    }    
+    .removeItem{
+        font-size: 14px;
+        text-align: center;
+        margin-right: 20px;
+        margin-top: 60px;
+    }
+    .favorites .price, .favorites .oldPrice, .favorites .discount, .favorites .paymentMonthly{
+        font-size: 13px;
+    }
+    .addToCartEachProduct {
+        font-size: 10px;
+    }
+    .data{
+        width: 50%;
+    }
+    .eachOne .inputComment{
+        height: 50px;
+        width: 100%;
+    }
+}
+@media(max-width:550px){
+    .nameAndInput{
+        width: 100%;
+    }
+    .eachOne img{
+        width: 100%;
+        text-align: center;
+        margin: auto;
+    }    
+    .eachOne .inputComment{
+        width: 100%;
+        text-align: center;
+        margin: auto;
+    }    
+    .removeItem{
+        text-align: center;
+        font-size: 14px;
+        text-align: center;
+        margin-right: 20px;
+        margin-top: 60px;
+    }
+    .favorites .price,.name, .favorites .oldPrice, .favorites .discount, .favorites .paymentMonthly{
+        font-size: 15px;
+        text-align: center;
+    }
+    .addToCartEachProduct {
+        font-size: 10px;
+    }
+    .data{
+        width: 80%;
+    }
+    .eachOne .inputComment{
+        height: 50px;
+        width: 100%;
+    }
+}

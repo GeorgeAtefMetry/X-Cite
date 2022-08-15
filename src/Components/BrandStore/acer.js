@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import classes from './Brands.module.css';
 import fs from '../../firebase';

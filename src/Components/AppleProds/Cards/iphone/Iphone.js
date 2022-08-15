@@ -15,7 +15,7 @@ const Iphone = () => {
                 <Aside  setPriceRinge={setPriceRinge} />
             </aside>
             <div className='col-md-8 col-lg-10 bg-white'>
-             <ShowMobile priceRinge={priceRinge}  pathname={pathname}  />
+              <ShowMobile priceRinge={priceRinge}  pathname={pathname}  />
             </div>
         </div>
     </div>
