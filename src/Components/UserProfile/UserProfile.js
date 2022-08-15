@@ -8,10 +8,12 @@ import "reactjs-popup/dist/index.css";
 import { updatePassword } from "firebase/auth";
 import { Tab, Tabs, Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import SingUp from "../SingUp/SingUp";
+// import SingUp from "../SingUp/SingUp";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+
 import { Spinner } from "react-bootstrap";
 import OrderDetailes from './orderDetailes';
+
 
 function UserProfile() {
   // state to use
@@ -79,7 +81,7 @@ function UserProfile() {
         password,
         rePassword: password,
       }).then(() => {
-        console.log("not me updata doc");
+        console.log("not me update doc");
       });
       updatePassword(user, password)
         .then(() => {
@@ -149,6 +151,7 @@ function UserProfile() {
                 <input
                   className="form-control py-2 my-2"
                   type="text"
+                  value={fullName}
                   placeholder="enter your new name"
                   name="fullName"
                   onChange={(e) => setFullName(e.target.value)}
@@ -189,6 +192,7 @@ function UserProfile() {
                   type="text"
                   placeholder="enter your mobile number"
                   name="mobile"
+                  value={mobile}
                   onChange={(e) => setMobile(e.target.value)}
                 />
 
@@ -227,6 +231,7 @@ function UserProfile() {
                   type="text"
                   placeholder="enter your new Location"
                   name="location"
+                  value={location}
                   onChange={(e) => setLocation(e.target.value)}
                 />
                 <button className="btn btn-primary">submit</button>
@@ -269,6 +274,7 @@ function UserProfile() {
                   type="text"
                   placeholder="enter new password"
                   name="password"
+                  value={password}
                   onChange={(e) => setpassword(e.target.value)}
                 />
 

@@ -114,7 +114,7 @@ const SingUp = (props) => {
   };
 
   // handel submit
-  const handelsubmit = async (e) => {
+  const handelSubmit = async (e) => {
     e.preventDefault()
     console.log(inpValue);
     try {
@@ -139,7 +139,7 @@ const SingUp = (props) => {
         <div className="col-12">
           <form
             onSubmit={(e) => {
-              handelsubmit(e);
+              handelSubmit(e);
             }}
           >
             <div className="row mx-2 my-2">

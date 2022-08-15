@@ -14,8 +14,11 @@ import { Carousel } from "react-responsive-carousel";
 import InfoSlider from "./Slider/InfoSlider";
 import TabsComp from "./Tabs/TabsComp";
 import InfoTabs from "./InfoTabs/InfoTabs";
+import { m } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const IphoneDetiles = () => {
+  const {t, i18n} = useTranslation()
   const params = useParams();
   console.log(params);
   const [mob, setMob] = useState({});
@@ -33,8 +36,8 @@ const IphoneDetiles = () => {
 
   return (
     <div className="container-fluid py-2 bg-white">
-      <div className="row py-2 d-flex justify-content-between align-items-start">
-        <div className={`col-lg-3 ${styles.imgcol} ${styles.slider}`}>
+      <div className="row py-2 d-flex justify-content-between align-items-start position-relative">
+        <div className={`col-lg-3 ${styles.imgcol} ${styles.slider} `}>
           <Carousel
             className={`${styles.Carousel}`}
             showThumbs
@@ -42,7 +45,7 @@ const IphoneDetiles = () => {
             autoPlay
             centerMode
           >
-            {mob?.arrayImgs?.map((el) => {
+            {mob?.images?.map((el) => {
               return (
                 <div className={`${styles.slider}`}>
                   <img src={el} alt="iphone" className="img-fluid w-50" />
@@ -53,7 +56,7 @@ const IphoneDetiles = () => {
         </div>
         <div className="col-lg-3 bg-white">
           <h4>
-            Apple {mob.mobileName} {mob.Storage} {mob.mobileColor}
+          {i18n.language === "ar"? mob.brandNameAR : mob.brandName} {i18n.language === "ar"? mob.typeAR : mob.type} {i18n.language === "ar"? mob.storageAR : mob.storage}
           </h4>
           <p>Brand Apple sku:654543</p>
           <div className={styles.ico}>

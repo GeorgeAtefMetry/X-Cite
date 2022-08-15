@@ -39,7 +39,7 @@ const InfoTabs = (props) => {
     );
   });
 
-  let imgDesc = props.imge?.descImgs?.map((img) => {
+  let imgDesc = props.imge?.imgsDescription?.map((img) => {
     return (
       <div>
         <img src={img} alt="description iphone" className="img-fluid" />
@@ -145,7 +145,7 @@ const InfoTabs = (props) => {
             </tr>
             <tr>
               <th>Device Type</th>
-              <td>{props.imge.mobileName}</td>
+              <td>{props.imge.name}</td>
             </tr>
             <tr>
               <th>Processor</th>
@@ -153,7 +153,7 @@ const InfoTabs = (props) => {
             </tr>
             <tr>
               <th>Operating System</th>
-              <td>{props.imge.os}</td>
+              <td>{props.imge.OS}</td>
             </tr>
             <tr>
               <th>Sensors </th>
@@ -164,11 +164,11 @@ const InfoTabs = (props) => {
             </tr>
             <tr>
               <th>Phone Memory (RAM) </th>
-              <td>{props.imge.mobileRam}</td>
+              <td>{props.imge.Ram}</td>
             </tr>
             <tr>
               <th>Storage Capacity </th>
-              <td>{props.imge.Storage}</td>
+              <td>{props.imge.storage}</td>
             </tr>
             <tr>
               <th>Expandable Memory </th>
@@ -176,7 +176,7 @@ const InfoTabs = (props) => {
             </tr>
             <tr>
               <th>Phone Display Size </th>
-              <td>{props.imge.screenSize}</td>
+              <td>{props.imge.displaySize}</td>
             </tr>
             <tr>
               <th>Rear Camera </th>

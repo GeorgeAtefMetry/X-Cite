@@ -7,6 +7,8 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./fontawesome-free-6.1.1-web/css/all.css";
 import "./fontawesome-free-6.1.1-web/css/fontawesome.css";
 import { CookiesProvider } from "react-cookie";
+// import { Provider } from 'react-redux';
+// import store from './Components/ReduxWishlist/store/store'
 import "./language";
 import Spinner from "./Components/Spinner/Spinner";
 import { Provider } from 'react-redux/es/exports';

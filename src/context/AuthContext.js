@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase";
 
+import React from 'react';
 const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
@@ -27,12 +28,12 @@ export const AuthContextProvider = ({ children }) => {
   };
   // get status
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (curUser) => {
+    const unSub = onAuthStateChanged(auth, (curUser) => {
       //    console.log(curUser);
       setUser(curUser);
     });
     return () => {
-      unsub();
+      unSub();
     };
   }, []);
 

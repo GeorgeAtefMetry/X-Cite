@@ -6,7 +6,7 @@
 .sticy {
   position: fixed;
   width: 100%;
-  right: 20px;
+  /* right: 20px; */
   bottom: 40px;
   border-radius: 50% 50% 50% 50%;
   font-size: 2.1666em;
@@ -18,4 +18,5 @@
   background: #dfdfdf;
   cursor: pointer;
   box-shadow: 0px 0px 6px -1px black;
+  z-index: 7932;
 }
