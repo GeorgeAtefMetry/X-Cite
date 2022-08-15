@@ -1,13 +1,12 @@
 import {
   collection,
-  doc,
   getDocs,
-  onSnapshot,
+  // onSnapshot,
   query,
   where,
 } from "firebase/firestore";
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { UserAuth } from "../../../../../context/AuthContext";
 // import { UserAuth } from "../../../../../context/AuthContext";
 import db from "../../../../../firebase";
@@ -20,9 +19,9 @@ import { useTranslation } from "react-i18next";
 
 const ShowMobile = ({ priceRinge }) => {
   const { inpfil } = UserAuth();
-  const {i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
   console.log(i18n.language);
-  console.log(priceRinge);
+
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -32,11 +31,10 @@ const ShowMobile = ({ priceRinge }) => {
     let q = query(
       iphoneRef,
       where("categoryName", "==", "Mobile Phones"),
-      where("brandName", "==", "Apple"),
-
-      where("lang", "==", i18n.language),
-
+      where("brandName", "==", "Apple")
+      // where("lang", "==", i18n.language),
     );
+
     const getPhones = async () => {
       const mobiles = await getDocs(q);
       setData(mobiles.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -44,7 +42,7 @@ const ShowMobile = ({ priceRinge }) => {
     };
     getPhones();
   }, [i18n.language]);
-  console.log(data);
+
   // card mobile
   const iphoneCard = data
     ?.filter((el) => {
@@ -54,23 +52,21 @@ const ShowMobile = ({ priceRinge }) => {
         return el.price <= parseInt(priceRinge);
       }
     })
-    ?.filter(
-      (el) => {
-        if (inpfil.length >= 1 && el.mobileName) {
-          return (
-            inpfil.includes(el.storage) ||
-            inpfil.includes(el.Camera) ||
-            inpfil.includes(el.screenSize) ||
-            inpfil.includes(el.color) ||
-            inpfil.includes(el.mobileName) ||
-            inpfil.includes(el.os) ||
-            inpfil.includes(el.mobileRam)
-          );
-        } else {
-          return el;
-        }
+    ?.filter((el) => {
+      if (inpfil.length >= 1 && el.type) {
+        return (
+          inpfil.includes(el.storage) ||
+          inpfil.includes(el.Camera) ||
+          inpfil.includes(el.screenSize) ||
+          inpfil.includes(el.color) ||
+          inpfil.includes(el.type) ||
+          inpfil.includes(el.os) ||
+          inpfil.includes(el.mobileRam)
+        );
+      } else {
+        return el;
       }
-    )
+    })
     .map((el) => (
       <motion.div
         animate={{ opacity: 1 }}
@@ -82,10 +78,12 @@ const ShowMobile = ({ priceRinge }) => {
         key={el?.id}
       >
         <Link to={`/iphone/${el?.id}`}>
-          <img className="img-fluid " src={el?.mobileImg} alt={el?.type} />
+          <img className="img-fluid " src={el?.images[0]} alt={el?.type} />
         </Link>
         <h5 className="pb-4">
-          {el.brandName} {el.mobileName} {el.storage} 
+          {i18n.language === "ar" ? el.brandNameAR : el.brandName}{" "}
+          {i18n.language === "ar" ? el.typeAR : el.type}{" "}
+          {i18n.language === "ar" ? el.storageAR : el.storage}
         </h5>
         <div className="icons-ahmed pb-2">
           <i class="fa-solid fa-star"></i>
@@ -94,13 +92,17 @@ const ShowMobile = ({ priceRinge }) => {
           <i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i>
         </div>
-        <h4>{el.price} KD</h4>
-        <p>Sold By {el.seller}</p>
+        <h4>
+          {el.price} {t("KD")}
+        </h4>
+        <p>
+          {t("Sold By")} {i18n.language === "ar" ? el.sellerAR : el.seller}
+        </p>
         <p className="X-ctie ">
-          <i class="fa-solid fa-check"></i> Fulfilled By X-cite
+          <i class="fa-solid fa-check"></i> {t("Fulfilled By X-cite")}
         </p>
         <button type="button" class="add-to-cart btn btn-warning">
-          <i class="fa-solid fa-cart-shopping"></i> Add To Cart
+          <i class="fa-solid fa-cart-shopping"></i> {t("Add To Cart")}
         </button>
         <div className="icon-heart">
           <i class="fa-regular fa-heart"></i>
