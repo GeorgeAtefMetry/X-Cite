@@ -68,7 +68,9 @@ const ShowMobile = ({ priceRinge }) => {
           inpfil.includes(el.mobileRam)
         );
       } else {
-        return el;}).map((el) => (
+        return el
+      }
+    }).map((el) => (
       <motion.div
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
