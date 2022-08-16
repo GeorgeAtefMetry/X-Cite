@@ -380,7 +380,7 @@ const Home = () =>{
           </div>
           <SwiperCard
             list={digitalCards}
-            path={"digitalcarddetails"}
+            path={"ProductDetails"}
           ></SwiperCard>
         </div>
 
@@ -399,25 +399,10 @@ const Home = () =>{
           </div>
           <SwiperCard
             list={phonesAndPersonalAudio}
-            path={"digitalcarddetails"}
+            path={"ProductDetails"}
           ></SwiperCard>
         </div>
 
-        {/* ============================ Laptops ========================== */}
-        <div className="customSwiperContainer mb-3 mt-3">
-          <div
-            className="px-3 py-2 border border-bottom border-1"
-            style={{ height: "10%" }}
-          >
-            <div className="float-left customSwiperContainer-heading h-100">
-              {t("Laptops")}
-            </div>
-            <div className="view-all float-right px-3 py-1 h-100">
-              {t("View All")}
-            </div>
-          </div>
-          <SwiperCard list={laptops} path={"digitalcarddetails"}></SwiperCard>
-        </div>
 
         {/* ============================ Phones & Personal Audio ========================== */}
         <div className="customSwiperContainer mb-3 mt-3">
@@ -489,7 +474,7 @@ const Home = () =>{
               {t("View All")}
             </div>
           </div>
-          <SwiperCard list={tablets} path={"digitalcarddetails"}></SwiperCard>
+          <SwiperCard list={tablets} path={"ProductDetails"}></SwiperCard>
         </div>
 
         {/* ============================ Televisions ========================== */}
@@ -507,7 +492,7 @@ const Home = () =>{
           </div>
           <SwiperCard
             list={televisions}
-            path={"digitalcarddetails"}
+            path={"ProductDetails"}
           ></SwiperCard>
         </div>
       </div>

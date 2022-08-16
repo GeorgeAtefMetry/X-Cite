@@ -14,34 +14,35 @@ import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import { UserAuth } from "../../context/AuthContext";
 
-const ProTabs = ({ Product, attributes }) => {
-  const params = useParams(); // params to catch prdid
-  const [count, setCount] = useState(1);
-  const [digitalCard, setDigitalCard] = useState({ images: [] });
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-    reset,
-  } = useForm();
-  // console.log(product)
-  const [active, setActive] = useState(true);
-  const [active1, setActive1] = useState(false);
-  const [active2, setActive2] = useState(false);
-  const [active3, setActive3] = useState(false);
-  const [active4, setActive4] = useState(false);
-  const [reviewActive, setReviewActive] = useState(true); //
-  const [reviewActive2, setReviewActive2] = useState(false); //
-  ///
-  const [ratingValue, setRatingValue] = useState(1);
-  const [review, setReview] = useState([]);
-  const [hover, setHover] = useState(-1);
-  ///
-  //register : catch input by its name(ely ent katbo), handelsubmit : get data he entered when click submit,
-  //reset : delete dta from form after submit, formstate: validate inputs
-  // const onSubmit = data => console.log(data);
 
+const ProTabs = ({Product, attributes}) => {
+    const params = useParams()// params to catch prdid
+    const [count, setCount] = useState(1)
+    const [digitalCard, setDigitalCard] = useState({images:[]})
+    const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
+    // console.log(product)
+    const [active, setActive] = useState(true)
+    const [active1, setActive1] = useState(false)
+    const [active2, setActive2] = useState(false)
+    const [active3, setActive3] = useState(false)
+    const [active4, setActive4] = useState(false)
+    const [reviewActive, setReviewActive] = useState(true)//
+    const [reviewActive2, setReviewActive2] = useState(false);//
+    ///
+    const [ratingValue, setRatingValue] = useState(1);
+    const [review, setReview] = useState([])
+    const [hover, setHover] = useState(-1);
+    ///
+    //register : catch input by its name(ely ent katbo), handelsubmit : get data he entered when click submit,
+    //reset : delete dta from form after submit, formstate: validate inputs 
+    // const onSubmit = data => console.log(data);
+    
+    // useEffect(()=>
+    // onSnapshot(doc(db, 'Products/', `${params.id}`),(snapshot)=>{
+    //     setDigitalCard(snapshot.data())
+    // })
+    // ,[]);
+   
   useEffect(
     () =>
       onSnapshot(doc(db, "Products/", `${params.id}`), (snapshot) => {
@@ -180,6 +181,7 @@ const ProTabs = ({ Product, attributes }) => {
         </p>
         <hr className="mt-0" />
         {/* ====== Product General Detailes ================================================= */}
+
         <div className="row p-0 m-0">
           <div className={`col-lg-4 col-sm-7 order-1 px-sm-4 px-2 py-2`}>
             <div className={classes.image}>
@@ -293,6 +295,7 @@ const ProTabs = ({ Product, attributes }) => {
             </div>
           </div>
         </div>
+
 
         {/* ====== Product More Special Detailes ============================================= */}
         <div className={classes.aboutProduct}>
@@ -999,6 +1002,7 @@ const ProTabs = ({ Product, attributes }) => {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -1006,3 +1010,4 @@ const ProTabs = ({ Product, attributes }) => {
   );
 };
 export default ProTabs;
+

@@ -1,9 +1,29 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Favorites from "../../services/services";
 import { UserAuth } from "../../context/AuthContext";
 import { addFav, deleteFav } from "../../services/services";
+=======
+
+import { Link } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import Favorites from '../../services/services';
+import {addFav,deleteFav} from '../../services/services';
+import { useState , useEffect} from "react";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar'
+import db from '../../firebase'
+import { collection, getDocs, getDoc, addDoc,updateDoc, deleteDoc, Doc, doc, deleteField } from 'firebase/firestore'
+import { UserAuth } from '../../context/AuthContext'
+import { useSelector, useDispatch } from 'react-redux';
+import {setProducts, deleteProducts} from'../../Components/ReduxWishlist/actions/productsActions'
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+>>>>>>> origin/main
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -44,15 +64,19 @@ const SwiperCard = ({ list, path }) => {
   const [isActive, setIsActive] = useState(false);
   const [className, setClassName] = useState("fa fa-heart color-red");
 
+
   const Products = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
-  const [state, setState] = React.useState({
-    open: false,
-    vertical: "top",
-    horizontal: "center",
-  });
-  const { vertical, horizontal, open } = state;
+    const [state, setState] = useState({
+        open: false,
+        vertical: 'top',
+        horizontal: 'center',
+    }); 
+    const { vertical, horizontal, open } = state;
+
+
+
 
   const handleClick = (newState) => () => {
     setState({ open: true, ...newState });

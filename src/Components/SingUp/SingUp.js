@@ -120,8 +120,8 @@ const SingUp = (props) => {
     try {
       await createUser(inpValue.email , inpValue.password).then((res)=>{
           console.log(res.user);
-          const userCollection = doc(db, `users/${res.user.uid}`)
-          setDoc(userCollection, {...inpValue, cart : [], wishlist: []}).then(()=>{
+          const userCollec = doc(db, `users/${res.user.uid}`)
+          setDoc(userCollec, {...inpValue, cart:[], wishlist:[], orders:[]}).then(()=>{
             navigate('/home')
           })
       })

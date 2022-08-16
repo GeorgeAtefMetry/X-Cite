@@ -28,6 +28,7 @@ const ProductDetails = () => {
 
     useEffect(()=>{
         onSnapshot(doc(db, 'Products/', `${params.id}`),(snapshot)=>{
+            console.log(snapshot)
             setProduct(
                 {id: snapshot.id,
                 ...snapshot.data()
@@ -107,7 +108,7 @@ const ProductDetails = () => {
                                     Product.quantity>5?
                                     'In Stock'
                                     :(
-                                        Product.quantity==0?
+                                        Product.quantity<=0?
                                         "Sorry!,This Product is Not Available Now!"
                                         :`Hurry up, It's available only ${Product.quantity} items.`
                                     )
