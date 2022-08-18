@@ -1,16 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./home.css";
 import { Carousel } from "react-bootstrap";
-
-
-
-
-
 import { useTranslation } from "react-i18next";
-
-
-  
-
 import db from '../../firebase';
 import { collection, doc, onSnapshot, query, where } from "firebase/firestore";           
 
@@ -419,41 +410,6 @@ const Home = () =>{
           <SwiperCard list={laptops} path={"ProductDetails"}></SwiperCard>
         </div>
 
-        {/* ============================ Phones & Personal Audio ========================== */}
-        <div className="customSwiperContainer mb-3 mt-3">
-          <div
-            className="px-3 py-2 border border-bottom border-1"
-            style={{ height: "10%" }}
-          >
-            <div className="float-left customSwiperContainer-heading h-100">
-              {t("Phones & Personal Audio")}
-            </div>
-            <div className="view-all float-right px-3 py-1 h-100">
-              {t("View All")}
-            </div>
-          </div>
-          <SwiperCard
-            list={phonesAndPersonalAudio}
-            path={"ProductDetails"}
-          ></SwiperCard>
-        </div>
-
-        {/* ============================ Laptops ========================== */}
-        <div className="customSwiperContainer mb-3 mt-3">
-          <div
-            className="px-3 py-2 border border-bottom border-1"
-            style={{ height: "10%" }}
-          >
-            <div className="float-left customSwiperContainer-heading h-100">
-              {t("Laptops")}
-            </div>
-            <div className="view-all float-right px-3 py-1 h-100">
-              {t("View All")}
-            </div>
-          </div>
-          <SwiperCard list={laptops} path={"ProductDetails"}></SwiperCard>
-        </div>
-
         <div className="laptop-assistant w-100">
           <div className="row">
             <div className="col-md-12">
@@ -526,4 +482,3 @@ const Home = () =>{
   );
 };
 export default Home;
-
