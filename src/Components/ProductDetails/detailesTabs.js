@@ -177,8 +177,6 @@ useEffect(()=>{
         <div className={classes.bigContainer+' w-100 h-auto px-0 pb-0 pt-0 m-0'}>
             <p className={"px-3 py-2 m-0 "+classes.proPath}> X-Cite {'>'} {digitalCard.categoryName} {'>'} {digitalCard.name} </p>
         <hr className="mt-0"/>
-        {/* ====== Product General Detailes ================================================= */}
-            
 
         {/* ====== Product More Special Detailes ============================================= */}
             <div className={classes.aboutProduct}>
