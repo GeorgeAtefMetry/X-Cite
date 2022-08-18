@@ -4,19 +4,17 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import Favorites from '../../services/services';
 import { UserAuth } from '../../context/AuthContext'
 import {addFav,deleteFav} from '../../services/services';
-import { useState , useEffect} from "react";
+import { useState } from "react";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar'
 import db from '../../firebase'
 import { collection, getDocs, getDoc, addDoc,updateDoc, deleteDoc, Doc, doc, deleteField } from 'firebase/firestore'
-import { UserAuth } from '../../context/AuthContext'
 import { useSelector, useDispatch } from 'react-redux';
-import {setProducts, deleteProducts} from'../../Components/ReduxWishlist/actions/productsActions'
+import {setProducts, deleteProducts} from'../../Components/ReduxWishlist/actions/productsActions';
 import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
-
 
 const SwiperCard = ({list, path}) => {
     //////////////////get id user from userauth and set in localstorage to use it in review

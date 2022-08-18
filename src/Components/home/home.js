@@ -380,7 +380,7 @@ const Home = () =>{
           </div>
           <SwiperCard
             list={digitalCards}
-            path={"digitalcarddetails"}
+            path={"ProductDetails"}
           ></SwiperCard>
         </div>
 
@@ -399,7 +399,7 @@ const Home = () =>{
           </div>
           <SwiperCard
             list={phonesAndPersonalAudio}
-            path={"digitalcarddetails"}
+            path={"ProductDetails"}
           ></SwiperCard>
         </div>
 
@@ -416,7 +416,7 @@ const Home = () =>{
               {t("View All")}
             </div>
           </div>
-          <SwiperCard list={laptops} path={"digitalcarddetails"}></SwiperCard>
+          <SwiperCard list={laptops} path={"ProductDetails"}></SwiperCard>
         </div>
 
         {/* ============================ Phones & Personal Audio ========================== */}
@@ -489,7 +489,7 @@ const Home = () =>{
               {t("View All")}
             </div>
           </div>
-          <SwiperCard list={tablets} path={"digitalcarddetails"}></SwiperCard>
+          <SwiperCard list={tablets} path={"ProductDetails"}></SwiperCard>
         </div>
 
         {/* ============================ Televisions ========================== */}
@@ -507,7 +507,7 @@ const Home = () =>{
           </div>
           <SwiperCard
             list={televisions}
-            path={"digitalcarddetails"}
+            path={"ProductDetails"}
           ></SwiperCard>
         </div>
       </div>
