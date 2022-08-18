@@ -403,26 +403,6 @@ const Home = () =>{
           ></SwiperCard>
         </div>
 
-
-        {/* ============================ Phones & Personal Audio ========================== */}
-        <div className="customSwiperContainer mb-3 mt-3">
-          <div
-            className="px-3 py-2 border border-bottom border-1"
-            style={{ height: "10%" }}
-          >
-            <div className="float-left customSwiperContainer-heading h-100">
-              {t("Phones & Personal Audio")}
-            </div>
-            <div className="view-all float-right px-3 py-1 h-100">
-              {t("View All")}
-            </div>
-          </div>
-          <SwiperCard
-            list={phonesAndPersonalAudio}
-            path={"ProductDetails"}
-          ></SwiperCard>
-        </div>
-
         {/* ============================ Laptops ========================== */}
         <div className="customSwiperContainer mb-3 mt-3">
           <div
