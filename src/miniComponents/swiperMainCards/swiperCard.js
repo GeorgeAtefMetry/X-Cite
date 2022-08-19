@@ -21,17 +21,9 @@ import Snackbar from '@mui/material/Snackbar';
 
 
 
+const SwiperCard = ({list, path}) => {
+  
 
-
-const SwiperCard = ({ list, path }) => {
-  //////////////////get id user from userauth and set in localstorage to use it in review
-  const { user } = UserAuth();
-
-  const ID = user.uid;
-
-  localStorage.setItem("id", ID);
-  // console.log(id);
-  /////////////////////
 
   const [favorites, setFavorites] = useState([]);
   const [isActive, setIsActive] = useState(false);
@@ -41,71 +33,68 @@ const SwiperCard = ({ list, path }) => {
   const Products = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
-    const [state, setState] = useState({
-        open: false,
-        vertical: 'top',
-        horizontal: 'center',
-    }); 
-    const { vertical, horizontal, open } = state;
 
+    const {user} = UserAuth()
+    
+    let dataWishlistID
+    if(user){
+        const ID = user.uid
+        localStorage.setItem("id", ID)
+        const userDoc = doc(db, `users/`, `${ID}`)
+        
+                getDoc(userDoc).then((res)=>{
+                    let data = res.data();
+                    let dataWishlist = data.wishlist
+                    setFavorites(dataWishlist)
+                    dataWishlistID = dataWishlist.map((n)=>(n))
 
-
-
-  const handleClick = (newState) => () => {
-    setState({ open: true, ...newState });
-  };
-
-  const handleClose = () => {
-    setState({ ...state, open: false });
-  };
-
-  const userDoc = doc(db, `users/`, `${ID}`);
-
-  let dataWishlistID;
-  getDoc(userDoc).then((res) => {
-    let data = res.data();
-    let dataWishlist = data?.wishlist;
-    setFavorites(dataWishlist);
-    dataWishlistID = dataWishlist.map((n) => n);
-  });
-
-  let favButton = (e, id) => {
-    setIsActive((current) => !current);
-
-    const newFav = id;
-
-    if (e.target.className === "far fa-heart") {
-      e.target.className = "fa fa-heart color-red";
-      addFav(newFav);
-
-      alert("Add To Wishlist");
-      getDoc(userDoc).then((res) => {
-        let data = res.data();
-        let dataWishlist = data.wishlist;
-        dataWishlistID = dataWishlist.map((n) => {
-          if (n) {
-            e.target.className = "fa fa-heart color-red";
-            return;
-          } else {
-            e.target.className = "far fa-heart";
-          }
-        });
-      });
-      // dispatch(setProducts(newFav))
-    } else {
-      e.target.className = "far fa-heart";
-      let filtering = favorites.filter((item) => {
-        if (id === id) {
-          deleteFav(id);
-        }
-        alert("removed");
-      });
-      // dispatch(deleteProducts(filtering))
+                })
     }
-  };
-  return (
-    <>
-      {/*             
+    const favButton = (e,id) =>{    
+        if(user){
+            const ID = user.uid
+            const userDoc = doc(db, `users/`, `${ID}`)
+            setIsActive(current => !current);
+
+            const newFav = id
+            
+            if(e.target.className === 'far fa-heart' ){
+                e.target.className = "fa fa-heart color-red"
+                addFav(newFav)
+
+                alert('Add To Wishlist')
+                getDoc(userDoc).then((res)=>{
+                    let data = res.data();
+                    let dataWishlist = data.wishlist
+                    dataWishlistID = dataWishlist.map((n)=>{
+                        if(n){
+                            e.target.className = "fa fa-heart color-red"
+                            return
+                        }else{
+                            e.target.className = "far fa-heart"
+                        }
+                    })
+                })
+                // dispatch(setProducts(newFav))
+            }else{
+                e.target.className = 'far fa-heart'
+                let filtering = favorites.filter((item)=>{
+                    if(id === id){
+                    deleteFav(id)
+                    }
+                    alert('removed')
+                })
+                // dispatch(deleteProducts(filtering))
+            }
+        }    
+    }
+    
+    
+
+    return (
+        <>
+{/*             
+
             <Snackbar
                 anchorOrigin={{ vertical, horizontal }}
                 open={open}

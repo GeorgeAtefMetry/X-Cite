@@ -22,7 +22,7 @@ import { UserAuth } from '../context/AuthContext'
     export const addFav = (newFav) =>{
         getDoc(usrdoc).then((res)=>{
         let data = res.data();
-        // console.log(data)
+        console.log(data)
         data.wishlist.push(newFav)
         updateDoc(usrdoc,data)
     })

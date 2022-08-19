@@ -14,6 +14,7 @@ const Wishlist = () => {
     const {user} = UserAuth()
 
     useEffect(()=>{
+        if(user){
         const id = localStorage.getItem('id')
 
         const ProductsCollection = collection(db, "Products");
@@ -34,6 +35,7 @@ const Wishlist = () => {
         setImages(product.map((pro)=> (pro.img)))
         // console.log(names)
     // })
+    }
     }
 ,[]);
 
