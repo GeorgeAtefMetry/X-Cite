@@ -13,8 +13,10 @@ import { Stack} from "@mui/material";
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
 import { UserAuth } from '../../context/AuthContext';
+import { useTranslation } from "react-i18next";
 
-const ProTabs = ({Product, attributes}) => {
+const ProTabs = ({Product, attributes, attributesAR}) => {
+    const { t, i18n } = useTranslation();
     const params = useParams()// params to catch prdid
     const [count, setCount] = useState(1)
     const [digitalCard, setDigitalCard] = useState({images:[]})
@@ -158,18 +160,16 @@ useEffect(()=>{
     return (
         <>
         <div className={classes.bigContainer+' w-100 h-auto px-0 pb-0 pt-0 m-0'}>
-            <p className={"px-3 py-2 m-0 "+classes.proPath}> X-Cite {'>'} {digitalCard.categoryName} {'>'} {digitalCard.name} </p>
-        <hr className="mt-0"/>
         {/* ====== Product More Special Detailes ============================================= */}
             <div className={classes.aboutProduct}>
                 <div className="row p-0 m-0">
                     <div className="col-lg-10 col-12 p-0">
                         <div className={classes.informationBtns+" p-0 m-0"}>
-                            <button onClick={handleClick}   className={!active ?  `col-lg-3 col-6 px-sm-3 px-1 py-2 `:`${classes.borderBgcColor} px-sm-3 px-1 py-2 col-lg-3 col-6`}>Product Description</button>
-                            <button onClick={handleClick1}  className={!active1 ? `col-lg-3 col-6 px-sm-3 px-1 py-2 `:`${classes.borderBgcColor} px-sm-3 px-1 py-2 col-lg-3 col-6`}>Product Specifications</button>
-                            <button onClick={handleClick2}  className={!active2 ? `col-lg-2 col-4 px-sm-3 px-1 py-2 `:`${classes.borderBgcColor} px-sm-3 px-1 py-2 col-lg-2 col-4`}>Reviews</button>
-                            <button onClick={handleClick3}  className={!active3 ? `col-lg-2 col-4 px-sm-3 px-1 py-2 `:`${classes.borderBgcColor} px-sm-3 px-1 py-2 col-lg-2 col-4`}>Q & A</button>
-                            <button onClick={handleClick4}  className={!active4 ? `col-lg-2 col-4 px-sm-3 px-1 py-2 `:`${classes.borderBgcColor} px-sm-3 px-1 py-2 col-lg-2 col-4`}>Our Services</button>
+                            <button onClick={handleClick}   className={!active ?  `col-lg-3 col-6 px-sm-3 px-1 py-2 `:`${classes.borderBgcColor} px-sm-3 px-1 py-2 col-lg-3 col-6`}>{t('Product Description')}</button>
+                            <button onClick={handleClick1}  className={!active1 ? `col-lg-3 col-6 px-sm-3 px-1 py-2 `:`${classes.borderBgcColor} px-sm-3 px-1 py-2 col-lg-3 col-6`}>{t('Product Specifications')}</button>
+                            <button onClick={handleClick2}  className={!active2 ? `col-lg-2 col-4 px-sm-3 px-1 py-2 `:`${classes.borderBgcColor} px-sm-3 px-1 py-2 col-lg-2 col-4`}>{t('Reviews')}</button>
+                            <button onClick={handleClick3}  className={!active3 ? `col-lg-2 col-4 px-sm-3 px-1 py-2 `:`${classes.borderBgcColor} px-sm-3 px-1 py-2 col-lg-2 col-4`}>{t('Q & A')}</button>
+                            <button onClick={handleClick4}  className={!active4 ? `col-lg-2 col-4 px-sm-3 px-1 py-2 `:`${classes.borderBgcColor} px-sm-3 px-1 py-2 col-lg-2 col-4`}>{t('Our Services')}</button>
                         </div>      
                         
                         <div className={!active ? `${classes.productDescription} d-none` : `${classes.productDescription} p-3`}>
@@ -178,9 +178,9 @@ useEffect(()=>{
                         </div>
 
                         <div className={!active1 ? `${classes.productSpecification} d-none` : `${classes.productSpecification} p-3` }>
-                            <p>Information on {Product.name}</p>
-                            <p className={classes.bold+" fs-5 mt-3 mb-1 ps-2"}>General</p>
-                                <ProSpecification Product={Product} attributes={attributes}/>
+                            <p>{t('Information on')} {i18n.language=="en"?Product.name:Product.nameAR}</p>
+                            <p className={classes.bold+" fs-5 mt-3 mb-1 ps-2"}>{t('General')}</p>
+                                <ProSpecification Product={Product} attributes={attributes} attributesAR={attributesAR}/>
                         </div>
 
 
@@ -211,7 +211,7 @@ useEffect(()=>{
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class={classes.range}>4 ☆
+                                                <td className={classes.range}>4 ☆
                                                 </td>
                                                 <td title="7/75 (9%)" className="bar">
                                                     <div style={{width:'20px !important', backgroundColor:'#bcee01' }} className={classes.ratingProgressFourStars}>
@@ -226,7 +226,7 @@ useEffect(()=>{
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class={classes.range}>2 ☆
+                                                <td className={classes.range}>2 ☆
                                                 </td>
                                                 <td title="0/75 (0%)" className="bar">
                                                     <div style={{width:'0px !important', backgroundColor:'#00de01' }} className={classes.ratingProgressTwoStars}>
@@ -234,7 +234,7 @@ useEffect(()=>{
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class={classes.range}>1 ☆
+                                                <td className={classes.range}>1 ☆
                                                 </td>
                                                 <td title="1/75 (1%)" className="bar">
                                                     <div style={{width:'30px !important', backgroundColor:'#e8afb1' }} className={classes.ratingProgressOneStars}>
@@ -534,7 +534,7 @@ useEffect(()=>{
                     </div>      
                 </div>
             </div>
-            </div>
+        </div>
         </>
     )
 }

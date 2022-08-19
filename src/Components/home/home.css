@@ -76,7 +76,7 @@ body{
     align-items: center;
     height:100%;
     /* line-height: 30px; */
-    float: left;
+    /* float: left; */
 }  
 .main-categories .card .card-body .second{
     /* font-size: 9px; */
@@ -269,7 +269,7 @@ body{
     background-color: black;
     color: #fff;
     font-size: 12px;
-    padding: 5px;
+    /* padding: 5px; */
 }
 .customSwiperContainer .icon i,
 .phones-personal-audio .icon i,
@@ -302,7 +302,7 @@ body{
 .televisions .oldprice{
     font-weight: 400;
     font-size: 13px;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     text-decoration: line-through;
 }
 .customSwiperContainer .discount,

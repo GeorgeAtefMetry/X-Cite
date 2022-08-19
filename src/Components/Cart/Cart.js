@@ -39,11 +39,11 @@ const Cart = () => {
   const [fillForm, setFillForm] = useState(false);
 
   useEffect(()=>{
-    console.log(done);
+    // console.log(done);
   },[done])
 
   useEffect(()=>{
-      console.log(order, 'in order Effect');
+      // console.log(order, 'in order Effect');
       if(order)
       {
         if(user)
@@ -60,13 +60,13 @@ const Cart = () => {
               .then((res)=>{
                   let ids = order.purchase_units.map((ele)=>ele.id);
                   const proCollec = collection(db, "Products");
-                  console.log(ids);
+                  // console.log(ids);
                   const q = query(proCollec, where(documentId() ,"in", ids));
                   // update products quantity
                   getDocs(q).then((res)=>{
                     let i = 0;
-                    console.log(res.docs);
-                    console.log(res.docs.length);
+                    // console.log(res.docs);
+                    // console.log(res.docs.length);
                       // const proDoc = doc(db, `Products/${res.docs[i].id}`)
                       // let promise =  changeProAmount(i, res.docs);
                       // promise.then((res)=>{
@@ -83,12 +83,12 @@ const Cart = () => {
           const orderCollection = collection(db, 'Orders');
           // add order datA TO FIRESTORE
           addDoc(orderCollection, order).then((orderRes)=>{
-              console.log(orderRes);
-              console.log(orderRes.id);
+              // console.log(orderRes);
+              // console.log(orderRes.id);
               AddOrder(orderRes.id);
                   let ids = order.purchase_units.map((ele)=>ele.id);
                   const proCollec = collection(db, "Products");
-                  console.log(ids);
+                  // console.log(ids);
                   const q = query(proCollec, where(documentId() ,"in", ids));
                   // update products quantity
                   getDocs(q).then((res)=>{
@@ -103,32 +103,32 @@ const Cart = () => {
 
   const changeProAmount = (i, proList)=>{
     // return new Promise((resolve, reject)=>{
-      console.log(i);
+      // console.log(i);
       const proDoc = doc(db, `Products/${proList[i].id}`)
       let updatedData = {
         ...proList[i].data(),
         quantity: proList[i].data().quantity - order.purchase_units.find((ele)=>ele.id==proList[i].id).amount
       }
-      console.log(updatedData);
+      // console.log(updatedData);
       updateDoc(proDoc, updatedData).then((res)=>{
-          console.log(i, proList.length);
-          console.log(i<proList.length-1)
+          // console.log(i, proList.length);
+          // console.log(i<proList.length-1)
           if(i< proList.length-1)
           {
-            console.log('in complete')
+            // console.log('in complete')
             i++;
             changeProAmount(i, proList)
           }
           else
           {
-            console.log('in else')
+            // console.log('in else')
             ClearCartPage();
           }
         })        
     // })
   }
   const ClearCartPage =()=>{
-      console.log('finally then');
+      // console.log('finally then');
       // reset user Cart 
       clearShoppingCart()
       console.log('order added successfully');
@@ -139,7 +139,14 @@ const Cart = () => {
       setTotalPrice(0);
       setDelivery(0);
       setTimeout(() => {
-        navigate('/Orders')
+        if(user)
+        {
+          navigate('/UserProfile',{state:2})
+        }
+        else
+        {
+          navigate('/Orders')
+        }
       }, 3000);
   }
 
@@ -147,40 +154,44 @@ const Cart = () => {
     const proCollec = collection(db, "Products");
     if(user)
     {
-      const usrDoc = doc(db, 'users/', `${user.uid}`)
-      onSnapshot(usrDoc,(snapshot)=>{
-          setCurUser((usr)=>{
-            latestUserValue.current ={...snapshot.data(), id: user.uid};
-            return ({...snapshot.data(), id: user.uid})}
-            )
-          console.log(snapshot.data());
-          const cartdb = snapshot.data().cart;
-          if(cartdb.length)
-          {
-            const q = query(proCollec, where(documentId() ,"in", cartdb.map((item)=> item.pId)));
-            onSnapshot(q,(res)=>{
-              setCart((car)=>{
-                let _cart = res.docs.map((doc)=>({
-                ...doc.data(),
-                id: doc.id,
-                amount: cartdb.find((item)=> item.pId==doc.id).amount
-                }))
-                latestCartValue.current = _cart;
-                return _cart;
-              }
-              );
-              setQty(res.docs.map((doc)=>({
-                id: doc.id,
-                amount: cartdb.find((item)=> item.pId==doc.id).amount
-              })));
-            })
-          }
-      })
-      setUsrMode(true);
+      if(user.uid)
+      {
+        const usrDoc = doc(db, 'users/', `${user.uid}`)
+        onSnapshot(usrDoc,(snapshot)=>{
+            setCurUser((usr)=>{
+              latestUserValue.current ={...snapshot.data(), id: user.uid};
+              return ({...snapshot.data(), id: user.uid})}
+              )
+            // console.log(snapshot.data());
+            const cartdb = snapshot.data().cart;
+            if(cartdb.length)
+            {
+              const q = query(proCollec, where(documentId() ,"in", cartdb.map((item)=> item.pId)));
+              onSnapshot(q,(res)=>{
+                setCart((car)=>{
+                  let _cart = res.docs.map((doc)=>({
+                  ...doc.data(),
+                  id: doc.id,
+                  amount: cartdb.find((item)=> item.pId==doc.id).amount
+                  }))
+                  latestCartValue.current = _cart;
+                  return _cart;
+                }
+                );
+                setQty(res.docs.map((doc)=>({
+                  id: doc.id,
+                  amount: cartdb.find((item)=> item.pId==doc.id).amount
+                })));
+              })
+            }
+        })
+        setUsrMode(true);
+      }
     }
     else if (cookies.Cart && cookies.Cart.length)
     {
-      console.log('cookies', cookies.Cart)
+      latestUserValue.current = null;
+      // console.log('cookies', cookies.Cart)
       const q = query(proCollec, where(documentId() ,"in", cookies.Cart.map(p=>p.id)))
       onSnapshot(q,(res,index)=>{
         setCart((car)=>{
@@ -208,8 +219,8 @@ const Cart = () => {
       setDelivery(15);
       setTotalPrice(calcTotalPrice())
     }
-    console.log(latestCartValue.current);
-    console.log(cart);
+    // console.log(latestCartValue.current);
+    // console.log(cart);
   },[cart])
   
   useEffect(()=>{
@@ -246,7 +257,7 @@ const Cart = () => {
           )
           updateDoc(usrdoc,data)
           .then((res)=>{
-              console.log(res)
+              // console.log(res)
           })
       }).catch((err)=>{
               console.log(err);
@@ -297,7 +308,7 @@ const Cart = () => {
           ))
           updateDoc(usrdoc,data)
           .then((res)=>{
-              console.log(res)
+              // console.log(res)
           })
       }).catch((err)=>{
               console.log(err);
@@ -351,7 +362,7 @@ const Cart = () => {
           data.cart = data.cart.filter((pro)=> pro.pId != pId)
           updateDoc(usrdoc,data)
           .then((res)=>{
-              console.log(res)
+              // console.log(res)
           })
       }).catch((err)=>{
               console.log(err);
@@ -410,26 +421,29 @@ const Cart = () => {
   }
 
   const handleApprove= (data, order)=>{
-    console.log('in handle approve: order id: ', data);
-    console.log('in handle approve: order is: ', order);
+    // console.log('in handle approve: order id: ', data);
+    // console.log('in handle approve: order is: ', order);
     let newOrder;
-    if(latestUserValue.current.id)
+    if(latestUserValue.current)
     {
-      newOrder ={
-        id:order.id,
-        state:'Pending',
-        timeCreated:order.create_time,
-        totalPaid:(latestGrandValue.current).toFixed(2),
-        paypalMail:order.payer.email_address,
-        userId: latestUserValue.current.id,
-        userName: latestUserValue.current.fullName,
-        userEmail:latestUserValue.current.email,
-        purchase_units: latestCartValue.current.map((ele)=>({id: ele.id, amount:ele.amount, price: (ele.price-((ele.price*ele.discount)/100)).toFixed(2)}))
+      if(latestUserValue.current.id)
+      {
+        newOrder ={
+          id:order.id,
+          state:'Pending',
+          timeCreated:order.create_time,
+          totalPaid:(latestGrandValue.current).toFixed(2),
+          paypalMail:order.payer.email_address,
+          userId: latestUserValue.current.id,
+          userName: latestUserValue.current.fullName,
+          userEmail:latestUserValue.current.email,
+          purchase_units: latestCartValue.current.map((ele)=>({id: ele.id, amount:ele.amount, price: (ele.price-((ele.price*ele.discount)/100)).toFixed(2)}))
+        }
       }
     }
     else
     {
-      console.log(latestFormValue);
+      // console.log(latestFormValue);
       newOrder ={
         id:order.id,
         state:'Pending',
@@ -443,8 +457,8 @@ const Cart = () => {
         purchase_units: latestCartValue.current.map((ele)=>({id: ele.id, amount:ele.amount, price: (ele.price-((ele.price*ele.discount)/100)).toFixed(2)}))
       }
     }
-    console.log(latestUserValue.current);
-    console.log(newOrder);
+    // console.log(latestUserValue.current);
+    // console.log(newOrder);
     setOrder(newOrder)
   }
 
@@ -586,7 +600,7 @@ const Cart = () => {
             <div className='text-center my-3'>
               <div className="spinner-border text-primary" role="status"
                 style={{display:loadingOrder?'inline-block':'none'}}
-                spin={true}
+                spin="true"
                 >
                 <span className="visually-hidden">Loading...</span>
               </div>

@@ -1,9 +1,8 @@
-
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Favorites from '../../services/services';
 import {addFav,deleteFav} from '../../services/services';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -14,32 +13,53 @@ import { useSelector, useDispatch } from 'react-redux';
 import {setProducts, deleteProducts} from'../../Components/ReduxWishlist/actions/productsActions';
 import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
+import { UserAuth } from '../../context/AuthContext';
+import { useTranslation } from "react-i18next";
+
+function getWindowDimensions() {
+    const width = window.innerWidth
+    return width;
+}
 
 const SwiperCard = ({list, path}) => {
     //////////////////get id user from userauth and set in localstorage to use it in review
     const[favorites, setFavorites] = useState([])
     const [isActive, setIsActive] = useState(false);
     const [className, setClassName] = useState('fa fa-heart color-red');
-
     const Products = useSelector((state) => state.products)
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const {user} = UserAuth();
+    const { t , i18n} = useTranslation();
+    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
-    const {user} = UserAuth()
+    useEffect(() => {
+        function handleResize() {
+            setWindowDimensions(getWindowDimensions());
+        }
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     
     let dataWishlistID
-    if(user){
-        const ID = user.uid
-        localStorage.setItem("id", ID)
-        const userDoc = doc(db, `users/`, `${ID}`)
-        
-                getDoc(userDoc).then((res)=>{
-                    let data = res.data();
-                    let dataWishlist = data.wishlist
-                    setFavorites(dataWishlist)
-                    dataWishlistID = dataWishlist.map((n)=>(n))
+    useEffect(()=>{
+        if(user){
+            if(user.uid)
+            {
+                const ID = user.uid
+                localStorage.setItem("id", ID)
+                const userDoc = doc(db, `users/`, `${ID}`)
+                
+                        getDoc(userDoc).then((res)=>{
+                            let data = res.data();
+                            // console.log(res);
+                            let dataWishlist = data.wishlist
+                            setFavorites(dataWishlist)
+                            dataWishlistID = dataWishlist.map((n)=>(n))
+                        })
+            }
+        }
+    },[user])
 
-                })
-    }
     const favButton = (e,id) =>{    
         if(user){
             const ID = user.uid
@@ -78,8 +98,6 @@ const SwiperCard = ({list, path}) => {
             }
         }    
     }
-    
-    
 
     return (
         <>
@@ -93,7 +111,7 @@ const SwiperCard = ({list, path}) => {
             /> */}
             <Swiper
             spaceBetween={0}
-            slidesPerView={5}
+            slidesPerView={ windowDimensions>=750?5:3 }
             className="p-0 m-0"
             style={{height:'90%', backgroundColor:'white'}}
             onSlideChange={() =>{
@@ -103,46 +121,40 @@ const SwiperCard = ({list, path}) => {
                 // console.log(swiper)
             }}
             >
+                {/* {console.log(windowDimensions, windowDimensions>=750)} */}
                 <div className="carousel-item active h-100">
                     <div className='row'>
                     {list.map(item => (
-
                         <SwiperSlide className="h-100" key={item.id}>
                         <div className='float-left h-100 bordrd border-end border-1'  style={{height:"100%"}}>
-                            <div className="px{-3">
-                                <span className='best-seller float-left'>Best Seller</span>
-                                <span className='icon float-right' style={{padding:'5px'}}>
-                                
-                                {/* <Button
-                                    onClick={handleClick({
-                                    vertical: 'top',
-                                    horizontal: 'center',
-                                    })}
-                                > */}
+                            <div className="px-3 d-flex justify-content-between pt-1">
+                                <span className='best-seller px-2 pt-2 pb-0 rounded'>{t('Best Seller')}</span>
+                                <span className='icon' style={{padding:'5px'}}>
                                     <i 
                                     className={favorites.includes(item.id) ? "fa fa-heart color-red" : 'far fa-heart' }  
                                     onClick={(e)=>{favButton(e,item.id)}}
                                     >
-                                    </i> 
-                                    
-                                {/* </Button> */}
-
+                                    </i>
                                 </span>
                             </div>
                             <Link to={`/${path}/${item.id}`}>
                                 <img className="card-img-top" src={item.images[0]} style={{height:"60%"}} key={item.id}  alt="Card image  cap"/>
                             </Link>
-                            <div className="card-body py-1 px-0" style={{height:"30%"}}>
-                                <span className="card-text px-2 name float-left col-lg-10">{item.name}</span>
-                                <span className="card-text px-2 price float-left col-lg-10">{item.discount?parseFloat(item.price-((item.price*item.discount)/100)).toFixed(2):item.price} KD</span>
+                            <div className="card-body py-1 px-0 w-100 d-flex flex-column" style={{height:"30%"}}>
+                                <div className="px-2 d-flex justify-content-start name col-12">
+                                    <span style={{width:'fit-content'}}>{i18n.language=='en'?item.name:item.nameAR}</span>
+                                </div>
+                                <div className="px-2 d-flex justify-content-start price col-12">
+                                    <span style={{width:'fit-content'}}>{item.discount?parseFloat(item.price-((item.price*item.discount)/100)).toFixed(2):item.price}$</span>
+                                </div>
 
-                                <div className='float-left col-lg-12 px-2 py-0'>
+                                <div className='col-lg-12 px-3 py-0 d-flex justify-content-between'>
                                     {item.discount?
-                                        <span className="card-text oldprice float-left col-lg-4">{item.price} KD</span>
+                                        <span className="card-text oldprice">{item.price}$</span>
                                         :<p></p>
                                     }
                                     {item.discount?
-                                        <span className='discount float-left col-lg-4'>save {item.discount}%</span>
+                                        <span className='discount'>{t('save')} {item.discount}%</span>
                                         :<p></p>
                                     }
                                 </div>
@@ -152,7 +164,7 @@ const SwiperCard = ({list, path}) => {
                             ))}
                             </div>  
                         </div>
-                        <span className='swipe'>Swipe For More</span>
+                        <span className='swipe'>{t('Swipe For More')}</span>
             </Swiper>
         </>
     );

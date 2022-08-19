@@ -4,14 +4,13 @@ import { Carousel } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import db from '../../firebase';
 import { collection, doc, onSnapshot, query, where } from "firebase/firestore";           
-
 import SwiperCard from '../../miniComponents/swiperMainCards/swiperCard';
 import { useSelector, useDispatch } from 'react-redux';
 import {setProducts, deleteProducts} from'../../Components/ReduxWishlist/actions/productsActions'
 
 const Home = () =>{
 
-     const { t , i18n} = useTranslation();
+    const { t , i18n} = useTranslation();
     const[digitalCards, setDigitalCards] = useState([]); {/*done */} 
     const[phonesAndPersonalAudio, setphonesAndPersonalAudio] = useState([]); {/*done */} 
     const[laptops, setLaptops] = useState([]); {/*done */} 
@@ -108,6 +107,7 @@ const Home = () =>{
       <div className="px-2 py-3">
         <div className="sliderHome">
           <Carousel fade className="col-lg-12" interval="1000">
+            {/* main red */}
             <Carousel.Item>
               <img
                 className="d-block w-100"
@@ -148,78 +148,65 @@ const Home = () =>{
                 alt="Third slide"
               />
             </Carousel.Item>
-            <Carousel.Item>
+            {/* =============== */}
+            {/* <Carousel.Item>
               <img
                 className="d-block w-100"
                 style={{ borderRadius: "20px" }}
                 src="https://m.xcite.com/media/wysiwyg/Barjas/672022-EidAdha-Samsung-S22-DP-EN.jpg"
                 alt="Third slide"
               />
-            </Carousel.Item>
-            <Carousel.Item>
+            </Carousel.Item> */}
+            {/* <Carousel.Item>
               <img
                 className="d-block w-100"
                 style={{ borderRadius: "20px" }}
                 src="https://m.xcite.com/media/wysiwyg/1nasima/672022-EidAdha-Iron-Philips-DP-EN.jpg"
                 alt="Third slide"
               />
-            </Carousel.Item>
-            <Carousel.Item>
+            </Carousel.Item> */}
+            {/* <Carousel.Item>
               <img
                 className="d-block w-100"
                 style={{ borderRadius: "20px" }}
                 src="https://m.xcite.com/media/wysiwyg/1nasima/04072022-EidAdhaKW-Remington-Haird-DP-EN.jpg"
                 alt="Third slide"
               />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                style={{ borderRadius: "20px" }}
-                src="https://m.xcite.com/media/wysiwyg/1Alaa/572022-EidAdha-TVs-DP-EN.jpg"
-                alt="Third slide"
-              />
-            </Carousel.Item>
-            <Carousel.Item>
+            </Carousel.Item> */}
+            
+            {/* <Carousel.Item>
               <img
                 className="d-block w-100"
                 style={{ borderRadius: "20px" }}
                 src="https://m.xcite.com/media/wysiwyg/Barjas/572022-EidAdha-Lenovo-TabP11-DP-EN.jpg"
                 alt="Third slide"
               />
-            </Carousel.Item>
-            <Carousel.Item>
+            </Carousel.Item> */}
+            {/* <Carousel.Item>
               <img
                 className="d-block w-100"
                 style={{ borderRadius: "20px" }}
                 src="https://m.xcite.com/media/wysiwyg/1nasima/07072022-EidAdhaKW-Philips-lumea-DP-EN.jpg"
                 alt="Third slide"
               />
-            </Carousel.Item>
-            <Carousel.Item>
+            </Carousel.Item> */}
+            {/* <Carousel.Item>
               <img
                 className="d-block w-100"
                 style={{ borderRadius: "20px" }}
                 src="https://m.xcite.com/media/wysiwyg/1nasima/572022-EidAdha-Oculus-DP-EN.jpg"
                 alt="Third slide"
               />
-            </Carousel.Item>
-            <Carousel.Item>
+            </Carousel.Item> */}
+            {/* <Carousel.Item>
               <img
                 className="d-block w-100"
                 style={{ borderRadius: "20px" }}
                 src="https://m.xcite.com/media/wysiwyg/1Alaa/572022-EidAdha-ACs-DP-EN_1.jpg"
                 alt="Third slide"
               />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                style={{ borderRadius: "20px" }}
-                src="https://m.xcite.com/media/wysiwyg/Barjas/572022-EidAdha-Acer-Aspire5-DP-EN.jpg"
-                alt="Third slide"
-              />
-            </Carousel.Item>
+            </Carousel.Item> */}
+            
             <Carousel.Item>
               <img
                 className="d-block w-100"
@@ -236,22 +223,23 @@ const Home = () =>{
                 alt="Third slide"
               />
             </Carousel.Item>
-            <Carousel.Item>
+            {/* <Carousel.Item>
               <img
                 className="d-block w-100"
                 style={{ borderRadius: "20px" }}
                 src="https://m.xcite.com/media/wysiwyg/1Alaa/04072022-EidAdha-BekoWasher-DP-EN.jpg"
                 alt="Third slide"
               />
-            </Carousel.Item>
-            <Carousel.Item>
+            </Carousel.Item> */}
+
+            {/* <Carousel.Item>
               <img
                 className="d-block w-100"
                 style={{ borderRadius: "20px" }}
                 src="https://m.xcite.com/media/wysiwyg/1Alaa/572022-EidAdha-Wansa-TMR-DP-EN.jpg"
                 alt="Third slide"
               />
-            </Carousel.Item>
+            </Carousel.Item> */}
             <Carousel.Item>
               <img
                 className="d-block w-100"
@@ -268,11 +256,12 @@ const Home = () =>{
                 alt="Third slide"
               />
             </Carousel.Item>
+            
             <Carousel.Item>
               <img
                 className="d-block w-100"
                 style={{ borderRadius: "20px" }}
-                src="https://m.xcite.com/media/wysiwyg/Barjas/3062022-Echelon-Generic-DP-EN.jpg"
+                src="https://m.xcite.com/media/wysiwyg/1nasima/372022-Hidratespark-DP-EN.jpg"
                 alt="Third slide"
               />
             </Carousel.Item>
@@ -280,7 +269,7 @@ const Home = () =>{
               <img
                 className="d-block w-100"
                 style={{ borderRadius: "20px" }}
-                src="https://m.xcite.com/media/wysiwyg/1nasima/372022-Hidratespark-DP-EN.jpg"
+                src="https://m.xcite.com/media/wysiwyg/Barjas/572022-EidAdha-Acer-Aspire5-DP-EN.jpg"
                 alt="Third slide"
               />
             </Carousel.Item>
@@ -300,6 +289,7 @@ const Home = () =>{
                 alt="Third slide"
               />
             </Carousel.Item>
+
             <Carousel.Item>
               <img
                 className="d-block w-100"
@@ -320,7 +310,7 @@ const Home = () =>{
               <img
                 className="d-block w-100"
                 style={{ borderRadius: "20px" }}
-                src="https://m.xcite.com/media/wysiwyg/Barjas/16062022-Apple-MacBookPro-13inKW-DP-EN.jpg"
+                src="https://m.xcite.com/media/wysiwyg/1Alaa/572022-EidAdha-TVs-DP-EN.jpg"
                 alt="Third slide"
               />
             </Carousel.Item>
@@ -331,21 +321,14 @@ const Home = () =>{
           <div className="d-flex flex-wrap justify-content-center">
             {categories.map((cat) => (
               <div className="col-lg-3 col-md-6 col-10 p-2 m-0" key={cat.id}>
-                <div
-                  className="card p-0 m-0"
-                  style={{ width: "100%", height: "17rem" }}
-                >
-                  <img
-                    className="card-img-top h-75"
-                    src={cat.img}
-                    alt="Card  cap"
-                  />
-                  <div className="card-body py-2 px-3 w-100">
-                    <span className="card-text first float-left col-lg-9 text-start">
-                      {cat.id}
+                <div className="card p-0 m-0" style={{ width: "100%", height: "17rem" }}>
+                  <img className="card-img-top h-75" src={cat.img} alt="Card cap"/>
+                  <div className="card-body py-2 px-3 w-100 d-flex justify-content-between">
+                    <span className="card-text first  col-lg-9 text-start">
+                      {i18n.language=='en'?cat.name:cat.nameAR}
                     </span>
-                    <span className="card-text second float-right col-lg-3 h-100">
-                      Save Up to
+                    <span className="card-text second col-lg-3 h-100">
+                      {t('Save Up to')}
                       <span className="float-right disc">{cat.discount}%</span>
                     </span>
                   </div>
@@ -357,34 +340,28 @@ const Home = () =>{
 
         {/* ============================ Digital Cards ========================== */}
         <div className="customSwiperContainer mb-3 mt-3">
-          <div
-            className="px-3 py-2 border border-bottom border-1"
-            style={{ height: "10%" }}
-          >
-            <div className="float-left customSwiperContainer-heading h-100">
+          <div className="px-3 py-2 border border-bottom border-1 d-flex justify-content-between" style={{ height: "10%" }}>
+            <div className="customSwiperContainer-heading h-100">
               {t("Digital Cards")}
             </div>
 
-            <div className="view-all float-right px-3 py-1 h-100">
+            <div className="view-all px-3 py-1 h-100">
               {t("View All")}
             </div>
           </div>
-          <SwiperCard
-            list={digitalCards}
-            path={"ProductDetails"}
-          ></SwiperCard>
+          <SwiperCard list={digitalCards} path={"ProductDetails"} ></SwiperCard>
         </div>
 
         {/* ============================ Phones & Personal Audio ========================== */}
         <div className="customSwiperContainer mb-3 mt-3">
           <div
-            className="px-3 py-2 border border-bottom border-1"
+            className="px-3 py-2 border border-bottom border-1 d-flex justify-content-between"
             style={{ height: "10%" }}
           >
-            <div className="float-left customSwiperContainer-heading h-100">
+            <div className="customSwiperContainer-heading h-100">
               {t("Phones & Personal Audio")}
             </div>
-            <div className="view-all float-right px-3 py-1 h-100">
+            <div className="view-all px-3 py-1 h-100">
               {t("View All")}
             </div>
           </div>
@@ -397,13 +374,13 @@ const Home = () =>{
         {/* ============================ Laptops ========================== */}
         <div className="customSwiperContainer mb-3 mt-3">
           <div
-            className="px-3 py-2 border border-bottom border-1"
+            className="px-3 py-2 border border-bottom border-1 d-flex justify-content-between"
             style={{ height: "10%" }}
           >
-            <div className="float-left customSwiperContainer-heading h-100">
+            <div className="customSwiperContainer-heading h-100">
               {t("Laptops")}
             </div>
-            <div className="view-all float-right px-3 py-1 h-100">
+            <div className="view-all px-3 py-1 h-100">
               {t("View All")}
             </div>
           </div>
@@ -413,18 +390,18 @@ const Home = () =>{
         <div className="laptop-assistant w-100">
           <div className="row">
             <div className="col-md-12">
-              <div className="content">
-                <h2>LAPTOP ASSISTANT</h2>
-                <p>Let us help you find the perfect laptop for...</p>
+              <div className="content float-left">
+                <h2>{t('LAPTOP ASSISTANT')}</h2>
+                <p>{t('Let us help you find the perfect laptop for')}...</p>
                 <div className="btns">
                   <button type="button" className="btn btn-primary px-3 py-2">
-                    Personal Use
+                    {t('Personal Use')}
                   </button>
                   <button type="button" className="btn btn-primary px-3 py-2">
-                    Education
+                    {t('Education')}
                   </button>
                   <button type="button" className="btn btn-primary px-3 py-2">
-                    Work
+                    {t('Work')}
                   </button>
                 </div>
               </div>
@@ -435,13 +412,13 @@ const Home = () =>{
         {/* ============================ Tablets ========================== */}
         <div className="customSwiperContainer mb-3 mt-3">
           <div
-            className="px-3 py-2 border border-bottom border-1"
+            className="px-3 py-2 border border-bottom border-1 d-flex justify-content-between"
             style={{ height: "10%" }}
           >
-            <div className="float-left customSwiperContainer-heading h-100">
+            <div className="customSwiperContainer-heading h-100">
               {t("Tablets")}
             </div>
-            <div className="view-all float-right px-3 py-1 h-100">
+            <div className="view-all px-3 py-1 h-100">
               {t("View All")}
             </div>
           </div>
@@ -451,13 +428,13 @@ const Home = () =>{
         {/* ============================ Televisions ========================== */}
         <div className="customSwiperContainer mb-3 mt-3">
           <div
-            className="px-3 py-2 border border-bottom border-1"
+            className="px-3 py-2 border border-bottom border-1 d-flex justify-content-between"
             style={{ height: "10%" }}
           >
-            <div className="float-left customSwiperContainer-heading h-100">
+            <div className="customSwiperContainer-heading h-100">
               {t("Televisions")}
             </div>
-            <div className="view-all float-right px-3 py-1 h-100">
+            <div className="view-all px-3 py-1 h-100">
               {t("View All")}
             </div>
           </div>
@@ -467,6 +444,8 @@ const Home = () =>{
           ></SwiperCard>
         </div>
       </div>
+
+      {/* Arrow */}
       <div
         className="sticy "
         style={{
@@ -476,7 +455,7 @@ const Home = () =>{
         }}
         onClick={scrollToTop}
       >
-        <i class="fa fa-angle-up"></i>
+        <i className="fa fa-angle-up"></i>
       </div>
     </>
   );

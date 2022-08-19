@@ -59,7 +59,6 @@ function App() {
             <Route path="/GiftCard" exact  element={<GiftCard/>} ></Route>
             <Route path="/ITunesCard" exact  element={<ITunesCard/>} ></Route>
             <Route path="/GooglePlayCards" exact  element={<GooglePlayCards/>} ></Route>
-            <Route path="*" exact  element={<NotFoundPage/>} ></Route>
             <Route path="Brands" exact  element={<BrandStore/>} ></Route>
             <Route path="Brand/:id" exact  element={<BrandDetailes/>} ></Route>
             <Route path="Brand/Samsung" exact  element={<Samsung/>} ></Route>
@@ -86,6 +85,7 @@ function App() {
             <Route path="/search" exact element={<Search />}></Route>
             <Route path="/wishlist" exact element={<Wishlist />}></Route>
             <Route path="/share-wishlist" exact element={<ShareWishlist />}></Route>
+            <Route path="**" exact  element={<NotFoundPage/>} ></Route>
           </Routes>
           <Footer></Footer>
         </AuthContextProvider>
