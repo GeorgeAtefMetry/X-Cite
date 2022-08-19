@@ -1,26 +1,27 @@
 .container-fluid {
   background-color: #fff;
 }
+
+.imgcol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* flex-direction: column; */
+}
 .Carousel {
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
-  width: 95%;
+  width: 100%;
 }
 .slider {
-  width: 750px;
-  
+  width: 720px;
 }
 .imgshow {
   min-height: 400px;
 }
-.imgcol {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
+
 .imgs-box img {
   width: 20px;
   height: 60px;

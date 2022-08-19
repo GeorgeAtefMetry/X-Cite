@@ -13,7 +13,7 @@ const ShomMac = () => {
     let q = query(
       macRef,
       where("categoryName", "==", "labtops"),
-      where("brandName", "==", "apple")
+      where("brandName", "==", "Apple")
       // where("lang", "==", i18n.language),
     );
     const getMacs = async () => {
@@ -22,11 +22,11 @@ const ShomMac = () => {
     };
     getMacs();
   }, []);
-
+  console.log(inpfil);
   // loop over data
   const macCard = mac
     ?.filter((el) => {
-      if (inpfil.length >= 1) {
+      if (inpfil?.length >= 1) {
         return (
           inpfil.includes(el.name) ||
           inpfil.includes(el.storage) ||

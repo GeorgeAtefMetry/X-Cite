@@ -15,11 +15,7 @@ const DesktopProcessor = () => {
   });
   
   useEffect(() => {
-    setFilter(
-      Object.entries(check)
-        .filter((prod) => prod[1])
-        .map((cat) => cat[0])
-    );
+    setFilter(Object.entries(check).filter((prod) => prod[1]).map((cat) => cat[0]))
   }, [check, setFilter]);
 
   const handleChange = (e)=> {

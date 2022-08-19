@@ -8,9 +8,9 @@ const OperatingSystem = () => {
   const { setFilter } = UserAuth();
 
   const [check, setCheck] = useState({
-    ios15: false,
-    ios14: false,
-    ios13: false
+    "ios 15": false,
+    "ios 14": false,
+    "ios 13": false
   });
 
   const handleChange = (e) => {

@@ -1,17 +1,12 @@
-<<<<<<< HEAD
+
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
-import Favorites from "../../services/services";
-import { UserAuth } from "../../context/AuthContext";
-import { addFav, deleteFav } from "../../services/services";
-=======
+
 
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Favorites from '../../services/services';
 import {addFav,deleteFav} from '../../services/services';
-import { useState , useEffect} from "react";
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -23,32 +18,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import {setProducts, deleteProducts} from'../../Components/ReduxWishlist/actions/productsActions'
 import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
->>>>>>> origin/main
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-import db from "../../firebase";
-import {
-  collection,
-  getDocs,
-  getDoc,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  Doc,
-  doc,
-  deleteField,
-} from "firebase/firestore";
 
-import { useSelector, useDispatch } from "react-redux";
-import {
-  setProducts,
-  deleteProducts,
-} from "../../Components/ReduxWishlist/actions/productsActions";
-import Button from "@mui/material/Button";
-import Snackbar from "@mui/material/Snackbar";
+
+
 
 const SwiperCard = ({ list, path }) => {
   //////////////////get id user from userauth and set in localstorage to use it in review
@@ -91,7 +64,7 @@ const SwiperCard = ({ list, path }) => {
   let dataWishlistID;
   getDoc(userDoc).then((res) => {
     let data = res.data();
-    let dataWishlist = data.wishlist;
+    let dataWishlist = data?.wishlist;
     setFavorites(dataWishlist);
     dataWishlistID = dataWishlist.map((n) => n);
   });

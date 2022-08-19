@@ -37,7 +37,7 @@ const IphoneDetiles = () => {
   return (
     <div className="container-fluid py-2 bg-white">
       <div className="row py-2 d-flex justify-content-between align-items-start position-relative">
-        <div className={`col-lg-3 ${styles.imgcol} ${styles.slider} `}>
+        <div className={`col-lg-4 ${styles.imgcol} ${styles.slider}`}>
           <Carousel
             className={`${styles.Carousel}`}
             showThumbs
@@ -47,14 +47,14 @@ const IphoneDetiles = () => {
           >
             {mob?.images?.map((el) => {
               return (
-                <div className={`${styles.slider}`}>
-                  <img src={el} alt="iphone" className="img-fluid w-50" />
+                <div className={`${styles.slider} `}>
+                  <img src={el} alt="iphone" className="img-fluid w-75" />
                 </div>
               );
             })}
           </Carousel>
         </div>
-        <div className="col-lg-3 bg-white">
+        <div className="col-lg-4 bg-white">
           <h4>
           {i18n.language === "ar"? mob.brandNameAR : mob.brandName} {i18n.language === "ar"? mob.typeAR : mob.type} {i18n.language === "ar"? mob.storageAR : mob.storage}
           </h4>

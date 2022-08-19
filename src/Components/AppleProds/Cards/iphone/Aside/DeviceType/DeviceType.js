@@ -16,8 +16,8 @@ const {t} =  useTranslation()
     iphone12: false,
     iphone11: false,
     iphoneSe: false,
-    iphone12pro: false,
-    iphone12promax: false,
+    "iphone 12 pro": false,
+    "iphone 12 pro max": false,
   });
 
   useEffect(() => {
@@ -108,19 +108,19 @@ const {t} =  useTranslation()
       </div>
       <div className="form-check mx-4 py-1">
         <Checkbox
-          id="iphone12pro"
-          name="iphone12pro"
+          id="iphone 12 pro"
+          name="iphone 12 pro"
           title={t("iphone 12 pro")}
-          checked={check.Iphone12pro}
+          checked={check["iphone 12 pro"]}
           handleChange={(e) => handleChange(e)}
         />
       </div>
       <div className="form-check mx-4 py-1">
         <Checkbox
           id="iphone12promax"
-          name="iphone12promax"
+          name="iphone 12 pro max"
           title={t("iphone 12 pro max")}
-          checked={check.Iphone12promax}
+          checked={check["iphone 12 pro max"]}
           handleChange={(e) => handleChange(e)}
         />
       </div>
