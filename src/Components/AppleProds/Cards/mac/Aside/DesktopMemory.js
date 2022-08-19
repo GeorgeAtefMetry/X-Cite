@@ -3,7 +3,7 @@ import Checkbox from '../../../../../Checkbox/Checkbox'
 import { UserAuth } from '../../../../../context/AuthContext';
 
 const DesktopMemory = () => {
-  const {setFilter} = UserAuth()
+  const { setFilter} = UserAuth()
   const [check, setCheck] = useState({
     "8 GB": false,
     "16 GB": false,
@@ -13,12 +13,8 @@ const DesktopMemory = () => {
   });
   
   useEffect(() => {
-    setFilter(
-      Object.entries(check)
-        .filter((prod) => prod[1])
-        .map((cat) => cat[0])
-    );
-  }, [check, setFilter]);
+    setFilter(Object.entries(check).filter((prod) => prod[1]).map((cat) => cat[0]));
+  }, [check,  setFilter]);
 
   const handleChange = (e)=> {
     const { name } = e.target;

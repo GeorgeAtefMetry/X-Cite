@@ -7,10 +7,10 @@ const PhoneDisplaySize = () => {
   const { setFilter } = UserAuth();
 
   const [check, setCheck] = useState({
-    "6.1": false,
-    "6.7": false,
-    "5.4": false,
-    "4.7": false,
+    "6.1-inch": false,
+    "6.7-inch": false,
+    "5.4-inch": false,
+    "4.7-inch": false,
   });
   const handleChange = (e) => {
     const { name } = e.target;
@@ -36,7 +36,7 @@ const PhoneDisplaySize = () => {
       <div className="form-check mx-4 py-1">
         <Checkbox
           id="6.1-inch"
-          name="6.1"
+          name="6.1-inch"
           title="6.1-inch"
           checked={check["6.1-inch"]}
           handleChange={(e) => handleChange(e)}
@@ -47,7 +47,7 @@ const PhoneDisplaySize = () => {
           id="6.7-inch"
           name="6.7"
           title="6.7-inch"
-          checked={check["6.7"]}
+          checked={check["6.7inch"]}
           handleChange={(e) => handleChange(e)}
         />
       </div>

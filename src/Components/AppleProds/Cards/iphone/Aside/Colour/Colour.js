@@ -5,12 +5,12 @@ import { UserAuth } from "../../../../../../context/AuthContext";
 const Colour = () => {
   const { setFilter } = UserAuth();
   const [check, setCheck] = useState({
-    blue: false,
-    black: false,
-    white: false,
+    Blue: false,
+    Black: false,
+    White: false,
     Silver: false,
     Gold: false,
-    green: false,
+    Green: false,
   });
 
   useEffect(() => {
@@ -38,28 +38,28 @@ const Colour = () => {
 
       <div className="form-check mx-4 py-1">
         <Checkbox
-          id="blue"
-          name="blue"
-          title="blue"
-          checked={check["blue"]}
+          id="Blue"
+          name="Blue"
+          title="Blue"
+          checked={check["Blue"]}
           handleChange={(e) => handleChange(e)}
         />
       </div>
       <div className="form-check mx-4 py-1">
         <Checkbox
-          id="black"
-          name="black"
-          title="black"
-          checked={check["black"]}
+          id="Black"
+          name="Black"
+          title="Black"
+          checked={check["Black"]}
           handleChange={(e) => handleChange(e)}
         />
       </div>
       <div className="form-check mx-4 py-1">
         <Checkbox
-          id="white"
-          name="white"
-          title="white"
-          checked={check["white"]}
+          id="White"
+          name="White"
+          title="White"
+          checked={check["White"]}
           handleChange={(e) => handleChange(e)}
         />
       </div>
@@ -84,9 +84,9 @@ const Colour = () => {
       <div className="form-check mx-4 py-1">
         <Checkbox
           id="Green"
-          name="green"
-          title="green"
-          checked={check["green"]}
+          name="Green"
+          title="Green"
+          checked={check["Green"]}
           handleChange={(e) => handleChange(e)}
         />
       </div>

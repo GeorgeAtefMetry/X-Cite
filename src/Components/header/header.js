@@ -1950,7 +1950,7 @@ const Header = () => {
               <div className="header-highlights">
                 <ul>
                   <li>
-                    <Link className="brands me-3 ps-2" to="/dailydeals">
+                    <Link className="brands me-3 ps-2" to="/DailyDeals">
                       {t("Daily Deals")}
                     </Link>
                   </li>

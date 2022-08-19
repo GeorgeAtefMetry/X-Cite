@@ -41,7 +41,7 @@ import UserProfile from './Components/UserProfile/UserProfile';
 import OrderDetailes from './Components/UserProfile/orderDetailes';
 import Search from './Components/Search/search';
 import ShareWishlist from './wishlist/share-wishlist';
-
+import DailyDeals from './Components/DailyDeals/DailyDeals'
 function getFavIconElement() {
   return document.getElementById("favicon");
 }
@@ -81,11 +81,13 @@ function App() {
             <Route path="/mac/:macId" exact element={<MacDetiles />} />
             <Route path="/Cart" exact element={<Cart />}></Route>
             <Route path="/UserProfile" exact element={ <PrivateRoure> <UserProfile /></PrivateRoure>}></Route>
+            <Route path='/DailyDeals' exact element={<DailyDeals />}></Route>
             <Route path="/Orders" exact element={<OrderDetailes />}></Route>
             <Route path="/test" exact element={<Test />}></Route>
             <Route path="/search" exact element={<Search />}></Route>
             <Route path="/wishlist" exact element={<Wishlist />}></Route>
             <Route path="/share-wishlist" exact element={<ShareWishlist />}></Route>
+            
           </Routes>
           <Footer></Footer>
         </AuthContextProvider>
