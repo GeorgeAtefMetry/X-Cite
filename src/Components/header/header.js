@@ -44,8 +44,7 @@ const Header = () => {
       setFilteredContacts([])
       // navigate('/home')
     }
-  
-});
+  },[]);
   
   const [lang, setLang] = useState(false);
   const [cookies, setCookies]= useCookies("Cart");
@@ -57,6 +56,7 @@ const Header = () => {
   const navTologin = useNavigate();
   
   useEffect(()=>{
+    console.log("effect");
     if(user)
     {
       if(user.uid)
