@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./home.css";
 import { Carousel } from "react-bootstrap";
-
-
-
-
-
 import { useTranslation } from "react-i18next";
 
-
-  
 
 import db from '../../firebase';
 import { collection, doc, onSnapshot, query, where } from "firebase/firestore";           

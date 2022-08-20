@@ -11,8 +11,8 @@ const ShareWishlist = () => {
     const [names, setNames] = useState()
     const location = useLocation();
     let name = location.state.names
-    let img = location.state.imgs
-    console.log(img)
+    // let img = location.state.imgs
+    // console.log(img)
     // name.split(',')
     const navigate = useNavigate()
     const GoToWishlistPage = () =>{
@@ -61,7 +61,7 @@ const ShareWishlist = () => {
                             {/* <input name='email' value={img}/> */}
                             <p style={{marginTop:'20px'}}>Message</p>
                             <input type='text' name='message' value={name} style={{display:'none',width:'100%',textAlign:'center',justifyContent:'center',marginRight:'5px',padding:'5px',border:'1px solid #ccc',borderRadius:'5px'}}></input>
-                            <input type='text' name='message' value={img} style={{display:'none',width:'100%',textAlign:'center',justifyContent:'center',marginRight:'5px',padding:'5px',border:'1px solid #ccc',borderRadius:'5px'}}></input>
+                            {/* <input type='text' name='message' value={img} style={{display:'none',width:'100%',textAlign:'center',justifyContent:'center',marginRight:'5px',padding:'5px',border:'1px solid #ccc',borderRadius:'5px'}}></input> */}
                             <input type='text' name='message' style={{width:'100%',textAlign:'center',justifyContent:'center',marginRight:'5px',padding:'5px',border:'1px solid #ccc',borderRadius:'5px'}}></input>
                             
                             <div className='float-right'>

@@ -29,19 +29,24 @@ const SwiperCard = ({list, path}) => {
     const {user} = UserAuth()
     
     let dataWishlistID
-    if(user){
-        const ID = user.uid
-        localStorage.setItem("id", ID)
-        const userDoc = doc(db, `users/`, `${ID}`)
+    useEffect(()=>{
+        if(user){
+            if(user.uid)
+            {
+                const ID = user.uid
+                localStorage.setItem("id", ID)
+                const userDoc = doc(db, `users/`, `${ID}`)
         
                 getDoc(userDoc).then((res)=>{
                     let data = res.data();
+                    console.log(res);
                     let dataWishlist = data.wishlist
                     setFavorites(dataWishlist)
                     dataWishlistID = dataWishlist.map((n)=>(n))
-
                 })
-    }
+            }
+        }
+    },[user])
     const favButton = (e,id) =>{    
         if(user){
             const ID = user.uid
