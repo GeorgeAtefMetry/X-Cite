@@ -50,12 +50,12 @@ function App() {
   favEle.href = favicon;
   return (
     <>
-      <Router>
+      <Router path='/' >
         <AuthContextProvider>
           <Header></Header>
-          <Routes>
+          <Routes >
             <Route path="/" exact  element={<Home/>} ></Route>
-            <Route path="/home" exact  element={<Home/>} ></Route>
+            <Route path="/home"   element={<Home/>} ></Route>
             <Route path="/GiftCard" exact  element={<GiftCard/>} ></Route>
             <Route path="/ITunesCard" exact  element={<ITunesCard/>} ></Route>
             <Route path="/GooglePlayCards" exact  element={<GooglePlayCards/>} ></Route>

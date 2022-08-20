@@ -10,9 +10,7 @@ const Wishlist = () => {
     const[product, setProduct] = useState([])
     const[names, setNames] = useState([])
     const[images, setImages] = useState([])
-
     const {user} = UserAuth()
-
     useEffect(()=>{
         if(user){
         const id = localStorage.getItem('id')
@@ -31,9 +29,8 @@ const Wishlist = () => {
                 })
             })
         
-        setNames(product.map((pro)=> (pro.name)))
-        setImages(product.map((pro)=> (pro.img)))
-        // console.log(names)
+        setNames( product.map((pro)=> pro.name) )
+        console.log(names)
     // })
     }
     }
@@ -51,7 +48,7 @@ const handleClick = event => {
 
 const navigate = useNavigate()
 const shareBtn = () => {
-    navigate('/share-wishlist',{state:{imgs:images,names:names}})
+    navigate('/share-wishlist',{state:{names:names}})
 }
 const GoToHomePage = () =>{
     navigate('/home')
