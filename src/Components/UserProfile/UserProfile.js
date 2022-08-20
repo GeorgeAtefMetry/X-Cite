@@ -10,12 +10,12 @@ import { Tab, Tabs, Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 // import SingUp from "../SingUp/SingUp";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-
+import { useLocation } from 'react-router-dom';
 import { Spinner } from "react-bootstrap";
 import OrderDetailes from './orderDetailes';
 
 
-function UserProfile() {
+function UserProfile(state) {
   // state to use
   const [open, setOpen] = useState(false);
   const [newOpen, setNewOpen] = useState(false);
@@ -28,12 +28,17 @@ function UserProfile() {
   const [value, setValue] = useState(0);
   const [curUser, setCurUser] = useState([]);
   const { user } = UserAuth();
+  const _location = useLocation();
   
   // connect with firebase and get the user info
   useEffect(() => {
+    if(_location.state)
+    {
+      setValue(_location.state);
+    }
     const proCollection = collection(db, "users");
     onSnapshot(proCollection, (snapshot) => {
-      console.log(snapshot.docs);
+      // console.log(snapshot.docs);
       setCurUser(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     });
   }, []);
@@ -96,10 +101,10 @@ function UserProfile() {
   // show info about user
   let userCard = curUser
     ?.filter(({ email }) =>{ 
-      console.log(email);
-      console.log(user.email)
-      console.log(email == user.email);
-      return email === user.email})
+      // console.log(email);
+      // console.log(user.email)
+      // console.log(email == user.email);
+      return email.toLowerCase() === user.email})
     .map((cur) => (
       <div key={cur.id} className="w-100 d-flex flex-column bg-white">
         {/* mange profile */}

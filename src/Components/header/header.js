@@ -15,15 +15,7 @@ import cartAction from './../../Redux/action';
 import { useState,useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import {onSnapshot, orderBy, query, where,  addDoc,
-  collection,
-  deleteDoc,
-  doc,
-  getDoc,
-  setDoc,
-  updateDoc,
-  startAt,
-  endAt,
-  getDocs, } from "firebase/firestore"      
+  collection, deleteDoc, doc, getDoc, setDoc, updateDoc,  startAt, endAt, getDocs } from "firebase/firestore";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import { Link, useNavigate  } from "react-router-dom";
@@ -43,6 +35,8 @@ const Header = () => {
 
   useEffect(() => {
   const catCollection = collection(db, "Products");
+  // let dataValue = value.toLowerCase()
+  // const q_tvsProds = query(catCollection, where('name','==',value)); 
   if(value.length>0){
     navigate('/search',{state:{name:value}})
     }else{
@@ -59,16 +53,22 @@ const Header = () => {
   const dispatch = useDispatch()
   // get status of their is user or not and handel logout
   const { user, logout } = UserAuth();
+  const [userName, setUsrName]= useState('');
   const navTologin = useNavigate();
   
   useEffect(()=>{
     if(user)
     {
-      const usrDoc = doc(db, 'users/', `${user.uid}`)
-      onSnapshot(usrDoc,(snapshot)=>{
-          const cart = snapshot.data().cart;
-          dispatch(cartAction(cart.length))
-        })
+      if(user.uid)
+      {
+        const usrDoc = doc(db, 'users/', `${user.uid}`)
+        onSnapshot(usrDoc,(snapshot)=>{
+            const cart = snapshot.data().cart;
+            // console.log(snapshot.data().fullName);
+            setUsrName(snapshot.data().fullName)
+            dispatch(cartAction(cart.length))
+          })
+      }
     }
     else
     {
@@ -103,7 +103,7 @@ const Header = () => {
       <Navbar className="bgMainCol px-0 pt-0 pb-1" expand="lg" key="lg">
         {/* <Navbar.Toggle aria-controls="offcanvasNavbar-expand-lg" /> */}
 
-        <div className="top-nav d-none d-md-block p-0 d-flex">
+        <div className="top-nav d-none d-md-block p-0 d-flex justify-content-end">
           <ul className="nav-pills hd-top-head-menu">
             <li className="nav-item-top">
               <a href="https://www.xcite.com/tradein/">{t("trade")}</a>
@@ -121,16 +121,15 @@ const Header = () => {
               <Link to={"/test"}>{t("Weekly Flyer")}</Link>
             </li>
             <li className="nav-item-top">
-              <Link to={"/test"}>{t("Order Status")}</Link>
+              <Link to={"/Orders"}>{t("Order Status")}</Link>
             </li>
             <li className="nav-item-top">
               <Link to={"/test"}>{t("Contact Us")}</Link>
             </li>
-            <li className="nav-item-top text-end ps-1 pe-0">
+            <li className={`nav-item-top ps-1 pe-0 ${i18n.language=="en"?"text-end ":"text-start"}`}>
               <img src={flag1} alt="KSa" width="70%" className="p-0" />
             </li>
-
-            <li className="nav-item-top country-switch bgMainCol pe-lg-5">
+            <li className={`nav-item-top country-switch bgMainCol ${i18n.language=="en"?" pe-lg-5":" ps-lg-5"}`}>
               <NavDropdown title={t("Xcite Kuwait")} id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">
                   <a
@@ -169,7 +168,8 @@ const Header = () => {
               <img
                 width="80%"
                 // height="10%"
-                src="https://m.xcite.com/skin/frontend/xvii/default/images/xcite-logo-en.png"
+                src={`${i18n.language=="en"?"https://m.xcite.com/skin/frontend/xvii/default/images/xcite-logo-en.png"
+                      :"https://m.xcite.com/skin/frontend/xvii/default/images/xcite-logo-ar.png"}`}
                 alt="Xcite.com"
                 title="Xcite.com"
               />
@@ -180,7 +180,7 @@ const Header = () => {
           <Form>
             <FormControl
               type="search"
-              placeholder="Search for products, categories, ..."
+              placeholder= {t("Search for products, categories, ...")}
               className="search px-3"
               aria-label="Search"
               onChange={(e)=>setValue(e.target.value)}
@@ -221,7 +221,7 @@ const Header = () => {
                     className="d-none d-lg-block py-0 ps-1 pe-0 m-0"
                     style={{ fontSize: "0.8rem" }}
                   >
-                    {user ? user?.email?.slice(0, 6) : t("login")}
+                    {user ? userName : t("login")}
                   </span>
                   <i
                     className="fa-solid fa-angle-down py-0 ps-1 pe-0 m-0"
@@ -300,11 +300,8 @@ const Header = () => {
                     style={{ fontSize: "0.8rem" }}
                     title={t("All Categories")}
                   >
-                    <div className="items row">
-                      <div
-                        className="categories shadow-lg px-0 pt-0 pb-2 m-0"
-                        style={{ width: "21%" }}
-                      >
+                    <div className="items row col-12">
+                      <div className="categories shadow-lg px-0 pt-0 pb-2 m-0" style={{ width: "24%" }}>
                         <div className="col-md-12 category category-computers d-flex py-1 px-3 m-0">
                           <NavDropdown.Item
                             className="computers p-0 m-0"
@@ -312,7 +309,7 @@ const Header = () => {
                           >
                             {t("Computer & Tablets")}
                           </NavDropdown.Item>
-                          <i class="fa-solid fa-caret-right"></i>
+                          <i className="fa-solid fa-caret-right"></i>
                         </div>
 
                         <div className="computers-items col-md-8 ps-4 py-3">
@@ -1859,7 +1856,7 @@ const Header = () => {
             </div>
 
             <div className="col-md-6 cal-xs-12 col-lg-7 col-xl-7 pad10-l pad10-r">
-              <div className="header-highlights">
+              <div className="header-highlights text-start">
                 <ul>
                   <li>
                     <Link className="brands me-3 ps-2" to="/DailyDeals">

@@ -28,7 +28,7 @@ export const AddToCart = async (pId, Amount, cookies, setCookies, dispatch, cart
     // setCokyChange(true);
 }
 
-export const AddToUserCart = async (proId, amount, usr, db, doc, getDoc, updateDoc, dispatch, cartAction)=>{
+export const AddToUserCart = async (proId, amount, usr, db, doc, getDoc, updateDoc)=>{
 
     const usrdoc = doc(db, `users/${usr.uid}`);
     getDoc(usrdoc).then((res)=>{
@@ -38,7 +38,6 @@ export const AddToUserCart = async (proId, amount, usr, db, doc, getDoc, updateD
         updateDoc(usrdoc,data)
         .then((res)=>{
             console.log(res)
-            dispatch(cartAction(data.cart.length));
         })
     }).catch((err)=>{
             console.log(err);

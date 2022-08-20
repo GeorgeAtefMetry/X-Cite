@@ -115,10 +115,29 @@ const Footer = ()=>{
                     </li>
                 </ul>
                 </MDBCol>
-            </MDBRow></div>
+            </MDBRow>
+            </div>
+
+
+
+
+
+            
             </section>
 
-
+            <div class="container-fluid text-center mt-0 pt-2" style={{backgroundColor:"#001a2c"}}>
+                <p class="fs-6">Made with <i class="fa-solid fa-heart"></i> By</p>
+                <div class="d-flex justify-content-around px-sm-5 ">
+                    <div>
+                    <p>Asmaa Abd El-Nasser</p>
+                    <p>Omnia Ramadan</p>
+                    </div>
+                    <div>
+                    <p>George Atef</p>
+                    <p>Ahmed Ibrahim</p>
+                    </div>
+                </div>
+            </div>
         {/* <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
             © 2020 Copyright:
             <a className='text-white' href='https://mdbootstrap.com/'>
