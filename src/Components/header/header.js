@@ -65,13 +65,13 @@ const Header = () => {
   useEffect(() => {
   const catCollection = collection(db, "Products");
   // let dataValue = value.toLowerCase()
-  // const q_tvsProds = query(catCollection, where('name','==',value));  
+  // const q_tvsProds = query(catCollection, where('name','==',value)); 
   if(value.length>0){
     navigate('/search',{state:{name:value}})
     }else{
       setResult([])
       setFilteredContacts([])
-      navigate('/home')
+      // navigate('/home')
     }
   
 }, [value]);
