@@ -55,15 +55,18 @@ const ShowMobile = ({ priceRinge }) => {
         return (
           inpfil.includes(el.storage) ||
           inpfil.includes(el.Camera) ||
-          inpfil.includes(el.screenSize) ||
+          inpfil.includes(el.displaySize) ||
           inpfil.includes(el.color) ||
           inpfil.includes(el.type) ||
-          inpfil.includes(el.os) ||
-          inpfil.includes(el.mobileRam)
+          inpfil.includes(el.OS) ||
+          inpfil.includes(el.Ram)
         );
       } else {
-        return el;}
-      }).map((el) => (
+
+        return el
+      }
+    }).map((el) => (
+
       <motion.div
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
@@ -73,7 +76,7 @@ const ShowMobile = ({ priceRinge }) => {
         className=" bg-white iphone col-md-6 col-lg-4 col-xl-3 "
         key={el?.id}
       >
-        <Link to={`/iphone/${el?.id}`}>
+        <Link to={`/iphone/${el?.id}`} className="d-flex justify-content-center">
           <img className="img-fluid " src={el?.images[0]} alt={el?.type} />
         </Link>
         <h5 className="pb-4">

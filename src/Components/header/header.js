@@ -32,35 +32,6 @@ const Header = () => {
   const [categories, setCats] = useState([]);
   const [filteredContacts, setFilteredContacts] = useState([]);
   const navigate = useNavigate()
-  // his(`/search${value}`, { replace: true })
-
-  // useEffect(() => {
-  //   if(value.length > 0){
-  //     const catCollection = collection(db, "Products");
-  //     onSnapshot(catCollection,(snapshot)=>{
-  //         setCats(snapshot.docs.map((doc)=>({...doc.data(), id:doc.id})))
-  //         // setResult([])
-  //         let searchQuery = value.toLowerCase()
-  //         for(let key in categories){
-  //           let data = categories[key].name.toLowerCase()
-  //           if(data.slice(0, searchQuery.length).indexOf(searchQuery) !== -1){
-  //             setResult(prevResult =>{
-  //               return [...prevResult, categories[key].name]
-  //             })
-  //           }
-  //         }
-  //       })
-  //   }else{
-  //     setResult([])
-  //   }
-  // }, [value]);
-// *****************************************************************************
-
-  // const proCollection = collection(db,'Products');
-  // const q_tvsProds = query(proCollection, where('brandName','==', 'Apple'));
-  // onSnapshot(q_tvsProds,(snapshot)=>{
-  //     setResult(snapshot.docs.map((doc)=>({...doc.data(), id:doc.id})))
-  // })
 
   useEffect(() => {
   const catCollection = collection(db, "Products");
@@ -74,64 +45,7 @@ const Header = () => {
       // navigate('/home')
     }
   
-}, [value]);
-// //************************************************************************ */
-  // useEffect(() => {
-  // if (value.length > 0) {
-  //   setResult([]);
-  //   const colRef = collection(db, "Products");
-  //   //name
-  //   var searchnamequery = query(
-  //     colRef,
-  //     orderBy("brandName"),
-  //     startAt(value.toLowerCase()),
-  //     endAt(value.toLowerCase() + "\uf8ff")
-  //   );
-  //   console.log(searchnamequery)
-  //   getDocs(searchnamequery).then((q) => {
-  //     console.log(q);
-  //       q.forEach((res) => {
-  //         // console.log(res)
-  //         if (res.exists() && !prdIDS.includes(res.id)) {
-  //           setResult((products) => [
-  //             ...products,
-  //             console.log(products),
-  //             { ...res.data(), productID: res.id },
-  //           ]);
-  //           console.log(result);
-  //           prdIDS.push(res.id);
-  //         }
-  //       });
-  //     })
-  
-  // }
-  // },[value])
-// ************************************************************************************************************
-  // const [contacts, setContacts] = useState([]);
-  // const [search, setSearch] = useState("");
-  // const [filteredContacts, setFilteredContacts] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const data = await collection(db,"Products").orderBy("name").get();
-  //     setContacts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  //   };
-
-  //   fetchData();
-  // }, []);
-
-  // useEffect(() => {
-  //   setFilteredContacts(
-  //     contacts.filter(
-  //       (user) =>
-  //         user.name.toLowerCase().includes(search.toLowerCase())
-  //     )
-  //   );
-  // }, [search, contacts]);
-
-
-  // get status of current language
-
+});
   
   const [lang, setLang] = useState(false);
   const [cookies, setCookies]= useCookies("Cart");
@@ -1945,7 +1859,7 @@ const Header = () => {
               <div className="header-highlights text-start">
                 <ul>
                   <li>
-                    <Link className="brands me-3 ps-2" to="/dailydeals">
+                    <Link className="brands me-3 ps-2" to="/DailyDeals">
                       {t("Daily Deals")}
                     </Link>
                   </li>

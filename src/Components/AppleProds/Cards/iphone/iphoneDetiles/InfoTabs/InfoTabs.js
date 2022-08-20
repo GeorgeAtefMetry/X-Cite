@@ -38,10 +38,10 @@ const InfoTabs = (props) => {
       </div>
     );
   });
-
+  console.log(props.imge);
   let imgDesc = props.imge?.imgsDescription?.map((img) => {
     return (
-      <div>
+      <div className="w-75">
         <img src={img} alt="description iphone" className="img-fluid" />
       </div>
     );
@@ -126,7 +126,7 @@ const InfoTabs = (props) => {
           <Tab label="Our Services" {...a11yProps(3)} />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
+      <TabPanel value={value} index={0} >
         {imgDesc}
       </TabPanel>
       <TabPanel value={value} index={1}>

@@ -1,8 +1,9 @@
+import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Favorites from '../../services/services';
 import {addFav,deleteFav} from '../../services/services';
-import { useState, useEffect } from "react";
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -20,6 +21,7 @@ function getWindowDimensions() {
     const width = window.innerWidth
     return width;
 }
+
 
 const SwiperCard = ({list, path}) => {
     //////////////////get id user from userauth and set in localstorage to use it in review
@@ -102,6 +104,7 @@ const SwiperCard = ({list, path}) => {
     return (
         <>
 {/*             
+
             <Snackbar
                 anchorOrigin={{ vertical, horizontal }}
                 open={open}
@@ -169,5 +172,6 @@ const SwiperCard = ({list, path}) => {
         </>
     );
 }
+
 
 export default SwiperCard;

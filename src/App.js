@@ -41,7 +41,7 @@ import UserProfile from './Components/UserProfile/UserProfile';
 import OrderDetailes from './Components/UserProfile/orderDetailes';
 import Search from './Components/Search/search';
 import ShareWishlist from './wishlist/share-wishlist';
-
+import DailyDeals from './Components/DailyDeals/DailyDeals'
 function getFavIconElement() {
   return document.getElementById("favicon");
 }
@@ -50,12 +50,12 @@ function App() {
   favEle.href = favicon;
   return (
     <>
-      <Router>
+      <Router path='/' >
         <AuthContextProvider>
           <Header></Header>
-          <Routes>
+          <Routes >
             <Route path="/" exact  element={<Home/>} ></Route>
-            <Route path="/home" exact  element={<Home/>} ></Route>
+            <Route path="/home"   element={<Home/>} ></Route>
             <Route path="/GiftCard" exact  element={<GiftCard/>} ></Route>
             <Route path="/ITunesCard" exact  element={<ITunesCard/>} ></Route>
             <Route path="/GooglePlayCards" exact  element={<GooglePlayCards/>} ></Route>
@@ -80,12 +80,14 @@ function App() {
             <Route path="/mac/:macId" exact element={<MacDetiles />} />
             <Route path="/Cart" exact element={<Cart />}></Route>
             <Route path="/UserProfile" exact element={ <PrivateRoure> <UserProfile /></PrivateRoure>}></Route>
+            <Route path='/DailyDeals' exact element={<DailyDeals />}></Route>
             <Route path="/Orders" exact element={<OrderDetailes />}></Route>
             <Route path="/test" exact element={<Test />}></Route>
             <Route path="/search" exact element={<Search />}></Route>
             <Route path="/wishlist" exact element={<Wishlist />}></Route>
             <Route path="/share-wishlist" exact element={<ShareWishlist />}></Route>
             <Route path="*" exact  element={<NotFoundPage/>} ></Route>
+
           </Routes>
           <Footer></Footer>
         </AuthContextProvider>
