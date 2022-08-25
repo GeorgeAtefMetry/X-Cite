@@ -13,28 +13,30 @@ const Wishlist = () => {
     const {user} = UserAuth()
     useEffect(()=>{
         if(user){
-        const id = localStorage.getItem('id')
+            if(user.uid){
+                const ProductsCollection = collection(db, "Products");
+                const UserDocument = doc(db, 'users/', `${user.uid}`)
+                    onSnapshot(UserDocument,(snapshot)=>{
+                        const WishList = snapshot.data().wishlist;
+                        const que = query(ProductsCollection, where(documentId() ,"in", WishList.map((item)=> item)));
+                
+                        onSnapshot(que,(res)=>{
+                            setProduct(res.docs.map((doc)=>({
+                            ...doc.data(),
+                            id: doc.id,
+                        })));
+                        })
+                    })
+                
+            // })
+            }
+        
+    }
+    }
+,[user]);
 
-        const ProductsCollection = collection(db, "Products");
-        const UserDocument = doc(db, 'users/', `${user.uid}`)
-            onSnapshot(UserDocument,(snapshot)=>{
-                const WishList = snapshot.data().wishlist;
-                const que = query(ProductsCollection, where(documentId() ,"in", WishList.map((item)=> item)));
-        
-                onSnapshot(que,(res)=>{
-                    setProduct(res.docs.map((doc)=>({
-                    ...doc.data(),
-                    id: doc.id,
-                })));
-                })
-            })
-        
-        setNames( product.map((pro)=> pro.name) )
-        console.log(names)
-    // })
-    }
-    }
-,[]);
+// setNames(product.map((pro)=> pro.name))
+// console.log(names)
 
 const favButton = (e,id) =>{
     e.preventDefault()
@@ -77,7 +79,7 @@ return(
                     {product.map(pro => (
                         <div className={`d-flex ${classes.eachOne}`} key={pro.id}>
                             <div className='col-lg-2 col-md-3  col-sm-4'>
-                                <Link to={`/digitalcarddetails/${pro.id}`}>
+                                <Link to={`/ProductDetails/${pro.id}`}>
                                     <img class="card-img-top" src={pro.images[0]} key={pro.id}  alt="Card image cap"/>
                                 </Link>
                             </div>

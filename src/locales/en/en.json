@@ -103,7 +103,7 @@
   "processor":"processor",
   "Ram":"Ram",
   "displaySize":"display Size",
-  "OS":"",
+  "OS":"Operating System",
   "type":"type",
   "storage":"storage",
   "graphicsMemory":"graphics Memory",
@@ -116,7 +116,7 @@
   "motionRate":"motion Rate",
   "rearCamera":"rear Camera",
   "SIMCount":"SIM Count",
-  "GPS":"",
+  "GPS":"GPS",
   "connectivity":"connectivity",
   "Why to buy":"Why to buy"
 }

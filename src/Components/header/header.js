@@ -35,8 +35,6 @@ const Header = () => {
 
   useEffect(() => {
   const catCollection = collection(db, "Products");
-  // let dataValue = value.toLowerCase()
-  // const q_tvsProds = query(catCollection, where('name','==',value)); 
   if(value.length>0){
     navigate('/search',{state:{name:value}})
     }else{
@@ -44,7 +42,7 @@ const Header = () => {
       setFilteredContacts([])
       // navigate('/home')
     }
-  },[]);
+  });
   
   const [lang, setLang] = useState(false);
   const [cookies, setCookies]= useCookies("Cart");
