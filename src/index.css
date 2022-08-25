@@ -21,17 +21,16 @@ code {
   top:0;
 }
 
-/*============== Scroll Bar============= */
 body::-webkit-scrollbar {
-  width: 10px;               /* width of the entire scrollbar */
+  width: 10px;              
 }
 
 body::-webkit-scrollbar-track {
-  background: #001a2c;        /* color of the tracking area */
+  background: #001a2c;        
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #69c3e8;    /* color of the scroll thumb */
-  border-radius: 20px;       /* roundness of the scroll thumb */
-  border: 2px solid #001a2c;  /* creates padding around scroll thumb */
+  background-color: #69c3e8;  
+  border-radius: 20px;      
+  border: 2px solid #001a2c;  
 }

@@ -1,9 +1,8 @@
-/* ========= All Brands =================================================================*/
+
 .slider{
     margin-bottom: 80px;
 }
 
-/* ========= Acer Brand =================================================================*/
 .acerCard,
 .smCards{
     border-radius: 9px;
@@ -68,8 +67,6 @@
     color: white;
     text-align: center;
 }
-
-/* ========= Samsung Brand =================================================================*/
 .bgMain{
     background-color: #f5f5f5;
     color: black;

@@ -1,5 +1,4 @@
 body{
-    /* background-color:aliceblue; */
     color: black;
     padding-left: 10px;
     padding-right: 10px;
@@ -27,7 +26,6 @@ body{
 .car{
  background-color: white;
  border: 1px solid rgba(0, 0, 0, 0.099);
-/* height: 610px; */
 }
 
 .best-seller{
