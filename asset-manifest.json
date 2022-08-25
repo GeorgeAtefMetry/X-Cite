@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/home/static/css/main.1d9d483a.css",
-    "main.js": "/home/static/js/main.4b4ff746.js",
+    "main.css": "/home/static/css/main.53a3c203.css",
+    "main.js": "/home/static/js/main.70f0b1e3.js",
     "static/js/787.41ba170b.chunk.js": "/home/static/js/787.41ba170b.chunk.js",
     "static/media/banner-tv-mbl.jpg": "/home/static/media/banner-tv-mbl.b2c91d55861136f60067.jpg",
     "static/media/fa-solid-900.ttf": "/home/static/media/fa-solid-900.e615bbcb258550973c16.ttf",
@@ -51,12 +51,12 @@
     "static/media/slick.woff": "/home/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/home/index.html",
     "static/media/getFetch.cjs": "/home/static/media/getFetch.c780682470504fffbd04.cjs",
-    "main.1d9d483a.css.map": "/home/static/css/main.1d9d483a.css.map",
-    "main.4b4ff746.js.map": "/home/static/js/main.4b4ff746.js.map",
+    "main.53a3c203.css.map": "/home/static/css/main.53a3c203.css.map",
+    "main.70f0b1e3.js.map": "/home/static/js/main.70f0b1e3.js.map",
     "787.41ba170b.chunk.js.map": "/home/static/js/787.41ba170b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1d9d483a.css",
-    "static/js/main.4b4ff746.js"
+    "static/css/main.53a3c203.css",
+    "static/js/main.70f0b1e3.js"
   ]
 }
